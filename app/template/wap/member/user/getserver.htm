@@ -1,0 +1,103 @@
+{yun:}include file="$wapstyle/member/header.htm"{/yun}
+<script>
+ var eid='{yun:}$info.id{/yun}';
+
+$(document).ready(function () { 
+	$("input[name='days']").click(function(){ 
+		var val=$(this).val(); 
+		countmoney(val);
+	});
+});
+function countmoney(val){
+	var price=$("#price").val(); 
+	var money=parseInt(val*(price*100))/100; 
+	$(".pricehtml").html(money);
+}
+
+function pay_form(type){
+ 	var days=$("input[name='days']:checked").val();
+ 	
+	if(type=='zdresume'){
+		$('#xsdays').val(days);
+	} 
+	
+	if(days==''||days<1){
+		layermsg("请选择或填写天数！", 2);return false;	
+	}
+	var paytype=$('input:radio[name="paytype"]:checked').val();
+	if(paytype==null){
+		layermsg('请选择一种支付方式！', 2);return false; 
+	}else if(paytype=='wxpay'){
+		$("#paymentform").attr("action","index.php?c=wxpay&id={yun:}$order.id{/yun}");
+	}else if(paytype=='alipay'){
+		$("#paymentform").attr("action","{yun:}$config.sy_weburl{/yun}/api/wapalipay/alipayto.php?dingdan={yun:}$order.order_id{/yun}&dingdanname={yun:}$order.order_id{/yun}&alimoney={yun:}$order.order_price{/yun}");
+	}
+	return true;
+}
+</script>
+
+<section class="wap_member">
+<div class="wap_member_comp_h1"><span>简历推广</span></div>
+
+{yun:}if $smarty.get.server=='1'{/yun}
+<div class="getserbver_box"> 
+
+	<form action="index.php?c=getOrder" method="post" onsubmit="return pay_form('zdresume');">
+	
+	<ul class="getserbver_box_list"> 
+		<li>
+			<span class="getserbver_box_list_s">置顶简历：</span>
+	 		<div class="getserbver_box_list_r">
+				<div class="getserbver_box_r_text">{yun:}$info.name{/yun}</div>
+	 		</div>
+		</li>
+		<li>
+			<span class="getserbver_box_list_s">结束时间：</span>
+	 		<div class="getserbver_box_list_r">
+				<div class="getserbver_box_r_text">{yun:}if $info.topdatetime gt 0{/yun}{yun:}$info.topdate{/yun}{yun:}else{/yun}未设置{yun:}/if{/yun}</div>
+	 		</div>
+		</li>
+ 		<li>
+ 		<span class="getserbver_box_list_s">置顶时长：</span>
+ 		<div class="getserbver_box_list_r">
+			<label class="getserbver_box_list_r_s"><input type="radio" checked name="days" value='1'>1天</label>
+			<label class="getserbver_box_list_r_s"><input type="radio" name="days" value='3'>3天</label>
+			<label class="getserbver_box_list_r_s"><input type="radio" name="days" value='7'>7天</label>
+			<label class="getserbver_box_list_r_s"><input type="radio" name="days" value='15'>15天</label>
+			<label class="getserbver_box_list_r_s"><input type="radio" name="days" value='30'>30天</label> 
+ 		</div>
+		</li>
+ 		<li><div class="getserbver_box_list_p">所需金额：<span class="getserbver_box_s pricehtml">{yun:}$config.integral_resume_top{/yun}</span> 元</div></li>
+ 	</ul>
+ 	
+	{yun:}if $paytype.alipay{/yun}
+    	<div class="pay_f_list">
+        	<label>
+        		<i class="pay_f_list_zfb"></i><span class="pay_f_list_box">支付宝支付 </span>
+            	<input type='radio' name='paytype' value='alipay' class="pay_f_list_radio">
+          	</label>
+       	</div>
+	{yun:}/if{/yun}  
+	{yun:}if $paytype.wxpay||$paytype.alipay{/yun}	
+		<div class="getserbver_box_bth">
+        	<div class="pay_com_lsit_right"><input type="submit" value="确认支付" name=nextstep  class="reinputText2"></div>
+      	</div>
+	{yun:}else{/yun} 
+	  	<div class="pay_com_list">
+	        <div class="pay_com_lsit_right">
+	          <span>网站已关闭支付功能，请联系管理员！</span>
+	        </div>
+      	</div>
+	{yun:}/if{/yun}
+	
+ 	{yun:}if $config.sy_freewebtel{/yun}<div class="getserbver_box_tel"><a href="tel:{yun:}$config.sy_freewebtel{/yun}">客服电话：{yun:}$config.sy_freewebtel{/yun}</a></div>{yun:}/if{/yun}
+	<input id="price" type="hidden" value="{yun:}$config.integral_resume_top{/yun}"/>
+ 	<input name="server" id="server" type="hidden" value="zdresume"/>
+	<input name="xsdays" id="xsdays" type="hidden" value=""/>
+ 	<input name="resumeid" id="resumeid" type="hidden" value="{yun:}$info.id{/yun}"/>
+ 	</form>
+</div>
+{yun:}/if{/yun}
+</section>
+<div class="clear"></div>
+{yun:}include file="$wapstyle/footer.htm"{/yun} 

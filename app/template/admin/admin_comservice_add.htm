@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link href="./images/reset.css" rel="stylesheet" type="text/css" />
+<link href="./images/system.css" rel="stylesheet" type="text/css" />
+<link href="./images/table_form.css" rel="stylesheet" type="text/css" /> 
+<script src="{yun:}$config.sy_weburl{/yun}/js/jquery-1.8.0.min.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/layer/layer.min.js" language="javascript"></script>
+<script src="js/admin_public.js" language="javascript"></script>
+<title></title>
+</head>
+<body class="body_ifm">
+<div class="infoboxp">
+<div class="infoboxp_top_bg"></div>
+<div class="infoboxp_top" style="z-index:600;position:relative;">	
+	<div class="report_uaer_list"><span class="infoboxp_top_span">会员等级</span>
+	 <a href="index.php?m=admin_comrating" >等级设置</a>
+	 <a href="index.php?m=admin_comrating&c=server" class="report_uaer_list_on">增值服务</a> 
+	  </div> 
+  </div> 
+<div class="admin_Prompt">
+<div class="admin_Prompt_span">
+    <b>提示：</b>企业会员增值包等级关乎您的收入问题，请谨慎添加和修改并注意整体的合理性。
+</div><div class="admin_Prompt_close"></div></div>
+
+<div style=" background: #FFFFFF; border: 1px solid #DCE3ED;">
+<div class="">
+<iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe> 
+<form name="myform" target="supportiframe" action="index.php?m=admin_comrating&c=saves" method="post" id="myform" onSubmit="return checkform();">
+<input type="hidden" name="pytoken" id='pytoken' value="{yun:}$pytoken{/yun}">
+<div>
+
+<table width="100%" class="table_form table_form_thr" style="background:#fff;">
+<tr>
+<td colspan="2"><div style="padding:5px 0; font-size:14px; font-weight:bold;color:#6688cb">添加增值包</div></td>
+</tr>
+	<tr>
+        <th align="right">增值类型：</th>
+        <td>
+        <div class="yun_admin_select_box">
+        {yun:}if $row.name{/yun}
+        	{yun:}foreach from=$zzlist key=key item=v{/yun}
+	        	{yun:}if $row.name==$v.name{/yun}
+	        	<input type="button" value="{yun:}$row.name{/yun}" id="zzlist_name" class="yun_admin_select_box_text" onClick="select_click('zzlist')">
+   	            <input name="service_type" type="hidden" id="service_type_val" value="{yun:}$v{/yun}">
+	        	{yun:}/if{/yun}
+        	{yun:}/foreach{/yun}
+       	{yun:}else{/yun}
+             <input type="button" value="请选择" class="yun_admin_select_box_text" id="zzlist_name" onClick="select_click('zzlist')">
+       	{yun:}/if{/yun}
+       	<div class="yun_admin_select_box_list_box dn" id="zzlist_select"> 
+       		{yun:}foreach from=$zzlist key=j item=v{/yun}
+            	<div class="yun_admin_select_box_list"> <a href="index.php?m=admin_comrating&c=edit&id={yun:}$v.id{/yun}">{yun:}$v.name{/yun}</a> </div>
+   	            <input name="service_type" type="hidden" id="service_type_val" value="">
+            {yun:}/foreach{/yun} 
+       	</div>
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<th align="right" rowspan="3"  width="150">增值包设置：</th>
+        <td colspan="3">
+			<ul class="com_com_a_list">
+            <li>服务价格：<input class="admin_cm_zz_box" type="text" value="{yun:}$listinfo.service_price{/yun}" name="service_price" id="service_price" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')">元</li>
+         	</ul>
+			<tr class="vip_type_2 admin_table_trbg">
+				<td colspan="3">  
+					<ul class="com_com_a_list  com_com_a_list_l">
+	                   	<li><span style="display:inline-block;width:100px; text-align:right;">下载简历数：</span><input class="admin_cm_zz_box" type="text" name="resume" id="resume" value="{yun:}$listinfo.resume{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		<li><span style="display:inline-block;width:100px; text-align:right;">邀请面试数：</span><input class="admin_cm_zz_box" type="text" name="interview" id="interview" value="{yun:}$listinfo.interview{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		<li><span style="display:inline-block;width:100px; text-align:right;">发布职位数：</span><input class="admin_cm_zz_box" type="text" name="job_num" id="job_num" value="{yun:}$listinfo.job_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		<li><span style="display:inline-block;width:100px; text-align:right;">刷新职位数：</span><input class="admin_cm_zz_box" type="text" name="breakjob_num" id="breakjob_num" value="{yun:}$listinfo.breakjob_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		<li><span style="display:inline-block;width:100px; text-align:right;">发布兼职数：</span><input class="admin_cm_zz_box" type="text" name="part_num" id="part_num" value="{yun:}$listinfo.part_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		<li><span style="display:inline-block;width:100px; text-align:right;">刷新兼职数：</span><input class="admin_cm_zz_box" type="text" name="breakpart_num" id="breakpart_num" value="{yun:}$listinfo.breakpart_num{/yun}" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')"></li>
+			    		
+	    				<input name="id" type="hidden" value="{yun:}$row.id{/yun}">
+	    				<input name="tid" type="hidden" value="{yun:}$listinfo.id{/yun}">
+ 					</ul>
+				</td>
+			</tr>
+			<tr class="vip_type_2 admin_table_trbg">
+			  <td colspan="3"> 
+				<ul class="com_com_a_list">
+				<li class="com_com_a_list_s_w500">
+					{yun:}if !$listinfo{/yun}
+					<input class="admin_submit4 admin_cm_zz_bc" name="useradd" type="submit" value="保存" id="submit"> 
+					{yun:}else{/yun}
+					<input class="admin_submit4 admin_cm_zz_bc" name="userupdate" type="submit" value="更新" id="dosubmit">
+					{yun:}/if{/yun} 
+				</li>
+				</ul>
+              </td>
+			</tr>
+		 </td>
+    </tr>
+    </table> 
+ 
+</div>
+</form>
+</div>
+</div>
+</div>
+<script> 
+function checkform(){
+	if($("#service_type_val").val()==''){
+		parent.layer.msg("请选择增值类型",2,8);return false;
+	}
+	if($("#service_price").val()==''){
+		parent.layer.msg("服务价格不能为空",2,8);return false;
+	}
+}
+
+$(".tips_class").hover(function(){ 
+	var msg_id=$(this).attr('id'); 
+	var msg=$('#'+msg_id+' + font').html();
+	if($.trim(msg)!=''){
+		layer.tips(msg, this, {
+		guide: 1, 
+		style: ['background-color:#5EA7DC; color:#fff;top:-7px', '#5EA7DC']
+		}); 
+		$(".xubox_layer").addClass("xubox_tips_border");
+	} 
+},function(){
+	var msg_id=$(this).attr('id');
+	var msg=$('#'+msg_id+' + font').html();
+	if($.trim(msg)!=''){
+		layer.closeTips();
+	} 
+});
+</script>
+</body>
+</html>

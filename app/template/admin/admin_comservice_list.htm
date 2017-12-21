@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link href="images/reset.css" rel="stylesheet" type="text/css" />
+<link href="images/system.css" rel="stylesheet" type="text/css" />
+<link href="images/table_form.css" rel="stylesheet" type="text/css" />
+<script src="{yun:}$config.sy_weburl{/yun}/js/jquery-1.8.0.min.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/layer/layer.min.js" language="javascript"></script>
+<script src="js/admin_public.js" language="javascript"></script>
+<title>后台管理</title>
+</head>
+<body class="body_ifm">
+<div class="infoboxp">
+<div class="infoboxp_top_bg"></div>
+<div class="infoboxp_top" style="z-index:600;position:relative;">	
+	<div class="report_uaer_list"><span class="infoboxp_top_span">会员等级</span>
+	 <a href="index.php?m=admin_comrating">等级设置</a>
+	 <a href="index.php?m=admin_comrating&c=server" class="report_uaer_list_on">增值服务</a> 
+	  </div> 
+  </div> 
+
+    <iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
+    <form action="index.php?m=admin_comrating&c=del" name="myform" method="post" id='myform' target="supportiframe">
+    <input type="hidden" name="pytoken" id='pytoken' value="{yun:}$pytoken{/yun}">
+
+    <div  class="com_box_c">
+  <div  class="com_box_c_l"> 增值类型：</div> 
+    <div class="yun_admin_select_box" style="float:none">
+        {yun:}if $row.name{/yun}
+        	{yun:}foreach from=$zzlist key=key item=v{/yun}
+	        	{yun:}if $row.name==$v.name{/yun}
+	        	<input type="button" value="{yun:}$row.name{/yun}" id="zzlist_name" class="yun_admin_select_box_text" onClick="select_click('zzlist')">
+   	            <input name="service_type" type="hidden" id="service_type_val" value="{yun:}$v{/yun}">
+	        	{yun:}/if{/yun}
+        	{yun:}/foreach{/yun}
+       	{yun:}else{/yun}
+             <input type="button" value="请选择" class="yun_admin_select_box_text" id="zzlist_name" onClick="select_click('zzlist')">
+       	{yun:}/if{/yun}
+       	<div class="yun_admin_select_box_list_box dn" id="zzlist_select"> 
+       		{yun:}foreach from=$zzlist key=j item=v{/yun}
+            	<div class="yun_admin_select_box_list"> <a href="index.php?m=admin_comrating&c=list&id={yun:}$v.id{/yun}">{yun:}$v.name{/yun}</a> </div>
+   	            <input name="service_type" type="hidden" id="service_type_val" value="">
+            {yun:}/foreach{/yun} 
+       	</div>
+	</div>	</div>
+    <div class="clear"></div>
+    <div class="table-list">
+  <div class="admin_table_border">
+      <table width="100%">
+        <thead>
+          <tr class="admin_table_top">
+            <th style="width:20px;"><label for="chkall"><input type="checkbox" id='chkAll' onclick='CheckAll(this.form)' /></label></th>
+            <th>编号</th>
+            <th>服务价格</th>
+            <th>下载简历</th>
+            <th>邀请面试</th>
+            <th>发布职位</th>
+            <th>刷新职位</th>
+            <th>发布兼职</th>
+            <th>刷新兼职</th>
+            
+             <th class="admin_table_th_bg">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        {yun:}foreach item=v key=key from=$list{/yun}
+        <tr align="center"{yun:}if ($key+1)%2=='0'{/yun}class="admin_com_td_bg"{yun:}/if{/yun} id="list{yun:}$v.id{/yun}">
+          <td><input type="checkbox" value="{yun:}$v.id{/yun}" name='del[]' onclick='unselectall()' rel="del_chk" /></td>
+          <td><span>{yun:}$v.id{/yun}</span></td>
+          <td><span>{yun:}$v.service_price{/yun}</span>元</td>
+          <td><span>{yun:}$v.resume{/yun}</span></td>
+          <td><span>{yun:}$v.interview{/yun}</span></td>
+          <td><span>{yun:}$v.job_num{/yun}</span></td>
+          <td><span>{yun:}$v.breakjob_num{/yun}</span></td>
+          <td><span>{yun:}$v.part_num{/yun}</span></td>
+          <td><span>{yun:}$v.breakpart_num{/yun}</span></td>
+          <td>
+	        <a href="index.php?m=admin_comrating&c=edittc&id={yun:}$v.type{/yun}&tid={yun:}$v.id{/yun}"class="admin_cz_bj">编辑</a> |
+	        <a href="javascript:void(0)" onClick="layer_del('确定要删除？', 'index.php?m=admin_comrating&c=del&id={yun:}$v.id{/yun}');"class="admin_cz_sc"> 删除</a>
+        </td>
+        </tr>
+        {yun:}/foreach{/yun}
+        <tr style="background:#f1f1f1;">
+            <td align="center"><input type="checkbox" id='chkAll2' onclick='CheckAll2(this.form)' /></td>
+            <td colspan="14" >
+            <label for="chkAll2">全选</label>&nbsp;
+          <input class="admin_submit4"  type="button" name="delsub" value="删除所选"  onclick="return really('del[]')"/></td>
+        </tr>
+          </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+</div> 
+</body>
+</html>

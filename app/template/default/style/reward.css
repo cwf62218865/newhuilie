@@ -1,0 +1,156 @@
+@charset "gb2312";
+/* CSS Document */
+.reward_header{width:100%; float:left;border-bottom:1px solid #eee; background:#fff}
+.reward_header_logo{ float:left; padding:10px 0;}
+.reward_header_logo img
+.reward_header_nav{ float:left}
+.reward_header_nav_list { float:left; padding-left:100px;}
+.reward_header_nav_list li{width:130px; height:65px; line-height:65px; font-size:16px;text-align:center; float:left;}
+.reward_header_nav_list .reward_header_nav_list_cur a{ font-weight:bold;color:#51bba5}
+.reward_header_tel{ float:right; font-size:18px;line-height:65px;color:#e5b000; background:url(../images/fast_icon3.gif) no-repeat left center; padding-left:35px;}
+/*xuanshang huangdeng*/
+.flexslider { position: relative; height:340px; overflow: hidden; background: url(../images/loading.gif) 50% no-repeat;}
+.slides { position: relative; z-index: 1;}
+.slides li { height:340px;}
+.flex-control-nav { position: absolute; bottom:20px;left:0px; z-index: 2; width: 100%; text-align: center;}
+.flex-control-nav li { display: inline-block; width:16px; height: 16px; margin: 0 5px; *display: inline; zoom: 1;}
+.flex-control-nav a { display: inline-block; width:15px; height: 16px; line-height: 45px; overflow: hidden; background: url(../images/hd_icon.png) left 0 no-repeat; cursor: pointer;}
+.flex-control-nav .flex-active { background-position: -15px 0px ;}
+.index_msg_no_sj{width:100%;float:left;height:96px; line-height:96px;text-align:center; font-size:16px;}
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;*height: 0;}
+.flex-direction-nav {*height: 0;}
+.flex-direction-nav a  { text-decoration:none; display: block; width: 40px; height: 40px; margin: -20px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 0 rgba(255,255,255,0.3); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.flex-direction-nav .flex-prev,.flex-direction-nav .flex-next{display:block;height:77px;width:36px;position:absolute;top:150px;z-index:100;background:url(../images/prevNext.png) no-repeat;outline:none;*background:url(../images/prevNext.gif) no-repeat;background:url(../images/prevNext.gif) no-repeat\0;} 
+.flex-direction-nav .flex-prev {left:0px;}
+.flex-direction-nav .flex-next {right:0px;background-position:right top;}
+.flexslider:hover .flex-prev { opacity: 0.7; left: -56px; }
+.flexslider:hover .flex-next { opacity: 0.7; right: -56px; }
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; }
+.flex-direction-nav .flex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
+.flex-direction-nav a:before  { font-family: "flexslider-icon"; font-size: 40px; line-height:1; display: inline-block;} 
+
+
+.reward_header_banner{width:100%; float:left;height:340px; position:relative; background:url(../images/reward.jpg) no-repeat center center}
+.reward_header_banner_cont{width:1200px; margin:0 auto; position:relative}
+.reward_header_fx{width:100%; text-align:center; position:absolute;left:0px;top:180px; z-index:100000000}
+.reward_header_p{ padding:10px 0;color:#fff}
+
+.job_reward_step{ width:490px;float:left; }
+.job_reward_step li{width:120px; text-align:center; padding:55px 0 0 0 ;color:#1c99ef; position:relative; float:left}
+.job_reward_step_icon{width:40px;height:40px; display:inline-block; position:absolute;left:45px;top:10px;}
+.job_reward_step_jt{ width:26px;height:26px; display:inline-block;background:url(../images/job_reward_iconjt.png) no-repeat; position:absolute;left:110px;top:30px;}
+.job_reward_step_td{ background:url(../images/job_reward_icontd.png) no-repeat center center}
+.job_reward_step_ms{ background:url(../images/job_reward_iconms.png) no-repeat center center}
+.job_reward_step_rz{ background:url(../images/job_reward_iconrz.png) no-repeat center center}
+.job_reward_step_sj{ background:url(../images/job_reward_iconsj.png) no-repeat 0px center}
+.hp_urg_job_top{width:100%;height:37px;line-height:37px;font-size:16px;border-bottom:1px solid #e3e2e2; overflow:hidden}
+.hp_urg_job_top a{color:#000;font-size:16px; font-weight:bold}
+.hp_urg_job_top a:hover{color:#1c99ef;}
+.hp_urg_job_ct{color:#666;line-height:26px;padding:5px 0px 0px 0px;}
+.hp_urg_job_ct a{color:#666;}
+.hp_urg_job_ct a:hover{color:#c30;}
+.hp_urg_job_l{width:1200px; overflow:hidden}
+.hp_urg_job_l img{ margin-top:15px; margin-right:10px;}
+.hp_urg_job_ct_r{color:#e43b2e;padding-right:6px; font-weight:bold}
+.hp_urg_job_ov{width:100%;color:#666;height:26px; line-height:26px; overflow:hidden;white-space: nowrap; text-overflow: ellipsis; }
+.job_reward_content{width:100%; float:left}
+.job_reward_js{width:100%; float:left;}
+.index_job_red{width:100%;}
+.index_job_red .index_job_red_list{width:1220px;}
+.index_job_red .index_job_red_list li{width:270px;padding:10px 7px 10px 108px;border:1px solid #eee;float:left;margin-right:15px;margin-top:14px; position:relative; background:#fff}
+.index_job_red .index_job_red_list li:hover{border:1px #46b17c solid;z-index:99;background-color:#eff6fb;/*ie*/-moz-box-shadow:0px 0px 10px #CCCCCC;/*firefox*/-webkit-box-shadow:0px 0px 10px #CCCCCC;box-shadow:0px 0px 10px #CCCCCC;}
+.index_line{color:#999; font-size:12px; padding:0px 5px;}
+.index_job_fx_momey{width:79px;height:79px; background:url(../images/red_icon.png) no-repeat; position:absolute;left:10px;top:10px;border-radius:5px;}
+.index_job_fx_momey_n{width:100%; text-align:center; padding-top:10px;color:#fcee07; font-weight:bold}
+
+.index_job_fx{width:100%;}
+.index_job_fx .index_job_fx_list{width:1220px;}
+.index_job_fx .index_job_fx_list li{width:277px;padding:0px 7px 7px 108px;border:1px solid #e3e2e2;float:left;margin-right:9px;margin-top:24px; position:relative;background:#fff}
+.index_job_fx .index_job_fx_list li:hover{border:1px #46b17c solid;z-index:99;background-color:#eff6fb;/*ie*/-moz-box-shadow:0px 0px 10px #CCCCCC;/*firefox*/-webkit-box-shadow:0px 0px 10px #CCCCCC;box-shadow:0px 0px 10px #CCCCCC;}
+
+.index_job_red_momey{width:79px;height:79px; background:url(../images/red_icon.png) no-repeat; position:absolute;left:10px;top:23px;border-radius:5px;}
+.index_job_red_momey_n{width:100%; text-align:center; padding-top:10px;color:#fcee07; font-weight:bold}
+.index_job_fx_momey{width:79px;height:79px; position:absolute;left:10px;top:10px;border-radius:5px;}
+.index_job_fx_momey_n{width:100%; text-align:center; padding-top:10px;color:#fcee07; font-weight:bold}
+.job_reward_js{width:100%;border-bottom:1px solid #eee; float:left; padding:10px 0}
+.job_reward_content{width:100%; float:left}
+.job_reward_tit{width:100%; text-align:center; font-size:26px;color:#333; padding-top:20px; padding-left:18px; position:relative}
+.hp_urg_job_ov_pd{ padding-top:8px;}
+.job_reward_tit_p{ font-size:14px; font-weight:normal; display:block;color:#999; padding:20px  0 10px 0;}
+.job_reward_tit_icon{width:60px;height:1px; background:#999; position:absolute;left:50%; margin-left:-25px;top:65px;}
+
+.reward_jobsearch{width:1198px;border:1px solid #eee; float:left; background:#fff; margin-top:20px;border: solid 1px #dce0e0; border-radius: 4px; box-shadow: 0 1px 3px 0 #dce0e0; }
+.reward_jobsearch_left{width:330px; float:left;border-right: solid 1px #dce0e0;padding:20px 20px;}
+.reward_jobsearch_text_box{width:318px;border:1px solid #ddd;height:38px; line-height:38px; padding-left:10px; overflow:hidden}
+.reward_jobsearch_text{width:100%;height:38px; line-height:38px; font-size:16px;color:#999;border:none;}
+.reward_jobsearch_name{ padding-bottom:5px;}
+.reward_jobsearch_cont{width:330px; float:left;border-right: solid 1px #dce0e0;padding:20px 20px;}
+.reward_jobsearch_chlose{width:320px;height:38px;border:1px solid #ddd; padding-left:10px;  }
+.reward_jobsearch_chlose_but{width:320px;height:38px; line-height:38px; font-size:16px;color:#999; text-align:left;border:none; background:#fff url(../images/reward_iconxl.png) no-repeat 295px center; cursor:pointer}
+.reward_jobsearch_right{width:230px; float:left;border-right: solid 1px #dce0e0;padding:20px 20px;}
+.reward_jobsearch_tj{width:130px; float:left;padding:20px 20px;}
+.reward_jobsearch_tj_bth{width:93px;height:38px; background:#ff8700;color:#fff;border:none; cursor:pointer; font-size:16px;border-radius:5px; margin-left:15px; margin-top:15px;}
+.reward_jobsearch_chlose{}
+.reward_jobsearch_sjchlose{width:220px;height:38px;border:1px solid #ddd; padding-left:10px; position:relative }
+.reward_jobsearch_sjchlose_but{width:220px;height:38px; line-height:38px; font-size:16px;color:#999; text-align:left;border:none; background:#fff url(../images/reward_iconxl.png) no-repeat 195px center;cursor:pointer}
+.reward_jobsearch_sjchlose_box{width:220px;border:1px solid #ddd; position:absolute;left:-1px;top:38px; padding-left:10px; background:#fff;}
+.reward_jobsearch_sjchlose_box li{ line-height:35px;}
+.reward_jobsearch_tag{width:100%; float:left; padding-top:20px;font-size:16px;}
+.reward_jobsearch_tag a{ font-size:16px; margin-right:15px;color:#999}
+.reward_jobsearch_content{width:1160px; padding:20px; float:left; background:#fff; margin-top:20px;}
+.reward_jobsearch_content_tit{ font-size:18px; padding-bottom:10px;}
+.reward_jobsearch_list{ width:100%; float:left; padding:15px 0;border-bottom:1px solid #eee;color:#999}
+.reward_jobsearch_listmoney{width:79px;height:79px; background:url(../images/red_icon.png) no-repeat; float:left}
+.reward_jobsearch_listmoney_n{width:100%; text-align:center; padding-top:10px;color:#fcee07; font-weight:bold}
+.reward_jobsearch_listleft{width:320px; float:left; }
+.reward_jobsearch_name{width:100%;}
+.reward_jobsearch_name a{ font-size:16px;    color: #1c99ef;}
+.reward_jobsearch_p{ font-size:14px;    padding: 8px 0 5px 0;}
+.reward_jobsearch_p_line{padding:0px 5px;}
+.reward_jobsearch_p_xz{color: #F85659;display: inline-block;margin-right: 10px;font-weight: bold;}
+.reward_jobsearch_fl{width:100%;height:25px; line-height:25px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;color:#999}
+.reward_com_content{width:430px; float:left}
+.reward_com_name{ width:100%; font-size:16px;height:26px; line-height:26px;}
+.reward_com_hy{ line-height:25px; padding-top:5px;}
+.reward_com_xz{ line-height:25px;}
+.reward_com_td{ float:right;width:180px;}
+.reward_com_td_a{ display:inline-block;width:70px;height:35px;color:#333;border:1px solid #ddd; line-height:35px; text-align:center;border-radius:5px; margin-left:10px; margin-top:8px;}
+.reward_com_time{width:100%; padding-top:10px; text-align:center}
+.job_welfare_tag_s{ padding:0px 5px;height:20px; line-height:20px;border:1px solid #e1e1e3; font-size:12px;color:#6d6d6d;    border-right: 0;    background: #fff; margin-right:18px; margin-top:5px;   display: inline-block; position:relative}
+.job_welfare_tag_s_icon{width:11px;height:22px; display:inline-block; background:url(../images/jobtag_icon.png) no-repeat; position:absolute;right:-11px;top:-1px;}
+.job_reward_tit_p_a{color:#51bba5; text-decoration:underline}
+
+.job_redpack_list_c{  float:left}
+.job_redpack_list_c_s{ width:80px; margin-right:20px;display:inline-block; position:relative; padding:60px 0 10px 0; position:relative;text-align:center; cursor:pointer; float:left}
+.job_redpack_list_c_icon{width:40px;height:40px; display:inline-block; position:absolute;left:20px;top:5px;}
+.job_redpack_list_c_icon_gz{ background:url(../images/j_icon1_y.png) no-repeat;}
+.job_redpack_list_c_icon_jy{ background:url(../images/j_icon2_y.png) no-repeat;}
+.job_redpack_list_c_icon_xm{ background:url(../images/j_icon3_y.png) no-repeat;}
+.job_redpack_list_c_icon_jn{ background:url(../images/j_icon4_y.png) no-repeat;}
+.job_redpack_list_c_s_cur{ text-align:center; }
+.job_redpack_list_c_s_cur .job_redpack_list_c_icon_gz{ background:url(../images/j_icon1.png) no-repeat;}
+.job_redpack_list_c_s_cur .job_redpack_list_c_icon_jy{ background:url(../images/j_icon2.png) no-repeat;}
+.job_redpack_list_c_s_cur .job_redpack_list_c_icon_xm{ background:url(../images/j_icon3.png) no-repeat;}
+.job_redpack_list_c_s_cur .job_redpack_list_c_icon_jn{ background:url(../images/j_icon4.png) no-repeat;}
+.reward_jobsearch_hbn_box{width:230px; float:left; line-height:28px;}
+.reward_jobsearch_hbn{ font-size:16px;color:#f60; font-weight:bold}
+.reward_jobsearch_hb_md{ margin-right:20px;}
+.reward_jobsearch_tit{width:100%; float:left; background:#f8f8f8;height:44px; line-height:44px; font-size:16px; margin-top:10px;}
+.reward_jobsearch_tit_jobname{ display:inline-block;width:330px; padding-left:10px;}
+.reward_jobsearch_tit_red{width:200px;display:inline-block;}
+.reward_jobsearch_tit_resume{width:400px;display:inline-block; text-align:center}
+.reward_jobsearch_tit_cz{width:200px; text-align:center;display:inline-block; }
+.reward_jobsearch_tit_resume_icon{ display:inline-block; font-size:12px;color:#999}
+.reward_hb_list{width:65px; float:left; padding-left:25px; position:relative;  margin-top:15px; padding-bottom:10px;}
+.reward_hb_list_icon{width:20px;height:20px; background:url(../images/reward_icon1.png) no-repeat; display:inline-block; position:absolute;left:0px;top:10px;}
+.reward_hb_list_r{border:none;}
+.reward_hb_list_icon_ms{ background:url(../images/reward_icon2.png) no-repeat; }
+.reward_hb_list_icon_rz{ background:url(../images/reward_icon3.png) no-repeat; }
+.reward_hb_list_P{color:#999; font-size:12px;}
+.reward_hb_fonttd{color:#ff6479}
+.reward_hb_fontms{color:#1b9def}
+.reward_hb_fontrz{color:#eea067}
+.reward_hb_listjobname{width:100%; padding:10px 0;height:22px; line-height:22px; float:left;border-bottom:1px solid #eee}
+.reward_hb_listjobname_l{width:160px; float:left;height:22px; line-height:22px; font-size:16px; font-weight:bold; overflow:hidden}
+.reward_hb_listjobmoney{width:105px; float:right;color:#f00; text-align:right}
+.reward_hb_list_line{width:1px;height:40px; background:#eee; position:absolute;right:10px;top:0px; display:block}

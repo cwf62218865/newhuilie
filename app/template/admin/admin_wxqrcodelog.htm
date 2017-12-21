@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<link href="images/reset.css" rel="stylesheet" type="text/css" />
+<link href="images/system.css" rel="stylesheet" type="text/css" />
+<link href="images/table_form.css" rel="stylesheet" type="text/css" />
+<script src="{yun:}$config.sy_weburl{/yun}/js/jquery-1.8.0.min.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/layer/layer.min.js" language="javascript"></script>
+<script src="js/admin_public.js" language="javascript"></script>
+<title>后台管理</title>
+</head>
+<body class="body_ifm">
+<div class="infoboxp"><div class="infoboxp_top_bg"></div>
+<div class="admin_Filter"> 
+<input type="hidden" name="m" value="admin_company">
+<input type="hidden" name="status" value="">
+<input type="hidden" name="rec" value="">
+<input type="hidden" name="time" value="">
+<input type="hidden" name="rating" value="">
+<span class="complay_top_span fl">微信登录</span>	
+    <div style="width:380px; float:left">
+        <form action="index.php" name="myform" method="get">
+        <input name="m" value="wx" type="hidden"/>
+        <input name="c" value="wxqrcodelog" type="hidden"/>
+		<input type="hidden" name="type" value="{yun:}$smarty.get.type{/yun}"/>
+		<input type="hidden" name="usertype" value="{yun:}$smarty.get.usertype{/yun}"/>
+		<input type="hidden" name="time" value="{yun:}$smarty.get.time{/yun}"/>
+        <div class="admin_Filter_text formselect" did="dwx_type"> 
+        <input type="button" {yun:}if $smarty.get.wtype=='1'||$smarty.get.wtype==''{/yun} value="微信昵称" {yun:}elseif $smarty.get.wtype=='2'{/yun} value="已绑定用户" {yun:}/if{/yun} class="admin_Filter_but" id="bwx_type">
+        <input type="hidden" name="wtype" id="wx_type" value="{yun:}if $smarty.get.wtype{/yun}{yun:}$smarty.get.wtype{/yun}{yun:}else{/yun}1{yun:}/if{/yun}"/>
+        <div class="admin_Filter_text_box" style="display:none" id="dwx_type">
+            <ul>
+                <li><a href="javascript:void(0)" onClick="formselect('1','wx_type','微信昵称')">微信昵称</a></li>
+                <li><a href="javascript:void(0)" onClick="formselect('2','wx_type','已绑定用户')">已绑定用户</a></li>	
+            </ul>  
+        </div>
+	    </div>	
+        <input class="admin_Filter_search" type="text" name="keyword"  size="25" />
+        <input class="admin_Filter_bth"  type="submit" name="news_search" value="检索用户"/>
+        &nbsp;
+		<div class="admin_search_div" ><div class="admin_adv_search"><div class="admin_adv_search_bth">高级搜索</div></div></div>
+      </form>
+    </div>
+        <div class="infoboxp_right_a"> 
+            <a href="index.php?m=wx" class="admin_infoboxp_nav admin_infoboxp_gl">微信公众号设置</a>
+            <em class="admin-tit_line"></em>
+            <a href="index.php?m=wx&c=wxnav" class="admin_infoboxp_nav admin_infoboxp_gl">自定义菜单</a>
+           
+            <em class="admin-tit_line"></em>
+            <a href="index.php?m=wx&c=binduser" class="admin_infoboxp_nav admin_infoboxp_lb">用户绑定列表</a>
+            <em class="admin-tit_line"></em>
+            <a href="index.php?m=wx&c=keyword" class="admin_infoboxp_nav admin_infoboxp_tag">搜索关键字</a>
+        </div>
+    </div>
+  
+  {yun:}include file="admin/admin_search.htm"{/yun}
+  <div class="table-list">
+    <div class="admin_table_border">
+      <iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
+      <form action="index.php" target="supportiframe" name="myform" id='myform' method="get">
+        <input name="m" value="wx" type="hidden"/>
+        <input name="c" value="dellog" type="hidden"/>
+        <table width="100%">
+          <thead>
+            <tr class="admin_table_top">
+              <th>编号</th>
+			  <th align="left">用户名称</th>
+			  <th align="left">用户类型</th>
+			  <th align="left">绑定ID（OpenId）</th>
+              <th align="left">生成时间</th>
+			  <th align="left">扫码状态</th>
+            </tr>
+          </thead>
+          <tbody>
+          {yun:}foreach item=v key=key from=$logList{/yun}
+          <tr align="center">
+			<!--<td align="left" class="td1" style="text-align:center;"><span>&nbsp;{yun:}$v.id{/yun}</span></td>-->
+            <td align="left" class="td1" style="text-align:center;"><span>&nbsp;{yun:}$v.wxloginid{/yun}</span></td>
+            <td class="ud" align="left">&nbsp;{yun:}$v.username{/yun}</td>
+			<td class="ud" align="left">&nbsp;{yun:}if $v.usertype==1{/yun}个人{yun:}elseif $v.usertype==2{/yun}企业{yun:}/if{/yun}</td>
+            <td class="ud" align="left">&nbsp;{yun:}$v.wxid{/yun}</td>
+			<td class="ud" align="left">&nbsp;{yun:}$v.time|date_format:"%Y-%m-%d %H:%M:%S"{/yun}</td>
+            <td align="left">{yun:}if $v.status==1{/yun}<font color='green'>已登录</font>{yun:}else{/yun}<font color='red'>未登录</font>{yun:}/if{/yun}</td>
+          </tr>
+          {yun:}/foreach{/yun}
+          <tr style="background:#f1f1f1;">
+            <td colspan="2"><input class="admin_submit8" type="button" name="delsub" value="清除三天前的数据" onclick="return clearqrcode('index.php?m=wx&c=clearwx')"></td>
+            <td colspan="4" class="digg">{yun:}$pagenav{/yun}</td>
+          </tr>
+            </tbody>
+        </table>
+		<input type="hidden" name="pytoken"  id="pytoken" value="{yun:}$pytoken{/yun}">
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

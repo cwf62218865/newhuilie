@@ -1,0 +1,141 @@
+  
+<!--购买--------------------------------------------------->
+<div class="none " id="packlist">
+<div class="Value_added">
+	<div class="Value_added_mune">  
+		<ul class="Value_added_mune_left">
+			{yun:}foreach from=$packs item=v key=key{/yun}
+			<li id="{yun:}$v.id{/yun}" {yun:}if $key==0{/yun} class="Value_added_mune_cur" {yun:}/if{/yun}><a href="javascript:void(0)" onclick="showleft('{yun:}$v.id{/yun}')">{yun:}$v.name{/yun}</a><i class="Value_added_bg"></i></li>
+ 			{yun:}/foreach{/yun}
+		</ul>
+	</div>
+	<div class="Value_added_box"> 
+    <div class="Value_added_box_av">
+	<div class="clear"></div>
+ 		<table class="added_de_box_table" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr>
+					<td><div style="width:458px;">套餐内容</div></td>
+					<td><div>套餐价</div></td>
+					<td><div>会员价格</div></td>
+				</tr>
+           	</tbody>
+        </table>
+    	<table class="added_de_box_table" cellpadding="0" cellspacing="0"id="ratinglist"></table>
+		<form name="alipayment"  id="payform" action="../api/alipay/alipayto.php" method="post" target="_blank" onsubmit="return payforms();">
+			<div class="added_de_box_fk">应付金额：
+				<span class="added_de_box_fk_je" id="price">0</span> 元
+			</div>
+			<input type="hidden" id="comservice" value="">
+			<div class="job_redpack_list">
+				{yun:}if $config.alipaytype=='1' && $config.alipay=='1'{/yun}
+				<div class="job_redpack_list_name">支付方式：</div>
+	              
+	            <div class="job_redpack_pay">
+	            	<a href="javascript:;" onclick="getOrder('alipay');"><img src="{yun:}$com_style{/yun}/images/ap_pay.png"> 支付宝支付</a>
+	            </div>
+	             {yun:}else{/yun}
+				<div class="con_banner_no" style="width:300px;margin-top:10px;"><span></span><em>网站已关闭支付接口，请联系管理员</em></div>
+				{yun:}/if{/yun}
+	            <input type="hidden" value="" id="pay_type" name="pay_type" value=''/>
+				<input type="hidden" name="dingdan" id="order_id" value=""/>
+				<input type="hidden" value="增值包"  name="subject" value=''/>
+				<input type="hidden" name="pay_bank" value="directPay"> 
+   	  		</div>
+		</form>
+  		<input type="hidden" name="orderid" id="orderid" value=""/>
+	</div>
+</div>
+</div></div>
+  
+<!--支付弹出框-->
+<div id="payshow" style="width:450px; position:absolute;left:0px;top:0px; background:#fff; display:none;">
+	<div class="payment_tip">请在新打开的支付页面上完成付款，付款完成前请不要关闭此窗口。<br>如您在支付过程中遇到问题，请联系客服：<span class="payment_tip_s">{yun:}$config.sy_freewebtel{/yun}</span></div>
+	<div class="payment_bottom">
+		<a href="{yun:}url m=resume c=show id=$Info.id{/yun}" class="payment_bottombutt">已完成付款</a>
+ 	</div>
+</div>
+ 
+<script>
+
+function showleft(id){
+	$('#price').html(0);
+	$('#comservice').val('');
+	$("li").removeClass("Value_added_mune_cur");
+	$('#'+id).addClass('Value_added_mune_cur');
+	$.post('{yun:}url m=ajax c=getPack{/yun}',{id:id},function(data){
+		$("#ratinglist").html(data);
+ 	});
+}
+
+function payforms(){
+	var pay_type=$("#pay_type").val();
+
+	if(pay_type==''){
+		layer.msg('请选择支付方式！', 2,8);
+
+	} else{
+	
+		$.layer({
+			type : 1,
+			title :'提示',
+			closeBtn : [0 , true],
+			border : [10 , 0.3 , '#000', true],
+			area : ['450px','280px'],
+			page : {dom :"#payshow"}
+		});
+	}
+}
+/* 选择增值包套餐，获取套餐ID 以及所需金额  */
+function toChange(){
+	var obj  = document.getElementsByName('service_package');
+    for(var i=0;i<obj.length;i++){
+        if(obj[i].checked==true){
+      		$('#comservice').val(obj[i].value);  
+      		var comservinceid = obj[i].value; 
+      		$.post('{yun:}url m=resume c=show a=getPrice{/yun}',{comservinceid:comservinceid},function(data){
+          		if(data>0){
+          			$('#price').html(data);
+                }
+       	 	});         
+        }
+    }
+}
+
+/*生成订单*/
+function getOrder(pay_type){
+	
+	$('#pay_type').val(pay_type);
+	
+ 	var id = $("#comservice").val();//增值包选中套餐ID
+
+ 	var price = document.getElementById("price").innerHTML;//选中套餐后所需要的金额
+
+ 	if(id==""){
+ 		layer.msg('请选择增值包套餐！',2,8);return false;
+ 	}else{
+ 	 	
+ 		var index = layer.load('执行中，请稍候...',0);
+
+ 		$.ajax({
+ 	  		async: false, //设置ajax同步  
+ 	        type: 'POST',  
+ 	        global:false,
+ 	        url: "{yun:}url m=resume c=show a=pay{/yun}",  
+ 	        data: {id:id,price:price},  
+ 	        success: function(data){  
+ 	        	var data=eval('('+data+')'); 
+ 	        	if(data.error==1){
+ 	     			layer.msg(data.msg, 2,8);
+ 	     		}else if(data.error==0){
+ 	     			$('#order_id').val(data.orderid);
+ 	    			$('#orderid').val(data.id);
+ 	    			//提交表单
+ 	    			layer.close(index);
+ 	    			$('#payform').submit();
+ 	    		}
+ 	        }  
+ 	  	});
+ 	}
+}
+</script>
