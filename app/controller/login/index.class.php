@@ -45,7 +45,7 @@ class index_controller extends common{
 
 	function loginsave_action(){
 		$username=yun_iconv("utf-8","gbk",$_POST['username']);
-		
+
 		if($this->uid > 0 && $this->username!=""){
 			if($this->usertype=='1'){
 				$this->layer_msg('您现在是个人会员登录状态!');
@@ -66,7 +66,7 @@ class index_controller extends common{
 			  }
 			}
 		}
-	
+
 		if($this->config['sy_msg_isopen'] && $this->config['sy_msg_login'] && $_POST['act_login']){
 			if(!$this->CheckMoblie($username)){
 				$this->layer_msg('手机号码不正确!');
@@ -92,6 +92,7 @@ class index_controller extends common{
 				$uname = $username;
 			}
 			list($uid, $uname, $password, $email) = uc_user_login($uname, $_POST['password']);
+
 			if($uid=='-1'){
 				$user = $Member->GetMemberOne(array("username"=>$username),array("field"=>"username,email,uid,password,salt"));
 				$pass = md5(md5($_POST['password']).$user['salt']);
@@ -193,6 +194,7 @@ class index_controller extends common{
 			}
 			$this->layer_msg($ucsynlogin,9,0,Url("login",array("c"=>"utype"),"1"),2,3);
 		}else{
+
 			$user = $Member->GetMemberOne($where,array("field"=>"`pw_repeat`,`pwuid`,`uid`,`username`,`salt`,`email`,`password`,`usertype`,`status`,`email_status`,`did`,`login_date`"));
 			if(is_array($user)){
 				if($this->config['sy_pw_type']=="pw_center"){

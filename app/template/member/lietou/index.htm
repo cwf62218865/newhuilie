@@ -85,35 +85,14 @@ function break_job(num){
         <a href="index.php?c=info" style="color:#f60; text-decoration:underline">您还未完善猎头信息，点击完善！</a>
         {yun:}/if{/yun}</div>
         <div class="clear"></div>
-<div class="com_m_index_rz_box">
-{yun:}if $company.email_status=="1"{/yun}
-	   <a title="邮件已验证" href="index.php?c=binding" class="com_m_index_rz_box_a">
-       <div class="com_m_index_rz_p"><i class="rz_icon rz_yx2"></i>已验证</div></a>
-		{yun:}else{/yun}
-		<a title="邮件未验证" href="index.php?c=binding" class="com_m_index_rz_box_a">
-         <div class="com_m_index_rz_p"><i class="rz_icon rz_yx"></i>未验证</div></a>
-		{yun:}/if{/yun}
-		{yun:}if $company.moblie_status=="1"{/yun}
-		<a title="手机已验证" href="index.php?c=binding" class="com_m_index_rz_box_a">
-        <div class="com_m_index_rz_p"><i class="rz_icon rz_sj2"></i>已验证</div></a>
-		{yun:}else{/yun}
-		<a title="手机未验证" href="index.php?c=binding" class="com_m_index_rz_box_a">
-        <div class="com_m_index_rz_p"><i class="rz_icon rz_sj"></i>未验证</div></a>
-		{yun:}/if{/yun}
-		{yun:}if $company.yyzz_status=="1"{/yun}
-		<a title="营业执照已验证" href="index.php?c=binding" id="biza" class="com_m_index_rz_box_a">
-        <div class="com_m_index_rz_p"><i class="rz_icon rz_zz2"></i>已验证</div></a> {yun:}else{/yun}
-		<a title="营业执照未验证" href="index.php?c=binding" id="biza" class="com_m_index_rz_box_a">
-        <div class="com_m_index_rz_p"><i class="rz_icon rz_zz"></i>未验证</div></a> {yun:}/if{/yun}
-</div>
+
 <div class="clear"></div>
   <div class="com_m_index_logintime">上次登录时间：{yun:}$member.login_date|date_format:'%Y-%m-%d %H:%M'{/yun} </div>
-    <div class="com_m_index_eye"><span class="com_m_index_eye_s">{yun:}$company.hits{/yun} 次浏览</span><span class="com_m_index_gz">{yun:}$company.ant_num{/yun} 次关注</span> </div>
        <div class="clear"></div>
     <div class="com_index_bj_box">
   <div class="com_index_bj"><a href="index.php?c=info"><i class="com_index_bjicon com_index_bjiconbj"></i>编辑资料</a></div>
-  <div class="com_index_bj"><a href="{yun:}url  m=company c=show id='`$uid`'{/yun}" target="_blank"> <i class="com_index_bjicon com_index_bjiconyl"></i>预览主页</a></div>
-  <div class="com_index_bj com_index_bjend"><a href="index.php?c=comtpl"><i class="com_index_bjicon com_index_bjiconsz"></i>模板设置</a></div>
+  <div class="com_index_bj"><a href="{yun:}url  m=company c=show id='`$uid`'{/yun}" target="_blank"> <i class="com_index_bjicon com_index_bjiconyl"></i>简历入库</a></div>
+  <div class="com_index_bj com_index_bjend"><a href="index.php?c=comtpl"><i class="com_index_bjicon com_index_bjiconsz"></i>我的积分</a></div>
 
     </div>
 </div>
@@ -171,13 +150,6 @@ function break_job(num){
 </div>
 
 {yun:}/if{/yun}
-{yun:}if $config.sy_wx_qcode!=''{/yun}
-<div class="left_index_wx">
-<div class="left_index_wx_img"><img src="{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_wx_qcode{/yun}" width="140" height="140"></div>
-<div class="left_index_wx_p1">手机挑人才!</div>
-<div class="left_index_wx_p">微信扫一扫,招聘更简单</div>
-</div>
-{yun:}/if{/yun}
 
 
 </div>
@@ -200,29 +172,29 @@ function break_job(num){
 <div class="com_m_index_data">
 <ul>
 
-<li>
-<a href="index.php?c=hr" class="com_m_index_data_box">
-<div class="com_m_index_data_iconbg com_m_index_data_iconbg1"><i class="com_m_index_data_icon"></i></div>
-<div class="com_m_index_data_name">收到简历</div>
-<div class="com_m_index_data_n">{yun:}$des_resume{/yun}</div>
-<div class="com_m_index_data_bth">未查看 <span class="f60">{yun:}$de_resume{/yun}</span></div>
-</a></li>
-<li><a href="index.php?c=down"  class="com_m_index_data_box"><div class="com_m_index_data_iconbg com_m_index_data_iconbg2"><i class="com_m_index_data_icon"></i></div>
-<div class="com_m_index_data_name">下载简历</div>
-<div class="com_m_index_data_n">{yun:}$down_resume{/yun}</div>
-<div class="com_m_index_data_bth">还可下载  <span class="f60">{yun:}if $statis.vip_etime>time()||$statis.vip_etime=="0"{/yun}{yun:}if $statis.rating_type==1{/yun}{yun:}$statis.down_resume{/yun}{yun:}else{/yun}不限{yun:}/if{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span></div>
-</a></li>
-<li class="com_m_index_data_end">
-<div class="com_m_index_data_end_job">
-<a href="index.php?c=job&w=1">
-<div class="com_m_index_data_iconbg com_m_index_data_iconbg3"><i class="com_m_index_data_icon"></i></div>
-<div class="com_m_index_data_name">职位管理</div>
-<div class="com_m_index_data_n">{yun:}$normal_job_num{/yun}</div>
-</a>
-<div class="com_m_index_data_fbbth">
-<a href="javascript:void(0);" onclick="jobadd_url('{yun:}$addjobnum{/yun}','{yun:}$config.integral_job{/yun}','{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}');return false;">发布职位</a></div>
-</div>
-</li>
+<!--<li>-->
+<!--<a href="index.php?c=hr" class="com_m_index_data_box">-->
+<!--<div class="com_m_index_data_iconbg com_m_index_data_iconbg1"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">收到简历</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$des_resume{/yun}</div>-->
+<!--<div class="com_m_index_data_bth">未查看 <span class="f60">{yun:}$de_resume{/yun}</span></div>-->
+<!--</a></li>-->
+<!--<li><a href="index.php?c=down"  class="com_m_index_data_box"><div class="com_m_index_data_iconbg com_m_index_data_iconbg2"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">下载简历</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$down_resume{/yun}</div>-->
+<!--<div class="com_m_index_data_bth">还可下载  <span class="f60">{yun:}if $statis.vip_etime>time()||$statis.vip_etime=="0"{/yun}{yun:}if $statis.rating_type==1{/yun}{yun:}$statis.down_resume{/yun}{yun:}else{/yun}不限{yun:}/if{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span></div>-->
+<!--</a></li>-->
+<!--<li class="com_m_index_data_end">-->
+<!--<div class="com_m_index_data_end_job">-->
+<!--<a href="index.php?c=job&w=1">-->
+<!--<div class="com_m_index_data_iconbg com_m_index_data_iconbg3"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">职位管理</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$normal_job_num{/yun}</div>-->
+<!--</a>-->
+<!--<div class="com_m_index_data_fbbth">-->
+<!--<a href="javascript:void(0);" onclick="jobadd_url('{yun:}$addjobnum{/yun}','{yun:}$config.integral_job{/yun}','{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}');return false;">发布职位</a></div>-->
+<!--</div>-->
+<!--</li>-->
 </ul>
 </div>
 
@@ -252,7 +224,49 @@ function jobshuaxin(id){
 
 </script>
 
+    <div class="com_m_index_resume">
+        <div class="com_m_index_h1"><span class="com_m_index_h1_s">近期推荐的候选人</span><a href="index.php?c=attention_me" class="com_m_index_h1_s_a" target="_blank">查看关注我公司的人才>></a></div>
+        {yun:}userlist where='auto.userwhere' limit=12 item=ulist{/yun}
+        <div class="com_index_rue_list fltL mt10">
+            <dl>
+                <dt>
+                    <a href="{yun:}url m=resume c=show id='`$ulist.id`'{/yun}" target="_blank" title="{yun:}$ulist.username_n{/yun}"> <img src="{yun:}$ulist.photo{/yun}" width="50" height="62px" />  <i class="pic_icombg"></i>    </a>
+                </dt>
+                <dd>
+                    <strong><a class=" blod" href="{yun:}url m=resume c=show id='`$ulist.id`'{/yun}" target="_blank" title="{yun:}$ulist.username_n{/yun}">{yun:}$ulist.username_n{/yun}</a></strong>
+                    <div class="com_index_rue_list_js">{yun:}$ulist.edu_n{/yun}学历<i class="com_index_rue_listline">|</i>{yun:}$ulist.exp_n{/yun}经验</div>
+                    <div class="com_index_rue_list_city"><em class="com_index_rue_list_xz ">{yun:}$ulist.job_city_one{/yun}-{yun:}$ulist.job_city_two{/yun}</em>   </div>
+                </dd>
+            </dl>
+            <div class="com_index_rue_list_yx"><span class="com_index_rue_list_yx_s">意向职位：</span><span class="comn_index_user">{yun:}$ulist.job_post|mb_substr:0:14:'gbk'{/yun}</span></div>
+        </div>
+        {yun:}/userlist{/yun}
+        {yun:}if empty($ulist){/yun}
+        <div class="msg_no">暂时未匹配到合适的简历 </div>
+        {yun:}/if{/yun}
+    </div>
 
+    <div class="com_m_index_resume">
+        <div class="com_m_index_h1"><span class="com_m_index_h1_s">推荐职位</span><a href="index.php?c=attention_me" class="com_m_index_h1_s_a" target="_blank">查看关注我公司的人才>></a></div>
+        {yun:}userlist where='auto.userwhere' limit=12 item=ulist{/yun}
+        <div class="com_index_rue_list fltL mt10">
+            <dl>
+                <dt>
+                    <a href="{yun:}url m=resume c=show id='`$ulist.id`'{/yun}" target="_blank" title="{yun:}$ulist.username_n{/yun}"> <img src="{yun:}$ulist.photo{/yun}" width="50" height="62px" />  <i class="pic_icombg"></i>    </a>
+                </dt>
+                <dd>
+                    <strong><a class=" blod" href="{yun:}url m=resume c=show id='`$ulist.id`'{/yun}" target="_blank" title="{yun:}$ulist.username_n{/yun}">{yun:}$ulist.username_n{/yun}</a></strong>
+                    <div class="com_index_rue_list_js">{yun:}$ulist.edu_n{/yun}学历<i class="com_index_rue_listline">|</i>{yun:}$ulist.exp_n{/yun}经验</div>
+                    <div class="com_index_rue_list_city"><em class="com_index_rue_list_xz ">{yun:}$ulist.job_city_one{/yun}-{yun:}$ulist.job_city_two{/yun}</em>   </div>
+                </dd>
+            </dl>
+            <div class="com_index_rue_list_yx"><span class="com_index_rue_list_yx_s">意向职位：</span><span class="comn_index_user">{yun:}$ulist.job_post|mb_substr:0:14:'gbk'{/yun}</span></div>
+        </div>
+        {yun:}/userlist{/yun}
+        {yun:}if empty($ulist){/yun}
+        <div class="msg_no">暂时未匹配到合适的简历 </div>
+        {yun:}/if{/yun}
+    </div>
 
 </div></div>
 </div>
