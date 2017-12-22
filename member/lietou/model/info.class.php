@@ -44,7 +44,7 @@ class info_controller extends company{
 		$this->industry_cache();
 		$cert=$this->obj->DB_select_once("company_cert","`uid`='".$this->uid."' and type='3'");
 		$this->yunset("cert",$cert);
-		$this->yunset("js_def",2);
+		$this->yunset("js_def",7);
 
 		$this->lt_tpl('info');
 	}

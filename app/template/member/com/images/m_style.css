@@ -76,7 +76,7 @@ input,textarea{font-family:microsoft yahei;}
 /*header*/
 .header{width:100%;background:#fff; float:left}
 .header-logo { padding-top:20px; padding-bottom:20px;}
-.header-logo img{ max-height:100px; max-width:380px; }
+.header-logo img{ max-height:100px; max-width:300px; }
 .header_mune{width:740px; float:right}
 .header_mune ul { float:right; margin-top:20px;}
 .header_mune ul li{width:64px; float:left; font-size:16px; margin-left:50px; }
