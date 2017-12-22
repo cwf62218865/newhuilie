@@ -8,7 +8,7 @@
  *
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
-class resume_controller extends company{
+class resume_controller extends lietou{
 //    function index_action(){
 //		include(CONFIG_PATH."db.data.php");
 //		unset($arr_data['sex'][3]);
@@ -29,6 +29,8 @@ class resume_controller extends company{
 //    }
 
     function index_action(){
+        $this->industry_cache();
+        $this->subject_cache();
         $where="`com_id`='".$this->uid."'";
         if(intval($_GET['resumetype'])){
             if(intval($_GET['resumetype'])==1){

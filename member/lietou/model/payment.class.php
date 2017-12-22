@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class payment_controller extends company{
+class payment_controller extends lietou{
 	function index_action(){
 		$rows=$this->obj->DB_select_all("bank");
 		$this->yunset("rows",$rows);

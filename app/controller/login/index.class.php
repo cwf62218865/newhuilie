@@ -81,10 +81,11 @@ class index_controller extends common{
 			}
 			$where=array("username"=> $username);
 		}
-		
+
 		$Member=$this->MODEL("userinfo");
 
 		if($this->config['sy_uc_type']=="uc_center"  && !$_POST['act_login']){
+
 			$ucinfo = $this->uc_open();
 			if(strtolower($ucinfo['UC_CHARSET']) =='utf8' || strtolower($ucinfo['UC_DBCHARSET'])=='utf8'){
 				$uname = iconv('gbk','utf-8',$username);
@@ -240,7 +241,6 @@ class index_controller extends common{
 				}
 				
 				if($res){
-					
 					if($user['status']=="2"){
 						$this->layer_msg('您的账号已被锁定!',9,0,Url("register",array("c"=>"ok","type"=>2),"1"),2);
 					}
@@ -262,12 +262,6 @@ class index_controller extends common{
 						$Company=$this->MODEL("company");
 						$info=$Company->GetCompanyInfo(array("uid"=>$user['uid']),array("field"=>'name'));
 						$this->autoupjob($user['uid'],$user['usertype']);
-					}elseif($user['usertype']=='3'){
-						if($this->config['lt_status']!="1" && $user['status']!="1"){
-							$this->layer_msg('您还没有通过审核!',9,0,Url("register",array("c"=>"ok","type"=>3),"1"),2,1);
-						}
-						$Lietou=$this->MODEL("lietou");
-						$info=$Lietou->GetLtinfo(array("uid"=>$user['uid']),array("field"=>"`realname` as `name`"));
 					}elseif($user['usertype']=='4'){//TrainInfo
 						if($this->config['px_status']!="1" && $user['status']!="1"){
 							$this->layer_msg('您还没有通过审核!',9,0,Url("register",array("c"=>"ok","type"=>3),"1"),2,1);
@@ -276,7 +270,7 @@ class index_controller extends common{
 						$info=$Train->GetTrainInfo(array("uid"=>$user['uid']),array("field"=>"`name`"));
 					}
 					
-					
+
 					if($qqid){
 						$Member->UpdateMember(array("qqid"=>$qqid,"username"=>$username),array("uid"=>$user['uid']));
 					}
@@ -308,13 +302,12 @@ class index_controller extends common{
 				
 					$this->unset_cookie();
 					$this->add_cookie($user['uid'],$user['username'],$user['salt'],$user['email'],$user['password'],$user['usertype'],$_POST['loginname'],$user['did']);
-					
 					$logtime=date("Ymd",$user['login_date']);
 					$nowtime=date("Ymd",time());
 					if($logtime!=$nowtime){
 						$this->get_integral_action($user['uid'],"integral_login","会员登录");
 					}
-					
+
 					if($info['name']){
 						$this->layer_msg('登录成功',9,0,$this->config['sy_weburl']."/index.php",2,1);
 					}else if($info['name']==''){

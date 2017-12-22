@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class info_controller extends company{
+class info_controller extends lietou{
 	function index_action(){
 		 
 		$row=$this->obj->DB_select_once("lietou","`uid`='".$this->uid."'");
@@ -49,6 +49,7 @@ class info_controller extends company{
 		$this->lt_tpl('info');
 	}
 	function save_action(){
+
 		if($_POST['submitbtn']){
 			$_POST=$this->post_trim($_POST);
 		    if(trim($_POST['linktel'])){
@@ -56,84 +57,55 @@ class info_controller extends company{
 			}else if($_POST['linkmail']){
 				$e_exist=$this->obj->DB_select_once("member","`uid`<>'".$this->uid."' and `email`='".$_POST['linkmail']."'","`uid`"); 
 			}
+
 			if($t_exist['uid']){
 				$this->ACT_layer_msg("手机已存在！",8);
 			}elseif ($e_exist['uid']){
 			    $this->ACT_layer_msg("邮箱已存在！",8);
 			}
-			$company=$this->obj->DB_select_once("company","`uid`='".$this->uid."'");
-			$comname=$this->obj->DB_select_all('company',"`uid`<>'".$this->uid."' and `name`='".$_POST['name']."'","`uid`");
+			$lietou=$this->obj->DB_select_once("lietou","`uid`='".$this->uid."'");
+			$ltname=$this->obj->DB_select_all('lietou',"`uid`<>'".$this->uid."' and `name`='".$_POST['name']."'","`uid`");
 			if($_POST['name']==""){
-				$this->ACT_layer_msg("企业全称不能为空！",8);
+				$this->ACT_layer_msg("真实姓名不能为空！",8);
 			}
-			if($comname){
-				$this->ACT_layer_msg("企业全称已存在！",8);
-			}
+//			if($ltname){
+//				$this->ACT_layer_msg("企业全称已存在！",8);
+//			}
 			if($_POST['hy']==""){
-				$this->ACT_layer_msg("从事行业不能为空！",8);
-			}
-			if($_POST['pr']==""){
-				$this->ACT_layer_msg("企业性质不能为空！",8);
-			}
-			if($_POST['provinceid']==""){
-				$this->ACT_layer_msg("所在地不能为空！",8);
-			}
-			if($_POST['mun']==""){
-				$this->ACT_layer_msg("企业规模不能为空！",8);
-			}
-			if($_POST['address']==""){
-				$this->ACT_layer_msg("公司地址不能为空！",8);
-			}
-			$linkphone=array();
-			if($_POST['phonetwo']&&$_POST['phonetwo']!='座机号'){
-				if($_POST['phoneone']==''||$_POST['phoneone']=='区号'){
-					$this->ACT_layer_msg("请填写区号！",8);
-				}else{
-					$linkphone[]=$_POST['phoneone'];
-				}
-				if($_POST['phonetwo']&&$_POST['phonetwo']!='座机号'){
-					$linkphone[]=$_POST['phonetwo'];
-				} 
-				if($_POST['phonethree']&&$_POST['phonetwo']!='分机号'){
-					$linkphone[]=$_POST['phonethree'];
-				} 
-			}
-			$_POST['linkphone']=@implode('-',$linkphone);
-			if($_POST['linktel']==""){
-				if($_POST['linkphone']==""){
-					$this->ACT_layer_msg("联系手机和固定电话任填一项！",8);
-				}else if($_POST['phoneone']==""){
-					$this->ACT_layer_msg("请填写区号！",8);
-				} 
-			}
-			if($_POST['content']==""){
-				$this->ACT_layer_msg("企业简介不能为空！",8);
+				$this->ACT_layer_msg("擅长行业不能为空！",8);
 			}
 			
 			delfiledir("../data/upload/tel/".$this->uid);
 			unset($_POST['submitbtn']);
-			if($_FILES['uplocadpic']['tmp_name']){
-				$upload=$this->upload_pic("../data/upload/company/",false,$this->config['com_pickb']);
-				$pictures=$upload->picture($_FILES['uplocadpic']);
-				$this->picmsg($pictures,$_SERVER['HTTP_REFERER']);
-				$s_thumb=$upload->makeThumb($pictures,185,75,'_S_');
-				$_POST['logo']=str_replace("../data/upload/company","./data/upload/company",$s_thumb);
-				if($company['logo']){
-					unlink_pic(".".$company['logo']);
-				}
-			}
+
+
+
+            if($_FILES['image']['tmp_name']){
+
+                $upload=$this->upload_pic("../data/upload/lietou/",false,$this->config['com_pickb']);
+                $pictures=$upload->picture($_FILES['image']);
+                $this->picmsg($pictures,$_SERVER['HTTP_REFERER']);
+                $s_thumb=$upload->makeThumb($pictures,185,75,'_S_');
+                $_POST['logo']=str_replace("../data/upload/lietou","./data/upload/lietou",$s_thumb);
+                if($lietou['logo']){
+                    unlink_pic(".".$lietou['logo']);
+                }
+            }
+
+
 			if($_FILES['firmpic']['tmp_name']){
-				$upload=$this->upload_pic("../data/upload/company/",false,$this->config['com_uppic']);
+				$upload=$this->upload_pic("../data/upload/lietou/",false,$this->config['com_uppic']);
 				$firmpic=$upload->picture($_FILES['firmpic']);
 				$this->picmsg($firmpic,$_SERVER['HTTP_REFERER']);
-				$_POST['firmpic'] = str_replace("../data/upload/company","./data/upload/company",$firmpic);
-				if($company['firmpic']){
-					unlink_pic(".".$company['firmpic']);
+				$_POST['firmpic'] = str_replace("../data/upload/lietou","./data/upload/lietou",$firmpic);
+				if($lietou['firmpic']){
+					unlink_pic(".".$lietou['firmpic']);
 				}
 			}
+
 			$Member=$this->MODEL("userinfo");
 			if($_POST['linktel']!=""){
-			if($company['moblie_status']==1){
+			if($lietou['moblie_status']==1){
 				unset($_POST['linktel']);
 			}else{
 				$moblieNum = $Member->GetMemberNum(array("moblie"=>$_POST['linktel'],"`uid`<>'".$this->uid."'"));
@@ -148,7 +120,7 @@ class info_controller extends company{
 				}
 			}
 			}
-			if($company['email_status']==1){
+			if($lietou['email_status']==1){
 				unset($_POST['linkmail']);
 			}else{
 				$emailNum = $Member->GetMemberNum(array("email"=>$_POST['linkmail'],"`uid`<>'".$this->uid."'"));
@@ -163,17 +135,19 @@ class info_controller extends company{
 			$where['uid']=$this->uid;
 			$_POST['content']=str_replace(array("&amp;","background-color:#ffffff","background-color:#fff","white-space:nowrap;"),array("&",'background-color:','background-color:','white-space:'),html_entity_decode($_POST['content'],ENT_QUOTES,"GB2312"));
 			$_POST['lastupdate']=mktime();
-			if($company['yyzz_status']=='1'){
+			if($lietou['yyzz_status']=='1'){
 				unset($_POST['name']);
 			}else{
 				$data['com_name']=$_POST['name'];
-			} 
-			$nid=$this->obj->update_once("company",$_POST,$where);
+			}
+
+
+			$nid=$this->obj->update_once("lietou",$_POST,$where);
 			if($nid){	
 				$this->obj->DB_delete_all("lssave","`uid`='".$this->uid."'and `savetype`='3'");
 				$this->obj->member_log("修改企业信息",7);
 
-				if($company['lastupdate']==""){
+				if($lietou['lastupdate']==""){
 					if($this->config['integral_userinfo_type']=="1"){
 						$auto=true;
 					}else{
@@ -185,11 +159,11 @@ class info_controller extends company{
 				$data['pr']=$_POST['pr'];
 				$data['mun']=$_POST['mun'];
 				$data['com_provinceid']=$_POST['provinceid'];
-				$this->obj->update_once("company_job",$data,array("uid"=>$this->uid));
+//				$this->obj->update_once("company_job",$data,array("uid"=>$this->uid));
 				if(!empty($mvalue)){
 					$this->obj->update_once('member',$mvalue,array("uid"=>$this->uid));
 				}
-				if($_POST['name']!=$company['name']&&$_POST['name']){
+				if($_POST['name']!=$lietou['name']&&$_POST['name']){
 					$this->obj->update_once("hotjob",array("username"=>$_POST['name']),array("uid"=>$this->uid));
 					$this->obj->update_once("partjob",array("com_name"=>$_POST['name']),array("uid"=>$this->uid));
 					$this->obj->update_once("userid_job",array("com_name"=>$_POST['name']),array("com_id"=>$this->uid));

@@ -110,44 +110,19 @@
           <div id="forms" class="text_tips">您有上次未提交成功的数据 <!--<a href="index.php?c=info&act=saveform" class="text_tips_a">--><a href="javascript:;" onclick="savecom();" class="text_tips_a">恢复数据</a> <i id="close" class="text_tips_close"></i></div>
           {yun:}/if{/yun}
           <div class="admin_textbox_02">
-            <div class="info_logo"><img src=".{yun:}$row.logo{/yun}" width="185" height="75" id="logo" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_unit_icon{/yun}','2')"/>
+            <div class="info_logo"><img src=".{yun:}$row.logo{/yun}" width="185" height="75" id="logo" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_lt_icon{/yun}','2')"/>
               <div class="info_logo_p">
                 <div class="logo_submit"><input id="image" class="logo_submit_f" type="file" name="image" onchange="ajaxfile();">
                 </div></div></div>
             <ul>
               <li>
-                <div class=tit><font color="#FF0000">*</font> 猎头全称：</div>
+                <div class=tit><font color="#FF0000">*</font> 真实姓名：</div>
                 <div class=textbox>
-                  {yun:}if $row.yyzz_status==1{/yun}
-                  <label style="font-size:13px;font-family: microsoft yahei,宋体;">{yun:}$row.name{/yun}</label>
-                  &nbsp;<font color="red">公司名已认证</font>
-                  <input type="hidden"  name="name" value="{yun:}$row.name{/yun}">
-                  {yun:}else{/yun}
                   <input type="text" size="45" id="name" name="name" value="{yun:}$row.name{/yun}" class="com_info_text" style="width:280px;"/>
-                  <div id="cdiv">
-                    {yun:}if !empty($cert){/yun}
-                    {yun:}if $cert.status==2{/yun}
-                    <div id="dcert">
-                      {yun:}if $cert.statusbody{/yun}
-                      <div id="showcomstatusbody" style="display:none;"><div class="info_z_y">{yun:}$cert.statusbody{/yun}</div> </div>
-                      {yun:}/if{/yun}
-                      <a href="javascript:void(0)"  onclick="getyyzz('营业执照认证',550,310);" class="com_set_a fl" >重新认证</a>
-                      <div class="infor_check_no">审核未通过 <a class="infor_check" href="javascript:void(0)" onclick="showcomstatusbody();">查看原因</a></div>
-                    </div>
-                    {yun:}else{/yun}
-                    <div id="dcert" class="Binding_list_text  Binding_mt" style="width:300px;">营业执照已上传，请等待审核</div>
-                    {yun:}/if{/yun}
-                    {yun:}else{/yun}
-                    <div id="dcert">
-                      <a href="javascript:void(0)"  onclick="getyyzz('营业执照认证',550,310);" class="com_set_a" >猎头认证</a>
-                    </div>
-                    {yun:}/if{/yun}
-                  </div>
-                  {yun:}/if{/yun}
                   <span id="by_name" class="errordisplay">猎头全称不能为空</span></div>
               </li>
               <li>
-                <div class=tit><font color="#FF0000">*</font> 从事行业：</div>
+                <div class=tit><font color="#FF0000">*</font> 擅长行业：</div>
                 <div class=textbox>
                   <div class="text_seclet text_seclet_cur" style="z-index:400">
                     <input id="qyhy" class="SpFormLBut text_seclet_w250 " type="button" onclick="search_show('job_qyhy');" {yun:}if $industry_name[$row.hy]==''{/yun} value="请选择从事行业"  {yun:}else{/yun} value="{yun:}$industry_name[$row.hy]{/yun}" {yun:}/if{/yun} >
@@ -162,11 +137,11 @@
                       </div>
                     </div>
                   </div>
-                  <span id="by_hy" class="errordisplay">请选择从事行业</span> </div>
+                  <span id="by_hy" class="errordisplay">请选择擅长行业</span> </div>
               </li>
 
 
-              
+
               <li>
                 <div class=tit> 联系手机：</div>
                 <div class=textbox id="bdphone">
@@ -179,9 +154,9 @@
                   {yun:}/if{/yun}
                 </div>
               </li>
-              
+
               <li>
-                <div class=tit><font color="#FF0000">*</font> 猎头简介：</div>
+                <div class=tit>猎头简介：</div>
                 <div class=textbox>
                   <textarea name="content" id="content" class="com_info_textarea" style="width:100%" rows="10">{yun:}$row.content{/yun}</textarea>
                   <span id="by_content" class="errordisplay">请填写相关猎头简介</span> </div>
@@ -269,63 +244,9 @@
   </div>
 </div>
 
-<!--绑定邮箱弹出框-->
-<div id="email" style="display:none;">
-  <div class="Binding_pop_box" style="padding:10px;width:480px;height:205px; background:#fff">
-    <div class="Binding_pop_box_msg">修改后的邮箱将作为新的登录账号</div>
-    <div >
-      <div class="Binding_pop_box_list"><span class="Binding_pop_box_list_left"><i class="Binding_pop_box_list_left_i">*</i>新的邮箱：</span>
-        <input type="text" name="email" class="Binding_pop_box_list_text Binding_pop_box_list_textw200">
-      </div>
-      <div class="Binding_pop_box_list"><span class="Binding_pop_box_list_left"><i class="Binding_pop_box_list_left_i">*</i>验证码：</span>
-        <input type="text" name="email_code" class="Binding_pop_box_list_text">
-        <img id="vcode_img" src="{yun:}$config.sy_weburl{/yun}/app/include/authcode.inc.php" style=" margin:0 5px 5px 5px; vertical-align:middle;">
-        <a href="javascript:void(0);" onclick="checkCode('vcode_img');">看不清</a></div>
-      <div class="Binding_pop_sub"> <span class="Binding_pop_box_list_left">&nbsp;</span>
-        <input class=" com_pop_bth" type="button" onclick="sendbemail('vcode_img');" value="发送验证邮箱">
-        <input class=" com_pop_bth_qx" type="button" value="取消" onclick="layer.closeAll();">
-        <input type="hidden" value="1" id="info">
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<!--设置猎头地图弹出框-->
-<div id="setmap" style="display:none;">
-  <div style="position:relative" style="width:740px;">
-    <table border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
-      <tr>
-        <th height="30"></th>
-        <td><div id="map_container" style="width:739px;height:300px;"></div><br>
-        </td>
-      </tr>
-      <tr>
-        <th>&nbsp;</th>
-        <td height="40"> X轴:
-          <input name="xvalue" id="map_x" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" readonly="readonly" value="{yun:}$row.x{/yun}"  class="com_info_text" style='float:none'>
-          &nbsp;&nbsp;
-          Y轴:
-          <input name="yvalue" id="map_y" onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" readonly="readonly" value="{yun:}$row.y{/yun}"  class="com_info_text" style='float:none'>
-          &nbsp;&nbsp;
-          <input type="button" name="savemap" class="btn_01" value="保存地图" onclick="checkpost();" style="">
-          <span id="by_map" class="errordisplay">请先设置地图位置</span></td>
-      </tr>
-      <tr>
-        <th height="30"></th>
-        <td>
-          <div class="wxts_box wxts_box_mt20">
-            <div class="wxts">操作说明：</div>
-            在地图区域点击公司所在的位置，点击保存地图。</div>
-        </td>
-      </tr>
-    </table>
-    <input type="hidden" name="type" value="info">
-    <div class="map_seach"><input id="map_keyword" type="text" value="{yun:}$city_name[$row.provinceid]{/yun}{yun:}$city_name[$row.cityid]{/yun}{yun:}$city_name[$row.three_cityid]{/yun}{yun:}$row.address{/yun}" class="map_seach_text" placeholder="请输入地址" onclick="if(this.value=='请输入地址'){this.value='';}" onblur="if(this.value==''){this.value='请输入地址';}"/><input type="button" value="搜索" onclick="localsearch('全国');" class="map_seach_sub"/></div>
 
-  </div>
-</div>
-<!--弹出框 end-->
 <script>
     function showcomstatusbody(){
         $.layer({
@@ -339,7 +260,7 @@
     }
     function ajaxfile() {
         if($("#image").val() != '') {
-            var i=layer.load('Logo上传中，请稍候....', 0);
+            var i=layer.load('头像上传中，请稍候....', 0);
             $.ajaxFileUpload({
                 url: 'index.php?c=uppic&act=ajaxfileupload',
                 secureuri: false, //是否需要安全协议，一般设置为false
@@ -357,27 +278,7 @@
             })
         }
     }
-    function ajaxewm() {
-        if($("#comqcode").val() != '') {
-            var i=layer.load('二维码上传中，请稍候....', 0);
-            $.ajaxFileUpload({
-                url: 'index.php?c=info&act=upewm',
-                secureuri: false, //是否需要安全协议，一般设置为false
-                fileElementId: 'comqcode', //文件上传域的ID
-                dataType: 'json', //返回值类型 一般设置为json
-                data:{'uppic':'1'},
-                success: function (data, status){  //服务器成功响应处理函数
-                    layer.close(i);
-                    if (data.msg) {
-                        layer.msg(data.msg, 2, 8);
-                    } else {
-                        $(".ewm_img").show();
-                        $('#ewm').attr('src',data.url);
-                    }
-                }
-            })
-        }
-    }
+
     function ajaxcert() {
         if($("#pic").val() != '') {
             var i=layer.load('图片上传中，请稍候....', 0);
@@ -433,125 +334,7 @@
         });
     });
 
-    function getmap(){
-        var map=new BMap.Map("map_container");
-        var x = '{yun:}$config.map_x{/yun}';
-        var y = '{yun:}$config.map_y{/yun}';
-        if(!x || !y){
-            map.centerAndZoom(new BMap.Point(116.404, 39.915), 12);
-        }else{
-            map.centerAndZoom(new BMap.Point(x, y), 12);
-        }
-
-        return map;
-    }
-
-    function setmap(address){
-
-        var x = $("#map_x").val();
-        var y = $("#map_y").val();
-        $.layer({
-            type : 1,
-            title : '设置猎头地图',
-            closeBtn : [0 , true],
-            border : [10 , 0.3 , '#000', true],
-            area : ['750px','480px'],
-            page : {dom :"#setmap"}
-        });
-        var map=getmap();
-
-        setLocation('map_container',116.404,39.915,"map_x","map_y",map);
-
-        if(x && y){
-
-            setLocation('map_container',x,y,"map_x","map_y",map);
-        }else if(address){
 
 
-            $("#map_keyword").val("{yun:}$city_name[$row.provinceid]{/yun}{yun:}$city_name[$row.cityid]{/yun}{yun:}$city_name[$row.three_cityid]{/yun}{yun:}$row.address{/yun}");
-            address = "{yun:}$city_name[$row.provinceid]{/yun}{yun:}$city_name[$row.cityid]{/yun}{yun:}$city_name[$row.three_cityid]{/yun}{yun:}$row.address{/yun}";
-            localsearch(address.replace(/\s+/g,""),map);
-
-        }else{
-            //根据IP到城市开始
-            function myFun(result){
-                var cityName = result.name;
-                map.setCenter(cityName);
-            }
-            var myCity = new BMap.LocalCity();
-            myCity.get(myFun);
-            //根据IP到城市结结束
-        }
-    }
-
-    function getLocalResult(local){
-        var map_keyword=$.trim($("#map_keyword").val());
-        var points=local.getResults();
-        var lngLat=points.getPoi(0).point;
-        setLocation('map_container',lngLat.lng,lngLat.lat,"map_x","map_y");
-        document.getElementById("map_x").value=lngLat.lng;
-        document.getElementById("map_y").value=lngLat.lat;
-
-    }
-    function localsearch(city){
-        var map=getmap();
-        setLocation('map_container',116.404,39.915,"map_x","map_y",map);
-
-        if($("#map_keyword").val()==""){
-            layer.msg('请输入地址！', 2, 8);return false;
-        }
-
-        // 创建地址解析器实例
-        var myGeo = new BMap.Geocoder();
-        // 将地址解析结果显示在地图上,并调整地图视野
-        myGeo.getPoint($("#map_keyword").val().replace(/\s+/g,""), function(point){
-
-            map.centerAndZoom(point, 16);
-            map.addOverlay(new BMap.Marker(point));
-
-        }, "北京市");
-
-    }
-    function checkpost(){
-        if($.trim($("#map_x").val())==''||$.trim($("#map_y").val())==''){
-            layer.msg('请先设置地图位置！', 2, 8);return false;
-        }
-        var xvalue = $("#map_x").val();
-        var yvalue = $("#map_y").val();
-        $.post('index.php?c=map&act=save',{xvalue:xvalue,yvalue:yvalue,type:'info',savemap:'1'},function(data){
-
-            if(data=='1'){
-                layer.closeAll();
-                layer.msg('地图设置成功！', 2, 9);return false;
-            }else{
-                layer.msg('地图设置失败，请重试！', 2, 8);return false;
-            }
-
-        })
-    }
-    function setLocation(id,x,y,xid,yid,map){
-        var data=get_map_config();
-        var config=eval('('+data+')');
-        var rating,map_control_type,map_control_anchor;
-        if(!x && !y){x=config.map_x;y=config.map_y;}
-        var point = new BMap.Point(x,y);
-        var marker = new BMap.Marker(point);
-        var opts = {type:BMAP_NAVIGATION_CONTROL_LARGE}
-        map.enableScrollWheelZoom(true);
-        map.addControl(new BMap.NavigationControl(opts));
-        map.centerAndZoom(point, 15);
-        map.addOverlay(marker);
-        map.addEventListener("click",function(e){
-            var info = new BMap.InfoWindow('', {width: 260});
-            var projection = this.getMapType().getProjection();
-            var lngLat = e.point;
-            document.getElementById(xid).value=lngLat.lng;
-            document.getElementById(yid).value=lngLat.lat;
-            map.clearOverlays();
-            var point = new BMap.Point(lngLat.lng,lngLat.lat);
-            var marker = new BMap.Marker(point);
-            map.addOverlay(marker);
-        });
-    }
 </script>
 {yun:}include file="$ltstyle/footer.htm"{/yun}

@@ -3,26 +3,18 @@
 </style>
 <div class="w1000">
   <div class="admin_mainbody"> {yun:}include file="$ltstyle/left.htm"{/yun}
+      <link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
     <link href="{yun:}$com_style{/yun}/images/index_style.css" type=text/css rel=stylesheet>
-    <div class=right_box>
+    <div class=down_box>
       <div class=admincont_box>
      <div class="job_list_tit">
-         <ul class="">
-         <li {yun:}if $smarty.get.c=="hr"{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=hr"  title="应聘简历">应聘简历</a></li>
-         <li {yun:}if $smarty.get.c=="down"{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=down"  title="您已下载的简历记录">已下载简历</a></li>
-         <li {yun:}if $smarty.get.c=="talent_pool"{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=talent_pool"  title="加入人才库的简历">收藏简历</a></li>
-         <li {yun:}if $smarty.get.c=="look_resume"{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=look_resume"  title="您浏览简历的记录">浏览简历</a></li>
-         <li {yun:}if $smarty.get.c=="record"{/yun} class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=record" title="网站为您推荐的简历">网站推荐简历</a></li>
-         </ul>
+
          </div>
-        <div class="com_body">
+        <div class="com_body" style="width: 100%;">
           <div class=admin_textbox_04>
           <iframe id="supportiframe"  name="supportiframe" onload="returnmessage('supportiframe');" style="display:none"></iframe>
           <div class="hr_tip_box">
-           <div class="hr_subMetx"> <span class="hr_resumesearch_span fltL">人才类型：</span> 
-           <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$smarty.get.state{/yun}&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.resumetype==''{/yun}hr_subMetx_cur{yun:}/if{/yun}">不限</a>
-           <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$smarty.get.state{/yun}&resumetype=1&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.resumetype=='1'{/yun}hr_subMetx_cur{yun:}/if{/yun}">普通人才</a>
-          </div>
+
            
             <div class="hr_subMetx"> <span class="hr_resumesearch_span fltL">招聘职位：</span>
               <div class="text_seclet text_seclet_cur2 re">
@@ -48,13 +40,73 @@
                 </div>
               </form>
             </div>
-            <div class="hr_subMetx"> <span class="hr_resumesearch_span fltL">简历状态：</span> <a href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&resumetype={yun:}$smarty.get.resumetype{/yun}&keyword={yun:}$smarty.get.keyword{/yun}" class="hr_subMetx_a {yun:}if $smarty.get.state==''{/yun}hr_subMetx_cur{yun:}/if{/yun}">不限</a> {yun:}foreach from=$StateList item=one{/yun} <a {yun:}if $smarty.get.state==$one.id{/yun}class="hr_subMetx_cur"{yun:}/if{/yun} href="index.php?c=hr&jobid={yun:}$smarty.get.jobid{/yun}&state={yun:}$one.id{/yun}&resumetype={yun:}$smarty.get.resumetype{/yun}&keyword={yun:}$smarty.get.keyword{/yun}">{yun:}$one.name{/yun}</a> {yun:}/foreach{/yun} </div>
-       
           </div>
+          <div class="Search_jobs_form_list search_more">
+                  <div class="Search_jobs_name"> 更多：</div>
+
+
+                  <div class="Search_jobs_sub" style="width:890px;">
+
+                      <div class="Search_jobs_more_chlose">
+                          <span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.hy{/yun}{yun:}$industry_name[$smarty.get.hy]{/yun}{yun:}else{/yun}工作行业{yun:}/if{/yun}</span><i class=""></i>
+                          <div class="Search_jobs_more_chlose_hylist none">
+                              <ul>
+                                  {yun:}if $config.fz_type!='2'&&$config.hyclass==''{/yun}
+                                  <div class="Search_jobs_form_list">
+                                      {yun:}foreach from=$industry_index item=v key=key{/yun}
+                                      <li><a href="javascript:;" onclick="showurl('{yun:}listurl m=resume type=hy v=$v{/yun}')">{yun:}$industry_name[$v]{/yun}</a> </li>
+                                      {yun:}/foreach{/yun}
+                                  </div>
+                                  {yun:}/if{/yun}
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.edu{/yun}{yun:}$userclass_name[$smarty.get.edu]{/yun}{yun:}else{/yun}学历要求{yun:}/if{/yun}</span><i class=""></i>
+                          <div class="Search_jobs_more_chlose_list none">
+                              <ul>
+                                  {yun:}foreach from=$userdata.user_edu item=v key=key{/yun}
+                                  <li><a href="javascript:;" onclick="showurl('{yun:}listurl m=resume type=edu v=$v{/yun}')">{yun:}$userclass_name[$v]{/yun}</a></li>
+                                  {yun:}/foreach{/yun}
+                              </ul>
+                          </div>
+                      </div>
+
+
+
+                      <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.sex{/yun}{yun:}$arr_data1{/yun}{yun:}else{/yun}性别要求{yun:}/if{/yun}</span><i class=""></i>
+                          <div class="Search_jobs_more_chlose_list none">
+                              <ul>
+                                  {yun:}foreach from=$arr_data.sex key=j item=v{/yun}
+                                  <li><a href="javascript:;" onclick="showurl('{yun:}listurl m=resume type=sex v=$j{/yun}')">{yun:}$v{/yun}</a></li>
+                                  {yun:}/foreach{/yun}
+
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.report{/yun}{yun:}$userclass_name[$smarty.get.report]{/yun}{yun:}else{/yun}到岗时间{yun:}/if{/yun}</span><i class=""></i>
+                          <div class="Search_jobs_more_chlose_list none">
+                              <ul>
+                                  {yun:}foreach from=$userdata.user_report item=v key=key{/yun}
+                                  <li><a href="javascript:;" onclick="showurl('{yun:}listurl m=resume type=report v=$v{/yun}')">{yun:}$userclass_name[$v]{/yun}</a> </li>
+                                  {yun:}/foreach{/yun}
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">{yun:}if $uptime[$smarty.get.uptime]{/yun}{yun:}$uptime[$smarty.get.uptime]{/yun}{yun:}else{/yun}更新时间{yun:}/if{/yun}</span><i class=""></i>
+                          <div class="Search_jobs_more_chlose_list none">
+                              <ul>
+                                  {yun:}foreach from=$uptime item=v key=key{/yun}
+                                  <li><a href="javascript:;" onclick="showurl('{yun:}listurl m=resume type=uptime v=$key{/yun}')">{yun:}$v{/yun}</a> </li>
+                                  {yun:}/foreach{/yun}
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           <div class="clear"></div>
           <form action="{yun:}$now_url{/yun}&act=hrset" target="supportiframe" method="post" id='myform'>
             <div class="clear"></div>
-            {yun:}if $rows{/yun}
+            {yun:}if !$rows{/yun}
             {yun:}foreach item=v from=$rows{/yun}
             <div class="job_hr_list_box">
             <div class="job_hr_list_boxcheckbox">  
@@ -165,6 +217,7 @@ $(document).ready(function(){
 		});
 	});
 });
-</script> 
+</script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
 {yun:}include file="$ltstyle/yqms.htm"{/yun}
 {yun:}include file="$ltstyle/footer.htm"{/yun}
