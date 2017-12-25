@@ -20,11 +20,11 @@
 .Search_jobs_sub{width:1010px; float:left; }
 .Search_jobs_sub_nore{ height:auto; overflow:auto;}
 .Search_jobs_sub_a{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px}
-.Search_jobs_sub_a:hover{ color:#fff;background:#1c99ef; text-decoration:none}
+.Search_jobs_sub_a:hover{ color:#fff;background:#3689b3; text-decoration:none}
 .Search_jobs_cxz{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px;}
-.Search_jobs_cxz:hover{ color:#fff;background:#1c99ef; text-decoration:none}
-.Search_jobs_sub_cur{ color:#fff;background:#1c99ef; }
-.Search_jobs_text{width:650px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:2px solid #1c99ef;border-right:none; float:left;}
+.Search_jobs_cxz:hover{ color:#fff;background:#3689b3; text-decoration:none}
+.Search_jobs_sub_cur{ color:#fff;background:#3689b3; }
+.Search_jobs_text{width:650px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:2px solid #4b6e88;border-right:none; float:left;}
 .Search_jobs_submit{width:110px;height:44px;  line-height:44px;border:none; cursor:pointer;color:#fff; font-size:16px;float:left;}
 .Search_jobs_sub_text_bc{ margin-top:8px; margin-left:10px;}
 .Search_jobs_search_box{ display:inline-block; float:left; padding-left:10px; line-height:28px; text-decoration:underline}
@@ -38,8 +38,8 @@
 .Search_jobs_citysub{width:100%; float:left}
 .Search_jobs_select{width:1100px; position:absolute;left:0px;top:30px;}
 .Search_jobs_select_list{height:22px; line-height:22px; float:left; padding:0px 8px; white-space:nowrap;color:#726e6e; margin-right:3px;}
-.Search_jobs_select_cur{ color:#fff;background:#1c99ef;}
-.Search_jobs_select_list:hover{color:#fff;background:#1c99ef; text-decoration:none}
+.Search_jobs_select_cur{ color:#fff;background:#3689b3;}
+.Search_jobs_select_list:hover{color:#fff;background:#3689b3; text-decoration:none}
 .Search_jobs_select_box{width:1008px;border:1px solid #e2e2e2; background:#f8f8f8; float:left; padding:5px 0; position:relative}
 .Search_jobs_sub_cur .Search_jobs_icon{ display:inline-block;    position: absolute;top: 23px;left: 50%;	margin-left:-3px;border-style: solid;border-width: 6px;border-color: transparent transparent #ccc transparent;
     height: 0;
@@ -68,7 +68,7 @@
 .search_h1_box_line{ width:100%;height:3px; line-height:3px; overflow:hidden;position:absolute;left:0px;bottom:0px; display:block}
 .search_h1_box_list{ position:absolute;left:0px;top:-2px;}
 .search_h1_box_list li{width:120px;height:41px; font-size:16px; float:left; text-align:center;  margin-right:5px; position:relative;border:1px solid #eee; background:#fff}
-.search_h1_box_list .search_h1_box_cur{ background:#1c99ef;border:1px solid #1c99ef}
+.search_h1_box_list .search_h1_box_cur{ background:#4b6e88;border:1px solid #4b6e88}
 .search_h1_box_list .search_h1_box_cur a{color:#fff;}
 .search_h1_box_list li a{color:#333; display:block}
 .search_h1_box_list li a:hover{ text-decoration:none}
@@ -362,7 +362,7 @@
 .userresume_recommendation .userresume_people_box_rt{width:100%; height:100px; position:relative;text-align:center}
 .userresume_recommendation .userresume_people_box_rt_bg{width:100%;height:100px; background:url(../images/yun_user_b.png) no-repeat center center; position:absolute;left:0px;top:0px;}
 .userresume_recommendation  .userresume_people_box_ft_nm a{color:#666;font-size:16px;font-weight:bold;}
-.userresume_recommendation .userresume_people_box_ft_nm a:hover{color:#1c99ef;}
+.userresume_recommendation .userresume_people_box_ft_nm a:hover{color:#3689b3;}
 .userresume_recommendation .userresume_people_box_ft_y{width:100%;height:23px; line-height:23px; overflow:hidden;white-space: nowrap; text-overflow: ellipsis;color:#f72a4b;}
 .userresume_recommendation .userresume_people_box_ft_v{color:#666;width:100%;overflow:hidden;word-break:keep-all;text-overflow:ellipsis;white-space:nowrap; padding:10px 0;}
 .userresume_line{ font-size:12px;color:#999; padding:0px 5px;}
@@ -371,7 +371,7 @@
 .Search_cityboxname{width:70px; display:inline-block; float:left; text-align:right; font-weight:bold; padding-right:10px;color:#555}
 .Search_cityboxright{width:1110px; float:left}
 .city_name{float: left;margin-right: 5px;padding: 5px 8px;height: 14px;line-height: 14px;white-space:nowrap; display:inline-block}
-.city_name:hover{ background:#1c99ef;color:#fff; text-decoration:none;}
+.city_name:hover{ background:#3689b3;color:#fff; text-decoration:none;}
 .search_city_list_cur{ width:40px;float:left;color: #555;font-size: 14px;border: 1px solid #ddd; display:block;padding: 5px 8px;height: 14px;line-height: 14px; margin-right:5px; position:relative}
 .search_city_list_curicon{ float:left; display:block; padding:0px 0px 0px  5px;}
 .search_city_p{width:40px;height:14px; line-height:14px; display:block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
@@ -389,6 +389,6 @@
 .search_city_active{color:#39F; position:relative}
 .search_city_active .search_city_list_line{width:56px;height:7px; background:#fff;border-left: 1px solid #ddd; border-right: 1px solid #ddd; display:inline-block; position:absolute;left:-1px;top:23px; z-index:11 }
 .Search_cityboxclose{width:1050px; background:#fff;border:1px solid #ddd; padding:5px 0px 5px 5px; float:left}
-.city_name_active{ background:#1c99ef;color:#fff}
+.city_name_active{ background:#3689b3;color:#fff}
 .Search_citybox_right{width:1118px; float:left; position:relative}
 .Search_cityall{width:1054px; background:#f8f8f8;border:1px solid #ddd; padding:5px 0px 11px 5px; position:absolute;left:0px;top:0px; z-index:12; padding-right:50px;}

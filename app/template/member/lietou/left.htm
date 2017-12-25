@@ -14,31 +14,23 @@
   </ul>
   {yun:}/if{/yun}
   {yun:}if $js_def==5{/yun}
-    <div class="subnav_h1"><span>人才管理</span>  </div>
+    <div class="subnav_h1"><span>简历库</span>  </div>
   <ul class="left_nav_ul">
-  {yun:}if $config.com_search==1{/yun}<li {yun:}if $smarty.get.c=="resume"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume" class="f60"><i class="com_left_icon com_left_icon_search"></i>搜人才<i class="com_icon com_icon_new"></i></a></span></li>{yun:}/if{/yun}
-  <li {yun:}if $smarty.get.c=="hr"||$smarty.get.c=="down"||$smarty.get.c=="talent_pool"||$smarty.get.c=="look_resume"||$smarty.get.c=="record"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=hr" title="我的简历"><i class="com_left_icon com_left_icon_jl"></i>我的简历</a></span> </li>
-   <li {yun:}if $smarty.get.c=="invite"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=invite" title="已邀请面试的人才"><i class="com_left_icon com_left_icon_yq"></i>面试邀请</a></span> </li>
-     <li {yun:}if $smarty.get.c=="subscribe"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=subscribe"><i class="com_left_icon com_left_icon_info"></i>人才订阅</a></span> </li>
-    <li {yun:}if $smarty.get.c=="finder"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=finder"><i class="com_left_icon com_left_icon_sq"></i>人才搜索器</a></span> </li>
-	<li {yun:}if $smarty.get.c=="attention_me"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=attention_me" ><i class="com_left_icon com_left_icon_gz"></i>关注我的人才</a></span> </li>
-    <li {yun:}if $smarty.get.c=="look_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=look_job"><i class="com_left_icon com_left_icon_eye"></i>被浏览的职位</a></span> </li>
+  {yun:}if $config.com_search==1{/yun}<li {yun:}if $smarty.get.c=="resume"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume" class="f60"><i class="com_left_icon com_left_icon_search"></i>平台人才库<i class="com_icon com_icon_new"></i></a></span></li>{yun:}/if{/yun}
+  <li {yun:}if $smarty.get.c=="hr"||$smarty.get.c=="down"||$smarty.get.c=="talent_pool"||$smarty.get.c=="look_resume"||$smarty.get.c=="record"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=hr" title="我的简历"><i class="com_left_icon com_left_icon_jl"></i>最近浏览</a></span> </li>
+     <li {yun:}if $smarty.get.c=="subscribe"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=subscribe"><i class="com_left_icon com_left_icon_info"></i>已推荐</a></span> </li>
+    <li {yun:}if $smarty.get.c=="finder"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=finder"><i class="com_left_icon com_left_icon_sq"></i>我入库的简历</a></span> </li>
 
-	
-    <li class="style09"><span><a href="{yun:}url m=ask c=friend a=myquestion uid=$uid{/yun}" target="_blank" title="我的问答"><i class="com_left_icon com_left_icon_ask"></i>我的问答</a></span> </li>
-   
   </ul>
   {yun:}/if{/yun}
 
   {yun:}if $js_def==3{/yun}
-        <div class="subnav_h1"><span>招聘管理</span>  </div>
-     <ul class="left_nav_ul"> 
-     <li><span><a href="javascript:void(0)"  onclick="jobadd_url('{yun:}$addjobnum{/yun}','{yun:}$config.integral_job{/yun}','{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}');return false;" class="f60 bold"><i class="com_left_icon com_left_icon_fb"></i>发布新职位</a></span> </li>
-     <li {yun:}if $smarty.get.c=="job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位"><i class="com_left_icon com_left_icon_zwgl"></i>职位管理</a></span></li>
-    <li {yun:}if $smarty.get.c=="special"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style07"{yun:}/if{/yun}><span><a href="index.php?c=special"><i class="com_left_icon com_left_icon_zt"></i>专题招聘</a></span></li>
-    <li {yun:}if $smarty.get.c=="partadd"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style07"{yun:}/if{/yun}><span><a onclick="jobadd_url('{yun:}$addpartjobnum{/yun}','{yun:}$config.integral_partjob{/yun}','{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}','part');" title="发布兼职" class="f60 bold" style="cursor:pointer"><i class="com_left_icon com_left_icon_jz"></i>发布兼职</a></span> </li>
-    <li {yun:}if $smarty.get.c=="partok" || $smarty.get.c=="part"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style07"{yun:}/if{/yun}><span><a href="index.php?c=partok&w=1" title="全部兼职"><i class="com_left_icon com_left_icon_jzgl"></i>兼职管理</a></span></li>
-    <li {yun:}if $smarty.get.c=="partapply"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style07"{yun:}/if{/yun}><span><a href="index.php?c=partapply" title="兼职报名"><i class="com_left_icon com_left_iconbm"></i>兼职报名</a></span></li>
+
+     <ul class="left_nav_ul">
+         <div class="subnav_h1"><span>职位库</span>  </div>
+     <li {yun:}if $smarty.get.c=="job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位"><i class="com_left_icon com_left_icon_zwgl"></i>职位搜索</a></span></li>
+     <li {yun:}if $smarty.get.c=="job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位"><i class="com_left_icon com_left_icon_zwgl"></i>关注的职位</a></span></li>
+
 
   </ul>
   {yun:}/if{/yun}
@@ -49,18 +41,15 @@
     <li {yun:}if $smarty.get.c=="paylogtc"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style08"{yun:}/if{/yun}><span><a href="index.php?c=paylogtc" title="我的会员"><i class="com_left_icon com_left_icon_myhy"></i>我的会员</a></span></li>
     <li {yun:}if $smarty.get.c=="right"&&$smarty.get.act=="" ||$smarty.get.c=="right"&&$smarty.get.act=="time"||$smarty.get.c=="right"&&$smarty.get.act=="added"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style12"{yun:}/if{/yun}><span><a href="index.php?c=right"><i class="com_left_icon com_left_icon_fw"></i>会员服务<i class="com_icon com_icon_new"></i></a></span></li>
     <li {yun:}if $smarty.get.c=="com"||$smarty.get.c=="paylog"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style09"{yun:}/if{/yun}><span><a href="index.php?c=com" title="财务明细"><i class="com_left_icon com_left_icon_mx"></i>财务明细</a></span></li>
-
-
-
-
 	<li {yun:}if $smarty.get.c=="integral"||$smarty.get.c=="reward_list"||$smarty.get.c=="integral_reduce"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style12"{yun:}/if{/yun}><span><a href="index.php?c=integral"><i class="com_left_icon com_left_icon_gl"></i>{yun:}$config.integral_pricename{/yun}管理</a></span></li>
 
   </ul>
   {yun:}/if{/yun}
  {yun:}if $js_def==7{/yun}
-     <div class="subnav_h1"><span>系统设置</span>  </div>
+     <div class="subnav_h1"><span>账号设置</span>  </div>
     <ul class="left_nav_ul">
-    <li {yun:}if $smarty.get.c=="vs"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=vs" title="修改密码"><i class="com_left_icon com_left_icon_m"></i>修改密码</a></span> </li>  
+    <li {yun:}if $smarty.get.c=="info"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=info" title="基本信息"><i class="com_left_icon com_left_icon_info"></i>基本信息</a></span> </li>
+    <li {yun:}if $smarty.get.c=="vs"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=vs" title="修改密码"><i class="com_left_icon com_left_icon_m"></i>修改密码</a></span> </li>
     <li {yun:}if $smarty.get.c=="sysnews"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style11"{yun:}/if{/yun}><span><a href="index.php?c=sysnews" title="系统消息"><i class="com_left_icon com_left_icon_xin"></i>系统消息</a></span> </li>
     <li {yun:}if $smarty.get.c=="msg"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=msg" title="求职咨询"><i class="com_left_icon com_left_icon_zx"></i>求职咨询</a></span> </li>
   </ul>
