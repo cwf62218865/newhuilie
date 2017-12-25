@@ -109,16 +109,6 @@ $phpyun_fav_job=array('id'=>'int(11)','uid'=>'int(11)','com_id'=>'int(11)','com_
 ; 
 $phpyun_finder=array('id'=>'int(11)','uid'=>'int(11)','usertype'=>'int(1)','name'=>'varchar(100)','para'=>'varchar(255)','addtime'=>'int(11)')
 ; 
-$phpyun_friend=array('id'=>'int(11)','uid'=>'int(11)','nid'=>'int(11)','status'=>'int(11)','uidtype'=>'int(2)','nidtype'=>'int(2)')
-; 
-$phpyun_friend_foot=array('id'=>'int(11)','uid'=>'int(11)','fid'=>'int(11)','num'=>'int(11)','ctime'=>'int(11)')
-; 
-$phpyun_friend_info=array('uid'=>'int(11)','nickname'=>'varchar(100)','sex'=>'int(1)','pic'=>'varchar(100)','pic_big'=>'varchar(100)','description'=>'varchar(100)','fans'=>'int(11)','atnnum'=>'int(11)','ask'=>'int(11)','answer'=>'int(11)','birthday'=>'varchar(100)','usertype'=>'int(2)','iscert'=>'int(2)','did'=>'int(11)')
-; 
-$phpyun_friend_message=array('id'=>'int(11)','pid'=>'int(11)','uid'=>'int(11)','u_name'=>'varchar(100)','fid'=>'int(11)','f_name'=>'varchar(100)','nid'=>'int(11)','content'=>'varchar(225)','ctime'=>'int(11)','status'=>'int(11)','remind_status'=>'int(1)')
-; 
-$phpyun_friend_reply=array('id'=>'int(11)','nid'=>'int(11)','fid'=>'int(11)','uid'=>'int(11)','reply'=>'varchar(225)','ctime'=>'int(11)')
-; 
 $phpyun_friend_state=array('id'=>'int(11)','uid'=>'int(11)','content'=>'varchar(225)','ctime'=>'int(11)','type'=>'int(11)','msg_pic'=>'varchar(100)')
 ; 
 $phpyun_hot_key=array('id'=>'int(20)','key_name'=>'varchar(100)','num'=>'int(20)','type'=>'int(2)','size'=>'varchar(10)','check'=>'int(1)','color'=>'varchar(10)','bold'=>'int(11)','tuijian'=>'int(11)','wxtime'=>'int(11)','wxuser'=>'varchar(100)','wxid'=>'varchar(100)')
@@ -130,8 +120,6 @@ $phpyun_industry=array('id'=>'int(11)','name'=>'varchar(50)','sort'=>'int(11)')
 $phpyun_invoice_record=array('id'=>'int(11)','oid'=>'int(11)','order_id'=>'varchar(18)','uid'=>'int(11)','title'=>'varchar(100)','link_man'=>'varchar(20)','link_moblie'=>'varchar(20)','address'=>'varchar(255)','status'=>'int(11)','statusbody'=>'text','lasttime'=>'int(11)','addtime'=>'int(11)','did'=>'int(11)')
 ; 
 $phpyun_job_class=array('id'=>'int(11)','keyid'=>'int(11)','name'=>'varchar(50)','sort'=>'int(11)','content'=>'text')
-; 
-$phpyun_lietou=array('uid'=>'int(11)','name'=>'varchar(25)','hy'=>'int(5)','pr'=>'int(5)','provinceid'=>'int(5)','cityid'=>'int(5)','three_cityid'=>'int(5)','mun'=>'int(3)','sdate'=>'varchar(20)','money'=>'int(11)','moneytype'=>'int(11)','content'=>'text','address'=>'varchar(100)','zip'=>'varchar(10)','linkman'=>'varchar(50)','linkjob'=>'varchar(50)','linkqq'=>'varchar(20)','linkphone'=>'varchar(100)','linktel'=>'varchar(50)','linkmail'=>'varchar(150)','website'=>'varchar(100)','x'=>'varchar(100)','y'=>'varchar(100)','logo'=>'varchar(100)','payd'=>'int(8)','integral'=>'int(10)','lastupdate'=>'varchar(10)','cloudtype'=>'int(2)','jobtime'=>'int(11)','r_status'=>'int(2)','firmpic'=>'varchar(100)','rec'=>'int(11)','hits'=>'int(11)','ant_num'=>'int(11)','pl_time'=>'int(11)','pl_status'=>'int(11)','order'=>'int(11) unsigned','admin_remark'=>'varchar(255)','email_dy'=>'int(11)','msg_dy'=>'int(11)','sync'=>'int(11) unsigned','hy_dy'=>'varchar(100)','moblie_status'=>'int(1)','email_status'=>'int(1)','yyzz_status'=>'int(1)','hottime'=>'int(11)','did'=>'int(11)','busstops'=>'text','infostatus'=>'int(11)','conid'=>'int(11)','addtime'=>'int(11)','telphone'=>'varchar(80)','comqcode'=>'varchar(200)')
 ; 
 $phpyun_login_log=array('id'=>'int(11)','uid'=>'int(11)','usertype'=>'int(11)','content'=>'text','ip'=>'varchar(20)','ctime'=>'int(11)')
 ; 
