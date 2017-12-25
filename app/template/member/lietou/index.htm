@@ -12,6 +12,7 @@ function Close_yds() {
 	 $("#shuaxin").hide();
 	 $("#bg").hide();
 }
+
 function break_job(num){
 	if(num=='0'){
 		layer.confirm('每个正常职位将扣除{yun:}$config.integral_jobefresh{/yun}{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}，确定要刷新？',function(){
@@ -41,7 +42,7 @@ function break_job(num){
 <div class="w1000">
 <div style="position:relative; z-index:1005">
   <div class="Description_Layer">
-    <div class="Tip_Information" id="one_tip" {yun:}if $company.hy!="" {/yun}style="display:none"{yun:}/if{/yun}>
+    <div class="Tip_Information" id="one_tip" {yun:}if $lietou.name!="" {/yun}style="display:none"{yun:}/if{/yun}>
       <div class="Tip_Information_cont">
         <div class="re">
           <div class="Tip_Information_close" onclick="Close('one_tip');"></div>
@@ -155,15 +156,15 @@ function break_job(num){
 </div>
 <div class="com_m_index_right">
     {yun:}if $member.status != 1{/yun}
-   	<div class="com_index_wsh fltL">
+   	<!--<div class="com_index_wsh fltL">-->
 
-   		<div class="com_index_wsh_box">
-        <div class="com_index_wsh_box_p">您的帐号尚未通过审核。</div>
-   		未审核的猎头用户无法查看人才简历的联系方式。<br/>
-   		您可联系客服电话（{yun:}$config.sy_freewebtel{/yun}）让我们尽快审核。
- 	</div>
+   		<!--<div class="com_index_wsh_box">-->
+        <!--<div class="com_index_wsh_box_p">您的帐号尚未通过审核。</div>-->
+   		<!--未审核的猎头用户无法查看人才简历的联系方式。<br/>-->
+   		<!--您可联系客服电话（{yun:}$config.sy_freewebtel{/yun}）让我们尽快审核。-->
+ 	<!--</div>-->
 
-   	</div>
+   	<!--</div>-->
     {yun:}/if{/yun}
 
 
@@ -365,4 +366,4 @@ function zan(id){
 	});
 }
 </script>
-{yun:}include file="$comstyle/footer.htm"{/yun}
+{yun:}include file="$ltstyle/footer.htm"{/yun}

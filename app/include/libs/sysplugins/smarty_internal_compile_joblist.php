@@ -4,6 +4,7 @@ class Smarty_Internal_Compile_Joblist extends Smarty_Internal_CompileBase{
     public $optional_attributes = array('name', 'key', 'limit', 'comlen', 'namelen', 'urgent', 'ispage', 'rec','report', 'hy', 'job1', 'job1_son', 'job_post', 'jobids', 'pr', 'mun', 'provinceid', 'cityid', 'ltype', 'three_cityid', 'type', 'edu', 'exp', 'sex', 'minsalary','maxsalary','keyword', 'sdate', 'cert', 'sdate', 'uptime', 'order', 'orderby', 'uid', 'noid', 'jobwhere', 'bid', 'state','isshow','jobin','cityin','islt','noids');
     public $shorttag_order = array('from', 'item', 'key', 'name');
     public function compile($args, $compiler, $parameter){
+
         $_attr = $this->getAttributes($compiler, $args);
 
         $from = $_attr['from'];

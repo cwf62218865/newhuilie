@@ -232,10 +232,11 @@ class index_controller extends common{
         }
     }
     function favjobuser_action(){
+
         if(!$this->uid || !$this->username){
             echo 0;die;
         }
-        if($this->usertype!=1){
+        if($this->usertype==2){
             echo 4;die;
         }
         $JobM=$this->MODEL("job");
@@ -249,6 +250,7 @@ class index_controller extends common{
             $data['job_name']=$job['name'];
             $data['com_id']=$job['uid'];
             $data['uid']=$this->uid;
+            $data['type']=$this->usertype;
             $data['datetime']=time();
             $nid=$JobM->AddFavJob($data);
             $historyM = $this->MODEL('history');

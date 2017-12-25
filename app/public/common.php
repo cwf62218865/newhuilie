@@ -581,6 +581,7 @@ class common{
             $pagenav=Page($page,$num,$limit,$pageurl,$notpl=false,$this->tpl,$pagenavname);
 			$this->yunset("pages",$pages);
 		}
+
 		$rows=$this->obj->DB_select_all($table,"$where limit $ststrsql,$limit",$field);
 		$this->yunset($rowsname,$rows);
 		return $rows;
@@ -696,6 +697,7 @@ class common{
 		$this->yunset("industry_index",$industry_index);
 		$this->yunset("industry_name",$industry_name);
 	}
+
 	
         function subject_cache(){
 		include(PLUS_PATH."subject.cache.php");
