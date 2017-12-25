@@ -9,8 +9,8 @@ function Next(){
 	$("#two_tip").show();
 }
 function Close_yds() {       
-	 $("#shuaxin").hide(); 
-	 $("#bg").hide();      
+	 $("#shuaxin").hide();
+	 $("#bg").hide();
 }
 function break_job(num){
 	if(num=='0'){ 
@@ -123,7 +123,7 @@ function break_job(num){
 
 {yun:}if $guweninfo.id{/yun}
 <div class="com_index_kf">
-<div class="com_m_index_h1"><span class="com_m_index_h1_s">招聘顾问</span></div>
+<div class="com_m_index_h1"><span class="com_m_index_h1_s">联系客服</span></div>
 <div class="com_index_kf_box">
 <div class="com_index_kf_box_user">
 <div class="com_index_kf_box_user_photo"><img src="{yun:}$guweninfo.logo{/yun}" style="width:64px;height:64px"></div>
@@ -152,11 +152,11 @@ function break_job(num){
 
 {yun:}else{/yun}
 <div class="com_index_kf">
-<div class="com_m_index_h1"><span class="com_m_index_h1_s">招聘顾问</span></div>
+<div class="com_m_index_h1"><span class="com_m_index_h1_s">联系客服</span></div>
 <div class="com_index_kf_box">
 <div class="com_index_kf_box_user">
 <div class="com_index_kf_box_user_photo"><img src="{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_guwen{/yun}" style="width:64px;height:64px"></div>
-<div class="com_index_kf_box_username">网站客服</div>
+<div class="com_index_kf_box_username">联系客服</div>
 <div class="">
 {yun:}if $kfqq{/yun}
 <a target="_blank" href="tencent://message/?uin={yun:}$kfqq{/yun}&Site={yun:}$config.sy_webname{/yun}&Menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=1:{yun:}$kfqq{/yun}:12" alt="点击这里给我发消息"></a>
@@ -172,7 +172,7 @@ function break_job(num){
 
 {yun:}/if{/yun}
 {yun:}if $config.sy_wx_qcode!=''{/yun}
-<div class="left_index_wx">
+<div class="left_index_wx" style="display: none;">
 <div class="left_index_wx_img"><img src="{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_wx_qcode{/yun}" width="140" height="140"></div>
 <div class="left_index_wx_p1">手机挑人才!</div>
 <div class="left_index_wx_p">微信扫一扫,招聘更简单</div>

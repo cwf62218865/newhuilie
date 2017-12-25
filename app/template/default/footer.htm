@@ -11,18 +11,38 @@
           </dl>
      </div>
      <div class="hp_foot_wh fl">
-          {yun:}foreach item=desclist from=$desc{/yun}
+
           <dl>
-              <dt>{yun:}$desclist.name{/yun}</dt>
+              <dt>关于我们</dt>
               <dd>
                   <ul>
-                      {yun:}foreach item=lit from=$desclist.list{/yun}
-                      <li><a href="{yun:}$lit.url{/yun}">{yun:}$lit.name{/yun}</a></li>
-                      {yun:}/foreach{/yun}
+                      <li><a href="{yun:}$config.sy_weburl{/yun}/aboutus">关于我们</a></li>
+                      <li><a href="{yun:}$config.sy_weburl{/yun}/linkus">联系我们</a></li>
                   </ul>
               </dd>
           </dl>
-          {yun:}/foreach{/yun}
+         <dl>
+             <dt>热门链接</dt>
+             <dd>
+                 <ul>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/aboutus">找工作</a></li>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/linkus">找人才</a></li>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/aboutus">找企业</a></li>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/linkus">职场资讯</a></li>
+                 </ul>
+             </dd>
+         </dl>
+         <dl>
+             <dt>咨询反馈</dt>
+             <dd>
+                 <ul>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/aboutus">网站公告</a></li>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/linkus">意见反馈</a></li>
+                     <li><a href="{yun:}$config.sy_weburl{/yun}/linkus">友情链接</a></li>
+                 </ul>
+             </dd>
+         </dl>
+
      </div>
      </div>
 
@@ -37,7 +57,7 @@
      <div class="hp_foot_bt">
           <p>{yun:}$config.sy_webcopyright{/yun} <i class="hp_foot_bt_cr">{yun:}$config.sy_webrecord{/yun}</i></p>
           <p>地址:{yun:}$config.sy_webadd{/yun} 电话(Tel):{yun:}$config.sy_freewebtel{/yun} EMAIL:{yun:}$config.sy_webemail{/yun}{yun:}$config.sy_webtongji{/yun}</p>
-		  <p>Powered By <a target="_blank" href="http://www.phpyun.com">PHPYun.</a></p>
+		  <!--<p>Powered By <a target="_blank" href="http://www.phpyun.com">PHPYun.</a></p>-->
       
      </div>
 </div>

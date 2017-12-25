@@ -646,7 +646,7 @@ visibility:hidden;
 .fiem_seach_chlosename{width:70px;    padding-right: 10px; float:left; font-weight:bold; text-align:right;margin-top:4px; }
 .fiem_seach_chlose_list_r{width:1100px; float:left}
 .fiem_seach_chlose_list_a{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px;position:relative}
-.fiem_seach_chlose_list_cur{ color:#fff;background:#1c99ef; }
+.fiem_seach_chlose_list_cur{ color:#fff;background:#3689b3; }
 .fiem_seach_chlose_list_a:hover{ color:#fff;background:#1c99ef; text-decoration:none}
 .Search_close_box{width:1010px; padding:6px 100px 10px 86px; position:relative; float:left;border-top:1px solid #ddd; z-index:20}
 .Search_close_box_s{position:absolute;left:0px;top:0px; line-height:40px; text-align:center;width:90px;color:#F30;}
@@ -660,8 +660,8 @@ visibility:hidden;
 .Search_clear{line-height:30px;color:#093; background:url(../images/empty1.png) no-repeat left center; padding-left:18px; position:absolute;right:10px;top:5px;}
 .Search_clear a{color:#f60}
 .firm_search_box{width:810px; padding:20px 0px 10px 25px; float:left;}
-.firm_search_text{width:453px;height:38px; line-height:38px;color:#666;border:2px solid #1c99ef;border-right:none; float:left; padding-left:5px;}
-.firm_search_text_city{width:218px;height:38px; line-height:38px;border:2px solid #1c99ef;border-right:none; float:left; background:#fff;}
+.firm_search_text{width:453px;height:38px; line-height:38px;color:#666;border:2px solid #4b6e88;border-right:none; float:left; padding-left:5px;}
+.firm_search_text_city{width:218px;height:38px; line-height:38px;border:2px solid #4b6e88;border-right:none; float:left; background:#fff;}
 .firm_search_text_city_but{width:210px;height:38px;border:none; background:#fff url(../images/firm_fx.jpg) no-repeat 190px center;color:#a49d9d; text-align:left; padding-left:5px; cursor:pointer}
 .firm_search_submit{width:100px; _width:97px; float:left; height:42px;border:none;color:#fff; font-size:16px; cursor:pointer}
 .firm_hot_tags{ float:right; line-height:23px; padding:15px 0; font-size:14px;}
@@ -670,7 +670,7 @@ visibility:hidden;
 .firmsearch_h1_box_line{ width:100%;height:3px; line-height:3px; overflow:hidden;position:absolute;left:0px;bottom:0px; display:block}
 .firmsearch_h1_box_list{ position:absolute;left:0px;top:-2px;}
 .firmsearch_h1_box_list li{width:120px;height:41px; font-size:16px; float:left; text-align:center;  margin-right:5px; position:relative;border:1px solid #eee; background:#fff}
-.firmsearch_h1_box_list .firmsearch_h1_box_cur{ background:#1c99ef;border:1px solid #1c99ef}
+.firmsearch_h1_box_list .firmsearch_h1_box_cur{ background:#4b6e88;border:1px solid #4b6e88}
 .firmsearch_h1_box_list .firmsearch_h1_box_cur a{color:#fff;}
 .firmsearch_h1_box_list li a{color:#333; display:block}
 .firmsearch_h1_box_list li a:hover{ text-decoration:none}
