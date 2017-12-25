@@ -32,11 +32,12 @@
                 <div class="job_news_list job_news_list_h1"> 
                 <span class="job_news_list_span job_w30">&nbsp;</span> 
                  <span class="job_news_list_span job_w80" style="text-align:left">姓名</span> 
-                 <span class="job_news_list_span job_w270">求职意向</span> 
+                 <span class="job_news_list_span job_w150">求职意向</span>
                  <span class="job_news_list_span job_w100">工作经验</span> 
                 <span class="job_news_list_span job_w100">期望薪资</span> 
-                <span class="job_news_list_span job_w120">下载时间</span> 
-                <span class="job_news_list_span job_w150" style="text-align:center">操作</span> 
+                <span class="job_news_list_span job_w120">下载时间</span>
+                    <span class="job_news_list_span job_w120">推荐猎头</span>
+                    <span class="job_news_list_span job_w150" style="text-align:center">操作</span>
                 </div>
                 {yun:}foreach  from=$rows  item=v{/yun}
                 <div class="job_news_list"> <span class="job_news_list_span job_w30" style="padding-right:6px;">
@@ -44,13 +45,13 @@
                   </span>
                   <span class="job_news_list_span job_w80" style="text-align:left"><a href="{yun:}url m=resume c=show id='`$v.eid`'{/yun}"  target=_blank class="com_Release_name" >{yun:}$v.name{/yun}&nbsp;</a>
 				  {yun:}if $v.height_status==2{/yun}<img src="{yun:}$com_style{/yun}/images/yun_gj.png" title="高级简历">{yun:}/if{/yun}</span>
-                  <span class="job_news_list_span job_w270"><span class="yxjob_name">{yun:}$v.jobname{/yun}</span>&nbsp;</span>  
+                  <span class="job_news_list_span job_w150"><span class="yxjob_name">{yun:}$v.jobname{/yun}</span>&nbsp;</span>
                    <span class="job_news_list_span job_w100">{yun:}$v.exp{/yun}&nbsp;</span> 
-                   <span class="job_news_list_span job_w100">{yun:}if $v.minsalary&&$v.maxsalary{/yun}￥{yun:}$v.minsalary{/yun}-{yun:}$v.maxsalary{/yun}{yun:}else if $v.minsalary{/yun}￥{yun:}$v.minsalary{/yun}以上{yun:}else{/yun}面议{yun:}/if{/yun}&nbsp;</span> 
-                   <span class="job_news_list_span job_w120">{yun:}$v.downtime|date_format:'%Y-%m-%d'{/yun}&nbsp;</span> 
-                
-                   <span class="job_news_list_span job_w150" style="text-align:center"> {yun:}if $v.userid_msg==1{/yun} <font color="#aaa">已经邀请</font> {yun:}else{/yun} <a href="javascript:;" uid="{yun:}$v.uid{/yun}" username="{yun:}$v.name{/yun}" id="b" class="sq_resume uesr_name_a" style="position:relative; "> 邀请面试</a> {yun:}/if{/yun} 
-                  {yun:}if $report==1{/yun} 
+                   <span class="job_news_list_span job_w100">{yun:}if $v.minsalary&&$v.maxsalary{/yun}￥{yun:}$v.minsalary{/yun}-{yun:}$v.maxsalary{/yun}{yun:}else if $v.minsalary{/yun}￥{yun:}$v.minsalary{/yun}以上{yun:}else{/yun}面议{yun:}/if{/yun}&nbsp;</span>
+                   <span class="job_news_list_span job_w120">{yun:}$v.downtime|date_format:'%Y-%m-%d'{/yun}&nbsp;</span>
+                <span class="job_news_list_span job_w120">李先生<span class="com_m_line" style="margin-left: 5px;">|</span> <a  href="javascript:;" style="cursor: pointer;color: #456dab;padding-left: 5px; "  onclick="pingfen('{yun:}$v.id{/yun}','{yun:}$v.remark{/yun}');">评分</a></span>
+                   <span class="job_news_list_span job_w150" style="text-align:center"> {yun:}if $v.userid_msg==1{/yun} <font color="#aaa">已经邀请</font> {yun:}else{/yun} <a href="javascript:;" uid="{yun:}$v.uid{/yun}" username="{yun:}$v.name{/yun}" id="b" class="sq_resume uesr_name_a" style="position:relative; "> 邀请面试</a> {yun:}/if{/yun}
+                  {yun:}if $report==1{/yun}
                   <span class="com_m_line">|</span> <a href="javascript:;" r_uid="{yun:}$v.uid{/yun}" eid="{yun:}$v.eid{/yun}" r_name="{yun:}$v.name{/yun}" id="r"  class="status uesr_name_a" >举报</a>{yun:}/if{/yun} <span class="com_m_line">|</span> <a href="javascript:void(0)" onclick="layer_del('确定要删除？','{yun:}$now_url{/yun}&act=del&id={yun:}$v.id{/yun}')" class="uesr_name_a">删除</a> </span>
                    </div>
                 {yun:}/foreach{/yun}
@@ -98,6 +99,24 @@
               </form>
             </div>
           </div>
+          <div  class="infoboxp22"  id="infobox2" style="display:none; ">
+              <div>
+                  <form action="index.php?c=down&act=report" method="post" id="formstatus" target="supportiframe">
+                      <input name="r_uid" value="0" type="hidden">
+                      <input name="eid" value="0" type="hidden">
+                      <input name="r_name" value="0" type="hidden">
+                      <div>猎头评分</div>
+                      <div class="jb_infobox" style="width: 100%;">
+                          <textarea id="alertcontent" style="width:310px;margin:5px" name="r_reason" cols="30" rows="9" class="hr_textarea"></textarea>
+                      </div>
+                      <div class="jb_infobox" style="width: 100%;">
+                          <button type="submit"   name='submit' value='1' class="submit_btn" style="margin-left:80px;">确认</button>
+                          &nbsp;&nbsp;
+                          <button type="button" id='zxxCancelBtn'  class="cancel_btn">取消</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
         </div>
       </div>
     </div>
@@ -105,6 +124,18 @@
 </div>
 </div>
 <script>
+    function pingfen(id,remark){
+        $("input[name=id]").val(id);
+        $("#remark").val(remark);
+        $.layer({
+            type : 1,
+            title :'猎头评分',
+            closeBtn : [0 , true],
+            border : [10 , 0.3 , '#000', true],
+            area : ['320px','200px'],
+            page : {dom :"#infobox2"}
+        });
+    }
 function Delete(name){
 	var chk_value =[];    
 	$('input[name="'+name+'"]:checked').each(function(){    

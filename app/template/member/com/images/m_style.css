@@ -656,7 +656,7 @@ center; font-size:12px; z-index:11 }
 /*µ¯³ö²ãend*/
 .Recruitment_fb{width:386px;height:61px; position:absolute;left:455px;top:-38px;}
 .hr_ms{ margin-top:10px; line-height:28px;}
-.hr_textarea{width:240px;height:60px;border:1px solid #E8E8E8; vertical-align:middle;color:#666; font-size:12px;}
+.hr_textarea{width:240px;height:60px;border:1px solid #E8E8E8; vertical-align:middle;color:#666; font-size:12px;resize: none;}
 .jb_infobox{ padding:5px 5px 5px 0px;}
 .box_infobox{ padding:10px 5px 5px 0px; font-size:14px;}
 .lt_textarea{width:400px;height:80px;border:1px solid #cfcfcf; font-size:12px;color:#666;}
