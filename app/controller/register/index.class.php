@@ -363,7 +363,24 @@ class index_controller extends common{
 						if($this->config['com_status']==0){
 							$data2['r_status']=2;
 						}
-					}
+					}elseif($_POST['usertype']=="3"){
+                        $table = "lietou_statis";
+                        $table2 = "lietou";
+                        $data1=$Member->FetchRatingInfo(array("uid"=>$userid));
+                        $data2['uid']=$userid;
+                        $data2['linkmail']=$_POST['email'];
+
+                        $data2['name']=$_POST['unit_name'];
+                        $data2['linktel']=$_POST['moblie'];
+                        $data2['address']=$_POST['address'];
+                        $data2['linkman']=$_POST['linkman'];
+                        $data2['did']=$this->config['did'];
+                        $conid = $Member->Guwen();
+                        $data2['conid'] = $conid;
+                        if($this->config['com_status']==0){
+                            $data2['r_status']=2;
+                        }
+                    }
 
 					
 					if($_POST['codeid']=='2' && $this->config['sy_msg_regcode']=="1" || $this->config['reg_real_name_check']=="1"){

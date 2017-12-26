@@ -76,10 +76,10 @@ input,textarea{font-family:microsoft yahei;}
 /*header*/
 .header{width:100%;background:#fff; float:left}
 .header-logo { padding-top:20px; padding-bottom:20px;}
-.header-logo img{ max-height:100px; max-width:380px; }
+.header-logo img{ max-height:100px; max-width:300px; }
 .header_mune{width:740px; float:right}
 .header_mune ul { float:right; margin-top:20px;}
-.header_mune ul li{width:64px; float:left; font-size:16px; margin-left:50px; }
+.header_mune ul li{width:64px; float:left; font-size:16px; margin-left:40px; }
 .header_mune ul  a{ display:block; padding:10px 0;border-bottom:3px solid #fff}
 .header_mune ul .cur a{color:#3c80a7; font-weight:bold }
 /*page*/
@@ -97,6 +97,11 @@ input,textarea{font-family:microsoft yahei;}
 .left_nav_ul li{width:100%;}
 .left_nav_ul li a{width:145px;height:45px; line-height:45px;padding-left:65px; display:block;color:#666; position:relative}
 .left_nav_ul li a:hover{background:#f4f7fb}
+
+.right_nav_ul{width:1100px;height: 45px;background:#fff;}
+.right_nav_ul li{height:45px;width:145px;float: left}
+.right_nav_ul li a{width:145px;height:45px; line-height:45px;padding-left:65px; display:block;color:#666; position:relative}
+.right_nav_ul li a:hover{background:#f4f7fb}
 .com_left_icon{width:16px;height:16px; display:inline-block; position:absolute;left:25px;top:14px;}
 .com_left_icon_fb{ background:url(../images/left_nav_icon_rx.png) no-repeat  0 0;}
 .com_left_icon_zwgl{ background:url(../images/left_nav_icon_rx.png) no-repeat  0 -39px;}
@@ -242,6 +247,19 @@ input,textarea{font-family:microsoft yahei;}
 .right_box{width:875px;float:right; min-height:600px;_height:600px; position:relative;}
 .m_index_right_box{width:875px;float:right; min-height:600px;_height:600px;}
 .com_body{width:853px; padding:0px 10px; float:left}
+/*top*/
+.top_box{width:1100px;float:right; min-height:45px;_height:45px; position:relative;}
+.top_box .right_nav_ul .left_nav_hover { background:#eef4fe}
+.top_box .right_nav_ul .left_nav_hover a{color:#456dab; font-weight:bold}
+/*down*/
+.down_box{width:1100px;min-height:600px;_height:600px; position:relative;margin-top: 70px;}
+.down_box .admincont_box{width:1100px; min-height:600px; float:right;background:#fff;border:1px solid #eee; padding-bottom:20px;}
+.down_box .admin_textbox_02 {width:100%; float:left;}
+.down_box .admin_textbox_02 ul{width:100%; float:left;}
+.down_box .admin_textbox_02 ul li{width:100%; float:left; margin-top:15px;}
+.down_box .admin_textbox_02 ul .jobadd_list_fl{ margin-top:5px;}
+.down_box .admin_textbox_02 ul  li .tit{width:130px; text-align:right; font-size:14px;color:#686868; float:left; line-height:30px;}
+.down_box .admin_textbox_02 ul li select{ margin-top:5px;color:#666}
 /*index*/
 .com_index_Prompt{width:100%; padding:15px 0; background:#fcf2f2 url(../images/tip.png) no-repeat left top;color:#ff6a6a; margin-top:20px;}
 .com_index_Prompt_tip{ padding-left:20px;}
@@ -363,7 +381,7 @@ center; font-size:12px; z-index:11 }
 .condition{width:130px; float:left}
 .btn_01{width:160px;height:45px; font-size:16px;color:#fff;border:none;font-family:Î¢ÈíÑÅºÚ; background:#456dab; cursor:pointer;border-radius:3px;}
 .sub_btn{ float:left; margin-top:10px}
-.info_logo{width:187px; position:absolute;right:40px;top:120px; padding:10px;}
+.info_logo{width:187px; position:absolute;right:40px;top:60px; padding:10px;}
 .info_logo img{border:1px solid #eee}
 .info_logo_p{width:185px;height:35px; line-height:35px; text-align:center;border:1px solid #eee;border-top:none}
 .info_logo_p a{color:#456dab}
@@ -404,6 +422,7 @@ center; font-size:12px; z-index:11 }
 .file_button_edit .sub_btn{margin-left:64px;_margin-left:22px; float:left;}
 .com_m_line{ font-size:12px; font-family:ËÎÌå;color:#cfcfcf}
 .yxjob_name{ font-weight:bold;color:#C00}
+
 /*list*/
 .com_Release_job_h1{width:100%;height:40px; background:#ecebeb; margin-top:10px; line-height:40px;color:#000; float:left}
 .com_Release_job_h1 span{ display:inline-block; float:left}

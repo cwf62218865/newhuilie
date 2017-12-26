@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class uppic_controller extends company{
+class uppic_controller extends lietou{
 	function index_action(){
 		$this->public_action();
 		$company=$this->obj->DB_select_once("company","`uid`='".$this->uid."'","`logo`");
@@ -29,7 +29,7 @@ class uppic_controller extends company{
 
 	function ajaxfileupload_action(){
 		if($_FILES['image']['tmp_name']){
-			$upload=$this->upload_pic("../data/upload/company",false,$this->config['com_pickb']);
+			$upload=$this->upload_pic("../data/upload/lietou",false,$this->config['com_pickb']);
 			$pictures=$upload->picture($_FILES['image']);
 			$picMsg = $this->picmsg($pictures,$_SERVER['HTTP_REFERER'],"ajax");			
 			if($picMsg){
@@ -48,7 +48,7 @@ class uppic_controller extends company{
 					$res["url"] = $s_thumb;
 				}else{
 					$res["url"] = $pictures;
-				}	
+				}
 				echo json_encode($res);
 			}
 		}else{

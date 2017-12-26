@@ -8,7 +8,7 @@
         <div class="Search_jobs_form_list" >
             <div class="yun_job_search">
                 <div class="Search_jobs_sub">
-                    <input type="text" name="keyword" value="{yun:}if $smarty.get.keyword{/yun}{yun:}$smarty.get.keyword{/yun}{yun:}else{/yun}请输入关键字,如:职位名,公司名...{yun:}/if{/yun}" onclick="if(this.value=='请输入关键字,如:职位名,公司名...'){this.value=''}" onblur="if(this.value==''){this.value='请输入关键字,如:职位名,公司名...'}" class="Search_jobs_text "/>
+                    <input type="text" name="keyword" value="{yun:}if $smarty.get.keyword{/yun}{yun:}$smarty.get.keyword{/yun}{yun:}else{/yun}请输入职位名称的关键字{yun:}/if{/yun}" onclick="if(this.value=='请输入职位名称的关键字'){this.value=''}" onblur="if(this.value==''){this.value='请输入职位名称的关键字'}" class="Search_jobs_text "/>
                     <input type="submit" value="搜索" class="Search_jobs_submit yun_bg_color" style="background: #4b6e88;height: 40px;"/>
                 </div>
             </div>
@@ -175,13 +175,13 @@
                             {yun:}if in_array($zd_list.id,$favjob){/yun}
                             <a href="javascript:fav_job('{yun:}$zd_list.id{/yun}','1');" class="yun_job_operation_ysc" rel="nofollow">已收藏</a>
                             {yun:}else{/yun}
-                            <a href="javascript:fav_job('{yun:}$zd_list.id{/yun}','1');" class="yun_job_operation_sc scjobid{yun:}$zd_list.id{/yun}" rel="nofollow">收藏1</a>
+                            <a href="javascript:fav_job('{yun:}$zd_list.id{/yun}','1');" class="yun_job_operation_sc scjobid{yun:}$zd_list.id{/yun}" rel="nofollow">收藏</a>
                             {yun:}/if{/yun}
                             {yun:}else{/yun}
                             {yun:}if $uid{/yun}
-                            <a href="javascript:void(0);" onclick="layer.msg('只有个人用户才能收藏',2,8)" class="yun_job_operation_sc" rel="nofollow">收藏2</a>
+                            <a href="javascript:void(0);" onclick="layer.msg('只有个人和猎头用户才能收藏',2,8)" class="yun_job_operation_sc" rel="nofollow">收藏</a>
                             {yun:}else{/yun}
-                            <a href="javascript:void(0);" onclick="showlogin('1');" class="yun_job_operation_sc" rel="nofollow">收藏3</a>
+                            <a href="javascript:void(0);" onclick="showlogin('1');" class="yun_job_operation_sc" rel="nofollow">收藏</a>
                             {yun:}/if{/yun}
                             {yun:}/if{/yun}
                         </div>  </div>
@@ -247,7 +247,7 @@
 
           </span> </div>
                     <div class="yun_joblist_ope">
-                        <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="search_job_Apply_fast"  style="font-size: 10px;">推荐候选人</a>
+                        <a href="index.php?c=recommend" target="_blank" class="search_job_Apply_fast"  style="font-size: 10px;">推荐候选人</a>
 
                         <div class="yun_job_operation_d">
 
@@ -255,7 +255,7 @@
                             {yun:}if in_array($job_list.id,$favjob){/yun}<a href="javascript:fav_job('{yun:}$job_list.id{/yun}','1');" class="yun_job_operation_ysc">已收藏</a> {yun:}else{/yun}   <a href="javascript:fav_job('{yun:}$job_list.id{/yun}','1');" class="yun_job_operation_sc scjobid{yun:}$job_list.id{/yun}">收藏</a>{yun:}/if{/yun}
                             {yun:}else{/yun}
                             {yun:}if $uid{/yun}
-                            <a href="javascript:fav_job('{yun:}$job_list.id{/yun}','1');" class="yun_job_operation_sc scjobid{yun:}$job_list.id{/yun}">收藏</a>
+                            <a href="javascript:fav_job('{yun:}$job_list.id{/yun}','1');" class="yun_job_operation_sc scjobid{yun:}$job_list.id{/yun}">取消收藏</a>
                             {yun:}else{/yun}
                             <a href="javascript:void(0);" onclick="showlogin('1');" class="yun_job_operation_sc" rel="nofollow">收藏</a>
                             {yun:}/if{/yun}
@@ -268,11 +268,14 @@
                     <div class="checkbox_all" onclick="checkAll();"><i></i>全选（当前列表）</div>
                     {yun:}if $usertype==1{/yun}
                     <a id="comindex_sqjob" class="sq_post yun_bg_color" title="申请选中职位" href="javascript:;" rel="nofollow">申请选中职位</a>
+                    <a id="comindex_favjob" class="sq_post sq_post_sc" title="收藏选中职位" href="javascript:" rel="nofollow">收藏选中职位</a>
                     {yun:}else{/yun}
                     {yun:}if $uid{/yun}
                     <a class="sq_post yun_bg_color" href="javascript:void(0);" onclick="layer.msg('只有个人用户才能申请', 2, 8)" rel="nofollow">申请选中职位</a>
+                    <a class="sq_post sq_post_sc" href="javascript:void(0);" onclick="layer.msg('只有个人用户才能收藏', 2, 8)" rel="nofollow">收藏选中职位</a>
                     {yun:}else{/yun}
                     <a class="sq_post yun_bg_color" href="javascript:void(0);" onclick="showlogin('1');" rel="nofollow">申请选中职位</a>
+                    <a class="sq_post sq_post_sc" href="javascript:void(0);" onclick="showlogin('1');" rel="nofollow">收藏选中职位</a>
                     {yun:}/if{/yun}
                     {yun:}/if{/yun}
                 </div>
@@ -427,6 +430,5 @@ $(document).ready(function(){
 </div>
 <!--延期天数弹出框end-->
 <script src="{yun:}$style{/yun}/js/com_index.js" language="javascript"></script>
-<script src="/js/search.js" language="javascript"></script>
 {yun:}include file="$ltstyle/jobserver.htm"{/yun}
 {yun:}include file="$ltstyle/footer.htm"{/yun}

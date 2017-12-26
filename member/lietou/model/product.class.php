@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class product_controller extends company{
+class product_controller extends lietou{
 	function index_action(){  
 		$where="`uid`='".$this->uid."'"; 
 		if(trim($_GET['keyword'])){

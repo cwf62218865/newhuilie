@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class binding_controller extends company{
+class binding_controller extends lietou{
 	function index_action(){
 		$member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'");
 		$this->yunset("member",$member);
@@ -28,6 +28,7 @@ class binding_controller extends company{
 		$this->lt_tpl("binding");
 	}
 	function save_action(){
+
 		if($_POST['moblie']){
 			$row=$this->obj->DB_select_once("company_cert","`uid`='".$this->uid."' and `check`='".$_POST['moblie']."' and `type`='2'");
 			if(!empty($row)){

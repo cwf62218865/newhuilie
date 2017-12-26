@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class partadd_controller extends company{
+class partadd_controller extends lietou{
 	function index_action(){
 		include(CONFIG_PATH."db.data.php");		
 		$this->yunset("arr_data",$arr_data);

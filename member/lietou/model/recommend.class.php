@@ -8,121 +8,32 @@
  *
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
-class job_controller extends lietou{
-
-    function index_action(){
-        global $config;
-
+class recommend_controller extends lietou{
+	function index_action(){
 		$this->public_action();
-        $this->industry_cache();
-        $this->com_cache();
-        $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');
-        $this->yunset("uptime",$uptime);
 		$urlarr=array("c"=>"job","page"=>"{{page}}");
-		$where="1";
+		$where=" `id`='".$_GET['id']."' ";
 
-		$pageurl=Url('member',$urlarr);
-		$rows=$this->get_page("company_job",$where,$pageurl,'10');
-		if(is_array($rows) && !empty($rows)){
-			$jobids=array();
-			foreach($rows as $v){
-				$jobids[]=$v['id'];
-			}
-			$jobnum=$this->obj->DB_select_all("userid_job","`job_id` in(".pylode(',',$jobids).") and `com_id`='".$this->uid."' GROUP BY `job_id`","`job_id`,count(`id`) as `num`");
-			foreach($rows as $k=>$v){
-				if($v['autotime']>time()){
-					$rows[$k]['autodate']=date("Y-m-d",$v['autotime']);
-				}
-				if($v['xsdate']>time()){
-					$rows[$k]['xs']=1;
-				}
-				$rows[$k]['jobnum']=0;
-				foreach($jobnum as $val){
-					if($v['id']==$val['job_id']){
-						$rows[$k]['jobnum']=$val['num'];
-					}
-				}
-				$rows[$k]['type']=1;
-			}
-		}
-		
+		$jobs=$this->obj->DB_select_once("company_job",$where);
+        $logo = $this->obj->DB_select_once("company"," uid=".$jobs['uid'],"logo");
+        $jobs['logo'] = $logo['logo'];
 		$maxfen=$this->obj->DB_select_once("company_job","`state`='1' and `sdate`<'".mktime()."' and `r_status`<>'2' and `edate`>'".mktime()."' order by `xuanshang` desc",'xuanshang');
 		$urgent=$this->config['com_urgent'];
 			
 		$audit=$this->obj->DB_select_num("company_job","`uid`='".$this->uid."' and `state`=0");
 		$this->yunset("audit",$audit);
+		$this->yunset("jobs",$jobs);
 		$this->yunset("urgent",$urgent);
 		$this->yunset("maxfen",$maxfen);
-        $this->yunset("js_def",3);
 		$this->company_satic();
-
+		$this->yunset("js_def",3);
 		if(intval($_GET['w'])==1){
 			$this->lt_tpl('joblist');
 		}else{
-			$this->lt_tpl('job');
+			$this->lt_tpl('recommend');
 		}
 	}
-
-    //收藏职位
-    function fav_job_action(){
-
-        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
-
-        $urlarr=array("c"=>"favorite","page"=>"{{page}}");
-        $StateNameList=array('0'=>'等待审核','1'=>'招聘中','2'=>'已结束','3'=>'未通过');
-        $StatusNameList = array('1' => '已下架', '2' => '招聘中');//下个版本考虑合并 company_job 的state、status两个字段
-
-        $pageurl=Url('member',$urlarr);
-        $rows=$this->get_page("fav_job","`uid`='".$this->uid."' order by id desc",$pageurl,"20");
-
-        if($rows&&is_array($rows)){
-            include PLUS_PATH."/lt.cache.php";
-            include PLUS_PATH."/com.cache.php";
-            foreach($rows as $val){
-                if($val['type']==1){
-                    $com_jobid[]=$val['job_id'];
-                }else{
-                    $lt_jobid[]=$val['job_id'];
-                }
-            }
-            $lt_job=$this->obj->DB_select_all("lt_job","`id` in(".pylode(',',$lt_jobid).")","`id`,`minsalary`,`maxsalary`,`provinceid`,`cityid`,`status`");
-            $company_job=$this->obj->DB_select_all("company_job","`id` in(".pylode(',',$com_jobid).")","`id`,`minsalary`,`maxsalary`,`provinceid`,`cityid`,`state`,`status`");
-            foreach($rows as $key=>$val){
-
-                $rows[$key]['statename']='已关闭';
-                foreach($company_job as $v){
-                    if($val['job_id']==$v['id']){
-                        $rows[$key]['minsalary']=$v['minsalary'];
-                        $rows[$key]['maxsalary']=$v['maxsalary'];
-                        $rows[$key]['provinceid']=$v['provinceid'];
-                        $rows[$key]['cityid']=$v['cityid'];
-                        $rows[$key]['statename']=$StateNameList[$v['state']];
-                        if($v['status'] == 1){
-                            $rows[$key]['statename']= '已下架';
-                        }
-
-                    }
-                }
-                foreach($lt_job as $v){
-                    if($val['job_id']==$v['id']){
-                        $rows[$key]['minsalary']=$v['minsalary'];
-                        $rows[$key]['maxsalary']=$v['maxsalary'];
-                        $rows[$key]['provinceid']=$v['provinceid'];
-                        $rows[$key]['cityid']=$v['cityid'];
-                        $rows[$key]['statename']=$StateNameList[$v['status']];
-                    }
-                }
-            }
-        }
-
-
-        $num=$this->obj->DB_select_num("fav_job","`uid`='".$this->uid."'");
-        $this->obj->DB_update_all("member_statis","fav_jobnum='".$num."'","`uid`='".$this->uid."'");
-        $this->yunset("rows",$rows);
-        $this->yunset("js_def",3);
-        $this->lt_tpl('favorite');
-    }
-
+	
 	function opera_action(){
 		$this->job();
 	}
