@@ -1,14 +1,12 @@
 {yun:}include file="$ltstyle/header.htm"{/yun}
 <div class="w1000">
-  <div class="admin_mainbody"> {yun:}include file="$comstyle/left.htm"{/yun} 
+  <div class="admin_mainbody"> {yun:}include file="$ltstyle/left.htm"{/yun}
    
     <div class=right_box>
     <div class=admincont_box>
     <div class="job_list_tit">
          <ul class="">
-     <li {yun:}if $smarty.get.c=="com"{/yun}class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=com">订单管理</a></li>
          <li {yun:}if $smarty.get.c=="paylog"&&$smarty.get.consume=="ok"{/yun}class="job_list_tit_cur"{yun:}/if{/yun}><a href="index.php?c=paylog&consume=ok">财务明细</a></li>
-       <li {yun:}if $smarty.get.c=="paylog"&&$smarty.get.consume!="ok"{/yun}  class="job_list_tit_cur"{yun:}/if{/yun} ><a href="index.php?c=paylog">充值记录</a></li> 
          </ul>
          </div> 
  <div class="com_body">
