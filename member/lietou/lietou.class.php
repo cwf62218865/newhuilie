@@ -8,15 +8,17 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class company extends common{
+class lietou extends common{
 	
 	function public_action(){
 		$now_url=@explode("/",$_SERVER['REQUEST_URI']);
 		$now_url=$now_url[count($now_url)-1];
 		$this->yunset("now_url",$now_url);
-		$company=$this->obj->DB_select_once("company","`uid`='".$this->uid."'");
+
+		$lietou=$this->obj->DB_select_once("lietou","`uid`='".$this->uid."'");
+
 		$atn=$this->obj->DB_select_once("atn","`uid`='".$this->uid."'");
-		$guweninfo=$this->obj->DB_select_once("company_consultant","`id` ='".$company['conid']."'");
+		$guweninfo=$this->obj->DB_select_once("company_consultant","`id` ='".$lietou['conid']."'");
 		if($guweninfo['logo']){
 		    $guweninfo['logo']=str_replace("./",$this->config['sy_weburl']."/",$guweninfo['logo']);
 		}else{
@@ -27,7 +29,7 @@ class company extends common{
 		include(PLUS_PATH."menu.cache.php");
 		$report=$this->obj->DB_select_once("report","p_uid='".$this->uid."' order by inputtime desc");
 		$this->yunset("report",$report);
-		$this->yunset("company",$company);
+		$this->yunset("lietou",$lietou);
 		$this->yunset("atn",$atn);
 		$this->yunset("guweninfo",$guweninfo);		
 	}

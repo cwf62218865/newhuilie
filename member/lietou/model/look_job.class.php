@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class look_job_controller extends company
+class look_job_controller extends lietou
 {
 	function index_action()
 	{

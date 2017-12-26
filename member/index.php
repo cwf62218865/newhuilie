@@ -20,6 +20,7 @@ $model = $_GET['c'];
 $action = $_GET['act'];
 if($model=="")	$model="index";
 if($action=="")	$action = "index"; 
+
 $usertype=$_COOKIE['usertype'];
 
 if($usertype==1){
@@ -38,6 +39,8 @@ if($_GET['m']=='ajax'){
     $model=$_GET['m'];
     $action=$_GET['c'];
 }else{
+//    echo $type."/".$type.'.class.php';echo "<br/>";
+//    echo $type."/model/".$model.'.class.php';exit();
     require($type."/".$type.'.class.php');
     require($type."/model/".$model.'.class.php');
 }

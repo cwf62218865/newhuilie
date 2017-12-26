@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class index_controller extends company{
+class index_controller extends lietou{
 	function index_action(){
 
 		include(CONFIG_PATH."db.data.php");
@@ -37,6 +37,7 @@ class index_controller extends company{
 		}
 		
 		$member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","`login_date`,`status`");
+
 		$jobwhere="`edate`>'".time()."' and `state`=1 and `r_status`<>2 and `status`<>1 and `uid`='".$this->uid."'";
 		$joblist=$this->obj->DB_select_all("company_job",$jobwhere,"`job1_son`,`job_post`,`cityid`");
 		$blacklist=$this->obj->DB_select_all("blacklist","`p_uid`='".$this->uid."'","`c_uid`");

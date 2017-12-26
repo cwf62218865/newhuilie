@@ -70,6 +70,7 @@ class common{
 		$path['comstyle']=TPL_PATH."member/com";
 		$path['ltstyle']=TPL_PATH."member/lietou";
 		$path['com_style']=$this->config['sy_weburl']."/app/template/member/com";
+		$path['lt_style']=$this->config['sy_weburl']."/app/template/member/lietou";
 		$path['wapstyle']=TPL_PATH."wap";
 		$path['wap_style']=$this->config['sy_weburl']."/app/template/wap";
 		$path['plusstyle']=$this->config['sy_weburl']."/data/plus";
@@ -580,6 +581,7 @@ class common{
             $pagenav=Page($page,$num,$limit,$pageurl,$notpl=false,$this->tpl,$pagenavname);
 			$this->yunset("pages",$pages);
 		}
+
 		$rows=$this->obj->DB_select_all($table,"$where limit $ststrsql,$limit",$field);
 		$this->yunset($rowsname,$rows);
 		return $rows;
@@ -695,8 +697,9 @@ class common{
 		$this->yunset("industry_index",$industry_index);
 		$this->yunset("industry_name",$industry_name);
 	}
+
 	
-	function subject_cache(){
+        function subject_cache(){
 		include(PLUS_PATH."subject.cache.php");
 		$this->yunset("subject_index",$subject_index);
 		$this->yunset("subject_type",$subject_type);

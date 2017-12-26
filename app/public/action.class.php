@@ -242,7 +242,7 @@ class model{
 					$where = $this->site_fetchsql($where,$tablename);
 			}  
 			$SQL = "SELECT $select FROM `" . $this->def . $tablename . "` WHERE ".$where;
-
+//            echo $SQL."<br/>";
 			$query=$this->db->query($SQL);
             while($row=$this->db->fetch_array($query)){$row_return[]=$row;}
             $this->Memcache_set($cachename,$row_return);

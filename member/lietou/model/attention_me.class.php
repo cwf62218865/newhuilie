@@ -9,7 +9,7 @@
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
 
-class attention_me_controller extends company{
+class attention_me_controller extends lietou{
 	function index_action(){
 		$whereResume = " 1 ";
 		if(trim($_GET['keyword'])){
