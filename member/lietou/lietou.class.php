@@ -512,5 +512,37 @@ class lietou extends common{
  			$this->ACT_layer_msg("推荐兼职成功！",9,$_SERVER['HTTP_REFERER']);
 		}
 	}
+
+	/*
+	 * 职位解析
+	 */
+	function jobs_parse($jobs){
+        include  PLUS_PATH."/city.cache.php";
+        $cache_array = $this->obj->cacheget();
+        $arr_rows = "";
+        foreach ($jobs as $key=>$list){
+            $list['name_n'] = "<font color='red'>".mb_substr($list['name'],0,80,"GBK")."</font>";
+            $list['com_n'] = $list['com_name'];
+            $list['hy_n'] = $cache_array['industry_name'][$list['hy']];
+            $list['pr_n'] = $cache_array['comclass_name'][$list[pr]];
+            $list['mun_n'] = $cache_array['comclass_name'][$list[mun]];
+            if($list[minsalary]&&$list[maxsalary]){
+                $list[job_salary] =$list[minsalary]."-".$list[maxsalary];
+            }elseif($list[minsalary]){
+                $list[job_salary] =$list[minsalary]."以上";
+            }else{
+                $list[job_salary] ="面议";
+            }
+            $list['job_city_one'] = $city_name[$list[provinceid]];
+            $list['job_city_two'] = $city_name[$list[cityid]];
+            $list['job_url'] = Url("job",array("c"=>"comapply","id"=>$list[id]),"1");
+            $list['com_url'] = Url("company",array("c"=>"show","id"=>$list[uid]));
+//            str_replace($paramer[keyword],"<font color=#FF6600 >".$paramer[keyword]."</font>",$city_name[$value[provinceid]])
+            $arr_rows[] = $list;
+        }
+
+        return $arr_rows;
+
+    }
 }
 ?>

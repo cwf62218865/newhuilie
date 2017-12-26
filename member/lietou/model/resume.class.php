@@ -141,6 +141,10 @@ class resume_controller extends lietou{
         $this->lt_tpl('hr');
     }
 
+    function input_action(){
+        $this->lt_tpl('input_resume');
+    }
+
     function recently_action(){
         $this->industry_cache();
         $this->subject_cache();
@@ -478,5 +482,34 @@ class resume_controller extends lietou{
         $this->yunset("js_def",5);
         $this->yunset("jobnum",$jobnum);
         $this->lt_tpl('hr');
+    }
+
+
+    function add_action(){
+
+        $data['name'] = $_POST['name']?$_POST['name']:die("请输入姓名");
+        $data['sex'] = $_POST['sex']?$_POST['sex']:die("请选择性别");
+        $data['mobile'] = $_POST['mobile']?$_POST['mobile']:die("请输入手机号");
+        $data['email'] = $_POST['email'];
+        $data['birthday'] = $_POST['birthday'];
+        $data['current'] = $_POST['jobState'];
+        $data['degree'] = $_POST['degree'];
+        $data['intention_jobs'] = $_POST['intent']['hopeCallings'];
+        $data['intention_city'] = $_POST['intent']['hopeCitys'];
+        $data['wage_hope'] = $_POST['intent']['curMoney'];
+        $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
+        $data['wage_current'] = $_POST['intent']['hopeMoney'];
+        $data['additions'] = $_POST['extra']['extraInfo'];
+        $data['introduce'] = $_POST['extra']['selfEvaluation'];
+        $data['hunterId'] = $_POST['hunterId'];
+//        var_dump($data);exit();
+//        $data['proExp'] = $_POST['proExp'];
+//        $data['workExp'] = $_POST['workExp'];
+//        $data['proExp'] = $_POST['proExp'];
+        $r = $this->obj->insert_into("pt_resume",$data);
+        if($r){
+            echo 1;exit();
+        }
+        var_dump($_POST);exit();
     }
 }

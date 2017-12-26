@@ -191,7 +191,7 @@
 
                 <!-----竞价置顶end---------->
 
-                {yun:}joblist noids=1 namelen=30 comlen=30 ispage=1 report='auto.report' rec='auto.rec' hy='auto.hy' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' jobids='auto.jobids' pr='auto.pr' mun='auto.mun' provinceid='auto.provinceid' cityid='auto.cityid' ltype='auto.ltype' three_cityid='auto.three_cityid' type='auto.type' edu='auto.edu' exp='auto.exp' sex='auto.sex' minsalary='auto.minsalary' maxsalary='auto.maxsalary' keyword='auto.keyword' key=key sdate='auto.sdate' cert='auto.cert' urgent='auto.urgent' uptime='auto.uptime' order='auto.order' limit=20 item=job_list name=joblist1{/yun}
+                {yun:}foreach from=$rows item=job_list{/yun}
                 <div class="search_job_list {yun:}if $key%2!='0'{/yun}{yun:}/if{/yun}">
                     <div class="checkbox_job" pid="{yun:}$job_list.id{/yun}"><i></i>
                         <input type="checkbox" name="checkbox_job" class="none" id="checkbox{yun:}$job_list.id{/yun}" value="{yun:}$job_list.id{/yun}"/>
@@ -262,7 +262,7 @@
                             {yun:}/if{/yun}
                         </div>  </div>
                 </div>
-                {yun:}/joblist{/yun}
+                {yun:}/foreach{/yun}
                 {yun:}if $total!=0 || is_array($zd_list){/yun}
                 <div class="All_post_list fl">
                     <div class="checkbox_all" onclick="checkAll();"><i></i>全选（当前列表）</div>
