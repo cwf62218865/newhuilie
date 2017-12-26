@@ -24,11 +24,8 @@
 {yun:}else{/yun}
 <div class="left_box">
     {yun:}if $js_def==4{/yun}
-    <div class="subnav_h1"><span>财务管理</span>  </div>
+    <div class="subnav_h1"><span>业绩管理</span>  </div>
     <ul class="left_nav_ul">
-        <li {yun:}if $smarty.get.c=="pay"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style05"{yun:}/if{/yun}><span><a href="index.php?c=pay" title="立刻充值"><font color="#FF0000"><i class="com_left_icon com_left_icon_cz"></i>立刻充值</font></a></span></li>
-        <li {yun:}if $smarty.get.c=="paylogtc"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style08"{yun:}/if{/yun}><span><a href="index.php?c=paylogtc" title="我的会员"><i class="com_left_icon com_left_icon_myhy"></i>我的会员</a></span></li>
-        <li {yun:}if $smarty.get.c=="right"&&$smarty.get.act=="" ||$smarty.get.c=="right"&&$smarty.get.act=="time"||$smarty.get.c=="right"&&$smarty.get.act=="added"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style12"{yun:}/if{/yun}><span><a href="index.php?c=right"><i class="com_left_icon com_left_icon_fw"></i>会员服务<i class="com_icon com_icon_new"></i></a></span></li>
         <li {yun:}if $smarty.get.c=="com"||$smarty.get.c=="paylog"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style09"{yun:}/if{/yun}><span><a href="index.php?c=com" title="财务明细"><i class="com_left_icon com_left_icon_mx"></i>财务明细</a></span></li>
         <li {yun:}if $smarty.get.c=="integral"||$smarty.get.c=="reward_list"||$smarty.get.c=="integral_reduce"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style12"{yun:}/if{/yun}><span><a href="index.php?c=integral"><i class="com_left_icon com_left_icon_gl"></i>{yun:}$config.integral_pricename{/yun}管理</a></span></li>
 

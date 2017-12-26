@@ -266,5 +266,8 @@ $phpyun_zhaopinhui=array('id'=>'int(11)','title'=>'varchar(200)','sid'=>'int(11)
 $phpyun_zhaopinhui_com=array('id'=>'int(11)','uid'=>'int(11)','zid'=>'int(11)','jobid'=>'varchar(255)','ctime'=>'int(11)','status'=>'int(11)','statusbody'=>'varchar(100)','inadd'=>'varchar(100)','did'=>'int(11)','sid'=>'int(11)','cid'=>'int(11)','bid'=>'int(11)','price'=>'int(11)')
 ; 
 $phpyun_zhaopinhui_pic=array('id'=>'int(11)','title'=>'varchar(200)','pic'=>'varchar(200)','sort'=>'int(11)','zid'=>'int(11)','is_themb'=>'int(5)','did'=>'int(11)')
-; 
+;
+
+$phpyun_pt_resume=array('id'=>'int(11)','name'=>'varchar(15)','sex'=>'tinyint(3)','trade'=>'varchar(60)','birthday'=>'	smallint(4)','experience'=>'smallint(5)','location'=>'varchar(60)','wage_hope'=>'int(10)','wage_current'=>'int(10)','moneyMonthes'=>'int(11)','intention_city'=>'varchar(80)','degree'=>'smallint(5)','current'=>'tinyint(5)','tag'=>'varchar(160)','mobile'=>'varchar(50)','email'=>'varchar(60)','intention_jobs'=>'varchar(60)','work_experience'=>'text','edu_experience'=>'text','project_experience'=>'text','additions'=>'varchar(200)','introduce'=>'varchar(255)','addtime'=>'int(11)','refreshtime'=>'int(11)','click'=>'int(10)','hunterId'=>'int(11)')
+;
 ?>

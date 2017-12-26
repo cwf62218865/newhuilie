@@ -16,13 +16,32 @@ class job_controller extends lietou{
 		$this->public_action();
         $this->industry_cache();
         $this->com_cache();
+
         $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');
         $this->yunset("uptime",$uptime);
 		$urlarr=array("c"=>"job","page"=>"{{page}}");
 		$where="1";
 
 		$pageurl=Url('member',$urlarr);
-		$rows=$this->get_page("company_job",$where,$pageurl,'10');
+//		$rows=$this->get_page("company_job",$where,$pageurl,'10');
+
+        $page=$_GET['page']<1?1:$_GET['page'];
+        $ststrsql=($page-1)*10;
+        $num=$this->obj->DB_select_num("company_job",$where);
+        $this->yunset("total",$num);
+        if($num>10){
+            $pages=ceil($num/10);
+            $pagenav=Page($page,$num,10,$pageurl,$notpl=false,$this->tpl,"pagenav");
+            $this->yunset("pages",$pages);
+        }
+
+        $rows=$this->obj->DB_select_all(company_job,"$where limit $ststrsql,10");
+        $jobs = $this->jobs_parse($rows);
+
+
+        $this->yunset("rows",$jobs);
+//        return $rows;
+
 		if(is_array($rows) && !empty($rows)){
 			$jobids=array();
 			foreach($rows as $v){
@@ -55,12 +74,12 @@ class job_controller extends lietou{
 		$this->yunset("maxfen",$maxfen);
         $this->yunset("js_def",3);
 		$this->company_satic();
-
-		if(intval($_GET['w'])==1){
-			$this->lt_tpl('joblist');
-		}else{
-			$this->lt_tpl('job');
-		}
+        $this->lt_tpl('joblist');
+//		if(intval($_GET['w'])==1){
+//			$this->lt_tpl('joblist');
+//		}else{
+//			$this->lt_tpl('job');
+//		}
 	}
 
     //收藏职位

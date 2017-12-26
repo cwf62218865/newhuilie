@@ -97,8 +97,13 @@ class model{
    
     protected function _initialize() {}
 
-  
+    function cacheget(){
+        $cacheget = $this->db->cacheget();
+        return $cacheget;
+    }
+
     function insert_into($table,$data=array()){
+
 		$value=array();
 
 		$this->db->connect();
@@ -110,17 +115,22 @@ class model{
 
 		
 		if(is_array($fields)){
-		
+
 			if(is_array($data)){
+
 				foreach($data as $key=>$v){
+
 					if(in_array($key,$fields)){
 						$v = $this->FilterStr($v);
+
 						$value[]="`".$key."`='".$this->db->escape_string($v)."'";
 					}
 				}
 			}
 		}
+
 		$value=@implode(",",$value);
+
 		return $this->DB_insert_once($table,$value);
 	}
 	function update_once($table,$data=array(),$w=''){ 
