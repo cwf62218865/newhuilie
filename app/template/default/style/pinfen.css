@@ -1,0 +1,58 @@
+.com_pf{
+    margin-left: 17px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.iconsxx{
+    margin-left: 50px;
+    color: #ffca57;
+    font-size: 16px;
+}
+.iconsxx .icon{
+    cursor: pointer;
+}
+.fenshu{
+    margin-left: 50px;
+    color: #fc7900; font-size: 16px;
+}
+.pjnr{
+    margin-left: 17px;
+}
+
+#infobox2 .submit_btn{
+    width: 100px;height: 40px;
+    margin-left: 200px;
+}
+.jb_infobox{
+    position: relative;
+    float: left;
+}
+#infobox2 .hr_textarea{
+    width:465px;margin:17px;padding: 13px;height: 100px;
+}
+.xubox_setwin{
+    display: none;
+}
+.numts{
+   position: absolute;
+    bottom: 30px;
+    right: 40px;
+    color: #bbbbbb;
+    font-size: 14px;
+}
+.xznum{
+    color: #4b6e88;
+}
+.close{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: 10px;
+    top: -30px;
+    z-index: 999;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+}
