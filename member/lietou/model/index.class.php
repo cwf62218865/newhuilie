@@ -91,7 +91,14 @@ class index_controller extends lietou{
 		$this->yunset("time",$time);
 		$this->public_action();
 		$this->yunset("js_def",1);
-		$this->lt_tpl('index');
+		if($_GET['kind']=="recent"){
+            $this->lt_tpl('recentrecommend');
+		}elseif($_GET['kind']=="newjobs"){
+		    $this->lt_tpl('newjobs');
+		}else{
+		    $this->lt_tpl('index');
+		}
+
 	}
 }
 ?>
