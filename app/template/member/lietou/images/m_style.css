@@ -2073,3 +2073,9 @@ overflow-x: hidden;z-index:99999;width:235px;}
 .com_grade_smicon{width:16px;height:16px; background:url(../images/ask.jpg) no-repeat; display:inline-block;}
 .com_grade_smbox_cont{width:220px; position:absolute;right:-10px;top:35px; background:#fffbcc;border:1px solid #e5d5b2; padding:5px 10px; line-height:23px;}
 .com_grade_smicon_san{width:9px;height:6px; display:inline-block; background:url(../images/template.gif) no-repeat left -18px; position:absolute;top:30px;left:4px;}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
