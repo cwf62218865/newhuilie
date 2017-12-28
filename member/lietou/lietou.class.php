@@ -542,7 +542,16 @@ class lietou extends common{
         }
 
         return $arr_rows;
+    }
 
+    /*
+     * 项目推荐解析
+     */
+    function obj_parse($obj){
+        $arr_obj = "";
+        foreach ($obj as $list){
+            $this->obj->DB_select_num("userid_job","job_id=".$list['job_id']." and identity=3","");
+        }
     }
 }
 ?>

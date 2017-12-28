@@ -259,17 +259,20 @@ class index_controller extends common{
 			}
 			$_POST['username'] =  $_POST['email'];
 		}
+
 		if($_POST['username']){
 			$nid = $Member->GetMemberNum(array("username"=>$_POST['username']));
 			if($nid){
 				$this->errjson('账户名已存在！');
 			}else{
+
 				if($_POST['usertype']=='1'){
 					$satus = $this->config['user_state'];
 				}elseif($_POST['usertype']=='2'){
 					$satus = $this->config['com_status'];
 				}
 				if($this->config['sy_uc_type']=="uc_center"){
+
 					$ucinfo = $this->uc_open();
 					if(strtolower($ucinfo['UC_CHARSET']) =='utf8' || strtolower($ucinfo['UC_DBCHARSET'])=='utf8'){
 						$ucusername = iconv('gbk','utf-8',$_POST['username']);
@@ -324,6 +327,7 @@ class index_controller extends common{
 				$data['wxid']=$_SESSION['wx']['openid'];
 				$data['regcode']=(int)$_COOKIE['regcode'];
 				$userid=$Member->AddMember($data);
+
 				if(!$userid){
 					$user_id = $Member->GetMemberOne(array("username"=>$_POST['username']),array("field"=>"uid"));
 					$userid = $user_id['uid'];
@@ -394,6 +398,7 @@ class index_controller extends common{
 							$data2['moblie_status']="1";
 						}
 					}
+
 					$data1['did']=$this->config['did'];
 					$Member->InsertReg($table,$data1);
 					$Member->InsertReg($table2,$data2);
@@ -480,6 +485,7 @@ class index_controller extends common{
                         $this->get_integral_action($userid,"integral_login","会员登录");
                         $Member->UpdateMember(array("login_date"=>time(),"login_ip"=>$ip),array("uid"=>$userid));
                         $this->add_cookie($userid,$_POST['username'],$salt,$_POST['email'],$pass,$usertype);
+
                         $this->errjson('注册成功',1);
 
                     }

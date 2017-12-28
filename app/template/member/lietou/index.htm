@@ -69,7 +69,7 @@ function break_job(num){
           <div class="re">
             <div class="Tip_Information_close" onclick="Close('two_tip');"></div>
           </div>
-          <div class="Tip_Information_p">明确招聘需求，细化招聘条件，精准锁定人才！ </div>
+          <div class="Tip_Information_p">明确招聘需求，细化招聘条件，精准锁定人才！</div>
           <div class="Tip_Information_bot"><a href="javascript:Close('two_tip');" class="Tip-next">知道了</a> </div>
         </div>
       </div>
@@ -235,10 +235,10 @@ function jobshuaxin(id){
                 <input type="text" class="inputk" placeholder="请输入您需要搜索的公司或职位">
             </div>
 
-            <input id="sdate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}$sdate|date_format:'%Y-%m-%d'{/yun}" name="sdate">
+            <input id="sdate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}time()|date_format:'%Y-%m-%d'{/yun}" name="sdate">
             <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css" type="text/css">
             <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
-            <input id="edate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}$edate|date_format:'%Y-%m-%d'{/yun}" name="edate">
+            <input id="edate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}(time()+60*60*24*30)|date_format:'%Y-%m-%d'{/yun}" name="edate">
             <script type="text/javascript">
                 var checkin = $('#sdate').fdatepicker({
                     format: 'yyyy-mm-dd',startView:4,minView:2

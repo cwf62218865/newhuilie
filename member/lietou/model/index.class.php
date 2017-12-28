@@ -13,6 +13,16 @@ class index_controller extends lietou{
 
 		include(CONFIG_PATH."db.data.php");
 		$this->yunset("arr_data",$arr_data);
+
+        $service_com_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"DISTINCT com_id");
+        $service_job_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"DISTINCT job_id");
+        $service_resume_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"resume_id");
+        $down_resume_count =$this->obj->DB_select_num("down_resume","uid=".$this->uid,"resume_id");
+        $down_resume_odds = $down_resume_count/$down_resume_count;
+
+        $recommend_jobs = $this->obj->DB_select_all("userid_job","uid=".$this->uid." limit 0,5");
+//        $this->obj->DB_select_all("down_resume","type=2 and uid=".$this->uid);
+
 		$statis=$this->company_satic();
 		$time=strtotime(date("Y-m-d 00:00:00"));
 		$invite_resume=$this->obj->DB_select_num("userid_msg","`fid`='".$this->uid."'");
@@ -83,11 +93,7 @@ class index_controller extends lietou{
  		$this->yunset("statis",$statis);
  		$this->yunset("member",$member);
 		$this->yunset("uid",$this->uid);
-		$this->yunset("normal_job_num",$normal_job_num);
-		$this->yunset("company",$company);
-		$this->yunset("des_shuaxuanjobs",$des_shuaxuanjobs);
-		$this->yunset("shuaxuanjobs",$shuaxuanjobs);
-		$this->yunset("jobsbid",$jobsbid);
+
 		$this->yunset("time",$time);
 		$this->public_action();
 		$this->yunset("js_def",1);

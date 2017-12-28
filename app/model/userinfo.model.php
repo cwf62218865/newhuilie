@@ -148,6 +148,7 @@ class userinfo_model extends model{
     }
     function AddMember($Values=array()){
         return $this->insert_into('member',$Values);
+//        return $this->insert_into('member',array('username'=>'788'));
     }
     function RegisterMember($Values=array(),$Options=array()){
 		(int)$Options['usertype']?$UserType=(int)$Options['usertype']:1;
