@@ -264,10 +264,10 @@ function jobshuaxin(id){
             <input type="submit" value="搜索" class="tongji_info_text_sub"/>
             <div class="tongj_box">
                 <div class="tongj_list"><div class="tongj_list_name">日期</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">30</span>天</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 服务企业数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">12</span>家</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 推荐职位数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>个</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 推荐简历数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>份</div></div>
-                <div class="tongj_list tongj_list_last"><div class="tongj_list_name"> 简历下载率</div><div class="tongj_list_b"><span class="tongj_list_b_n">30%</span></div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 服务企业数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_com_count{/yun}</span>家</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐职位数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_job_count{/yun}</span>个</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐简历数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_resume_count{/yun}</span>份</div></div>
+                <div class="tongj_list tongj_list_last"><div class="tongj_list_name"> 简历下载率</div><div class="tongj_list_b"><span class="tongj_list_b_n">{yun:}$down_resume_odds{/yun}</span></div></div>
             </div>
 
             <div class="job_news_list">
@@ -342,16 +342,7 @@ function jobshuaxin(id){
                     <a class="tj_nums" href="#">3份简历</a> </span>
             </div>
             <div class="pages_btns">
-                <span class="page_butt">上一页</span>
-                <span class="page_butt">1</span>
-                <span class="page_butt">2</span>
-                <span class="page_butt">3</span>
-                <span class="page_butt">4</span>
-                <span class="page_butt">5</span>
-                <span class="page_butt">6</span>
-                <span class="page_butt">…</span>
-                <span class="page_butt">15</span>
-                <span class="page_butt">下一页</span>
+
             </div>
         </div>
 

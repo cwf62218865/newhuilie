@@ -10,8 +10,8 @@
 */
 class info_controller extends lietou{
 	function index_action(){
-		 
 		$row=$this->obj->DB_select_once("lietou","`uid`='".$this->uid."'");
+
 		if ($row['comqcode']){
 		    $row['comqcode']=str_replace('./', $this->config['sy_weburl'].'/', $row['comqcode']);
 		}
@@ -58,11 +58,11 @@ class info_controller extends lietou{
 				$e_exist=$this->obj->DB_select_once("member","`uid`<>'".$this->uid."' and `email`='".$_POST['linkmail']."'","`uid`"); 
 			}
 
-			if($t_exist['uid']){
-				$this->ACT_layer_msg("手机已存在！",8);
-			}elseif ($e_exist['uid']){
-			    $this->ACT_layer_msg("邮箱已存在！",8);
-			}
+//			if($t_exist['uid']){
+//				$this->ACT_layer_msg("手机已存在！",8);
+//			}elseif ($e_exist['uid']){
+//			    $this->ACT_layer_msg("邮箱已存在！",8);
+//			}
 			$lietou=$this->obj->DB_select_once("lietou","`uid`='".$this->uid."'");
 			$ltname=$this->obj->DB_select_all('lietou',"`uid`<>'".$this->uid."' and `name`='".$_POST['name']."'","`uid`");
 			if($_POST['name']==""){
@@ -114,7 +114,8 @@ class info_controller extends lietou{
 				}elseif($this->CheckMoblie($_POST['linktel'])==false){
 					$this->ACT_layer_msg("手机号码格式错误！",8);
 				}elseif($moblieNum>0){
-					$this->ACT_layer_msg("手机号码已存在！",8);
+//					$this->ACT_layer_msg("手机号码已存在！",8);
+                    $mvalue['moblie']=$_POST['linktel'];
 				}else{
 					$mvalue['moblie']=$_POST['linktel'];
 				}
@@ -143,7 +144,8 @@ class info_controller extends lietou{
 
 
 			$nid=$this->obj->update_once("lietou",$_POST,$where);
-			if($nid){	
+			if($nid){
+
 				$this->obj->DB_delete_all("lssave","`uid`='".$this->uid."'and `savetype`='3'");
 				$this->obj->member_log("修改企业信息",7);
 
