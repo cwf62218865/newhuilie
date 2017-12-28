@@ -40,9 +40,9 @@ class parse_controller extends lietou
 	function index_action()
 	{
 
-        $content = shell_exec('/usr/local/bin/antiword -m UTF-8 '.$_SERVER['DOCUMENT_ROOT']."/test/test.doc");
-        $content = mb_convert_encoding($content, "gbk", "utf-8");
-        echo $content;exit();
+//        $content = shell_exec('/usr/local/bin/antiword -m UTF-8 '.$_SERVER['DOCUMENT_ROOT']."/test/test.doc");
+//        $content = mb_convert_encoding($content, "gbk", "utf-8");
+        echo 2222;exit();
         if($_FILES){
             $file = $_FILES['file'];
             $upload_path_name = "../resume_file/".time().".doc";

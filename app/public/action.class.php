@@ -113,7 +113,6 @@ class model{
             $fields=array_keys($$TableFullName);
         }
 
-		
 		if(is_array($fields)){
 
 			if(is_array($data)){
