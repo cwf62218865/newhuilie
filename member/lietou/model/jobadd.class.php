@@ -12,49 +12,20 @@ class jobadd_controller extends lietou{
 	function index_action(){
 		include(CONFIG_PATH."db.data.php");
 		$this->yunset("arr_data",$arr_data);
-		$statics = $this->company_satic();
-		if( $statics['addjobnum'] == 2){
-			if(intval($statics['integral']) < intval($this->config['integral_job'])){
-				$this->ACT_msg($_SERVER['HTTP_REFERER'],"你的".$this->config['integral_pricename']."不够发布职位！",8);
-			}
-		}
-		$company=$this->get_user();
+
+
+		//$company=$this->get_user();
 		$msg=array();
 		$isallow_addjob="1";
 		$url="index.php?c=binding";
-		if($this->config['com_enforce_emailcert']=="1"){
-			if($company['email_status']!="1"){
-				$isallow_addjob="0";
-				$msg[]="邮箱认证";
-			}
-		}
-		if($this->config['com_enforce_mobilecert']=="1"){
-			if($company['moblie_status']!="1"){
-				$isallow_addjob="0";
-				$msg[]="手机认证";
-			}
-		}
-		if($this->config['com_enforce_licensecert']=="1"){
-			if($company['yyzz_status']!="1"){
-				$isallow_addjob="0";
-				$msg[]="营业执照认证";
-			}
-		}
-		if($isallow_addjob=="0"){
-			$this->ACT_msg($url,"请先完成".implode("、",$msg)."！");
-		}
-		if($this->config['com_enforce_setposition']=="1"){
-			if(empty($company['x'])||empty($company['y'])){
-				$this->ACT_msg("index.php?c=map","请先完成地图设置！");
-			}
-		}
+
 		$save=$this->obj->DB_select_once("lssave","`uid`='".$this->uid."'and `savetype`='4'");
 		$save=unserialize($save['save']);
 		if($save['lastupdate']){
 			$save['time']=date('H:i',ceil(($save['lastupdate'])));
 		}
 		$this->yunset("save",$save);
-		$this->public_action();
+		//$this->public_action();
 		$CacheArr=$this->MODEL('cache')->GetCache(array('hy','job','city','com','circle'));
 		$this->yunset($CacheArr);
 		$row['hy']=$company['hy'];

@@ -87,6 +87,9 @@
         #zhsz:hover .xialabtn{
             display: block;
         }
+        .header .header-logo{
+            float: right;
+        }
     </style>
 <script>
 /*屏蔽所有的js错误*/
@@ -230,7 +233,18 @@ var integral_pricename='{yun:}$config.integral_pricename{/yun}';
                 if($(".xialabtn").css("display")=="block"){
                     $(".xialabtn").hide();
                 }
-            };
+            }
         });
+
+window.onscroll=function(){
+    var topScroll =document.body.scrollTop;//滚动的距离,距离顶部的距离
+    var bignav  = $(".header");//获取到导航栏id
+    if(topScroll >= 74){
+        bignav.css({"position":"fixed","top":"0","z-index":"9999"})
+
+    }else{//当滚动距离小于250的时候执行下面的内容，也就是让导航栏恢复原状
+        bignav.css("position","inherit");
+    }
+}
     </script>
 </header>
