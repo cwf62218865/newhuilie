@@ -56,3 +56,11 @@
     outline: none;
     border: none;
 }
+
+#infoboxadd .textbox{
+    width: 420px;
+}
+#infoboxadd .com_info_text{
+    width: 100%;
+}
+

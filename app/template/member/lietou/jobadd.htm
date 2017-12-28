@@ -4,6 +4,7 @@
   <div class="admin_mainbody">
   {yun:}include file="$comstyle/left.htm"{/yun}
   <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
+      <link href="{yun:}$style{/yun}/style/pinfen.css" type=text/css rel=stylesheet>
     <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
     <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script> 
 	<script src="{yun:}$config.sy_weburl{/yun}/data/plus/job.cache.js" type="text/javascript"></script>
@@ -266,16 +267,17 @@ function returnmessagejob(frame_id){
 	}
 }
     function addjobname(){
-
+        $("#addjob").show();
         $.layer({
             type : 1,
             title :'提示信息',
             closeBtn : [0 , true],
             border : [10 , 0.3 , '#000', true],
-            area : ['320px','200px'],
+            area : ['620px','550px'],
             page : {dom :"#infoboxadd"}
         });
     }
+
 
 </script>
 <style>
@@ -708,19 +710,82 @@ body,div{margin: 0 ;padding: 0;}
                 <input name="r_uid" value="0" type="hidden">
                 <input name="eid" value="0" type="hidden">
                 <input name="pingfen" class="pingfen" value="0" type="hidden">
-                <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                <button type="button" id='zxxCancelBtn' onClick="layer.closeAll();" class="close cancel_btn" style="display: block;">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-shan"></use>
                     </svg>
                 </button>
 
-                <div class="pjnr">评价内容:</div>
-                <div class="jb_infobox" style="width: 100%;">
-                    <textarea id="pjcontent" placeholder="请输入服务评价内容" name="r_reason" cols="30" rows="9" class="hr_textarea" maxlength="100"></textarea>
-                    <div class="numts">还可输入<label class="xznum">100</label>字</div>
+                <div class="admin_textbox_02">
+                    <ul>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 职位名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" value="" style="float:left;" class="com_info_text">
+                                <span id="by_name" class="errordisplay">职位名不能为空</span> </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 职位名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" value="" style="float:left;" class="com_info_text">
+                                <span id="by_name" class="errordisplay">职位名不能为空</span> </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 职位名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" value="" style="float:left;" class="com_info_text">
+                                <span id="by_name" class="errordisplay">职位名不能为空</span> </div>
+                        </li>
+
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 职位类别：</div>
+                            <div class="textbox">
+                                <div class="text_seclet text_seclet_cur" style="z-index:100;width: 100%;">
+                                    <input type="hidden" name="job_post" id="job_post" value="">
+                                    <input class="SpFormLBut text_seclet_w250 com_info_text" type="button" value="请选择职位类别" onclick="index_job(1,'#workadds_job','#job_post','left:100px;top:100px; position:absolute;','');" id="workadds_job">
+
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 工作地点：</div>
+                            <div class="textbox">
+                                <div class="text_seclet text_seclet_cur2 fltL" style="width: 100%">
+                                    <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="province" onclick="search_show('job_province');" style="width: 100%">
+                                    <input type="hidden" id="provinceid" name="provinceid" value="">
+                                    <div id="job_province" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none">
+                                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                            <ul class="Search_Condition_box_list">
+                                                <li><a href="javascript:;" onclick="select_city('2','province','北京','citys','city');"> 北京</a></li>
+                                                </ul>
+                                        </div>    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="tit days"><font color="#FF0000">*</font> 招聘天数：</div>
+                            <div class="tit edate" style="display:none"><font color="#FF0000">*</font> 结束日期：</div>
+                            <div class="textbox">
+                                <input type="text" name="days" id="days" value="30" style="float:left" class="com_info_text days" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="3">
+                                <link rel="stylesheet" href="http://localhost/js/datepicker/css/font-awesome.min.css" type="text/css">
+                                <script src="http://localhost/js/datepicker/foundation-datepicker.min.js"></script>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 职位名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" value="" style="float:left;" class="com_info_text">
+                                <span id="by_name" class="errordisplay">职位名不能为空</span> </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="jb_infobox" style="width: 100%;">
-                    <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
+
+                <div class="jb_infobox" style="width: 100%;text-align: center;margin-top: 20px;">
+                    <button type="submit"  name='submit' value='1' class="submit_btn">保存客户信息</button>
+                    <button type="button"  class="cancel_btn" onClick="layer.closeAll();">取消</button>
                 </div>
             </form>
         </div>
