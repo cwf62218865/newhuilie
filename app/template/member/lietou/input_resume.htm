@@ -2504,7 +2504,7 @@
 			</div>
 		</div>
 		<form id="fileupload" action="/uploadResume" method="POST" enctype="multipart/form-data">
-			<input type="hidden" id="hunterId" name="hunterId" value="3410" />
+			<input type="hidden" id="hunterId" name="hunterId" value="{yun:}$member.uid{/yun}" />
 			<input type="file" id="file" name="file" style="visibility:hidden" onchange="ajaxFileupload(this)" />
 			<div class="apply-buttons">
 				<button type="button" id="saveLtCandBtn" class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;保存简历</button>
@@ -2554,7 +2554,7 @@
                 data : {
                     hunterId : $("#hunterId").val()
                 },
-                dataType : 'json', //返回值类型 一般设置为json
+                ///dataType : 'json', //返回值类型 一般设置为json
                 success : function(data, status) //服务器成功响应处理函数
                 {
                     $.globalMessenger().post({
@@ -2610,7 +2610,7 @@
                 },
                 error : function(data, status, e)//服务器响应失败处理函数
                 {
-                    alert(e);
+                    console.log(e);
                 }
             });
             return false;
