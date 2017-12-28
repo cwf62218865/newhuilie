@@ -279,22 +279,36 @@ body,div{margin: 0 ;padding: 0;}
 		{yun:}/if{/yun}
         <iframe id="supportiframejob"  name="supportiframejob" onload="returnmessagejob('supportiframejob');" style="display:none"></iframe>
         <form name="MyForm" target="supportiframejob" method="post" action="index.php?c=jobadd&act=save" onsubmit="return CheckPost();">
-        <div class="com_msg">温馨提示：
-        {yun:}if $statis.vip_etime>time()||$statis.vip_etime=="0"{/yun}
-        	{yun:}if $statis.rating_type==1{/yun}
-        		您的账号可同时发布{yun:}$rating.job_num{/yun}个职位
-        	{yun:}else{/yun}
-        		您当前是{yun:}$statis.rating_name{/yun}，到期时间是{yun:}$statis.vip_etime|date_format:'%Y-%m-%d'{/yun}，在此之前您可以任意发布职位
-        	{yun:}/if{/yun}
-        {yun:}else{/yun}
-        	您的账号会员套餐已用完，发布一个职位将扣除{yun:}$config.integral_job{/yun}{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}职位
-        {yun:}/if{/yun}{yun:}if $jobnum{/yun} ，现已发布 {yun:}$jobnum{/yun}个职位{yun:}/if{/yun}</div>
+            <div class="admin_tit "><span class="admin_tit_bg">企业基本信息</span></div>
+            <div class="admin_textbox_02">
+                <ul>
+                    <li>
+                        <div class="tit"><font color="#FF0000">*</font> 企业名称：</div>
+                        <div class="text_seclet text_seclet_cur" style="z-index:100">
+                            <input type="hidden" name="job_post" id="job_post" >
+                            <input class="SpFormLBut text_seclet_w250 " type="button" value="请选择">
+                            <div class="tit malef0"> +新增企业</div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="tit"><font color="#FF0000">*</font> 所属部门：</div>
+                        <div class="textbox">
+                            <div class="text_seclet text_seclet_cur" style="z-index:100">
+                                <input type="hidden" name="job_post" id="" value="">
+                                <input class="SpFormLBut text_seclet_w250 " type="text" placeholder="请填写职位类别" style="background: #fff;cursor: text">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="admin_tit "><span class="admin_tit_bg">职位基本信息</span></div>
           <div class=admin_textbox_02>
 		  <ul>
             <li>
               <div class=tit><font color="#FF0000">*</font> 职位名称：</div>
               <div class=textbox>
-              <INPUT type="text" size="45" name="name" id='name'value="{yun:}$row.name{/yun}" style="float:left" class="com_info_text">
+              <INPUT type="text" size="45" name="name" id='name'value="{yun:}$row.name{/yun}" style="float:left;width: 250px;" class="com_info_text">
   			<span id="by_name" class="errordisplay">职位名不能为空</span> </div>
             </li>
 
@@ -609,7 +623,7 @@ body,div{margin: 0 ;padding: 0;}
           <div class=admin_submit>
                 <div class="admin_job_js_list_ft fl"><span style="width:100%;">&nbsp;</span></div>
           <div class=sub_btn>
-              <input class="btn_01"  id="submitBtn"type="submit" name="submitBtn" value=" 提 交 操 作 ">
+              <input class="btn_01"  id="submitBtn"type="submit" name="submitBtn" value="发布职位">
               <input name="jobcopy" value="{yun:}$smarty.get.jobcopy{/yun}" type="hidden"/>
            {yun:}if $smarty.get.id{/yun}
             <input id="id"name="id" value="{yun:}$row.id{/yun}" type="hidden"/>
