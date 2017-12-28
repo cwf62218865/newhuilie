@@ -1017,7 +1017,7 @@ center; font-size:12px; z-index:11 }
 .hr_subMetx_span{ display:inline-block; line-height:38px; text-align:right;width:65px;}
 .hr_resumesearch_text{width:300px;height:38px;border: 1px solid #CFCFCF;border-bottom: 1px solid #E8E8E8;border-right: 1px solid #E8E8E8; line-height:38px; float:left; text-indent:10px;}
 .hr_resumesearch_bth{width:75px;height:38px;color:#fff; cursor:pointer; float:left;border:none; background:#dd600d}
-.footernav{width:100%;margin-top:10px; text-align:center;height:60px;line-height:25px; padding-top:20px; padding-bottom:10px;color:#666; border-top:1px solid #e0dddd}
+.footernav{width:100%;margin-top:20px; text-align:center;height:60px;line-height:25px; padding-top:20px; padding-bottom:10px;color:#666; border-top:1px solid #e0dddd}
 .com_m_job_list{width:100%; float:left; margin-top:10px;}
 .job_list_box{width:851px; border:1px solid #ddd;float:left; position:relative}
 .job_list_box:hover{ background:#f8f8f8}
@@ -2073,3 +2073,9 @@ overflow-x: hidden;z-index:99999;width:235px;}
 .com_grade_smicon{width:16px;height:16px; background:url(../images/ask.jpg) no-repeat; display:inline-block;}
 .com_grade_smbox_cont{width:220px; position:absolute;right:-10px;top:35px; background:#fffbcc;border:1px solid #e5d5b2; padding:5px 10px; line-height:23px;}
 .com_grade_smicon_san{width:9px;height:6px; display:inline-block; background:url(../images/template.gif) no-repeat left -18px; position:absolute;top:30px;left:4px;}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
