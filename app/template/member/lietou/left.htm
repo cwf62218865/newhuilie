@@ -1,0 +1,152 @@
+{yun:}if $js_def==5 || $js_def==3{/yun}
+<div class="top_box">
+
+  {yun:}if $js_def==5{/yun}
+  <ul class="right_nav_ul">
+      <li class="subnav_h1"><span>简历库</span>  </li>
+  {yun:}if $config.com_search==1{/yun}<li {yun:}if $smarty.get.act=="index"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=index" class="f60"><i class="com_left_icon com_left_icon_search"></i>平台人才库</a></span></li>{yun:}/if{/yun}
+  <li {yun:}if $smarty.get.act=="recently"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recently" title="我的简历"><i class="com_left_icon com_left_icon_jl"></i>最近浏览</a></span> </li>
+     <li {yun:}if $smarty.get.act=="recommend"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recommend"><i class="com_left_icon com_left_icon_info"></i>已推荐</a></span> </li>
+    <li {yun:}if $smarty.get.act=="myself"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=myself"><i class="com_left_icon com_left_icon_sq"></i>我入库的简历</a></span> </li>
+
+  </ul>
+  {yun:}/if{/yun}
+
+  {yun:}if $js_def==3{/yun}
+     <ul class="right_nav_ul">
+         <li class="subnav_h1"><span>职位库</span>  </li>
+     <li {yun:}if $smarty.get.act!="fav_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位"><i class="com_left_icon com_left_icon_zwgl"></i>职位搜索</a></span></li>
+     <li {yun:}if $smarty.get.act=="fav_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&act=fav_job" title="收藏的职位"><i class="com_left_icon com_left_icon_zwgl"></i>收藏的职位</a></span></li>
+  </ul>
+  {yun:}/if{/yun}
+</div>
+
+{yun:}else{/yun}
+<div class="left_box">
+    {yun:}if $js_def==4{/yun}
+    <div class="subnav_h1"><span>业绩管理</span>  </div>
+    <ul class="left_nav_ul">
+        <li {yun:}if $smarty.get.c=="com"||$smarty.get.c=="paylog"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style09"{yun:}/if{/yun}><span><a href="index.php?c=com" title="财务明细"><i class="com_left_icon com_left_icon_mx"></i>财务明细</a></span></li>
+        <li {yun:}if $smarty.get.c=="integral"||$smarty.get.c=="reward_list"||$smarty.get.c=="integral_reduce"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style12"{yun:}/if{/yun}><span><a href="index.php?c=integral"><i class="com_left_icon com_left_icon_gl"></i>{yun:}$config.integral_pricename{/yun}管理</a></span></li>
+
+    </ul>
+    {yun:}/if{/yun}
+    {yun:}if $js_def==7{/yun}
+    <div class="subnav_h1"><span>账号设置</span>  </div>
+    <ul class="left_nav_ul">
+        <li {yun:}if $smarty.get.c=="info"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=info" title="基本信息"><i class="com_left_icon com_left_icon_info"></i>基本信息</a></span> </li>
+        <li {yun:}if $smarty.get.c=="vs"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=vs" title="修改密码"><i class="com_left_icon com_left_icon_m"></i>修改密码</a></span> </li>
+        <li {yun:}if $smarty.get.c=="sysnews"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style11"{yun:}/if{/yun}><span><a href="index.php?c=sysnews" title="系统消息"><i class="com_left_icon com_left_icon_xin"></i>系统消息</a></span> </li>
+    </ul>
+    {yun:}/if{/yun}
+
+    {yun:}if $guweninfo.id{/yun}
+    <div class="com_index_kf">
+        <div class="com_m_index_h1"><span class="com_m_index_h1_s">招聘顾问</span></div>
+        <div class="com_index_kf_box">
+            <div class="com_index_kf_box_user">
+                <div class="com_index_kf_box_user_photo"><img src="{yun:}$guweninfo.logo{/yun}" style="width:64px;height:64px"></div>
+                <div class="com_index_kf_box_username">{yun:}$guweninfo.username{/yun}</div>
+                <div class="">
+                    {yun:}if $guweninfo{/yun}
+                    <a target="_blank" href="tencent://message/?uin={yun:}$guweninfo.qq{/yun}&Site={yun:}$config.sy_webname{/yun}&Menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=1:{yun:}$guweninfo.qq{/yun}:12" alt="点击这里给我发消息"></a>
+                    {yun:}/if{/yun}</div>
+            </div>
+            <div class="com_index_kf_p">电话：{yun:}$guweninfo.mobile{/yun}</div>
+            <div class="com_index_kf_p">微信：{yun:}$guweninfo.weixin{/yun}</div>
+            <div class="com_index_kf_p">Q Q：{yun:}$guweninfo.qq{/yun}</div>
+
+            <div class="com_index_kf_p">
+                {yun:}if $atn.uid{/yun}
+                <a href="javascript:void(0)" class="com_index_kf_dz_left">已点赞</a>
+                {yun:}else{/yun}
+                <a href="javascript:void(0)" onclick="zan('{yun:}$guweninfo.id{/yun}');" class="com_index_kf_dz_left">点赞</a>
+                {yun:}/if{/yun}
+
+                {yun:}if is_array($report)&& !$report.result{/yun}
+                <a href="index.php?c=report&act=show"  class="com_index_kf_ts_left">已投诉</a>
+                {yun:}else{/yun}
+                <a href="javascript:void(0)" onclick="reportgw('{yun:}$guweninfo.id{/yun}','投诉顾问');"  class="com_index_kf_ts_left">投诉</a>
+                {yun:}/if{/yun}</div>
+        </div>
+    </div>
+
+    {yun:}else{/yun}
+    <div class="com_index_kf">
+        <div class="com_m_index_h1"><span class="com_m_index_h1_s">招聘顾问</span></div>
+        <div class="com_index_kf_box">
+            <div class="com_index_kf_box_user">
+                <div class="com_index_kf_box_user_photo"><img src="{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_guwen{/yun}" style="width:64px;height:64px"></div>
+                <div class="com_index_kf_box_username">网站客服</div>
+                <div class="">
+                    {yun:}if $kfqq{/yun}
+                    <a target="_blank" href="tencent://message/?uin={yun:}$kfqq{/yun}&Site={yun:}$config.sy_webname{/yun}&Menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=1:{yun:}$kfqq{/yun}:12" alt="点击这里给我发消息"></a>
+                    {yun:}/if{/yun}
+                </div>
+            </div>
+            <div class="com_index_kf_p">电话：{yun:}$config.sy_freewebtel{/yun}</div>
+            <div class="com_index_kf_p">手机：{yun:}$config.sy_webmoblie{/yun}</div>
+            <div class="com_index_kf_p">Q  Q：{yun:}$kfqq{/yun}</div>
+            {yun:}if $config.wx_name{/yun}<div class="com_index_kf_p">微信公众号：{yun:}$config.wx_name{/yun}</div>{yun:}/if{/yun}
+        </div>
+    </div>
+
+    {yun:}/if{/yun}
+</div>
+{yun:}/if{/yun}
+<!--投诉顾问弹出框-->
+<div id="{yun:}$guweninfo.id{/yun}" style="display:none;">
+  <div class="Binding_pop_box" style="padding:10px;width:330px;height:200px ;background:#fff;">
+    <div class="Binding_pop_box_msg">您要投诉的顾问是：{yun:}$guweninfo.username{/yun}</div>
+   
+       <div class="popjb_tip">为了能够给您提供高质量的服务，反馈具体情况，我们会第一时间给您答复！</div>
+    
+     <div class="">
+     	 <textarea id="reason" name="reason" class="popjb_text"></textarea>
+      </div>
+      <div class="Binding_pop_sub" style="margin-top:15px;"> <span class="Binding_pop_box_list_left">&nbsp;</span>
+        <input class="com_pop_bth_qd" onclick="reportSub('index.php?c=report')" type="button" value="确定">
+		<input type='hidden' value="{yun:}$guweninfo.id{/yun}" id='eid' name='eid'> 
+        <input class="com_pop_bth_qx" type="button" value="取消" onclick="layer.closeAll();">
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+function reportgw(eid,title){
+	$.layer({
+		type : 1,
+		title :title,
+		closeBtn : [0 , true],
+		border : [10 , 0.3 , '#000', true],
+		area : ['350px','auto'],
+		page : {dom :"#"+eid}
+	});
+}
+function reportSub(url){
+	var reason=$("#reason").val();
+	var eid=$("#eid").val();
+	if(reason==''){
+		layer.msg('请填写投诉内容！', 2, 8);return false;
+	}
+	$.post(url,{reason:reason,eid:eid},function(data){ 
+		layer.closeAll();
+		if(data=='0'){
+			layer.msg('投诉失败！', 2, 8);
+		}else if(data=='1'){
+			layer.msg('投诉成功！', 2, 9,function(){window.location.reload();});
+		}else if(data=='2'){			
+			layer.msg('已投诉成功，等待管理员回复！', 2, 8);
+		}
+	});
+}
+function zan(id){
+	$.post("index.php?m=ajax&c=guwenZan",{id:id},function(data){ 
+		if(data=='2'){
+			layer.msg('请不要重复点赞！', 2, 8);
+		}else if(data=='1'){
+			layer.msg('点赞成功！',2,9,function(){window.location.reload();});
+			//layer.msg('点赞成功！', 2, 9);
+		}
+	});
+}
+</script>

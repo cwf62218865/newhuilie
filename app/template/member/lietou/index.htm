@@ -1,0 +1,681 @@
+{yun:}include file="$ltstyle/header.htm"{/yun}
+<script>
+function Close(id){
+	$("#"+id).hide();
+	$("#bg").hide();
+}
+function Next(){
+	$("#one_tip").hide();
+	$("#two_tip").show();
+}
+function Close_yds() {
+	 $("#shuaxin").hide();
+	 $("#bg").hide();
+}
+
+function break_job(num){
+	if(num=='0'){
+		layer.confirm('每个正常职位将扣除{yun:}$config.integral_jobefresh{/yun}{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}，确定要刷新？',function(){
+			layer.load('执行中，请稍候...',0);
+			$.post("{yun:}$config.sy_weburl{/yun}/member/index.php?m=ajax&c=Refresh_job",{},function(data){
+				layer.closeAll();
+				if(data==1){
+					layer.msg("职位刷新成功！",2,9,function(){location.reload();});
+				}else{
+					layer.msg(data,2,8);
+				}
+			})
+		});
+	}else{
+		layer.load('执行中，请稍候...',0);
+		$.post("{yun:}$config.sy_weburl{/yun}/member/index.php?m=ajax&c=Refresh_job",{},function(data){
+			layer.closeAll();
+			if(data==1){
+				layer.msg("职位刷新成功！",2,9,function(){location.reload();});
+			}else{
+				layer.msg(data,2,8);
+			}
+		})
+	}
+}
+</script>
+<div class="w1000">
+<div style="position:relative; z-index:1005">
+  <div class="Description_Layer">
+    <div class="Tip_Information" id="one_tip" {yun:}if $lietou.name!="" {/yun}style="display:none"{yun:}/if{/yun}>
+      <div class="Tip_Information_cont">
+        <div class="re">
+          <div class="Tip_Information_close" onclick="Close('one_tip');"></div>
+        </div>
+        <div class="Tip_Information_p">
+          <p>{yun:}if $lietou.name{/yun}
+       {yun:}$lietou.name{/yun}{yun:}else{/yun}{yun:}$username{/yun}{yun:}/if{/yun}，您已成功注册猎头账号！
+   </p>
+   <p><span class="tip_wt">有问题可拨打客服电话：<em>{yun:}$config.sy_freewebtel{/yun}</em> </span><a class="tip_fk" href="{yun:}url m=advice{/yun}" target="_blank">点击这里在线反馈</a>
+   </p>
+
+        </div>
+        <div class="Tip_Information_bot"><a class="tip_ws" href="{yun:}$config.sy_weburl{/yun}/member/?c=info" >完善猎头资料</a> </div>
+      </div>
+    </div>
+    <div class="Recruitment_Layer" id="two_tip"  style="display:none">
+      <div class="Tip_Information">
+        <div>
+          <div class="Tip_Information_gl"></div>
+          <div class="Tip_Information_jt2"></div>
+          <div class="Recruitment_fb"></div>
+        </div>
+        <div class="Tip_Information_cont">
+          <div class="re">
+            <div class="Tip_Information_close" onclick="Close('two_tip');"></div>
+          </div>
+          <div class="Tip_Information_p">明确招聘需求，细化招聘条件，精准锁定人才！ </div>
+          <div class="Tip_Information_bot"><a href="javascript:Close('two_tip');" class="Tip-next">知道了</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>    </div>
+
+<!--  首页-->
+<div class="com_m_index_left">
+<div class="com_m_index_info">
+<div class="com_m_index_logo">  <a href="index.php?c=uppic"><img src=".{yun:}$lietou.logo{/yun}" width="100" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_lt_icon{/yun}','2')"/>
+<i class="com_m_index_logo_xg"></i></a></div>
+<div class="com_m_index_comname">{yun:}if $lietou.name{/yun}
+       {yun:}$lietou.name{/yun}{yun:}else{/yun}
+        <a href="index.php?c=info" style="color:#f60; text-decoration:underline">您还未完善猎头信息，点击完善！</a>
+        {yun:}/if{/yun}</div>
+        <div class="clear"></div>
+
+<div class="clear"></div>
+  <div class="com_m_index_logintime">上次登录时间：{yun:}$member.login_date|date_format:'%Y-%m-%d %H:%M'{/yun} </div>
+       <div class="clear"></div>
+    <div class="com_index_bj_box">
+  <div class="com_index_bj"><a href="index.php?c=info"><i class="com_index_bjicon com_index_bjiconbj"></i>编辑资料</a></div>
+  <div class="com_index_bj"><a href="index.php?c=resume&act=input" target="_blank"> <i class="com_index_bjicon com_index_bjiconyl"></i>业绩积分</a></div>
+  <div class="com_index_bj com_index_bjend"><a href="index.php?c=comtpl"><i class="com_index_bjicon com_index_bjiconsz"></i>简历入库</a></div>
+
+    </div>
+</div>
+<div class="com_index_sign">{yun:}sign{/yun}</div>
+
+
+
+{yun:}if $guweninfo.id{/yun}
+<div class="com_index_kf">
+<div class="com_m_index_h1"><span class="com_m_index_h1_s">招聘顾问</span></div>
+<div class="com_index_kf_box">
+<div class="com_index_kf_box_user">
+<div class="com_index_kf_box_user_photo"><img src="{yun:}$guweninfo.logo{/yun}" style="width:64px;height:64px"></div>
+<div class="com_index_kf_box_username">{yun:}$guweninfo.username{/yun}</div>
+<div class="">
+{yun:}if $guweninfo.qq{/yun}
+<a target="_blank" href="tencent://message/?uin={yun:}$guweninfo.qq{/yun}&Site={yun:}$config.sy_webname{/yun}&Menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=1:{yun:}$guweninfo.qq{/yun}:12" alt="点击这里给我发消息"></a>
+{yun:}/if{/yun}</div>
+</div>
+<div class="com_index_kf_p">电话：{yun:}$guweninfo.mobile{/yun}</div>
+<div class="com_index_kf_p">微信：{yun:}$guweninfo.weixin{/yun}</div>
+<div class="com_index_kf_p">Q Q：{yun:}$guweninfo.qq{/yun}</div>
+<div class="com_index_kf_p">
+	{yun:}if $atn.uid{/yun}
+	<a href="javascript:void(0)" class="com_index_kf_dz">已点赞</a>
+	{yun:}else{/yun}
+	<a href="javascript:void(0)" onclick="zan('{yun:}$guweninfo.id{/yun}');" class="com_index_kf_dz">点赞</a>
+	{yun:}/if{/yun}
+    {yun:}if is_array($report)&& !$report.result{/yun}
+    <a href="index.php?c=report&act=show"  class="com_index_kf_ts">已投诉</a>
+    {yun:}else{/yun}
+	<a href="javascript:void(0)" onclick="reportgw('{yun:}$guweninfo.id{/yun}','投诉顾问');"  class="com_index_kf_ts">投诉</a>
+    {yun:}/if{/yun}</div>
+</div>
+</div>
+
+{yun:}else{/yun}
+<div class="com_index_kf">
+<div class="com_m_index_h1"><span class="com_m_index_h1_s">我的等级</span></div>
+    <div class="com_index_kf_box">
+        <div class="com_index_kf_p">业绩积分：<label class="result_color">125分</label></div>
+        <div class="com_index_kf_p">客户评分：<label class="result_color">125分</label></div>
+        <div class="com_index_kf_p">综合业绩：<label class="result_color">125分</label></div>
+    </div>
+    <div class="com_index_kf_box fontcolor" style="border-bottom: none;">
+        <div class="com_index_kf_p">业绩积分：</div>
+        <div class="com_index_kf_p">HR下载数量*5</div>
+        <div class="com_index_kf_p">客户积分：</div>
+        <div class="com_index_kf_p">HR评分总数</div>
+        <div class="com_index_kf_p">综合业绩：</div>
+        <div class="com_index_kf_p">业绩积分*70%+客户评分*30%</div>
+    </div>
+</div>
+
+{yun:}/if{/yun}
+
+
+</div>
+<div class="com_m_index_right">
+    {yun:}if $member.status != 1{/yun}
+   	<!--<div class="com_index_wsh fltL">-->
+
+   		<!--<div class="com_index_wsh_box">-->
+        <!--<div class="com_index_wsh_box_p">您的帐号尚未通过审核。</div>-->
+   		<!--未审核的猎头用户无法查看人才简历的联系方式。<br/>-->
+   		<!--您可联系客服电话（{yun:}$config.sy_freewebtel{/yun}）让我们尽快审核。-->
+ 	<!--</div>-->
+
+   	<!--</div>-->
+    {yun:}/if{/yun}
+
+
+
+
+<div class="com_m_index_data">
+<ul>
+
+<!--<li>-->
+<!--<a href="index.php?c=hr" class="com_m_index_data_box">-->
+<!--<div class="com_m_index_data_iconbg com_m_index_data_iconbg1"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">收到简历</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$des_resume{/yun}</div>-->
+<!--<div class="com_m_index_data_bth">未查看 <span class="f60">{yun:}$de_resume{/yun}</span></div>-->
+<!--</a></li>-->
+<!--<li><a href="index.php?c=down"  class="com_m_index_data_box"><div class="com_m_index_data_iconbg com_m_index_data_iconbg2"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">下载简历</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$down_resume{/yun}</div>-->
+<!--<div class="com_m_index_data_bth">还可下载  <span class="f60">{yun:}if $statis.vip_etime>time()||$statis.vip_etime=="0"{/yun}{yun:}if $statis.rating_type==1{/yun}{yun:}$statis.down_resume{/yun}{yun:}else{/yun}不限{yun:}/if{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span></div>-->
+<!--</a></li>-->
+<!--<li class="com_m_index_data_end">-->
+<!--<div class="com_m_index_data_end_job">-->
+<!--<a href="index.php?c=job&w=1">-->
+<!--<div class="com_m_index_data_iconbg com_m_index_data_iconbg3"><i class="com_m_index_data_icon"></i></div>-->
+<!--<div class="com_m_index_data_name">职位管理</div>-->
+<!--<div class="com_m_index_data_n">{yun:}$normal_job_num{/yun}</div>-->
+<!--</a>-->
+<!--<div class="com_m_index_data_fbbth">-->
+<!--<a href="javascript:void(0);" onclick="jobadd_url('{yun:}$addjobnum{/yun}','{yun:}$config.integral_job{/yun}','{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}');return false;">发布职位</a></div>-->
+<!--</div>-->
+<!--</li>-->
+</ul>
+</div>
+
+
+
+
+<script type="text/javascript">
+function jobshuaxin(id){
+	{yun:}if $shuaxuanjobs{/yun}
+	var i={yun:}$des_shuaxuanjobs{/yun};
+			var num="{yun:}$config.integral_jobefresh{/yun}";
+			var breakmsg = '本次共刷新'+i+'个职位,需扣除'+i+'个刷新数量,或消耗'+(num*i)+'{yun:}$config.integral_priceunit{/yun}{yun:}$config.integral_pricename{/yun}！';
+			layer.confirm(breakmsg,function(){
+				$.post("{yun:}$config.sy_weburl{/yun}/member/index.php?m=ajax&c=Position_job",{idk:i,ids:id},function(data){
+					if(data==1){
+						layer.msg("刷新成功！",2,9,function(){window.location.reload();});
+					}else{
+						layer.msg(data,2,8);
+					}
+				})
+	});
+	{yun:}else{/yun}
+		layer.msg('您暂无发布的职位！', 2, 8);
+	{yun:}/if{/yun}
+}
+
+
+</script>
+
+    <div class="com_m_index_resume" style="margin-top: 0;">
+        <div class="com_m_index_h1">
+            <a class="com_m_index_h1_s hovers bg_current" href="/member/index.php?c=index">推荐分析</a>
+            <a class="com_m_index_h1_s hovers" href="/member/index.php?c=index&kind=recent">近期推荐的候选人</a>
+            <a class="com_m_index_h1_s hovers" href="/member/index.php?c=index&kind=newjobs">最新职位</a>
+            <a href="index.php?c=attention_me" class="com_m_index_h1_s_a" target="_blank" style="display: none;">查看关注我公司的人才>></a>
+        </div>
+        <div class="tj_content">
+            <div class="kuang_sou">
+                <input type="text" class="inputk" placeholder="请输入您需要搜索的公司或职位">
+            </div>
+
+            <input id="sdate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}$sdate|date_format:'%Y-%m-%d'{/yun}" name="sdate">
+            <link rel="stylesheet" href="{yun:}$config.sy_weburl{/yun}/js/datepicker/css/font-awesome.min.css" type="text/css">
+            <script src="{yun:}$config.sy_weburl{/yun}/js/datepicker/foundation-datepicker.min.js"></script>
+            <input id="edate" class="tongji_info_text" type="text" readonly="" size="15" value="{yun:}$edate|date_format:'%Y-%m-%d'{/yun}" name="edate">
+            <script type="text/javascript">
+                var checkin = $('#sdate').fdatepicker({
+                    format: 'yyyy-mm-dd',startView:4,minView:2
+                }).on('changeDate', function (ev) {
+                    if (ev.date.valueOf() > checkout.date.valueOf()) {
+                        var newDate = new Date(ev.date)
+                        newDate.setDate(newDate.getDate() + 1);
+                        checkout.update(newDate);
+                    }
+                    checkin.hide();
+                    $('#edate')[0].focus();
+                }).data('datepicker');
+                var checkout = $('#edate').fdatepicker({
+                    format: 'yyyy-mm-dd',startView:4,minView:2,
+                    onRender: function (date) {
+                        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+                    }
+                }).on('changeDate', function (ev) {
+                    checkout.hide();
+                }).data('datepicker');
+            </script>
+
+            <input type="submit" value="搜索" class="tongji_info_text_sub"/>
+            <div class="tongj_box">
+                <div class="tongj_list"><div class="tongj_list_name">日期</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">30</span>天</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 服务企业数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">12</span>家</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐职位数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>个</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐简历数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>份</div></div>
+                <div class="tongj_list tongj_list_last"><div class="tongj_list_name"> 简历下载率</div><div class="tongj_list_b"><span class="tongj_list_b_n">30%</span></div></div>
+            </div>
+
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w370" style="text-align:left">职位</span>
+                <span class="job_news_list_span job_w150">推荐时间</span>
+                <span class="job_news_list_span job_w150">推荐简历数</span>
+                <span class="job_news_list_span job_w100">简历下载量</span>
+            </div>
+            <div class="job_news_list line_heigh35">
+                <span class="job_news_list_span job_w370 line_heigh18">
+                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <label class="tj_time">2017-12-17</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <a class="tj_nums" href="#">3份简历</a></span>
+                <span class="job_news_list_span job_w100">
+                    <a class="tj_nums" href="#">3份简历</a> </span>
+            </div>
+            <div class="job_news_list line_heigh35">
+                <span class="job_news_list_span job_w370 line_heigh18">
+                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <label class="tj_time">2017-12-17</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <a class="tj_nums" href="#">3份简历</a></span>
+                <span class="job_news_list_span job_w100">
+                    <a class="tj_nums" href="#">3份简历</a> </span>
+            </div>
+            <div class="job_news_list line_heigh35">
+                <span class="job_news_list_span job_w370 line_heigh18">
+                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <label class="tj_time">2017-12-17</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <a class="tj_nums" href="#">3份简历</a></span>
+                <span class="job_news_list_span job_w100">
+                    <a class="tj_nums" href="#">3份简历</a> </span>
+            </div>
+            <div class="job_news_list line_heigh35">
+                <span class="job_news_list_span job_w370 line_heigh18">
+                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <label class="tj_time">2017-12-17</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <a class="tj_nums" href="#">3份简历</a></span>
+                <span class="job_news_list_span job_w100">
+                    <a class="tj_nums" href="#">3份简历</a> </span>
+            </div>
+            <div class="job_news_list line_heigh35">
+                <span class="job_news_list_span job_w370 line_heigh18">
+                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <label class="tj_time">2017-12-17</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <a class="tj_nums" href="#">3份简历</a></span>
+                <span class="job_news_list_span job_w100">
+                    <a class="tj_nums" href="#">3份简历</a> </span>
+            </div>
+            <div class="pages_btns">
+                <span class="page_butt">上一页</span>
+                <span class="page_butt">1</span>
+                <span class="page_butt">2</span>
+                <span class="page_butt">3</span>
+                <span class="page_butt">4</span>
+                <span class="page_butt">5</span>
+                <span class="page_butt">6</span>
+                <span class="page_butt">…</span>
+                <span class="page_butt">15</span>
+                <span class="page_butt">下一页</span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="com_m_index_resume">
+        <div class="com_m_index_h1">
+            <span class="com_m_index_h1_s" style="padding-left: 0">猎头排行榜</span>
+            <span class="bangbtn">
+                <label class="bagn_item cur_select">月榜</label>
+                <label class="bagn_item">周榜</label>
+                <label class="bagn_item">日榜</label>
+            </span>
+        </div>
+        <div class="tj_content">
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150" style="text-align:left">猎头名称</span>
+                <span class="job_news_list_span job_w150">推荐职位数</span>
+                <span class="job_news_list_span job_w150">推荐简历数</span>
+                <span class="job_news_list_span job_w100">简历下载率</span>
+                <span class="job_news_list_span job_w100">简历下载量</span>
+                <span class="job_news_list_span job_w100">排行榜</span>
+            </div>
+
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+            <div class="job_news_list">
+                <span class="job_news_list_span job_w150">
+                        <label class="job_namer" href="#">杨洋</label>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w150">
+                    <span class="font_cc">总计<label class="tj_numjl">117</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc"><label class="tj_numjl">68</label>%</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">总计<label class="tj_numjl">68</label>份</span>
+                </span>
+                <span class="job_news_list_span job_w100">
+                    <span class="font_cc">第四名</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+</div></div>
+</div>
+ <!----end--->
+  <!--刷新职位提示弹出框-->
+
+<div id="shuaxin" style="display:none;">
+<div class="sx_pd">
+<div class="sx_top">
+<dl>
+   <dt></dt>
+   <dd>
+       <div>今天还没刷新，刷新职位将<em class="sx_bot_or">职位排名提前</em><br/>让人才更容易看到你，<em class="sx_bot_or">提高职位申请率！</em></div>
+       <div class="sx_top_t">
+            <em class="sx_top_t_tt">刷新前请确认以下信息准确完整：</em>
+            <p>联系电话：{yun:}$lietou.linktel{/yun}</p>
+            <p>上次刷新时间：{yun:}$jobs.lastupdate|date_format:"%Y-%m-%d %H:%M:%S"{/yun}</p>
+            <p>招聘职位：{yun:}$jobs.name{/yun} </p>
+       </div>
+    </dd>
+</dl>
+</div>
+</div>
+<div class="sx_bot">
+     <a class="sx_bot_sx" href="javascript:void(0)" onclick="jobrefresh({yun:}$jobs.id{/yun});">刷新</a>
+     <a class="sx_bot_qx" href="javascript:layer.closeAll();">取消</a>
+</div>
+
+</div>
+<!--提示弹出框 end-->
+<!--投诉顾问弹出框-->
+<div id="{yun:}$guweninfo.id{/yun}" style="display:none;">
+  <div class="Binding_pop_box" style="padding:10px;width:330px;height:200px; background:#fff;">
+    <div class="Binding_pop_box_msg">您要投诉的顾问是：{yun:}$guweninfo.username{/yun}</div>
+    <div class="popjb_tip">为了能够给您提供高质量的服务，反馈具体情况，我们会第一时间给您答复！</div>
+
+      <div class="">
+     	 <textarea id="reason" name="reason" class="popjb_text"></textarea>
+      </div>
+      <div class="Binding_pop_sub" style="margin-top:15px;"> <span class="Binding_pop_box_list_left">&nbsp;</span>
+        <input class="com_pop_bth_qd" onclick="reportSub('index.php?c=report')" type="button" value="确定">
+		<input type='hidden' value="{yun:}$guweninfo.id{/yun}" id='eid' name='eid'>
+        <input class="com_pop_bth_qx" type="button" value="取消" onclick="layer.closeAll();">
+      </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+{yun:}if $lietou.hy!="" && $jobs.name!="" && $jobs.lastupdate<$time && $smarty.cookies.jobrefresh!='1'{/yun}
+	$.layer({
+		type : 1,
+		title : '刷新职位',
+		closeBtn : [0 , true],
+		border : [10 , 0.3 , '#000', true],
+		area : ['500px','320px'],
+		page : {dom :"#shuaxin"}
+	});
+
+{yun:}/if{/yun}
+
+function reportgw(eid,title){
+	$.layer({
+		type : 1,
+		title :title,
+		closeBtn : [0 , true],
+		border : [10 , 0.3 , '#000', true],
+		area : ['350px','auto'],
+		page : {dom :"#"+eid}
+	});
+}
+function reportSub(url){
+	var reason=$("#reason").val();
+	var eid=$("#eid").val();
+	if(reason==''){
+		layer.msg('请填写投诉内容！', 2, 8);return false;
+	}
+	$.post(url,{reason:reason,eid:eid},function(data){
+		layer.closeAll();
+		if(data=='0'){
+			layer.msg('投诉失败！', 2, 8);
+		}else if(data=='1'){
+			layer.msg('投诉成功！', 2, 9,function(){window.location.reload();});
+		}else if(data=='2'){
+			layer.msg('已投诉成功，等待管理员回复！', 2, 8);
+		}
+	});
+}
+function zan(id){
+	$.post("index.php?m=ajax&c=guwenZan",{id:id},function(data){
+		if(data=='2'){
+			layer.msg('请不要重复点赞！', 2, 8);
+		}else if(data=='1'){
+			layer.msg('点赞成功！',2,9,function(){window.location.reload();});
+			//layer.msg("刷新成功！",2,9,function(){window.location.reload();});
+		}
+	});
+}
+</script>
+{yun:}include file="$ltstyle/footer.htm"{/yun}

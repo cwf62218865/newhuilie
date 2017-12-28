@@ -294,7 +294,7 @@ body,div{margin: 0 ;padding: 0;}
             <li>
               <div class=tit><font color="#FF0000">*</font> 职位名称：</div>
               <div class=textbox>
-              <INPUT type="text" size="45" name="name" id='name'value="{yun:}$row.name{/yun}" style="float:left;width: 250px;" class="com_info_text">
+              <INPUT type="text" size="45" name="name" id='name'value="{yun:}$row.name{/yun}" style="float:left" class="com_info_text">
   			<span id="by_name" class="errordisplay">职位名不能为空</span> </div>
             </li>
 
@@ -308,12 +308,6 @@ body,div{margin: 0 ;padding: 0;}
 		</div>
 		</div>
 		</li>
-              <li>
-                  <div class=tit><font color="#FF0000">*</font> 所属部门：</div>
-                  <div class=textbox>
-                      <INPUT type="text" size="45" name="detail_dept_id" id='detail_dept_id'value="{yun:}$row.detail_dept_id{/yun}" style="float:left;width: 250px;" class="com_info_text"/>
-                      <span id="by_name" class="errordisplay">部门不能为空</span> </div>
-              </li>
 
 
 <li>
@@ -385,12 +379,6 @@ body,div{margin: 0 ;padding: 0;}
               <span class="job_xz_text_line" style="margin-left:10px;color:#666;line-height:40px;"><label><input style="margin-right:5px;" type="checkbox" id="salary_type" name="salary_type" value="1" onclick="change_salary_type()"{yun:}if !$row.minsalary&&!$row.maxsalary&&$row.id{/yun} checked="checked"{yun:}/if{/yun} />面议</label></span>
             </li>
             <li>
-                <div class=tit> <font color="#FF0000">*</font>发放月数：</div>
-                <div class=textbox>
-                    <INPUT type="text" size="45" name="ejob_salary_month" id='ejob_salary_month' {yun:}if $row.ejob_salary_month{/yun} value="{yun:}$row.name{/yun}"{yun:}else{/yun} value="12"{yun:}/if{/yun} style="float:left" class="com_info_text">
-                    <span id="by_name" class="errordisplay">月数不能为空</span> </div>
-            </li>
-            <li>
               <div class=tit><font color="#FF0000">*</font> 职位描述：</div>
               <div class=textbox style="width:513px;">
               
@@ -405,25 +393,8 @@ body,div{margin: 0 ;padding: 0;}
 				<div class="Description_box_mb">模板：<span id="JobRequInfoTemplate"></span></div>
 				</div>
 				<div class="clear"></div>
-                  <textarea name="description" id="description" style="height:180px; width:200px;">
-                     {yun:}if $row.description{/yun} {yun:}$row.description{/yun}{yun:}else{/yun}
-                      <p>职责描述：</p><br>
-                      <p>任职要求：</p>
-                      {yun:}/if{/yun}
-                  </textarea>
+				 <textarea name="description" id="description" style="height:180px; width:200px;">{yun:}$row.description{/yun}</textarea>
                 <span id="by_description" class="errordisplay">不能为空</span></div>
-            </li>
-            <li>
-                <div class=tit> 汇报对象：</div>
-                <div class=textbox>
-                    <INPUT type="text" size="45" name="detail_report" id='detail_report'value="{yun:}$row.detail_report{/yun}" style="float:left" class="com_info_text">
-                    <span id="by_name" class="errordisplay"></span> </div>
-            </li>
-            <li>
-                <div class=tit> 下属人数：</div>
-                <div class=textbox>
-                    <INPUT type="text" size="45" name="detail_subordinate" id='detail_subordinate'value="{yun:}$row.detail_subordinate{/yun}" style="float:left" class="com_info_text">
-                    <span id="by_name" class="errordisplay"></span> </div>
             </li>
             <div class="admin_tit"> <span class="admin_tit_bg">对求职者有什么需求</span><i class="com_admin_ask"></i><span class="remind" style="float:right">以下为选填项</span> </div>
             <li>
@@ -543,7 +514,7 @@ body,div{margin: 0 ;padding: 0;}
                 </div>
               </div>
             </li>
-            <li class="job_add_bc" style="display: none;">
+            <li class="job_add_bc">
               <div class=tit>婚姻状况：</div>
               <div class="textbox textbox2">
                 <div class="text_seclet text_seclet_cur4">

@@ -1,0 +1,561 @@
+/*主要结构*/
+
+/*body {font: 12px/1.5 arial, simsun; color:#333;}
+a {color: #1464B9;text-decoration: none;}
+a:hover {text-decoration: underline;}*/
+
+/*城市选择*/
+.jCitySelector {
+	position:relative;
+	display:inline-block;
+*display:inline;
+*zoom:1;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	vertical-align:top;
+}
+.jCitySelectorPop {
+	background:#fff;
+	box-shadow:6px 6px 8px 0px rgba(0, 0, 0, .3);
+	display:none;
+	position:absolute;
+	top:20px;
+	left:0;
+	width:438px;
+	background-color:#FFF;
+}
+.jCitySelectorPop a {
+	color:#333 !important;
+	text-decoration:none !important;
+	background-color:#FFF;
+	padding-left:3px;
+	margin-right:5px;
+}
+.jCitySelectorBtn {
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	cursor:default;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	position:relative;
+	display:inline-block;
+	color:#333 !important;
+	text-decoration:none !important;
+	background:#FFF url(../../img/icon_location.gif) no-repeat right
+}
+a.jCitySelectorBtn:hover {
+	border-color:#66afe9;
+	color:#000 !important;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)};
+}
+.jCitySelectorHotList{
+	overflow:hidden;
+	*zoom:1;
+}
+.jCitySelectorAllList{
+	list-style:none;
+	*zoom:1;
+	padding:0;
+}
+.jCitySelectorBtnOn {
+	border-color:#66afe9;
+	border-bottom-width:0;
+	border-top-width:1px;
+	background-position:right -60px !important;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)};
+}
+.jCitySelectorBtnOnTop {
+	padding-top:1px;
+	border-bottom-width:1px;
+	border-top-width:0;
+	background-position:right -60px !important;
+}
+.jCitySelectorMaxTip {
+	float:left;
+	color:#666;
+}
+a.jCitySelectorClose {
+	float:right;
+	padding:0 10px;
+	color:#FFF !important;
+	border:1px solid #D96D00;
+	background:#FF8000
+}
+.jCitySelectorClose:hover {
+	background-color:#D96D00;
+}
+.jCitySelectorPopIn {
+	padding:5px 10px;
+	border:1px solid #ccc;
+}
+.jCitySelectorHadList {
+	height:22px;
+}
+.jCitySelectorHadList a {
+	margin:0 3px;
+	padding:2px 16px 2px 6px;
+	color:#FFF !important;
+	border:1px solid #0565AA;
+	background:#067AD0 url(/img/selector/global.png) no-repeat right -1927px;
+}
+.jCitySelectorHadList a:hover {
+	background-position:right -1955px;
+}
+.jCitySelectorTit {
+	margin-bottom:2px;
+	padding-bottom:2px;
+	color:#333;
+	font-weight:700;
+	border-bottom:1px solid #DDD;
+}
+.jCitySelectorItem {
+	margin-bottom:10px;
+	background: #fff;
+}
+.jCitySelectorHasSub {
+	cursor:default;
+	background:url(/img/selector/global.png) no-repeat right -1192px;
+}
+.jCitySelectorListSubItem {
+	float:left;
+	overflow:hidden;
+	width:88px;
+	white-space:nowrap;
+}
+html a.jCitySelectorListSubItem:hover {
+	color:#F97C00 !important;
+}
+.jCitySelector input {
+	cursor:pointer;
+	margin-right:2px;
+	border:0;
+}
+.jCitySelector label {
+	cursor:pointer;
+}
+a.jCitySelectorItemTop {
+	width:100%;
+	background-color:#EFEFEF !important;
+}
+a.jCitySelectorItemTop:hover {
+	background-color:#DDD !important;
+}
+.jCitySelectorListItem {
+	float:left;
+	width:64px;
+	overflow:hidden;
+	white-space:nowrap;
+	border:1px solid #FFF;
+	background: #fff;
+}
+.jCitySelectorListItem:hover {
+	border-color:#F60;
+}
+.jCitySelectorAllList li:after {
+	visibility:hidden;
+	display:block;
+	font-size:0;
+	content:"\20";
+	clear:both;
+	height:0
+}
+.jCitySelectorMaxNum {
+	margin:0 2px;
+	font-family:arial;
+	font-weight:700;
+	color:#F60;
+}
+.jCitySelectorAllList li {
+	position:relative;
+	float:left;
+	zoom:1
+}
+.jCitySelectorListSub {
+	display:none;
+	position:absolute;
+	top:22px;
+	left:0;
+	padding:5px;
+	width:295px;
+	border:2px solid #F60;
+	background-color:#FFF;
+}
+.jCitySelectorPopEn {
+	width:490px;
+}
+.jCitySelectorPopEn .jCitySelectorListItem {
+	width:100px;
+}
+.jCitySelectorPopEn .jCitySelectorListSubItem {
+	width:100px;
+}
+.jCitySelectorPopEn .jCitySelectorListSub {
+	left:80px;
+}
+.jCitySelectorPopEn .jCitySelectorListSub {
+	width:260px;
+}
+a.jCitySelectorOn {
+	color:#FFF !important;
+	border-color:#F60;
+	background:#F60;
+}
+/* 行业, 职位选择 */
+.jJobSelectorLoaded {
+	background:none !important;
+}
+.jJobSelector {
+	min-width:20px;
+	_padding-right:17px;
+	background:url(/img/wait_loader.gif) no-repeat 0 center;
+}
+.jIndSelectorPop {
+	background:#fff;
+	box-shadow:6px 6px 8px 0px rgba(0, 0, 0, .3);
+	display:none;
+	position:absolute;
+	z-index:1;
+	top:20px;
+	left:0;
+	width:380px;
+	background-color:#FFF;
+}
+.jIndSelectorPopIn {
+	padding:5px 10px;
+	top:20px;
+	left:0;
+	border:1px solid #AAA;
+}
+.jIndSelectorPop a {
+	color:#333 !important;
+	text-decoration:none !important;
+	background-color:#FFF;
+}
+.jIndSelectorBtnTit {
+	display:inline-block;
+	margin-right:5px;
+}
+.jIndSelectorBtn {
+	cursor:default;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	position:relative;
+	z-index:2;
+	display:inline-block;
+	padding:0 6px;
+*display:inline;
+*zoom:1;
+	height:26px;
+	line-height:26px;
+	color:#333 !important;
+	text-decoration:none !important;
+	border:1px solid #cdcdcd;
+	background:#FFF url(../images/city_selector_btn.png) no-repeat right 0;
+}
+a.jIndSelectorBtn:hover {
+	border-color:#AAA;
+	color:#000 !important;
+	background-position:right -30px;
+}
+.jIndSelectorBtnOn {
+	border-color:#AAA;
+	border-bottom-width:0;
+	border-top-width:1px;
+	background-position:right -60px !important;
+}
+.jIndSelector {
+	margin-right:20px;
+	position:relative;
+	display:inline-block;
+*display:inline;
+*zoom:1;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	vertical-align:top;
+}
+.jIndSelectorList a {
+	display:block;
+	padding:0 2px;
+	text-align:center;
+	color:#333;
+	border:1px solid #FFF;
+}
+.jIndSelectorList li {
+	float:left;
+	width:50px;
+}
+.jIndSelectorList a.on {
+	color:#FFF !important;
+	border:1px solid #034C8D;
+	background-color:#1464B9;
+}
+.jIndSelectorList a.on:hover {
+	color:#FFF !important;
+	background-color:#1464B9;
+}
+.jIndSelectorList a:hover {
+	text-decoration:none;
+	color:#1464B9;
+	border:1px solid #1464B9;
+	background-color:#FFF;
+}
+.jPosSelectorLoader {
+	display:none
+}
+.jPosSelector {
+	position:relative;;
+*zoom:1;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	vertical-align:top;
+}
+.jPosSelectorPop {
+	background:#fff;
+	box-shadow:6px 6px 8px 0px rgba(0, 0, 0, .3);
+	display:none;
+	position:absolute;
+	z-index:-1;
+	top:20px;
+	left:0;
+	width:670px;
+	background-color:#FFF;
+}
+.jPosSelectorPopIn {
+	padding:5px 10px;
+}
+.jPosSelectorPop a {
+	color:#333 !important;
+	text-decoration:none !important;
+	background-color:#FFF;
+}
+.jPosSelectorBtnTit {
+	margin-right:5px;
+}
+.jPosSelectorBtn {
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	cursor:default;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	position:relative;
+	display:block;
+	color:#333 !important;
+	text-decoration:none !important;
+	background:#FFF url(../../img/icon_trade.gif) no-repeat right
+}
+a.jPosSelectorBtn:hover {
+	border-color:#888;
+	color:#000 !important;
+}
+.jPosSelectorBtnOn {
+	border-color:#888;
+	border-bottom-width:0;
+	border-top-width:1px;
+	background-position:right -60px !important;
+}
+.jPosSelectorBtnOnTop {
+	padding-top:1px;
+	border-bottom-width:1px;
+	border-top-width:0;
+	background-position:right -60px !important;
+}
+.jPosSelectorMaxTip {
+	float:left;
+	color:#666;
+}
+a.jPosSelectorClose {
+	float:right;
+	padding:0 10px;
+	color:#FFF !important;
+	border:1px solid #D96D00;
+	background:#FF8000
+}
+.jPosSelectorClose:hover {
+	background-color:#D96D00;
+}
+/*职位选择*/
+ .jCallingSelectorHadItem {
+	float:left;
+	overflow:hidden;
+	background#fff;
+	padding:0 5px;
+	width:205px;
+	white-space:nowrap;
+	border:1px solid #FFF;
+}
+ .jCallingSelectorHadItem2 {
+	float:left;
+	overflow:hidden;
+	background#fff;
+	padding:0 5px;
+	/*width:150px;*/
+	white-space:nowrap;
+	border:1px solid #FFF;
+}
+a.jCallingSelectorHadItem2:hover {color:#F60;}
+a.jCallingSelectorHadItem3{border:1px solid #F60;color:#F60;}
+
+.jCallingSelectorHadItemOn {
+	border-color:#F60;
+	color:#000 !important;
+}
+.jPosSelectorHadList {
+	height:22px;
+}
+.jPosSelectorHadList a {
+	margin:0 3px;
+	padding:2px 16px 2px 6px;
+	color:#FFF !important;
+	border:1px solid #0565AA;
+	background:#067AD0 url(/img/selector/global.png) no-repeat right -1927px;
+}
+.jPosSelectorHadList a:hover {
+	background-position:right -1955px;
+}
+.jPosSelectorTit {
+	margin-bottom:2px;
+	padding-bottom:2px;
+	color:#333;
+	font-weight:700;
+	border-bottom:1px solid #DDD;
+}
+.jPosSelectorItem {
+	margin-bottom:10px;
+	background: #fff;
+}
+.jPosSelectorHasSub {
+	cursor:default;
+	background:url(/img/selector/global.png) no-repeat right -1192px;
+}
+.jPosSelectorListSubItem {
+	float:left;
+	overflow:hidden;
+	padding:0 5px;
+	width:205px;
+	white-space:nowrap;
+	border:1px solid #FFF;
+}
+html a.jPosSelectorListSubItem:hover, a.jCallingSelectorHadItem:hover{
+	border-color:#F60;
+	color:#000 !important;
+}
+
+
+.jPosSelector input {
+	cursor:pointer;
+	margin-right:2px;
+	border:0;
+}
+.jPosSelector label {
+	cursor:pointer;
+}
+a.jPosSelectorItemTop {
+	display:block;
+	width:100%;
+	font-weight:700;
+	background-color:#EFEFEF !important;
+	border:none;
+	padding:0;
+}
+html a.jPosSelectorItemTop:hover {
+	color:#000 !important;
+	background-color:#DDD !important;
+}
+.jPosSelectorListItem {
+	float:left;
+	margin-right:10px;
+	width:52px;
+	overflow:hidden;
+	padding-left:5px;
+	white-space:nowrap;
+	border:1px solid #FFF;
+}
+.jPosSelectorListItem:hover {
+	border-color:#F60;
+}
+.jPosSelectorAllList .jCallingSelectorAllList li:after {
+	visibility:hidden;
+	display:block;
+	font-size:0;
+	content:"\20";
+	clear:both;
+	height:0
+}
+.jPosSelectorAllList ul{
+	padding:0;
+	list-style:none;
+}
+.jPosSelectorMaxNum {
+	margin:0 2px;
+	font-family:arial;
+	font-weight:700;
+	color:#F60;
+}
+.jPosSelectorListSub {
+	padding:5px;
+	background-color:#FFF;
+}
+.jPosSelectorPopEn {
+	width:550px;
+}
+.jPosSelectorPopEn a.jPosSelectorItemTop {
+	width:100%;
+}
+.jPosSelectorPopEn .jPosSelectorListSubItem .jCallingSelectorHadItem {
+	width:235px;
+}
+a.jPosSelectorOn {
+	color:#FFF !important;
+	border-color:#F60;
+	background:#F60;
+}
+div.jPosSelectorAdv a.jPosSelectorBtn {
+	cursor:pointer;
+	font-size:14px !important;
+	color:#666 !important;
+	border:0;
+	border-left:1px solid #DDD !important;
+	background:url("/img/selector/global.png") no-repeat right -458px !important;
+}
+div.jPosSelectorAdv a.jPosSelectorBtn span {
+	overflow:hidden;
+	text-overflow: ellipsis;
+	display:inline-block;
+*display:inline;
+*zoom:1;
+	width:100px;
+}

@@ -33,7 +33,7 @@ input,textarea{font-family:microsoft yahei;}
 .hp_login_lg_but{width:100%;height:36px;cursor:pointer;line-height:36px;text-align:center;background:#5f8cc1;color:#fff;border:none;}
 .hp_login_lg_but:hover{background:#4477b3;}
 .hp_login_rg{width:100%;margin-top:10px;}
-.hp_login_rg a{width:115px;height:33px;text-align:center;line-height:33px;background:#ebf6ff;border:1px solid #3cb0ed;color:#3cb0ed;display:inline-block;}
+.hp_login_rg a{width:115px;height:33px;text-align:center;line-height:33px;background:#ebf6ff;border:1px solid #a4c5ea;color:#5e8dc1;display:inline-block;border-radius: 3px;}
 .hp_login_rg a:hover{color:#3cb0ed;}
 .hp_banner{width:608px;height:269px;position:relative;margin-left:18px;display:inline-block;overflow:hidden;}
 .index_login_tp{width:100%; float:left; padding:10px 0 5px  0; position:relative}
