@@ -100,8 +100,8 @@ input,textarea{font-family:microsoft yahei;}
 
 .right_nav_ul{width:1100px;height: 45px;background:#fff;}
 .right_nav_ul li{height:45px;width:145px;float: left}
-.right_nav_ul li a{width:145px;height:45px; line-height:45px;padding-left:65px; display:block;color:#666; position:relative}
-.right_nav_ul li a:hover{background:#f4f7fb}
+.right_nav_ul li a{width:145px;height:45px; line-height:45px;padding-left:45px; display:block;color:#666; position:relative}
+.right_nav_ul li:hover{background:#f4f7fb}
 .com_left_icon{width:16px;height:16px; display:inline-block; position:absolute;left:25px;top:14px;}
 .com_left_icon_fb{ background:url(../images/left_nav_icon_rx.png) no-repeat  0 0;}
 .com_left_icon_zwgl{ background:url(../images/left_nav_icon_rx.png) no-repeat  0 -39px;}
