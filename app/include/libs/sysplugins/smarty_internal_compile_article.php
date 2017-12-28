@@ -230,6 +230,7 @@ class Smarty_Internal_Compile_Article extends Smarty_Internal_CompileBase{
             }
 		}';
         global $DiyTagOutputStr;
+
         $DiyTagOutputStr[]=$OutputStr;
         return SmartyOutputStr($this,$compiler,$_attr,'article',$name,'',$name);
     }

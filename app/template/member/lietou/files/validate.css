@@ -1,0 +1,12 @@
+.Validform_checktip{ margin-left:8px; line-height:24px;height:24px;overflow:hidden;color:#999;font-size:12px;}
+.Validform_right{color:#71b83d;padding-left:20px;}
+.Validform_wrong{color:red;padding-left:10px;white-space:nowrap;}
+.Validform_loading{padding-left:20px;}
+.hh_rc_ta_box .input_text.Validform_error{border:solid 1px  #e15151; background: #FFFFFF;}
+.hh_rc_ta_box.hhrcw_ta_box .textarea.error{border:solid 1px  #e15151; background: #FFFFFF;}
+#Validform_msg{display:none;position: absolute; height: 0;width: 0;overflow: hidden;}
+#Validform_msg .iframe{ z-index:-1;}
+#Validform_msg .Validform_title{background:#000;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{text-align:left;}

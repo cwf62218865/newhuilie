@@ -1,0 +1,208 @@
+.com_index_kf_box{
+    width: 225px;
+    height: auto;
+    margin-left: 20px;
+    float: left;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+    line-height: 30px;
+    margin-top: 10px;
+    padding-left: 0px;
+}
+.com_index_kf_p{
+    line-height: 35px;
+    color: #666666;
+}
+.fontcolor .com_index_kf_p{
+    color: #999999;
+}
+.result_color{
+    margin-left: 40px;
+    color: #ff6600;
+}
+.com_m_index_logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.com_m_index_logo_xg{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+}
+.com_index_bj_box{
+    margin-top: 20px;
+}
+.com_m_index_h1{
+    height: 50px;
+    padding: 0;
+    background: #cad4e1;
+}
+.com_m_index_h1_s{
+    height: 46px;
+    margin-top: 4px;
+    line-height: 46px;
+    padding: 0px 20px;
+    margin-left: 15px;
+}
+.bg_current{
+    background: #ffffff;
+}
+.hovers:hover{
+    background: #ecf0f1;
+    color: #333;
+    text-decoration: none;
+}
+.bg_cur{
+    background: #ecf0f1;
+}
+.tj_content{
+    width: 770px;
+    height: auto;
+    clear: both;
+    margin-top: 20px;
+    float: left;
+    margin-left: 20px;
+}
+.kuang_sou{
+    height: 34px;
+    width: 300px;
+    margin-right: 10px;
+    display: inline-block;
+    border: 1px solid #dddddd;
+    float: left;
+}
+.inputk{
+    height: 20px;
+    margin-top: 7px;
+    margin-left: 20px;
+    width:260px;
+    border: none;
+    outline: none;
+}
+.width150{
+    width: 150px;
+}
+.width150 .inputk{
+    width: 110px;
+}
+.tongji_info_text{
+    height: 36px;
+}
+.tongji_info_text_sub{
+    height: 34px;
+}
+.tongj_list{
+    width: 106px;
+}
+.tongj_box{
+    border-bottom: none;
+    margin-top: 30px;
+}
+.job_news_list_h1{
+    background: #fff;
+}
+.job_news_list_span{
+    font-size: 16px;
+    color: #333333;
+}
+.job_namer{
+    color: #4b6e88;
+    font-size: 14px;
+}
+.job_status,.com_namer{
+    color: #999999;
+    font-size: 12px;
+}
+.tj_time{
+    color: #999999;
+    font-size: 14px;
+}
+.tj_nums{
+    color: #4b6e88;
+    font-size: 14px;
+}
+.com_namer:hover{
+    color: #999999;
+}
+.pages_btns{
+    width: 100%;
+    text-align: right;
+    clear: both;
+    float: left;
+    margin-top: 20px;
+}
+.page_butt{
+   display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid #eeeeee;
+    cursor: pointer;
+}
+.page_butt:hover{
+    background: #4b6e88;
+    color: #fff;
+    border: 1px solid #4b6e88;
+}
+.bangbtn{
+    float: right;
+    margin-right:50px;
+    margin-top: 14px;
+}
+.bagn_item{
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0px 10px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    color: #999999;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.bagn_item:hover{
+    background: #4b6e88;
+    color: #fff;
+}
+.cur_select{
+    background: #4b6e88;
+    color: #fff;
+}
+.tj_numjl{
+    color: #ff6600;
+    font-size: 18px;
+}
+.tj_xz{
+    color: #ff6600;
+    font-size: 14px;
+}
+.font_cc{
+    font-size: 14px;
+    color: #999999;
+}
+.header_top_main{
+    display: none;
+}
+.com_index_kf .com_m_index_h1{
+    background: none;
+}
+.com_index_kf .com_m_index_h1 .com_m_index_h1_s{
+    padding-left: 0px;
+}
+.com_m_index_resume:nth-child(1){
+    margin-top: 0;
+}
+.com_index_bj a:hover{
+    text-decoration: none;
+}
+.line_heigh35{
+    line-height: 35px;
+}
+.line_heigh18{
+    line-height: 18px;
+}
