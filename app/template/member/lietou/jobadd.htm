@@ -265,6 +265,18 @@ function returnmessagejob(frame_id){
 		} 
 	}
 }
+    function addjobname(){
+
+        $.layer({
+            type : 1,
+            title :'提示信息',
+            closeBtn : [0 , true],
+            border : [10 , 0.3 , '#000', true],
+            area : ['320px','200px'],
+            page : {dom :"#infoboxadd"}
+        });
+    }
+
 </script>
 <style>
 * {margin: 0 ;padding: 0;}
@@ -286,15 +298,25 @@ body,div{margin: 0 ;padding: 0;}
                         <div class="tit"><font color="#FF0000">*</font> 企业名称：</div>
                         <div class="text_seclet text_seclet_cur" style="z-index:100">
                             <input type="hidden" name="job_post" id="job_post" >
-                            <input class="SpFormLBut text_seclet_w250 " type="button" value="请选择">
-                            <div class="tit malef0"> +新增企业</div>
+                            <input class="SpFormLBut text_seclet_w250 " type="button" value="请选择" id="com" onclick="search_show('job_com');">
+                            <div id="job_com" class="cus-sel-opt-panel" style="display: none;">
+                                <ul class="Search_Condition_box_list">
+                                    <li><a href="javascript:;" onclick="selects('54','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                    <li><a href="javascript:;" onclick="selects('57','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                    <li><a href="javascript:;" onclick="selects('58','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                    <li><a href="javascript:;" onclick="selects('59','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                    <li><a href="javascript:;" onclick="selects('60','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                    <li><a href="javascript:;" onclick="selects('58','com','重庆谷歌技术有限公司');">重庆谷歌技术有限公司</a></li>
+                                </ul>
+                            </div>
+                            <div class="tit malef0" onclick="addjobname()"> +新增企业</div>
                         </div>
                     </li>
 
                     <li>
                         <div class="tit"><font color="#FF0000">*</font> 所属部门：</div>
                         <div class="textbox">
-                            <div class="text_seclet text_seclet_cur" style="z-index:100">
+                            <div class="text_seclet text_seclet_cur" style="z-index:1">
                                 <input type="hidden" name="job_post" id="" value="">
                                 <input class="SpFormLBut text_seclet_w250 " type="text" placeholder="请填写职位类别" style="background: #fff;cursor: text">
                             </div>
@@ -679,6 +701,30 @@ body,div{margin: 0 ;padding: 0;}
          <div class="jonadd_prompt_share">让企业品牌更红，让招聘效果更高，立即分享转发招聘职位吧</div>
         <div class="jonadd_prompt_share_opt" id="share" style="height:50px;"></div>
 	</div>
+
+    <div  class="infoboxp22"  id="infoboxadd" style="display:none;">
+        <div>
+            <form action="" method="post" id="formstatus" target="supportiframe">
+                <input name="r_uid" value="0" type="hidden">
+                <input name="eid" value="0" type="hidden">
+                <input name="pingfen" class="pingfen" value="0" type="hidden">
+                <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shan"></use>
+                    </svg>
+                </button>
+
+                <div class="pjnr">评价内容:</div>
+                <div class="jb_infobox" style="width: 100%;">
+                    <textarea id="pjcontent" placeholder="请输入服务评价内容" name="r_reason" cols="30" rows="9" class="hr_textarea" maxlength="100"></textarea>
+                    <div class="numts">还可输入<label class="xznum">100</label>字</div>
+                </div>
+                <div class="jb_infobox" style="width: 100%;">
+                    <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
+                </div>
+            </form>
+        </div>
+    </div>
 	
 </div>
 

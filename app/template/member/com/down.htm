@@ -1,7 +1,16 @@
 {yun:}include file="$comstyle/header.htm"{/yun}
+<style type="text/css">
+    .icon {
+        width: 1em; height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+    }
+</style>
 <div class="w1000">
 <div class="admin_mainbody"> {yun:}include file="$comstyle/left.htm"{/yun}
   <link href="{yun:}$comstyle{/yun}/images/index_style.css" type=text/css rel=stylesheet>
+    <link href="{yun:}$style{/yun}/style/pinfen.css" type=text/css rel=stylesheet>
   <div class=right_box>
     <div class=admincont_box>
     <div class="job_list_tit">
@@ -94,25 +103,49 @@
                 <div class="jb_infobox" style="width: 100%;">
                   <button type="submit"   name='submit' value='1' class="submit_btn" style="margin-left:80px;">确认</button>
                   &nbsp;&nbsp;
-                  <button type="button" id='zxxCancelBtn'  class="cancel_btn">取消</button>
+                  <button type="button" id=''  class="cancel_btn">取消</button>
                 </div>
               </form>
             </div>
           </div>
           <div  class="infoboxp22"  id="infobox2" style="display:none; ">
               <div>
-                  <form action="index.php?c=down&act=report" method="post" id="formstatus" target="supportiframe">
+                  <form action="" method="post" id="formstatus" target="supportiframe">
                       <input name="r_uid" value="0" type="hidden">
                       <input name="eid" value="0" type="hidden">
-                      <input name="r_name" value="0" type="hidden">
-                      <div>猎头评分</div>
+                      <input name="pingfen" class="pingfen" value="0" type="hidden">
+                      <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                          <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-shan"></use>
+                          </svg>
+                      </button>
+                      <div class="com_pf">猎头评分：
+                          <label class="iconsxx">
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                          </label>
+                          <label class="fenshu"><label class="number">5</label>分</label>
+                      </div>
+                      <div class="pjnr">评价内容:</div>
                       <div class="jb_infobox" style="width: 100%;">
-                          <textarea id="alertcontent" style="width:310px;margin:5px" name="r_reason" cols="30" rows="9" class="hr_textarea"></textarea>
+                          <textarea id="pjcontent" placeholder="请输入服务评价内容" name="r_reason" cols="30" rows="9" class="hr_textarea" maxlength="100"></textarea>
+                          <div class="numts">还可输入<label class="xznum">100</label>字</div>
                       </div>
                       <div class="jb_infobox" style="width: 100%;">
-                          <button type="submit"   name='submit' value='1' class="submit_btn" style="margin-left:80px;">确认</button>
-                          &nbsp;&nbsp;
-                          <button type="button" id='zxxCancelBtn'  class="cancel_btn">取消</button>
+                          <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
                       </div>
                   </form>
               </div>
@@ -130,14 +163,39 @@
         $("#remark").val(remark);
         $.layer({
             type : 1,
-            title :'猎头评分',
+            title :'评价猎头服务',
             closeBtn : [0 , true],
             border : [10 , 0.3 , '#000', true],
-            area : ['320px','200px'],
+            area : ['500px','360px'],
             page : {dom :"#infobox2"}
         });
     }
-function Delete(name){
+
+    $("#pjcontent").on("input propertychange",function () {
+        var pjcontent=$("#pjcontent").val();
+        var num=100-pjcontent.length;
+        if(num<0){
+            num=0;
+        }
+        $(".xznum").html(num);
+    })
+
+
+    //评论星星
+
+    var num  = finalnum = 0;
+    var tempnum =5;
+    var lis = $(".iconsxx .icon");
+    lis.click(function () {
+        var lists=$(this).closest(".one_xing");
+        finalnum=$(this).index();
+        for(var i=0;i<lis.length;i++){
+            lis.eq(i).find("use").attr("xlink:href",i <= finalnum ? "#icon-pingfen" : "#icon-pingfenbanfen");
+            $(".pingfen").val(finalnum+1);
+        }
+    });
+
+    function Delete(name){
 	var chk_value =[];    
 	$('input[name="'+name+'"]:checked').each(function(){    
 		chk_value.push($(this).val());   
