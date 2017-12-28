@@ -267,4 +267,11 @@ $phpyun_zhaopinhui_com=array('id'=>'int(11)','uid'=>'int(11)','zid'=>'int(11)','
 ; 
 $phpyun_zhaopinhui_pic=array('id'=>'int(11)','title'=>'varchar(200)','pic'=>'varchar(200)','sort'=>'int(11)','zid'=>'int(11)','is_themb'=>'int(5)','did'=>'int(11)')
 ;
+
+$phpyun_lietou=array('uid'=>'int(11)','name'=>'varchar(25)','hy'=>'int(5)','pr'=>'int(5)','provinceid'=>'int(5)','cityid'=>'int(5)','three_cityid'=>'int(5)','mun'=>'int(3)','sdate'=>'varchar(20)','money'=>'int(11)','moneytype'=>'int(11)','content'=>'text','address'=>'varchar(100)','zip'=>'varchar(10)','linkman'=>'varchar(50)','linkjob'=>'varchar(50)','linkqq'=>'varchar(20)','linkphone'=>'varchar(100)','linktel'=>'varchar(50)','linkmail'=>'varchar(150)','website'=>'varchar(100)','x'=>'varchar(100)','y'=>'varchar(100)','logo'=>'varchar(100)','payd'=>'int(8)','integral'=>'int(10)','lastupdate'=>'varchar(10)','cloudtype'=>'int(2)','jobtime'=>'int(11)','r_status'=>'int(2)','firmpic'=>'varchar(100)','rec'=>'int(11)','hits'=>'int(11)','ant_num'=>'int(11)','pl_time'=>'int(11)','pl_status'=>'int(11)','order'=>'int(11) unsigned','admin_remark'=>'varchar(255)','email_dy'=>'int(11)','msg_dy'=>'int(11)','sync'=>'int(11) unsigned','hy_dy'=>'varchar(100)','moblie_status'=>'int(1)','email_status'=>'int(1)','yyzz_status'=>'int(1)','hottime'=>'int(11)','did'=>'int(11)','busstops'=>'text','infostatus'=>'int(11)','conid'=>'int(11)','addtime'=>'int(11)','telphone'=>'varchar(80)','comqcode'=>'varchar(200)')
+;
+
+
+$phpyun_pt_resume=array('id'=>'int(11)','name'=>'varchar(25)','sex'=>'tinyint(3)','trade'=>'varchar(60)','	birthday'=>'smallint(4)','experience'=>'smallint(5)','location'=>'varchar(60)','wage_hope'=>'int(10)','wage_current'=>'	int(10)','moneyMonthes'=>'int(11)','intention_city'=>'varchar(80)','degree'=>'smallint(5)','	current'=>'tinyint(5)','tag'=>'varchar(160)','mobile'=>'varchar(50)','email'=>'varchar(50)','	intention_jobs'=>'varchar(60)','work_experience'=>'text','edu_experience'=>'text','	project_experience'=>'text','	additions'=>'varchar(200)','	introduce'=>'varchar(255)','addtime'=>'int(11)','refreshtime'=>'int(11)','key'=>'text','click'=>'int(11)','hunterId'=>'int(11)')
+;
 ?>
