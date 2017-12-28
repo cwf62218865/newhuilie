@@ -266,5 +266,5 @@ $phpyun_zhaopinhui=array('id'=>'int(11)','title'=>'varchar(200)','sid'=>'int(11)
 $phpyun_zhaopinhui_com=array('id'=>'int(11)','uid'=>'int(11)','zid'=>'int(11)','jobid'=>'varchar(255)','ctime'=>'int(11)','status'=>'int(11)','statusbody'=>'varchar(100)','inadd'=>'varchar(100)','did'=>'int(11)','sid'=>'int(11)','cid'=>'int(11)','bid'=>'int(11)','price'=>'int(11)')
 ; 
 $phpyun_zhaopinhui_pic=array('id'=>'int(11)','title'=>'varchar(200)','pic'=>'varchar(200)','sort'=>'int(11)','zid'=>'int(11)','is_themb'=>'int(5)','did'=>'int(11)')
-; 
+;
 ?>
