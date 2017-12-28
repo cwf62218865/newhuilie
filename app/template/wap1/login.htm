@@ -1,0 +1,255 @@
+{yun:}include file="$wapstyle/header_cont.htm"{/yun}
+<div class="login_body">
+<section class="list">
+<article>
+	{yun:}if $wxid && ($wxnickname || $wxpic){/yun}
+	<div class="lg_at">
+  	<dl>
+      <dt><img style="width:75px;height:75px;border-radius:50px;" src="{yun:}$wxpic{/yun}"/></dt>
+      <dd class="lg_at_tit">{yun:}$wxnickname{/yun}</dd>
+      <dd class="lg_at_cr">您已登录微信账号</dd>
+    </dl>
+  </div>
+	<div class="lg_bd">
+		<div class="lg_bd_z">绑定已有账号</div>
+		<div class="lg_bd_r">如果您还没有会员账号，<a href="{yun:}url m=wap c=register{/yun}">请先注册！</a></div>
+  </div>
+	{yun:}/if{/yun}
+        	<div class="login_box_h1_d">
+	  		<ul class="login_box_h_list">
+					<li id="acount_login" class="login_box_h_list_cur">账户密码登录<i class="login_box_h_icon"></i></li>
+					{yun:}if $config.sy_msg_isopen==1{/yun}
+					{yun:}if $config.sy_msg_login==1{/yun}
+					<li id="mobile_login" class="">手机号登录<i class="login_box_h_icon"></i></li>
+					{yun:}/if{/yun}
+					{yun:}/if{/yun}
+				</ul>
+	  	</div>
+  <div class=" ">
+    <div class="login_body_cont">
+
+      <form action="{yun:}$config_wapdomain{/yun}/index.php?c=login" method="post" onsubmit="return mlogin(this);">
+      	<input type="hidden" name="act_login" id="act_login" value="0"/>
+        <input name="usertype" type="hidden" value="{yun:}$smarty.get.usertype{/yun}"/>
+        <input name="wxid" type="hidden" value="{yun:}$smarty.get.wxid{/yun}"/>
+        {yun:}if $smarty.get.job{/yun}<input name="job" type="hidden" value="{yun:}$smarty.get.job{/yun}"/>{yun:}/if{/yun}
+        <dl class="forminputitem" id="login_normal_box" style="padding-top:0px;">
+          <dd>
+            <div class="c inputitem_w">
+              <i class="reg_icon_font login_icon_n1 "></i>
+              <input name="username" type="text" id="username" value="{yun:}$smarty.get.username{/yun}" placeholder="邮箱/手机号/用户名" class="inputitemtxt"/>
+            </div>
+          </dd>
+          <dd>
+            <div class="c ico_eye_close inputitem_w">
+            <i class="reg_icon_font login_icon_n2 "></i>
+              <input name="password" type="password" id="password"  class="inputitemtxt" placeholder="请输入密码" />
+              <em class="viewpwd" id="showPwd" onclick="showPwd(this)"></em> </div>
+          </dd>
+		  		
+        </dl>
+        <!------------------手机动态码登录--------------->
+				{yun:}if $config.sy_msg_login==1{/yun}	
+				<div class="login_sj_box login_sj_box_mb" id="login_sj_box" style="display:none;">
+                
+				  <div class="c inputitem_w">
+                  <i class="reg_icon_font login_icon_n4 "></i>
+				  	<input name="moblie" id="usermoblie" type="text" class="inputitemtxt" value="" placeholder="请输入手机号码">
+				  	<div class="logoin_msg none" id="show_mobile">
+					  <div class="logoin_msg_tx" >请填写正确的手机号</div>
+					  <div class="logoin_msg_icon"></div>
+					  </div>
+				  </div>
+				</div>
+				<div class="clear"></div>
+				{yun:}/if{/yun}
+				
+			  	<div style="margin-bottom:10px;">
+				  	{yun:}if $config.code_kind==3{/yun}	
+						<!---geetest----->
+						<div id="mask"></div>
+						<div id="popup-captcha-mobile" data-id='sublogin' data-type='click'></div>
+						<input type='hidden' id="popup-submit"/>
+						{yun:}else{/yun}
+                        
+			      <div class="c ico_name inputitem_w login_sj_box_mb">
+		        	<i class="reg_icon_font login_icon_n8 "></i>
+		          <input class="inputitemtxt" placeholder="填写验证码" name="authcode" id="checkcode" type="text" maxlength="4"/>
+		        	<div class="rg_img">
+		        	<img id="vcode_img" class="authcode" src="{yun:}$config.sy_wapdomain{/yun}/authcode.inc.php" onclick="checkCode('vcode_img');"/>
+		        	<input type="hidden" id="code_kind" value="1" />
+		        	</div>
+			      </div>
+						{yun:}/if{/yun}
+					</div>
+				
+				<div class="login_sj_box_mb" id="login_sjyz_box" style="display:none;">
+					<div class="c ico_name inputitem_w">
+                     	<i class="reg_icon_font login_icon_n8 "></i>
+				  	<input name="dynamiccode" type="text" class="inputitemtxt" id="dynamiccode" value="" placeholder="验证码">
+				  	<div class="logoin_msg none" id="show_dynamiccode">
+					  <div class="logoin_msg_tx" >请填写发送的验证码</div>
+					  <div class="logoin_msg_icon"></div>
+					  </div>
+					  <a href="javascript:void(0);" class="login_m_send2" id="send_msg_tip" onclick="send_msg('{yun:}$config_wapdomain{/yun}/index.php?c=login&a=sendmsg');">发送验证码</span></span></a>
+				  </div>
+				</div>
+				<div class="login_body_xc"> <span class="photochk">
+            <input type="checkbox" name="longLogin" id="longLogin" class="inputChk">
+            <em class="blue">下次自动登录</em> </span> <a href="{yun:}url m=wap c=forgetpw{/yun}" class="getpwd">忘记密码</a>
+        
+				</div>
+                <div>
+			  		{yun:}if $checkurl!="{yun:}url m=wap c=forgetpw{/yun}"{/yun}
+	          <input type="hidden" name="checkurl" value="{yun:}$checkurl{/yun}" />
+			  		{yun:}/if{/yun}
+	          <input type="submit" name="submit" id="sublogin"  value="登录" class="inputSubmit"/>
+        </div>
+      </form>
+    </div>
+	</div>
+  {yun:}if $config.sy_qqlogin==1 || $config.sy_sinalogin==1 || $config.wx_rz==1{/yun}
+  <div class="login_other">
+  <span class="login_other_span">其他方式登录</span>
+	{yun:}if $config.sy_sinalogin==1{/yun}
+	<a href="{yun:}url m=sinaconnect{/yun}" title="sina" class="login_other_icon login_other_xl"><i class="iconfont_sina"></i></a>
+	{yun:}/if{/yun}
+	{yun:}if $config.sy_qqlogin==1{/yun}
+	<a href="{yun:}$config.sy_weburl{/yun}/qqlogin.php" title="QQ"   class="login_other_icon login_other_qq"><i class="iconfont_qq"></i></a>
+	{yun:}/if{/yun}
+	{yun:}if $config.wx_rz==1{/yun}
+  <a href="{yun:}url m=wap c=wxconnect{/yun}" title="wx"   class="login_other_icon login_other_wx"><i class="iconfont_wx"></i></a>
+	{yun:}/if{/yun}
+  </div>
+	{yun:}/if{/yun}
+</article>
+</section>
+</div>
+
+<script src="{yun:}$config.sy_weburl{/yun}/js/jquery-1.8.0.min.js" language="javascript"></script>
+<script src="{yun:}$wap_style{/yun}/js/layer/layer.m.js" language="javascript"></script>
+<script src="{yun:}$wap_style{/yun}/js/public.js" language="javascript"></script>
+<script src="{yun:}$wap_style{/yun}/js/prefixfree.min.js" language="javascript"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/geetest/gt.js"></script>
+<script src="{yun:}$config.sy_weburl{/yun}/js/geetest/mobile.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+	$("#username,#txt_CheckCode,#usermoblie,#dynamiccode").focus(function(){
+		var txAreaVal = $(this).val();
+		if( txAreaVal == this.defaultValue){$(this).val("");}
+	}).blur(function(){
+		var txAreaVal = $(this).val();
+		if( txAreaVal == this.defaultValue||$(this).val()==""){$(this).val(this.defaultValue);}
+	}).keydown(function (e) {
+	    var ev = document.all ? window.event : e;
+	    if (ev.keyCode == 13) {
+	        check_login('{yun:}url m=login c=loginsave{/yun}','vcode_imgs');
+	    } else { return;}
+	});
+	
+	//账号登录和手机登录tab选择
+	$('#acount_login').click(function(data){
+		$('#acount_login').removeClass().addClass('login_box_h_list_cur');
+		$('#mobile_login').removeClass();
+		$('#login_normal_box').show();
+		$('#login_sj_box').hide();
+		$('#login_sjyz_box').hide();
+		$('#act_login').val('0');
+	});
+	$('#mobile_login').click(function(data){
+		$('#mobile_login').removeClass().addClass('login_box_h_list_cur');
+		$('#acount_login').removeClass();
+		$('#login_sj_box').show();
+		$('#login_sjyz_box').show();
+		$('#login_normal_box').hide();
+		$('#act_login').val('1');
+	});
+}); 
+
+var Timer;
+var smsTimer_time = 90;		//倒数 90
+var smsTimer_flag = 90;		//倒数 90
+var smsTime_speed = 1000;	//速度 1秒钟
+//发送手机短信
+function send_msg(url){
+	var moblie = $('#usermoblie').val();
+	var code;
+	var geetest_challenge;
+	var geetest_validate;
+	var geetest_seccode;
+	if(moblie=="" || moblie=="请输入手机号码"){
+		
+		layermsg("请输入手机号码！");return false;  
+	}else{
+		
+		var reg= /^[1][34578]\d{9}$/;   
+		if(!reg.test(moblie)){ 
+			layermsg('手机格式错误！');return false;
+		}
+	}
+	if(code_kind==1){
+		code=$.trim($("#checkcode").val());
+		if(!code){
+			layermsg('请填写图片验证码！');return false;
+		}
+	}else if(code_kind==3){
+
+		geetest_challenge = $('input[name="geetest_challenge"]').val();
+		geetest_validate = $('input[name="geetest_validate"]').val();
+		geetest_seccode = $('input[name="geetest_seccode"]').val();
+		
+		if(geetest_challenge =='' || geetest_validate=='' || geetest_seccode==''){
+			$("#popup-submit").trigger("click");
+			layermsg('请点击按钮进行验证！');return false;
+		}
+	}
+	
+	if(smsTimer_time==smsTimer_flag){
+		Timer = setInterval("smsTimer($('#send_msg_tip'))", smsTime_speed);
+		$.post(url,{moblie:moblie,authcode:code,geetest_challenge:geetest_challenge,geetest_validate:geetest_validate,geetest_seccode:geetest_seccode},function(data){
+			//alert(data);
+			var jsonObject = eval("(" + data + ")"); 
+
+			if(jsonObject.error !== 1){
+				clearInterval(Timer);
+			}
+			layermsg(jsonObject.msg, 2,function(){ 
+				if(code_kind==1){
+				
+						checkCode('vcode_img');
+					}else if(code_kind==3){
+
+						$("#popup-submit").trigger("click");
+				}
+				if(jsonObject.url){
+					window.location.href=jsonObject.url; 
+					window.event.returnValue = false;return false;
+				}
+			});
+		})
+	}else {
+		layermsg('请勿重复发送！', 2, 8);return false;
+	}
+}
+//手机号码校验
+function testMb(mbNo){
+
+	var reg= /^[1][34578]\d{9}$/;	//验证手机号码   
+
+	return reg.test(mbNo);
+}
+//倒计时
+function smsTimer(obj){
+	if (smsTimer_flag > 0) {
+		$(obj).html('重新发送('+smsTimer_flag+'s)');
+		$(obj).attr({'style':'background:#909394;'});
+		smsTimer_flag--;
+	}else{
+		$(obj).html('重新发送');
+		$(obj).attr({'style':'background:#06C;'});
+		smsTimer_flag = smsTimer_time;
+		clearInterval(Timer);
+	}
+}
+</script>
+{yun:}include file="$wapstyle/footer.htm"{/yun}

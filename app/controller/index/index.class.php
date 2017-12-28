@@ -10,6 +10,7 @@
  */
 class index_controller extends common{
 	function index_action(){ 
+		$hot_jobs = $this->obj->DB_select_all("company_job","1 limit 0,10");
 
 		if(!$this->config['did'] && $this->config['sy_gotocity']=='1' && !$_COOKIE['gotocity']){
 			include(PLUS_PATH."domain_cache.php");

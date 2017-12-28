@@ -71,7 +71,7 @@
 		</div>
 		<div class="hp_zp fl">
      {yun:}if $config.sy_wx_qcode{/yun}
-     <div class="hp_z_w hoverico">
+     <div class="hp_z_w">
            <i class="hp_z_w_icon"></i>
            <a href="javascript:void(0);"><span class="hp_z_w_sp">微信招聘</span></a>
            <div class="hp_z_w_er" id="hp_weixin">
@@ -83,7 +83,7 @@
      </div>
      {yun:}/if{/yun}
      {yun:}if $config.sy_wap_qcode{/yun}
-     <div class="hp_z_s hoverico">
+     <div class="hp_z_s">
            <i class="hp_z_s_icon dn"></i>
            <a href="javascript:void(0);"><span class="hp_z_w_sp">手机招聘</span></a>
            <div class="hp_z_s_er dn" id="hp_phone">
@@ -110,9 +110,9 @@
      <div class="hp_hotjob_h fl">热门<br/>职位</div>
      <div class="hp_hotjob_b fl">
           <ul>
-       {yun:}key limit=28 recom=1 type=3 item=keylist{/yun} <li><a href="{yun:}listurl type=keyword v=$keylist.key_title{/yun}" class="jos_tag_a" title="{yun:}$keylist.key_title{/yun}">{yun:}$keylist.key_name{/yun}</a> </li>{yun:}/key{/yun}
-            
+		 {yun:}key limit=28 recom=1 type=3 item=keylist{/yun} <li><a href="{yun:}listurl type=keyword v=$keylist.key_title{/yun}" class="jos_tag_a" title="{yun:}$keylist.key_title{/yun}">{yun:}$keylist.key_name{/yun}</a> </li>{yun:}/key{/yun}
           </ul>
+	
      </div>
 </div>
 
@@ -147,7 +147,7 @@
 </div>
 </section>
 
-<div class="hp_title fl">
+<!-- <div class="hp_title fl">
      <div class="hp_title_ft fl"><i class="hp_title_icon"></i>紧急招聘</div>
      <div class="hp_title_rt fr"><a href="{yun:}listurl type=tp v=1{/yun}" target="_blank">查看更多>></a></div>
 </div>
@@ -163,8 +163,8 @@
          </li>
          {yun:}/joblist{/yun}
      </ul>
-</div>
-<div class="hp_urg_job_l fl">
+</div> -->
+<!-- <div class="hp_urg_job_l fl">
 <div class="hp_urg_job_l_1250 fl">
 {yun:}adlist classid=13 limit=2 item=adlist_13{/yun}
 {yun:}$adlist_13.html{/yun}
@@ -173,7 +173,7 @@
      {yun:}adlist classid=15 limit=10 item=adlist_15{/yun}
      {yun:}$adlist_15.html{/yun}
      {yun:}/adlist{/yun}
-</div></div>
+</div></div> -->
 <div class="hp_title fl">
      <div class="hp_title_ft fl"><i class="hp_title_icon"></i>推荐职位</div>
      <div class="hp_title_rt fr"><a href="{yun:}listurl type=tp v=2{/yun}" target="_blank">查看更多>></a></div>
@@ -410,15 +410,6 @@ $(document).ready(function() {
 		$('.tip_bottom_left').html(data)
 	});
 });
-
-$(".hp_z_w").mouseover(function () {
-    $(".hoverico a").css("background-color","#bdc8d4");
-    $(this).find("a").css("background-color","#019d0b");
-})
-$(".hp_z_s").mouseover(function () {
-    $(".hoverico a").css("background-color","#bdc8d4");
-    $(this).find("a").css("background-color","#de5454");
-})
 
 
 </script> 

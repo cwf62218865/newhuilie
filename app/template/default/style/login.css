@@ -99,7 +99,7 @@ input {outline: medium none;}
 .login_box_h_list .login_box_h_list_cur{color:#f60; position:relative}
 .login_box_h_list .login_box_h_list_cur .login_box_h_icon{width:110px;height:2px; background:#f60; position:absolute;left:20px;bottom:-1px;}
 .logoin_bg{width:292px;height:410px; background:#000; position:absolute;right:0px;top:-410px; z-index:8;filter:Alpha(opacity=40); opacity:0.4; }
-.logoin_banner{width:100%;height:450px; overflow-x:hidden; background:#2e71c2}
+.logoin_banner{width:100%;height:450px; overflow-x:hidden; background:#fff}
 .login_box_tit{width:100%;height:55px;overflow:hidden}
 .login_box_tit li{width:146px; float:left;height:54px; line-height:54px; text-align:center; font-size:18px;font-family:Î¢ÈíÑÅºÚ;cursor:pointer;color:#fff; }
 .lgoin_box_cot{ float:left}
