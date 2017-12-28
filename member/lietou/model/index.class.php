@@ -21,7 +21,7 @@ class index_controller extends lietou{
         $down_resume_odds = $down_resume_count/$down_resume_count;
 
         $recommend_jobs = $this->obj->DB_select_all("userid_job","uid=".$this->uid." limit 0,5");
-
+//        $this->obj->DB_select_all("down_resume","type=2 and uid=".$this->uid);
 
 		$statis=$this->company_satic();
 		$time=strtotime(date("Y-m-d 00:00:00"));
