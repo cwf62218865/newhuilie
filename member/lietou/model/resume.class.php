@@ -142,6 +142,8 @@ class resume_controller extends lietou{
     }
 
     function input_action(){
+        $member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","`uid`,`status`");
+        $this->yunset("member",$member);
         $this->lt_tpl('input_resume');
     }
 
