@@ -1834,7 +1834,10 @@ class index_controller extends common{
                 foreach($city_type[$_POST['id']] as $v){
                     if($_POST['gettype']=="citys"){
                         $data.='<li><a href="javascript:;" onclick="select_city(\''.$v.'\',\'citys\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></li>';
-                    }else{
+                    }elseif($_POST['gettype']=="comcitys"){
+                         $data.='<li><a href="javascript:;" onclick="select_city(\''.$v.'\',\'comcitys\',\''.$city_name[$v].'\',\'comthree_city\',\'city\');">'.$city_name[$v].'</a></li>';
+                     }
+                    else{
                         $data.='<li><a href="javascript:;" onclick="selects(\''.$v.'\',\'three_city\',\''.$city_name[$v].'\');">'.$city_name[$v].'</a></li>';
                     }
                 }
@@ -1875,7 +1878,28 @@ class index_controller extends common{
 
                 }
             }
-        }else{
+        }elseif($_POST['ptype']=='city'){
+             include(PLUS_PATH."city.cache.php");
+             if(is_array($city_type[$_POST['id']])){
+                 foreach($city_type[$_POST['id']] as $v){
+                     if($_POST['gettype']=="cityid"){
+                         $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="select_city(\''.$v.'\',\'cityid\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></div>';
+                     }elseif($_POST['gettype']=="comcitys"){
+                       $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="select_city(\''.$v.'\',\'cityid\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></div>';
+                     }
+                     elseif($_POST['gettype']=="locoy_job_city"){
+                         $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="select_city(\''.$v.'\',\'locoy_job_city\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></div>';
+                     }elseif($_POST['gettype']=="locoy_com_city"){
+                         $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="select_city(\''.$v.'\',\'locoy_com_city\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></div>';
+                     }elseif($_POST['gettype']=="locoy_resume_city"){
+                         $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="select_city(\''.$v.'\',\'locoy_resume_city\',\''.$city_name[$v].'\',\'three_city\',\'city\');">'.$city_name[$v].'</a></div>';
+                     }else{
+                         $data.='<div class="yun_admin_select_box_list"><a href="javascript:;" onclick="selects(\''.$v.'\',\'three_city\',\''.$city_name[$v].'\');">'.$city_name[$v].'</a></div>';
+                     }
+
+                 }
+             }
+         }else{
             include(PLUS_PATH."job.cache.php");
             if(is_array($job_type[$_POST['id']])){
                 foreach($job_type[$_POST['id']] as $v){
