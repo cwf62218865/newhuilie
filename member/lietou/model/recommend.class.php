@@ -21,6 +21,12 @@ class recommend_controller extends lietou{
 		$urgent=$this->config['com_urgent'];
 			
 		$audit=$this->obj->DB_select_num("company_job","`uid`='".$this->uid."' and `state`=0");
+
+
+        $resume = $this->resume_page(1,'',$limit=20);
+
+        $this->yunset("resume",$resume);
+
 		$this->yunset("audit",$audit);
 		$this->yunset("jobs",$jobs);
 		$this->yunset("urgent",$urgent);
@@ -30,10 +36,37 @@ class recommend_controller extends lietou{
 		if(intval($_GET['w'])==1){
 			$this->lt_tpl('joblist');
 		}else{
+
 			$this->lt_tpl('recommend');
 		}
 	}
-	
+
+	/*
+	 * 推荐简历
+	 */
+	function report_action(){
+	    $job_id = $_GET['id']?$_GET['id']:die();
+	    $resume_id = $_GET['uid']?$_GET['uid']:die();
+        $recommend = $this->obj->DB_select_once("userid_job","uid=".$this->uid." and resume_id=".$resume_id." and job_id=".$job_id);
+        if($recommend){
+            die("已推荐");
+        }else{
+            $data['job_id'] = $job_id;
+            $data['uid'] = $this->uid;
+            $data['resume_id'] = $resume_id;
+            $data['datetime'] = time();
+            $r = $this->obj->insert_into("userid_job",$data);
+            if($r){
+                echo 1;
+            }else{
+                echo 2;
+            }
+
+        }
+    }
+
+
+
 	function opera_action(){
 		$this->job();
 	}
