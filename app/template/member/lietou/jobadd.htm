@@ -4,6 +4,7 @@
   <div class="admin_mainbody">
   {yun:}include file="$comstyle/left.htm"{/yun}
   <link rel="stylesheet" href="{yun:}$style{/yun}/style/class.public.css" type="text/css">
+      <link href="{yun:}$style{/yun}/style/pinfen.css" type=text/css rel=stylesheet>
     <script charset="utf-8" src="../js/kindeditor/kindeditor-min.js"></script>
     <script charset="utf-8" src="../js/kindeditor/lang/zh_CN.js"></script> 
 	<script src="{yun:}$config.sy_weburl{/yun}/data/plus/job.cache.js" type="text/javascript"></script>
@@ -266,21 +267,26 @@ function returnmessagejob(frame_id){
 	}
 }
     function addjobname(){
-
+        $("#addjob").show();
+        $(".job_box_div").hide();
         $.layer({
             type : 1,
             title :'提示信息',
             closeBtn : [0 , true],
             border : [10 , 0.3 , '#000', true],
-            area : ['320px','200px'],
+            area : ['650px','550px'],
             page : {dom :"#infoboxadd"}
         });
     }
+
 
 </script>
 <style>
 * {margin: 0 ;padding: 0;}
 body,div{margin: 0 ;padding: 0;}
+#infoboxadd .admin_textbox_02 ul  li .tit{
+    width: 160px;
+}
 </style>
 <input type="hidden"id="comname" value="{yun:}$company.name{/yun}">
     <div class=right_box>
@@ -344,9 +350,7 @@ body,div{margin: 0 ;padding: 0;}
 		</div>
 		</div>
 		</li>
-
-
-<li>
+              <li>
               <div class=tit><font color="#FF0000">*</font> 工作地点：</div>
               <div class=textbox>
                 <div class="text_seclet text_seclet_cur2 fltL">
@@ -371,7 +375,8 @@ body,div{margin: 0 ;padding: 0;}
                       <li><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','citys','{yun:}$city_name[$v]{/yun}','three_city','city');"> {yun:}$city_name[$v]{/yun}</a></li>
                       {yun:}/foreach{/yun}
                     </ul>
-                  </div>  </div>
+                  </div>
+                  </div>
                 </div>
                 <div class="text_seclet text_seclet_cur2 fltL" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun} id="cityshowth">
                  <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun} value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="three_city" onclick="three_city_show('job_three_city');">
@@ -708,19 +713,144 @@ body,div{margin: 0 ;padding: 0;}
                 <input name="r_uid" value="0" type="hidden">
                 <input name="eid" value="0" type="hidden">
                 <input name="pingfen" class="pingfen" value="0" type="hidden">
-                <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                <button type="button" id='zxxCancelBtn' onClick="layer.closeAll();" class="close cancel_btn" style="display: block;">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-shan"></use>
                     </svg>
                 </button>
 
-                <div class="pjnr">评价内容:</div>
-                <div class="jb_infobox" style="width: 100%;">
-                    <textarea id="pjcontent" placeholder="请输入服务评价内容" name="r_reason" cols="30" rows="9" class="hr_textarea" maxlength="100"></textarea>
-                    <div class="numts">还可输入<label class="xznum">100</label>字</div>
+                <div class="admin_textbox_02">
+                    <ul>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 客户名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" placeholder="请输入企业名称" style="float:left;" class="com_info_text">
+                                <span id="by_name" class="errordisplay">企业名不能为空</span> </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 客户对外显示名称：</div>
+                            <div class="textbox">
+                                <input type="text" size="45" name="name" id="name" value="" style="float:left;" class="com_info_text" placeholder="展示给经理人，建议填写如：国内知名互联网公司…等">
+                                <span id="by_name" class="errordisplay">名称不能为空</span> </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 所属行业：</div>
+                            <div class="textbox">
+                                <input class="SpFormLBut text_seclet_w158" type="button" value="请选择"  id="sshy" onclick="search_show('job_sshy');" style="width: 100%">
+                                <div id="job_sshy" class="cus-sel-opt-panel" style="z-index: 301; display: none;width: 100%;">
+                                    <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                        <ul>
+                                            {yun:}foreach item=v from=$industry_index key=k{/yun}
+                                            <li><a href="javascript:;" onclick="selects('{yun:}$v{/yun}','sshy','{yun:}$industry_name[$v]{/yun}');"> {yun:}$industry_name[$v]{/yun}</a></li>
+                                            {yun:}/foreach{/yun}</ul>
+                                    </div>
+                                </div>
+                                <span id="by_name" class="errordisplay">行业不能为空</span> </div>
+                        </li>
+
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font>所在地：</div>
+                            <div class="textbox">
+                                <div class="text_seclet text_seclet_cur2 fltL">
+                                    <input class="SpFormLBut text_seclet_w150" type="button" {yun:}if $row.provinceid{/yun} value="{yun:}$city_name[$row.provinceid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="comprovince" onclick="search_show('job_comprovince');">
+                                    <input type="hidden" id="provinceid" name="provinceid" value="{yun:}$row.provinceid{/yun}" />
+                                    <div id="job_comprovince" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none">
+                                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                            <ul class="Search_Condition_box_list">
+                                                {yun:}foreach from=$city_index key=j item=v{/yun}
+                                                <li><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comprovince','{yun:}$city_name[$v]{/yun}','comcitys','city');"> {yun:}$city_name[$v]{/yun}</a></li>
+                                                {yun:}/foreach{/yun}
+                                            </ul>
+                                        </div>    </div>
+                                </div>
+                                <div class="text_seclet text_seclet_cur2 fltL">
+                                    <input class="SpFormLBut text_seclet_w150" type="button" {yun:}if $row.cityid{/yun} value="{yun:}$city_name[$row.cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="comcitys" onclick="search_show('job_comcitys');">
+                                    <input type="hidden" id="citysid" name="cityid" value="{yun:}$row.cityid{/yun}" />
+                                    <div id="job_comcitys" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none">
+                                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                            <ul class="Search_Condition_box_list">
+                                                {yun:}foreach from=$city_type[$row.provinceid] key=j item=v{/yun}
+                                                <li><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comcitys','{yun:}$city_name[$v]{/yun}','comthree_city','city');"> {yun:}$city_name[$v]{/yun}</a></li>
+                                                {yun:}/foreach{/yun}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text_seclet text_seclet_cur2 fltL" {yun:}if $row.three_cityid<1{/yun}style="display:none"{yun:}/if{/yun} id="cityshowth">
+                                <input class="SpFormLBut text_seclet_w158" type="button" {yun:}if $row.three_cityid{/yun} value="{yun:}$city_name[$row.three_cityid]{/yun}" {yun:}else{/yun}value="请选择"{yun:}/if{/yun} id="comthree_city" onclick="three_city_show('job_comthree_city');">
+                                <input type="hidden" id="three_cityid" name="three_cityid" value="{yun:}$row.three_cityid{/yun}" />
+                                <div id="job_comthree_city" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none">
+                                    <ul class="Search_Condition_box_list">
+                                        {yun:}foreach from=$city_type[$row.cityid] key=j item=v{/yun}
+                                        <li><a href="javascript:;" onclick="selects('{yun:}$v{/yun}','comthree_city','{yun:}$city_name[$v]{/yun}');"> {yun:}$city_name[$v]{/yun}</a></li>
+                                        {yun:}/foreach{/yun}
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 企业性质：</div>
+                            <div class="textbox" style="z-index: 2">
+                                <div class="text_seclet text_seclet_cur2 fltL" style="width: 100%">
+                                    <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="qyxz" onclick="search_show('job_qyxz');" style="width: 100%">
+                                    <input type="hidden" id="provinceid" name="provinceid" value="">
+                                    <div id="job_qyxz" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none;width: 100%;">
+                                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                            <ul class="Search_Condition_box_list">
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','外商独资/外企办事处');"> 外商独资/外企办事处</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','中外合资（合资/合作）');"> 中外合资（合资/合作）</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','私企/民营企业');"> 私企/民营企业</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','国有企业');"> 国有企业</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','国内上市公司');"> 国内上市公司</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','政府机关/非盈利机构');"> 政府机关/非盈利机构</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','事业单位');"> 事业单位</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qyxz','其他');">其他</a></li>
+                                                </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="tit days"><font color="#FF0000">*</font> 企业规模：</div>
+                            <div class="tit edate" style="display:none"><font color="#FF0000">*</font> 结束日期：</div>
+                            <div class="textbox" style="z-index: 1;">
+                                <div class="text_seclet text_seclet_cur2 fltL" style="width: 100%">
+                                    <input class="SpFormLBut text_seclet_w158" type="button" value="请选择" id="qygm" onclick="search_show('job_qygm');" style="width: 100%">
+                                    <input type="hidden" id="provinceid" name="provinceid" value="">
+                                    <div id="job_qygm" class="cus-sel-opt-panel cus-sel-opt-panel-w156" style="display:none;width: 100%;z-index: 99999999;">
+                                        <div style="width:100%;  overflow:auto; overflow-x:hidden">
+                                            <ul class="Search_Condition_box_list">
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','1-49人');"> 1-49人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','50-99人');"> 50-99人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','100-499人');"> 100-499人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','500-999人');"> 500-999人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','1000-2000人');"> 1000-2000人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','2000-5000人');"> 2000-5000人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','5000-10000人');"> 5000-10000人</a></li>
+                                                <li><a href="javascript:;" onclick="selects('2','qygm','10000人以上');"> 10000人以上</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tit"><font color="#FF0000">*</font> 企业介绍：</div>
+                            <div class="textbox" style="z-index: 0">
+                                <textarea  name="name" id="name" value="" style="float:left;height: 80px;resize: none;" class="com_info_text" placeholder="突出企业亮点，不要在此透露企业真实名称。不少于30字。"></textarea>
+                                <span id="by_name" class="errordisplay">职位名不能为空</span> </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="jb_infobox" style="width: 100%;">
-                    <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
+
+                <div class="jb_infobox" style="width: 100%;text-align: center;margin-top: 20px;">
+                    <button type="submit"  name='submit' value='1' class="submit_btn">保存客户信息</button>
+                    <button type="button"  class="cancel_btn" onClick="layer.closeAll();">取消</button>
                 </div>
             </form>
         </div>

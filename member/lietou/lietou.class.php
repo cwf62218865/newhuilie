@@ -553,5 +553,22 @@ class lietou extends common{
             $this->obj->DB_select_num("userid_job","job_id=".$list['job_id']." and identity=3","");
         }
     }
+
+    /*
+     * 简历分页列表
+     */
+    function resume_page($where='',$pageurl='',$limit=20,$field='*',$rowsname='rows'){
+        $rows=array();
+        $page=$_GET['page']<1?1:$_GET['page'];
+
+        $ststrsql=($page-1)*$limit;
+        $num=$this->obj->DB_select_num("pt_resume",$where);
+        if($num>$limit){
+            $pages=ceil($num/$limit);
+            $pagenav=Page($page,$num,$limit,$pageurl,$notpl=false,null);
+        }
+        $rows=$this->obj->DB_select_all("pt_resume",$where.' limit '.$ststrsql.','.$limit,$field);
+        return array('total'=>$num,'pagenav'=>$pagenav,$rowsname=>$rows);
+    }
 }
 ?>

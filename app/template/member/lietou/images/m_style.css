@@ -339,6 +339,7 @@ center; font-size:12px; z-index:11 }
 .cus-sel-opt-panel ul li a:hover {background: #83C8EC; color: #FFFFFF; text-decoration: none;}
 .text_seclet_cur { position: relative; z-index: 200;}
 .text_seclet_w158 { width: 158px;background:#fff url(../images/com_select.jpg) no-repeat 135px center; }
+#infoboxadd .text_seclet_w158 { width: 158px;background:#fff url(../images/com_select.jpg) no-repeat 390px center; }
 .text_seclet_w220 { width: 220px;background:#fff url(../images/com_select.jpg) no-repeat 190px center; }
 .cus-sel-opt-panel-w156 {width: 156px;}
 .cus-sel-opt-panel-w132 { height: 132px;width: 132px;}
@@ -2083,4 +2084,7 @@ overflow-x: hidden;z-index:99999;width:235px;}
     text-align: left;
     margin-left: 10px;
     cursor: pointer;
+}
+#infoboxadd .text_seclet_w150{
+    width: 158px;background:#fff url(../images/com_select.jpg) no-repeat 130px center;
 }
