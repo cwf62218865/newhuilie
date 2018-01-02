@@ -115,19 +115,19 @@
                             <img src="{yun:}$lt_style{/yun}/images/icol0.png">
                             <label class="jieshiico">服务猎头</label>
                         </label>
-                        <label class="num_tj w42">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol1.png">
                             <label class="jieshiico">推荐候选人</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol2.png">
                             <label class="jieshiico">HR已查看</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol3.png">
                             <label class="jieshiico">HR已下载</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol4.png">
                             <label class="jieshiico">HR已拒绝</label>
                         </label>
@@ -264,7 +264,7 @@
                         <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">HR拒绝</span></label>
                     </span>
                     <span class="job_news_list_span job_w135">
-                        <a href="{yun:}url m=job c=search c=comapply id='`$zd_list.id`'{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
+                        <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
                         <label class="btn_hxr w58b">+关注</label>
                     </span>
                 </div>
@@ -379,7 +379,7 @@
 function gotime(id,edate,i){
 	$("#gotimeid").val(id);
 	if(i){
-		$("#gotime_edate").html("本次共延期<font color='red'>"+i+"</font>个职位！"); 
+		$("#gotime_edate").html("本次共延期<font color='red'>"+i+"</font>个职位！");
 	}else{
 		$("#gotime_edate").html('当前职位到期时间：<font color="red">'+edate+'</font>');
 	}

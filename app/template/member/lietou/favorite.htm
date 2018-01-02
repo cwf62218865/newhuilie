@@ -33,10 +33,10 @@
                 </div>
                 <div class="Search_jobs_more_chlose">
           <span class="Search_jobs_more_chlose_s">工作地点</span><i class=""></i>
-                    <div class="Search_jobs_more_chlose_list none">
+                    <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul>
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comprovince','{yun:}$city_name[$v]{/yun}','comcitys','city');">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comprovince','{yun:}$city_name[$v]{/yun}','comcitys','city');">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -115,19 +115,19 @@
                             <img src="{yun:}$lt_style{/yun}/images/icol0.png">
                             <label class="jieshiico">服务猎头</label>
                         </label>
-                        <label class="num_tj w42">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol1.png">
                             <label class="jieshiico">推荐候选人</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol2.png">
                             <label class="jieshiico">HR已查看</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol3.png">
                             <label class="jieshiico">HR已下载</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol4.png">
                             <label class="jieshiico">HR已拒绝</label>
                         </label>

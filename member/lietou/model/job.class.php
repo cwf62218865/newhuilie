@@ -86,6 +86,8 @@ class job_controller extends lietou{
 	//服务中的职位
         function serving_job_action(){
 
+            $this->industry_cache();
+
             $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
 
             $urlarr=array("c"=>"favorite","page"=>"{{page}}");
@@ -150,6 +152,7 @@ class job_controller extends lietou{
     function fav_job_action(){
 
         $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
+        $this->industry_cache();
 
         $urlarr=array("c"=>"favorite","page"=>"{{page}}");
         $StateNameList=array('0'=>'等待审核','1'=>'招聘中','2'=>'已结束','3'=>'未通过');
