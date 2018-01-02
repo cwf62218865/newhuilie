@@ -33,7 +33,7 @@ class resume_controller extends lietou{
         $this->subject_cache();
         $resume = $this->obj->get_page();
         $this->yunset("js_def",5);
-        $this->lt_tpl('hr');
+        $this->lt_tpl('resumelist');
     }
 
     function input_action(){

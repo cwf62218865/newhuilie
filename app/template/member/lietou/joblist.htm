@@ -33,9 +33,9 @@
                 <div class="Search_jobs_more_chlose">
                     <span class="Search_jobs_more_chlose_s">{yun:}if $smarty.get.hy{/yun}{yun:}$industry_name[$smarty.get.hy]{/yun}{yun:}else{/yun}行业类别{yun:}/if{/yun}</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_hylist none">
-                        <ul>
+                        <ul class="select_hyitem">
                             {yun:}foreach from=$industry_index item=v key=key{/yun}
-                            <li><a href="javascript:;">{yun:}$industry_name[$v]{/yun}</a> </li>
+                            <li><a  href="/member/index.php?c=job&w=1&industry={yun:}$v{/yun}">{yun:}$industry_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -43,9 +43,9 @@
                 <div class="Search_jobs_more_chlose">
           <span class="Search_jobs_more_chlose_s">工作地点</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
-                        <ul>
+                        <ul class="select_cityitem">
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li style="width: inherit;"><a href="javascript:;">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a href="/member/index.php?c=job&w=1&city={yun:}$v{/yun}">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -53,7 +53,7 @@
 
                 <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
-                        <ul>
+                        <ul class="select_hyitem">
                             <li> <a href="javascript:;">10万以内</a></li>
                             <li> <a href="javascript:;">10-20万</a></li>
                             <li> <a href="javascript:;">20-30万以内</a></li>
@@ -65,9 +65,9 @@
                 <div class="Search_jobs_more_chlose">
                     <span class="Search_jobs_more_chlose_s">{yun:}if $uptime[$smarty.get.uptime]{/yun}{yun:}$uptime[$smarty.get.uptime]{/yun}{yun:}else{/yun}更新时间{yun:}/if{/yun}</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
-                        <ul>
+                        <ul class="select_hyitem">
                             {yun:}foreach from=$uptime item=v key=key{/yun}<li>
-                            <a href="javascript:;">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
+                            <a href="/member/index.php?c=job&w=1&time={yun:}$key{/yun}">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
                         </ul>
                     </div>
                 </div>
@@ -137,7 +137,8 @@
                     </span>
                     <span class="job_news_list_span job_w135">
                         <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
-                        <label class="btn_hxr w58b">+关注</label>
+                        <label class="btn_hxr w58b guanzhu">+关注</label>
+                        <label class="btn_hxr w58b yiguanzhu">取消关注</label>
                     </span>
                 </div>
 

@@ -3,21 +3,21 @@
 
   {yun:}if $js_def==5{/yun}
   <ul class="right_nav_ul">
-      <li class="subnav_h1"><span>简历库</span>  </li>
-  {yun:}if $config.com_search==1{/yun}<li {yun:}if $smarty.get.act=="index"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=index" class="f60"><i class="com_left_icon com_left_icon_search"></i>平台人才库</a></span></li>{yun:}/if{/yun}
-  <li {yun:}if $smarty.get.act=="recently"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recently" title="我的简历"><i class="com_left_icon com_left_icon_jl"></i>最近浏览</a></span> </li>
-     <li {yun:}if $smarty.get.act=="recommend"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recommend"><i class="com_left_icon com_left_icon_info"></i>已推荐</a></span> </li>
-    <li {yun:}if $smarty.get.act=="myself"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=myself"><i class="com_left_icon com_left_icon_sq"></i>我入库的简历</a></span> </li>
+  {yun:}if $config.com_search==1{/yun}
+      <li {yun:}if $smarty.get.act=="index" || $smarty.get.act==""{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=index" class="f60">平台简历库<span class="num_style">2</span></a></span></li>{yun:}/if{/yun}
+      <li {yun:}if $smarty.get.act=="recently"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recently" title="我的简历">收藏的简历<span class="num_style">2</span></a></span> </li>
+      <li {yun:}if $smarty.get.act=="recommend"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recommend">已推荐的简历<span class="num_style">2</span></a></span> </li>
+      <li {yun:}if $smarty.get.act=="myself"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=myself">我入库的简历<span class="num_style">2</span></a></span> </li>
 
   </ul>
   {yun:}/if{/yun}
 
   {yun:}if $js_def==3{/yun}
      <ul class="right_nav_ul">
-     <li {yun:}if $smarty.get.act!="fav_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位">职位搜索</a></span></li>
-     <li {yun:}if $smarty.get.act=="serving_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&act=serving_job" title="收藏的职位">推荐中的职位<span class="num_style">2</span></a></span></li>
-     <li {yun:}if $smarty.get.act=="fav_job"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=job&act=fav_job" title="收藏的职位">关注的职位<span class="num_style">12</span></a></span></li>
-     <li {yun:}if $smarty.get.act=="jobadd"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style03"{yun:}/if{/yun}><span><a href="index.php?c=jobadd" title="发布新职位">发布新职位</a></span></li>
+     <li {yun:}if $smarty.get.act==null{/yun} class="style01 left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位">职位搜索<span class="num_style">2</span></a></span></li>
+     <li {yun:}if $smarty.get.act=="serving_job"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&act=serving_job" title="收藏的职位">推荐中的职位<span class="num_style">2</span></a></span></li>
+     <li {yun:}if $smarty.get.act=="fav_job"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&act=fav_job" title="收藏的职位">关注的职位<span class="num_style">12</span></a></span></li>
+     <li {yun:}if $smarty.get.act=="jobadd"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=jobadd" title="发布新职位">发布新职位</a></span></li>
   </ul>
   {yun:}/if{/yun}
 </div>

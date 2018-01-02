@@ -250,8 +250,8 @@ input,textarea{font-family:microsoft yahei;}
 .com_body{width:853px; padding:0px 10px; float:left}
 /*top*/
 .top_box{width:1100px;float:right; min-height:45px;_height:45px; position:relative;}
-.top_box .right_nav_ul .left_nav_hover { background:#eef4fe}
-.top_box .right_nav_ul .left_nav_hover a{color:#456dab; font-weight:bold}
+.top_box .right_nav_ul .left_nav_hover { background:#ff6a6a;font-size: 16px;}
+.top_box .right_nav_ul .left_nav_hover a{color:#fff; font-weight:bold}
 /*down*/
 .down_box{width:1100px;min-height:600px;_height:600px; position:relative;margin-top: 70px;}
 .down_box .admincont_box{width:1100px; min-height:600px; float:right;background:#fff;border:1px solid #eee; padding-bottom:20px;}
@@ -2123,16 +2123,17 @@ overflow-x: hidden;z-index:99999;width:235px;}
     border-radius: 4px;
     width: auto;
     margin-right: 20px;
+    background: #fff;
 }
 .top_nav_list .right_nav_ul li:hover{
-    background: #ecf0f1;
+    background: #ff6a6a;
 }
 .top_nav_list .right_nav_ul li:hover a{
-    color: #4b5873 !important;
+    color: #fff !important;
     text-decoration: none;
 }
 .top_nav_list .right_nav_ul .left_nav_hover a{
-    color: #4b5873;
+    color: #fff;
 }
 .top_nav_list .right_nav_ul .left_nav_hover a .num_style{
     color: #fff;
@@ -2142,7 +2143,7 @@ overflow-x: hidden;z-index:99999;width:235px;}
 }
 .top_nav_list .right_nav_ul li a{
     line-height: 36px;
-    color: #fff;
+    color: #4b5873;
     width: auto;
     padding-left: 20px;
     padding-right: 20px;

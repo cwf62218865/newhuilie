@@ -11,6 +11,7 @@
 class job_controller extends lietou{
 
     function index_action(){
+
         global $config;
 
 		$this->public_action();
