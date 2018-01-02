@@ -16,15 +16,15 @@
 .Search_jobs_hy_box_list li a{ display:block;height:25px; line-height:25px; padding-left:5px;color:#94918c}
 .Search_jobs_hy_box_list li a:hover{ background:#f1f5f8;color:#e25f07; font-weight:bold; text-decoration:none;}
 .Search_jobs_form_list{width:100%; float:left; padding-bottom:10px; font-size:14px;}
-.yun_job_search{width:900px; float:left;padding:20px 20px 10px 30px }
-.Search_jobs_sub{width:1010px; float:left; }
+.yun_job_search{width:1000px; float:left;padding:20px 50px 10px 50px }
+.Search_jobs_sub{width:1000px; float:left; }
 .Search_jobs_sub_nore{ height:auto; overflow:auto;}
 .Search_jobs_sub_a{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px}
 .Search_jobs_sub_a:hover{ color:#fff;background:#3689b3; text-decoration:none}
 .Search_jobs_cxz{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px;}
 .Search_jobs_cxz:hover{ color:#fff;background:#3689b3; text-decoration:none}
 .Search_jobs_sub_cur{ color:#fff;background:#3689b3; }
-.Search_jobs_text{width:650px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:2px solid #4b6e88;border-right:none; float:left;}
+.Search_jobs_text{width:890px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:1px solid #dddddd;border-right:none; float:left;}
 .Search_jobs_submit{width:110px;height:44px;  line-height:44px;border:none; cursor:pointer;color:#fff; font-size:16px;float:left;}
 .Search_jobs_sub_text_bc{ margin-top:8px; margin-left:10px;}
 .Search_jobs_search_box{ display:inline-block; float:left; padding-left:10px; line-height:28px; text-decoration:underline}
@@ -107,7 +107,7 @@
 .JobListStyle{width:116px; float:right; font-size:14px;}
 .JobListStyle img{ float:left; margin-right:5px; margin-left:5px; vertical-align:middle; margin-top:5px;}
 .JobListStyle span{ float:left; cursor:pointer}
-.job_left_sidebar{width:1198px;border:1px solid #eee;float:left;background:#fff; margin-top:15px;}
+.job_left_sidebar{width:1198px;float:left;background:#fff; margin-top:15px;}
 .job_right_sidebar{width:204px; float:right; }
 .job_right_box{width:202px;border:1px solid #dfe0e4; background:#fff; margin-top:15px;}
 .job_right_box_h1{width:100%;height:34px; line-height:34px; background:#f8f8f8;}
@@ -392,3 +392,101 @@
 .city_name_active{ background:#3689b3;color:#fff}
 .Search_citybox_right{width:1118px; float:left; position:relative}
 .Search_cityall{width:1054px; background:#f8f8f8;border:1px solid #ddd; padding:5px 0px 11px 5px; position:absolute;left:0px;top:0px; z-index:12; padding-right:50px;}
+.paixu_btn{
+    float: right;
+}
+.pxbtn{
+    display: block;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 4px;
+    border: 1px solid #f1f8ff;
+    background: #ffffff;
+    color: #999999;
+    font-size: 12px;
+    float: left;
+    margin-left: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+    cursor: pointer;
+}
+.pxcur{
+    background: #f1f8ff;
+}
+.pxbtn:hover{
+    background: #f1f8ff;
+}
+.btn_hxr{
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+}
+.w70b{
+    width: 70px;
+    background: #6a8cd2;
+}
+.w58b{
+    width: 58px;background: #ff6a6a;
+}
+.num_tj{
+    min-width: 35px;
+    padding-left: 3px;
+    padding-right: 3px;
+    display: inline-block;
+    float: left;text-align: center;
+    position: relative;cursor: pointer;
+}
+.num_tj:first-child{
+    padding-left: 0;
+}
+.color_333{
+    color: #333333;
+}
+.color_999{
+    color: #999999;
+}
+.w42{
+    width: 42px;
+}
+.w48{
+    width: 48px;
+}
+.jieshiico{
+    width: 80px;
+    position: absolute;
+    display: inline-block;
+    display: none;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #555566;
+    color: #fff;
+    font-size: 12px;
+    left: 0;
+    top: 30px;
+    z-index: 999;
+}
+.num_tj:hover .jieshiico{
+    display: block;
+}
+.salery_s{
+    color: #ff6600;
+    font-size: 14px;
+}
+.num_style{
+    display: inline-block;
+    background: #4b5873;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: 8px;
+    font-size: 12px;
+}
