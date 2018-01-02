@@ -8,35 +8,32 @@
  *
  * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
+/*
+ * 推荐简历相关操作
+ */
 class recommend_controller extends lietou{
+    /*
+     * 职位，简历关联列表
+     */
 	function index_action(){
 		$this->public_action();
-		$urlarr=array("c"=>"job","page"=>"{{page}}");
-		$where=" `id`='".$_GET['id']."' ";
 
+        //		职位相关信息
+		$where=" `id`='".$_GET['id']."' ";
 		$jobs=$this->obj->DB_select_once("company_job",$where);
         $logo = $this->obj->DB_select_once("company"," uid=".$jobs['uid'],"logo");
         $jobs['logo'] = $logo['logo'];
-		$maxfen=$this->obj->DB_select_once("company_job","`state`='1' and `sdate`<'".mktime()."' and `r_status`<>'2' and `edate`>'".mktime()."' order by `xuanshang` desc",'xuanshang');
-		$urgent=$this->config['com_urgent'];
-			
-		$audit=$this->obj->DB_select_num("company_job","`uid`='".$this->uid."' and `state`=0");
 
-
-        $resume = $this->resume_page(1,'',$limit=20);
+        // 简历搜索
+        $resume=$this->obj->DB_select_all("resume","`r_status`<>'2' ","`name`,`edu`,`uid`,`exp`");
+        $expect=$this->obj->DB_select_all("resume_expect","`id` in (".pylode(",",$eid).")","`id`,`job_classid`,`salary`,`height_status`");
 
         $this->yunset("resume",$resume);
-
-		$this->yunset("audit",$audit);
 		$this->yunset("jobs",$jobs);
-		$this->yunset("urgent",$urgent);
-		$this->yunset("maxfen",$maxfen);
-		$this->company_satic();
 		$this->yunset("js_def",3);
 		if(intval($_GET['w'])==1){
 			$this->lt_tpl('joblist');
 		}else{
-
 			$this->lt_tpl('recommend');
 		}
 	}
@@ -45,21 +42,30 @@ class recommend_controller extends lietou{
 	 * 推荐简历
 	 */
 	function report_action(){
-	    $job_id = $_GET['id']?$_GET['id']:die();
-	    $resume_id = $_GET['uid']?$_GET['uid']:die();
+        if(!$_POST['job_id'] || !$_POST['resume_id']){
+            $this->error_msg("参数错误");
+        }
+
+	    $job_id = $_POST['job_id'];
+	    $resume_id = $_POST['resume_id'];
         $recommend = $this->obj->DB_select_once("userid_job","uid=".$this->uid." and resume_id=".$resume_id." and job_id=".$job_id);
         if($recommend){
-            die("已推荐");
+            $this->error_msg("已推荐");
         }else{
+            $job = $this->job_more($job_id);
             $data['job_id'] = $job_id;
+            $data['job_name'] = $job['name'];
+            $data['com_id'] = $job['uid'];
+            $data['com_name'] = $job['com_name'];
             $data['uid'] = $this->uid;
             $data['resume_id'] = $resume_id;
+            $data['identity'] = 3;
             $data['datetime'] = time();
             $r = $this->obj->insert_into("userid_job",$data);
             if($r){
-                echo 1;
+                $this->success_msg("推荐成功");
             }else{
-                echo 2;
+                $this->error_msg("推荐失败");
             }
 
         }

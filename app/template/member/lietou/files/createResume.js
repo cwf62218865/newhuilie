@@ -269,6 +269,7 @@ $(function(){
 		//求职意向
 		var tends = {};
 		tends.hopeCallings=$("#hopeCallings").val();
+		tends.hopeIndustry=$("#hopeIndustry").val();
 		tends.hopeCitys=$("#locations").val();
 		tends.curMoney=$("#curMoney").val();
 		tends.moneyMonthes=$("#moneyMonthes").val();
