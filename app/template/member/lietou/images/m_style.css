@@ -428,6 +428,12 @@ center; font-size:12px; z-index:11 }
 .job_w320{width:320px;}
 .uesr_name_a{color:#456dab}
 .job_w240{width:240px;}
+.job_w161{
+    width:161px;
+}
+.job_w60{
+    width:60px;
+}
 .file_button_edit .sub_btn{margin-left:64px;_margin-left:22px; float:left;}
 .com_m_line{ font-size:12px; font-family:ËÎÌו;color:#cfcfcf}
 .yxjob_name{ font-weight:bold;color:#C00}
