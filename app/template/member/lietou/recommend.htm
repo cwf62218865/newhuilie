@@ -267,12 +267,14 @@ $(document).ready(function(){
 //	ÍÆ¼ö¼òÀú
 	$(".yun_user_lok_bth").click(function () {
 	    var resume_id = $(this).attr("data-id");
+	    var eid = $(this).attr("data-eid");
         $.ajax({
             type:"post",
             url:"/member/index.php?c=recommend&act=report",
             data:{
                 job_id:"{yun:}$smarty.get.id{/yun}",
-                resume_id:resume_id
+                resume_id:resume_id,
+                eid:eid
             },
             success:function (data) {
                 var data =JSON.parse(data);

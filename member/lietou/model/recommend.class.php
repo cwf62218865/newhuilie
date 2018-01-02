@@ -49,6 +49,7 @@ class recommend_controller extends lietou{
         }else{
             $job = $this->job_more($job_id);
             $data['job_id'] = $job_id;
+            $data['eid'] = $eid;
             $data['job_name'] = $job['name'];
             $data['com_id'] = $job['uid'];
             $data['com_name'] = $job['com_name'];

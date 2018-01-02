@@ -75,8 +75,13 @@ class show_controller extends resume_controller{
 					$id=(int)$def_job['def_job'];
 				}
 			}
-		}else if((int)$_GET['id']){
-			$id=(int)$_GET['id'];
+		}else if((int)$_GET['id'] || (int)$_GET['reid']){
+		    if($_GET['reid']){
+		        $resume_id = $this->obj->DB_select_once("userid_job"," id=".$_GET['reid'],"eid");
+                $id= $resume_id['eid'];
+            }else{
+                $id=(int)$_GET['id'];
+            }
 			$expect=$M->SelectExpectOne(array("id"=>$id),"r_status"); 
 			if($expect['r_status']<'1'){
 				$this->ACT_msg($this->config['sy_weburl'].'/member',"简历正在审核中！");
@@ -85,7 +90,7 @@ class show_controller extends resume_controller{
 			}elseif($expect['r_status']=='3'){
 				$this->ACT_msg($this->config['sy_weburl'].'/member',"简历审核暂未通过！");
 			}
-		} 
+		}
 		$resume_expect=$M->SelectExpectOne(array("id"=>$id));
 
 		if($resume_expect['id']){ 
@@ -194,8 +199,13 @@ class show_controller extends resume_controller{
 					$this->yunset("tplurl",$url);
 					$this->yuntpl(array('resume/'.$url['url'].'/index')); 
 				}else{
+                    if($_GET['reid']){
 
-					$this->yuntpl(array('resume/resume'));
+                        $this->yuntpl(array('resume/lt_resume'));
+                    }else{
+                        $this->yuntpl(array('resume/resume'));
+                    }
+
 				} 
 			
 		}else{
