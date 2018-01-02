@@ -276,88 +276,23 @@ function jobshuaxin(id){
                 <span class="job_news_list_span job_w150">工作地点</span>
                 <span class="job_news_list_span job_w100">更新时间</span>
             </div>
+            {yun:}foreach from=$new_jobs item=list{/yun}
             <div class="job_news_list">
                 <span class="job_news_list_span job_w370">
-                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                        <a class="job_namer" href="#">{yun:}$list.name{/yun}</a><br>
+                        <a class="com_namer" href="#">{yun:}$list.com_name{/yun}</a>
                 </span>
                 <span class="job_news_list_span job_w150">
                     <label class="tj_xz">薪资面谈</label><br>
                         <span class="com_namer">年薪制</span>
                 </span>
                 <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">重庆市-江北区</label></span>
+                    <label class="tj_nums" href="#">{yun:}$list.place{/yun}</label></span>
                 <span class="job_news_list_span job_w100">
-                    <label class="tj_nums" href="#">2天前</label> </span>
+                    <label class="tj_nums" href="#">{yun:}$list.lastupdate{/yun}</label> </span>
             </div>
-            <div class="job_news_list">
-                <span class="job_news_list_span job_w370">
-                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_xz">薪资面谈</label><br>
-                        <span class="com_namer">年薪制</span>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">重庆市-江北区</label></span>
-                <span class="job_news_list_span job_w100">
-                    <label class="tj_nums" href="#">2天前</label> </span>
-            </div>
-            <div class="job_news_list">
-                <span class="job_news_list_span job_w370">
-                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_xz">薪资面谈</label><br>
-                        <span class="com_namer">年薪制</span>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">重庆市-江北区</label></span>
-                <span class="job_news_list_span job_w100">
-                    <label class="tj_nums" href="#">2天前</label> </span>
-            </div>
-            <div class="job_news_list">
-                <span class="job_news_list_span job_w370">
-                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_xz">薪资面谈</label><br>
-                        <span class="com_namer">年薪制</span>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">重庆市-江北区</label></span>
-                <span class="job_news_list_span job_w100">
-                    <label class="tj_nums" href="#">2天前</label> </span>
-            </div>
-            <div class="job_news_list">
-                <span class="job_news_list_span job_w370">
-                        <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_xz">薪资面谈</label><br>
-                        <span class="com_namer">年薪制</span>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">重庆市-江北区</label></span>
-                <span class="job_news_list_span job_w100">
-                    <label class="tj_nums" href="#">2天前</label> </span>
-            </div>
-            <div class="pages_btns">
-                <span class="page_butt">上一页</span>
-                <span class="page_butt">1</span>
-                <span class="page_butt">2</span>
-                <span class="page_butt">3</span>
-                <span class="page_butt">4</span>
-                <span class="page_butt">5</span>
-                <span class="page_butt">6</span>
-                <span class="page_butt">…</span>
-                <span class="page_butt">15</span>
-                <span class="page_butt">下一页</span>
-            </div>
+            {yun:}/foreach{/yun}
+            <div class="pages pages_btns"> {yun:}$recommend.pagenav{/yun}</div>
         </div>
 
 

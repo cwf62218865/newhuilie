@@ -978,6 +978,7 @@ class index_controller extends common{
     }
 
     function resume_word_action(){
+
         $resumename=$this->obj->DB_select_once("resume_expect","`id`='".(int)$_GET['id']."'","`uid`,`uname`");
         $resume=$this->obj->DB_select_once("down_resume","`eid`='".(int)$_GET['id']."' and `comid`='".$this->uid."'");
 
@@ -992,10 +993,13 @@ class index_controller extends common{
             curl_setopt($ch, CURLOPT_COOKIE, @implode(';',$cookies));
             $content = curl_exec($ch);
             curl_close($ch);
+
             $this->startword($resumename['uname'],$content);
 
         }elseif(is_array($resume) && !empty($resume)){
+
             $content = file_get_contents(Url('resume',array('c'=>'show','id'=>(int)$_GET['id'],'downtime'=>$resume['downtime'],'type'=>'word')));
+//echo $content;exit();
             $this->startword($resumename['uname'],$content);
         }
     }

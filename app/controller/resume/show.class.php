@@ -9,7 +9,8 @@
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
  */
 class show_controller extends resume_controller{
-	function index_action(){ 
+	function index_action(){
+
 	    include(CONFIG_PATH."db.data.php");
 		unset($arr_data['sex'][3]);
 		$this->yunset("arr_data",$arr_data);
@@ -58,7 +59,7 @@ class show_controller extends resume_controller{
 		$this->yunset("packinfo",$packinfo);
 	
 		
-		
+
 		$M=$this->MODEL('resume');
 		if((int)$_GET['uid']){
 			if((int)$_GET['type']=="2"){
@@ -86,6 +87,7 @@ class show_controller extends resume_controller{
 			}
 		} 
 		$resume_expect=$M->SelectExpectOne(array("id"=>$id));
+
 		if($resume_expect['id']){ 
 		
 			$UserinfoM=$this->MODEL('userinfo');
@@ -130,7 +132,7 @@ class show_controller extends resume_controller{
 					die;
 				}else{
 					$resume=$M->SelectDownResumeOne(array("eid"=>(int)$_GET['id'],"downtime"=>$_GET['downtime']));
-					if(is_array($resume) && !empty($resume)){ 
+					if(is_array($resume) && !empty($resume)){
 						$this->yuntpl(array('resume/wordresume'));
 					}
 					die;
@@ -187,7 +189,8 @@ class show_controller extends resume_controller{
 				if($url['url']==''){
 					unset($tmp);
 				} 
-				if($tmp){ 
+				if($tmp){
+
 					$this->yunset("tplurl",$url);
 					$this->yuntpl(array('resume/'.$url['url'].'/index')); 
 				}else{

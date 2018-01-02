@@ -20,11 +20,32 @@ class index_controller extends lietou{
         $down_resume_count =$this->obj->DB_select_num("down_resume","uid=".$this->uid,"resume_id");
         $down_resume_odds = intval($down_resume_count/$down_resume_count);
 
-        $recommend_jobs = $this->obj->DB_select_all("userid_job","uid=".$this->uid." limit 0,5");
+
+
+        if($_GET['endtime']){
+            $endtime = $_GET['endtime'];
+        }else{
+            $endtime = time();
+        }
+
+        if($_GET['starttime']){
+            $starttime = $_GET['starttime'];
+        }else{
+            $starttime = $endtime-60*60*24*30;
+        }
+
+        $where ="uid=".$this->uid." and datetime>".$starttime." and datetime<".$endtime;
+        $recommend = $this->recommend_page($where,"index.php");
+
         $this->obj->DB_select_all("down_resume","type=2 ");
 		$member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","`login_date`,`status`");
 
+
+
+
+
  		$this->yunset("service_com_count",$service_com_count);
+ 		$this->yunset("recommend",$recommend);
  		$this->yunset("service_job_count",$service_job_count);
  		$this->yunset("service_resume_count",$service_resume_count);
  		$this->yunset("down_resume_odds",$down_resume_odds);
@@ -36,7 +57,6 @@ class index_controller extends lietou{
 	}
 
     function recent_action(){
-
         include(CONFIG_PATH."db.data.php");
         $this->yunset("arr_data",$arr_data);
 
@@ -46,10 +66,11 @@ class index_controller extends lietou{
         $down_resume_count =$this->obj->DB_select_num("down_resume","uid=".$this->uid,"resume_id");
         $down_resume_odds = intval($down_resume_count/$down_resume_count);
 
-        $recommend_jobs = $this->obj->DB_select_all("userid_job","uid=".$this->uid." limit 0,5");
+        $recommend = $this->recommend_page("uid=".$this->uid,"www.baidu.com");
         $this->obj->DB_select_all("down_resume","type=2 ");
         $member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","`login_date`,`status`");
 
+        $this->yunset("recommend",$recommend);
         $this->yunset("service_com_count",$service_com_count);
         $this->yunset("service_job_count",$service_job_count);
         $this->yunset("service_resume_count",$service_resume_count);
@@ -65,18 +86,33 @@ class index_controller extends lietou{
     function newjobs_action(){
 
         include(CONFIG_PATH."db.data.php");
-        $this->yunset("arr_data",$arr_data);
+        include(PLUS_PATH."city.cache.php");
 
+        $this->yunset("arr_data",$arr_data);
         $service_com_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"DISTINCT com_id");
         $service_job_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"DISTINCT job_id");
         $service_resume_count = $this->obj->DB_select_num("userid_job","uid=".$this->uid,"resume_id");
         $down_resume_count =$this->obj->DB_select_num("down_resume","uid=".$this->uid,"resume_id");
         $down_resume_odds = intval($down_resume_count/$down_resume_count);
-
-        $recommend_jobs = $this->obj->DB_select_all("userid_job","uid=".$this->uid." limit 0,5");
-        $this->obj->DB_select_all("down_resume","type=2 ");
         $member=$this->obj->DB_select_once("member","`uid`='".$this->uid."'","`login_date`,`status`");
+        $new_jobs = $this->obj->DB_select_all("company_job","1 order by lastupdate desc");
+        $arr_new_jobs = "";
+        foreach ($new_jobs as $list){
+            $list['lastupdate'] = $this->_format_date($list['lastupdate']);
+            if($list['provinceid']){
+                $list['place'] = $city_name[$list['provinceid']];
+                if($list['cityid']){
+                    $list['place'] =$list['place']."-".$city_name[$list['cityid']];
+                    if($list['three_cityid']){
+                        $list['place'] =$list['place']."-".$city_name[$list['three_cityid']];
+                    }
+                }
+            }
 
+            $arr_new_jobs[] = $list;
+        }
+
+        $this->yunset("new_jobs",$arr_new_jobs);
         $this->yunset("service_com_count",$service_com_count);
         $this->yunset("service_job_count",$service_job_count);
         $this->yunset("service_resume_count",$service_resume_count);
