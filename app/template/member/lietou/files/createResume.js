@@ -735,7 +735,20 @@ function addWork(d){
 		+'</table>' ;
 	
 	thisobj.before(table);
-	
+	$('.form_date.ym').datetimepicker( {
+		language : 'zh-CN',
+		weekStart : 1,
+		todayBtn : 0,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 3,
+		minView : 3,
+		forceParse : 0,
+		format : 'yyyy-mm',
+		pickerPosition : "bottom-left"
+	}).on('show', function(ev) {
+		$('.form_date').datetimepicker('update')
+	});
 
 }
 $('.form_date.ym').datetimepicker( {

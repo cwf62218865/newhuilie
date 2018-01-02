@@ -80,13 +80,6 @@
 				<div class="searchterms">
 					<div class="searchterms_box2" style="display:block;">
 						<div class="jPosSelectorTit">
-							行业类别
-						</div>
-						<ul class="layout jCallingSelectorItem" id="jb1">
-
-						</ul>
-						<div class="clear"></div>
-						<div class="jPosSelectorTit">
 							已选择的职位
 							<span style="color:#888;">（最多选五项）</span>
 						</div>
@@ -94,6 +87,17 @@
 							<!--<li jobsid="carjob1007"><a href="#" class="label alert label-success selectlabel" role="alert"><span class="innertext">发动机及附件设计&nbsp;</span><span aria-hidden="true">×</span></a></li>-->
 						</ul>
 						<div class="clear"></div>
+						<div class="jPosSelectorTit">
+							行业类别
+						</div>
+						<ul class="layout jCallingSelectorItem" id="jb1">
+
+						</ul>
+						<div class="clear"></div>
+						<div class="jPosSelectorTit">
+
+						</div>
+
 						<ul class="layout2" style=" display:block;">
 							<ul callingmark="nrjob" class="jPosSelectorItem jCallingSelectorItem" style="display: block;" id="jb2">
 								<!--<li jobid="nrjob1000" class="nrjob jobselect"> <a class="jCallingSelectorHadItem2" href="javascript:void(0);" onclick="querySubJob('1000',this)">IT/UED设计/产品</a> </li>-->
@@ -172,13 +176,13 @@
 									<th>所在地</th>
 									<td>
 										<div class="input-group input-group-sm adr">
-											<div id="cityDiv" class="jCitySelector input-group input-group-sm adr" maxselect="1" showhot="1" style="z-index: 96;height:30px;">
+											<div id="cityDiv" class="jCitySelector input-group input-group-sm adr" maxselect="3" showhot="1" style="z-index: 96;height:30px;">
 												<input type="hidden" pop="popIDs" id="cityId" name="cityId" value="1103" class="jCitySelectorVal" />
 												<input type="hidden" id="cityName" name="cityName" value="厦门" class="jCitySelectorName" />
 												<div class="jCitySelectorPop" style="position: absolute; top: 29px; display: none; left: 0px;">
 													<div class="jCitySelectorPopIn" style="background:#fff; position:absolute; top:0;">
 														<div class="jCitySelectorHD layout">
-															<span class="jCitySelectorMaxTip" style="display:none">最多可选择 <em class="jCitySelectorMaxNum">1</em> 项</span>
+															<span class="jCitySelectorMaxTip" style="display:none">最多可选择 <em class="jCitySelectorMaxNum">3</em> 项</span>
 															<a style="display:none" class="jCitySelectorClose" href="javascript:;">确定</a>
 														</div>
 														<div class="jCitySelectorItem jCitySelectorHad">
@@ -849,13 +853,13 @@
 								<tr>
 									<th class="optional">期望城市</th>
 									<td colspan="3">
-										<div id="locationDiv" class="jCitySelector input-group input-group-sm indst" maxselect="1" showhot="1" style="z-index: 95;height:30px;">
+										<div id="locationDiv" class="jCitySelector input-group input-group-sm indst" maxselect="3" showhot="1" style="z-index: 95;height:30px;">
 											<input type="hidden" value="" id="locations" name="locations" class="jCitySelectorVal" />
 											<input type="hidden" value="" class="jCitySelectorName" />
 											<div class="jCitySelectorPop" style="position: absolute; top: 0px; display: none;">
 												<div class="jCitySelectorPopIn" style="background:#fff; position:absolute; top:0;">
 													<div class="jCitySelectorHD layout">
-														<span class="jCitySelectorMaxTip">最多可选择 <em class="jCitySelectorMaxNum">1</em> 项</span>
+														<span class="jCitySelectorMaxTip">最多可选择 <em class="jCitySelectorMaxNum">3</em> 项</span>
 														<a class="jCitySelectorClose" href="javascript:;">确定</a>
 													</div>
 													<div class="jCitySelectorItem jCitySelectorHad">
@@ -1799,7 +1803,7 @@
 	var hopeIndustry=hi;//期望行业数据
 	var hopeIndustrybox="";//期望行业
 	for(var i =0 ; i< hopeIndustry.length ; i++){
-		hopeIndustrybox+="<option value='"+hopeIndustry[i]+"'>"+hn[hopeIndustry[i]]+"</option>";
+		hopeIndustrybox+="<option value='"+i+"'>"+hn[hopeIndustry[i]]+"</option>";
 	}
 	$("#hopeIndustry").append(hopeIndustrybox);
 
@@ -1841,7 +1845,7 @@
 			for(var j = 0 ;j < checkjbsid.length ; j++){
 				if(checkjbsid[j]==jt[jtd][i]){
 					job3+='<li ><a href="javascript:void(0)" jobid="nrjob'+jt[jtd][i]+'" class="act" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
-					break;
+
 				}else{
 					actlength-=1;
 				}
@@ -1871,7 +1875,7 @@
     $(document).ready(
         function() {
 
-            $('.form_date.ym').datetimepicker({
+            $('.form_date.ym').datetimepicker( {
                 language : 'zh-CN',
                 weekStart : 1,
                 todayBtn : 0,

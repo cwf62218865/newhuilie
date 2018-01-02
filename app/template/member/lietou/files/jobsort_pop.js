@@ -95,7 +95,7 @@ $(function(){
 		if(selects&&selects.size()>0){
 			$.each(selects,function(i,v){
 				txt += ((i==0?"":",")+ $(v).find(".innertext").text());
-				vals += ((i==0?"":",")+ $(v).attr("jobsid"));
+				vals += ((i==0?"":",")+ $(v).attr("jobsid").substring(5,9));
 			});
 		}
 		$("#hopeCallings").val(vals);	
