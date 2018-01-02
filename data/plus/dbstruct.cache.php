@@ -89,7 +89,7 @@ $phpyun_description=array('id'=>'int(11)','nid'=>'int(11)','name'=>'varchar(255)
 ; 
 $phpyun_domain=array('id'=>'int(11)','title'=>'varchar(200)','domain'=>'varchar(200)','province'=>'int(11)','cityid'=>'int(11)','three_cityid'=>'int(11)','type'=>'int(2)','style'=>'varchar(100)','tpl'=>'varchar(20)','hy'=>'int(11)','fz_type'=>'int(11)','webtitle'=>'text','webkeyword'=>'text','webmeta'=>'text','weblogo'=>'varchar(255)')
 ; 
-$phpyun_down_resume=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','comid'=>'int(11)','downtime'=>'int(11)','did'=>'int(11)')
+$phpyun_down_resume=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','comid'=>'int(11)','downtime'=>'int(11)','did'=>'int(11)','type'=>'int(11)','resume_id'=>'int(11)','job_id'=>'int(11)')
 ; 
 $phpyun_email_msg=array('id'=>'int(11)','uid'=>'int(11)','name'=>'varchar(100)','cuid'=>'int(11)','cname'=>'varchar(255)','email'=>'varchar(200)','title'=>'varchar(200)','content'=>'text','ctime'=>'int(11)','state'=>'int(1)','smtpserver'=>'varchar(100)')
 ; 
@@ -185,7 +185,7 @@ $phpyun_redeem_class=array('id'=>'int(11)','keyid'=>'int(11)','name'=>'varchar(5
 ; 
 $phpyun_report=array('id'=>'int(11)','p_uid'=>'int(11)','c_uid'=>'int(11)','eid'=>'int(11)','usertype'=>'int(1)','inputtime'=>'int(11)','username'=>'varchar(100)','r_name'=>'varchar(100)','status'=>'int(1)','r_reason'=>'varchar(200)','type'=>'int(11)','r_type'=>'int(11)','did'=>'int(11)','result'=>'varchar(255)','rtime'=>'int(11)','admin'=>'int(11)')
 ; 
-$phpyun_resume=array('uid'=>'int(11)','name'=>'varchar(25)','nametype'=>'int(11)','sex'=>'int(2)','birthday'=>'varchar(10)','marriage'=>'int(10)','height'=>'varchar(4)','nationality'=>'varchar(20)','weight'=>'varchar(4)','idcard'=>'varchar(20)','telphone'=>'varchar(20)','telhome'=>'varchar(20)','email'=>'varchar(50)','edu'=>'int(11)','homepage'=>'varchar(50)','address'=>'varchar(80)','description'=>'text','resume_photo'=>'varchar(100)','photo'=>'varchar(100)','phototype'=>'int(11)','expect'=>'int(11)','def_job'=>'int(11)','exp'=>'int(11)','status'=>'int(2)','lastupdate'=>'int(11)','resumetime'=>'int(11)','idcard_pic'=>'varchar(100)','email_status'=>'int(1)','moblie_status'=>'int(1)','idcard_status'=>'int(1)','statusbody'=>'varchar(200)','cert_time'=>'int(11)','r_status'=>'int(1)','ant_num'=>'int(11)','email_dy'=>'int(1)','msg_dy'=>'int(1)','living'=>'varchar(100)','domicile'=>'varchar(100)','basic_info'=>'int(11)','hy_dy'=>'varchar(100)','info_status'=>'int(1)','did'=>'int(11)','qq'=>'varchar(20)','wxewm'=>'varchar(200)','tag'=>'varchar(200)')
+$phpyun_resume=array('id'=>'int(11)','uid'=>'int(11)','name'=>'varchar(25)','nametype'=>'int(11)','sex'=>'int(2)','birthday'=>'varchar(10)','marriage'=>'int(10)','height'=>'varchar(4)','nationality'=>'varchar(20)','weight'=>'varchar(4)','idcard'=>'varchar(20)','telphone'=>'varchar(20)','telhome'=>'varchar(20)','email'=>'varchar(50)','edu'=>'int(11)','homepage'=>'varchar(50)','address'=>'varchar(80)','description'=>'text','resume_photo'=>'varchar(100)','photo'=>'varchar(100)','phototype'=>'int(11)','expect'=>'int(11)','def_job'=>'int(11)','exp'=>'int(11)','status'=>'int(2)','lastupdate'=>'int(11)','resumetime'=>'int(11)','idcard_pic'=>'varchar(100)','email_status'=>'int(1)','moblie_status'=>'int(1)','idcard_status'=>'int(1)','statusbody'=>'varchar(200)','cert_time'=>'int(11)','r_status'=>'int(1)','ant_num'=>'int(11)','email_dy'=>'int(1)','msg_dy'=>'int(1)','living'=>'varchar(100)','domicile'=>'varchar(100)','basic_info'=>'int(11)','hy_dy'=>'varchar(100)','info_status'=>'int(1)','did'=>'int(11)','qq'=>'varchar(20)','wxewm'=>'varchar(200)','tag'=>'varchar(200)')
 ; 
 $phpyun_resume_cert=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','name'=>'varchar(25)','sdate'=>'int(10)','edate'=>'int(10)','title'=>'varchar(50)','content'=>'text')
 ; 
@@ -245,7 +245,7 @@ $phpyun_user_resume=array('id'=>'int(10)','uid'=>'int(10)','eid'=>'int(10)','exp
 ; 
 $phpyun_userclass=array('id'=>'int(11)','keyid'=>'int(11)','name'=>'varchar(100)','variable'=>'varchar(100)','sort'=>'int(11)')
 ; 
-$phpyun_userid_job=array('id'=>'int(11)','uid'=>'int(11)','job_id'=>'int(11)','job_name'=>'varchar(150)','com_id'=>'int(11)','com_name'=>'varchar(150)','eid'=>'int(10) unsigned','datetime'=>'int(10)','type'=>'int(1)','is_browse'=>'int(1)','body'=>'varchar(255)','did'=>'int(11)','quxiao'=>'int(2)')
+$phpyun_userid_job=array('id'=>'int(11)','uid'=>'int(11)','job_id'=>'int(11)','job_name'=>'varchar(150)','com_id'=>'int(11)','com_name'=>'varchar(150)','eid'=>'int(10) unsigned','datetime'=>'int(10)','type'=>'int(1)','is_browse'=>'int(1)','body'=>'varchar(255)','did'=>'int(11)','quxiao'=>'int(2)','identity'=>'int(11)','resume_id'=>'int(11)','recommend_result'=>'int(11)')
 ; 
 $phpyun_userid_msg=array('id'=>'int(11)','uid'=>'int(11)','title'=>'varchar(150)','content'=>'text','fid'=>'int(11)','fname'=>'varchar(150)','type'=>'int(11)','datetime'=>'int(10)','default'=>'int(1)','is_browse'=>'int(1)','address'=>'varchar(255)','intertime'=>'varchar(255)','linkman'=>'varchar(50)','linktel'=>'varchar(50)','jobid'=>'int(11)','jobname'=>'varchar(50)','did'=>'int(11)')
 ; 
