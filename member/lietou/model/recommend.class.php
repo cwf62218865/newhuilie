@@ -23,12 +23,6 @@ class recommend_controller extends lietou{
 		$jobs=$this->obj->DB_select_once("company_job",$where);
         $logo = $this->obj->DB_select_once("company"," uid=".$jobs['uid'],"logo");
         $jobs['logo'] = $logo['logo'];
-
-        // ¼òÀúËÑË÷
-        $resume=$this->obj->DB_select_all("resume","`r_status`<>'2' ","`name`,`edu`,`uid`,`exp`");
-        $expect=$this->obj->DB_select_all("resume_expect","`id` in (".pylode(",",$eid).")","`id`,`job_classid`,`salary`,`height_status`");
-
-        $this->yunset("resume",$resume);
 		$this->yunset("jobs",$jobs);
 		$this->yunset("js_def",3);
 		if(intval($_GET['w'])==1){
@@ -48,6 +42,7 @@ class recommend_controller extends lietou{
 
 	    $job_id = $_POST['job_id'];
 	    $resume_id = $_POST['resume_id'];
+	    $eid = $_POST['eid'];
         $recommend = $this->obj->DB_select_once("userid_job","uid=".$this->uid." and resume_id=".$resume_id." and job_id=".$job_id);
         if($recommend){
             $this->error_msg("ÒÑÍÆ¼ö");

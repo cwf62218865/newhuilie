@@ -9,8 +9,12 @@
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
 class lietou extends common{
-	
-	function public_action(){
+
+    function array_iconv($in_charset,$out_charset,$arr){
+        return eval('return '.iconv($in_charset,$out_charset,var_export($arr,true).';'));
+    }
+
+    function public_action(){
 		$now_url=@explode("/",$_SERVER['REQUEST_URI']);
 		$now_url=$now_url[count($now_url)-1];
 		$this->yunset("now_url",$now_url);
