@@ -410,7 +410,7 @@ center; font-size:12px; z-index:11 }
 }
 .job_w120{width:120px; text-align:center}
 .job_w130{width:130px;}
-.job_w135{width:135px;}
+.job_w135{width:135px; text-align:center;}
 .job_w245{width:235px;}
 .job_w140{width:140px; text-align:center}
 .job_w100{width:99px;text-align:center }
@@ -431,8 +431,8 @@ center; font-size:12px; z-index:11 }
 .job_w161{
     width:161px;
 }
-.job_w60{
-    width:60px;
+.job_w88{
+    width:88px;
 }
 .file_button_edit .sub_btn{margin-left:64px;_margin-left:22px; float:left;}
 .com_m_line{ font-size:12px; font-family:ËÎÌו;color:#cfcfcf}
@@ -2122,7 +2122,7 @@ overflow-x: hidden;z-index:99999;width:235px;}
     margin-top: 12px;
     border-radius: 4px;
     width: auto;
-    margin-right: 34px;
+    margin-right: 20px;
 }
 .top_nav_list .right_nav_ul li:hover{
     background: #ecf0f1;

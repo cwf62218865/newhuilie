@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="Search_jobs_more_chlose">
-                    <span class="Search_jobs_more_chlose_s">{yun:}if $uptime[$smarty.get.uptime]{/yun}{yun:}$uptime[$smarty.get.uptime]{/yun}{yun:}else{/yun}更新时间{yun:}/if{/yun}</span><i class=""></i>
+                    <span class="Search_jobs_more_chlose_s">{yun:}if $uptime[$smarty.get.uptime]{/yun}{yun:}$uptime[$smarty.get.uptime]{/yun}{yun:}else{/yun}推荐时间{yun:}/if{/yun}</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
                         <ul>
                             {yun:}foreach from=$uptime item=v key=key{/yun}<li>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="paixu_btn">
                     <label class="pxbtn">年薪从高到低</label>
-                    <label class="pxbtn pxcur">更新时间从新到旧</label>
+                    <label class="pxbtn pxcur">推荐时间从新到旧</label>
                 </div>
             </div>
         </div>
@@ -109,25 +109,25 @@
                     <span class="job_news_list_span job_w245" style="text-align:left;padding-left: 10px;">职位</span>
                     <span class="job_news_list_span job_w130">推荐时间</span>
                     <span class="job_news_list_span job_w161">年薪/工作地点</span>
-                    <span class="job_news_list_span job_w60">推荐进度:</span>
+                    <span class="job_news_list_span job_w88">推荐进度:</span>
                     <span class="job_news_list_span job_w260">
                         <label class="num_tj">
                             <img src="{yun:}$lt_style{/yun}/images/icol0.png">
                             <label class="jieshiico">服务猎头</label>
                         </label>
-                        <label class="num_tj w42">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol1.png">
                             <label class="jieshiico">推荐候选人</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w36">
                             <img src="{yun:}$lt_style{/yun}/images/icol2.png">
                             <label class="jieshiico">HR已查看</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol3.png">
                             <label class="jieshiico">HR已下载</label>
                         </label>
-                        <label class="num_tj w48">
+                        <label class="num_tj w41">
                             <img src="{yun:}$lt_style{/yun}/images/icol4.png">
                             <label class="jieshiico">HR已拒绝</label>
                         </label>
@@ -253,7 +253,7 @@
                         <label class="salery_s" href="#">{yun:}if $job_list.job_salary!='面议'{/yun}￥{yun:}/if{/yun}{yun:}$job_list.job_salary{/yun}</label><br>
                         <label class="com_namer" href="#">{yun:}$job_list.job_city_one{/yun}-{yun:}$job_list.job_city_two{/yun}</label>
                     </span>
-                    <span class="job_news_list_span job_w60 line_heigh23">
+                    <span class="job_news_list_span job_w88 line_heigh23">
                         <label class="tj_nums" href="#">总体进度</label><br>
                         <label class="tj_nums" href="#">我的进度</label>
                     </span>
