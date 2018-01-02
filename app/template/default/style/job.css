@@ -514,3 +514,8 @@
 .mtop0{
     margin-top: 0px;
 }
+.ico_btn{
+   display: inline-block;
+    width: 33px;
+    cursor: pointer;
+}
