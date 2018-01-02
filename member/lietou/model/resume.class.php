@@ -384,69 +384,91 @@ class resume_controller extends lietou{
 
     function add_action(){
 
+        $_POST = $this->array_iconv("utf-8","gbk",$_POST);
+//        var_dump($_POST);exit();
         $data['name'] = $_POST['name']?$_POST['name']:$this->error_msg("请输入姓名");
         $data['sex'] = $_POST['sex']?$_POST['sex']:$this->error_msg("请选择性别");
         $data['email'] = $_POST['email'];
         $data['birthday'] = $_POST['birthDayStr'];
         $data['living'] =  $_POST['cityId'];
-        $data['edu'] = $_POST['edu'];
-        $data['def_job'] = $_POST['def_job'];
-        $data['telphone'] = $_POST['mobile']?$_POST['mobile']:die("请输入手机号");
+        $data['edu'] = $_POST['degree'];
+        $data['telphone'] = $_POST['mobile']?$_POST['mobile']:$this->error_msg("请输入手机号");
         $data['uid'] = $this->uid;
-        $resume_id = $this->obj->insert_into("resume",$data);
+        $resume_id = $this->obj->insert_into("resume",$data);       //id 作为后面附表的uid
 
         if($resume_id){
+
             if($_POST['intent']){
                 $data = "";
-                $data['uid'] = $resume_id;
+                $data['resume_id'] = $resume_id;
+                $data['uid'] = $this->uid;
                 $data['job_classid']= $_POST['intent']['hopeCallings'];
                 $data['intention_city'] = $_POST['intent']['hopeCitys'];
+                $data['hy'] = $_POST['intent']['hopeIndustry'];
                 $data['wage_hope'] = $_POST['intent']['curMoney'];
                 $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
                 $data['wage_current'] = $_POST['intent']['hopeMoney'];
-                $this->obj->insert_into("resume_expect",$data);
-            }
+                $data['jobstatus'] = $_POST['jobState'];
+                $data['lastupdate'] = time();
+                $data['ctime'] = time();
+                $data['uname'] = $_POST['name'];
+                $data['r_status'] = 1;
+                $data['defaults'] =1;
+                $data['birthday'] = $_POST['birthDayStr'];
+                $resume_eid = $this->obj->insert_into("resume_expect",$data);   //id 作为后面附表的eid
 
-            if($_POST['workExp']){
+                if($resume_eid){
 
-                foreach ($_POST['workExp'] as $list){
-                    $data = "";
-                    $data['uid'] = $resume_id;
-                    $data['name'] = $list['companyName'];
-                    $data['title'] = $list['posName'];
-                    $data['sdate'] = $list['startDateStr'];
-                    $data['edate'] = $list['endDateStr'];
-                    $data['content'] = $list['workDes'];
-                    $this->obj->insert_into("resume_work",$data);
+                    if($_POST['workExp']){
+                        foreach ($_POST['workExp'] as $list){
+                            $data = "";
+                            $data['resume_id'] = $resume_id;
+                            $data['uid'] = $this->uid;
+                            $data['eid'] = $resume_eid;
+                            $data['name'] = $list['companyName'];
+                            $data['title'] = $list['posName'];
+                            $data['sdate'] = strtotime($list['startDateStr']);
+                            $data['edate'] = strtotime($list['endDateStr']);
+                            $data['content'] = $list['workDes'];
+                            $this->obj->insert_into("resume_work",$data);
+                        }
+
+                    }
+
+                    if($_POST['eduExps']){
+                        foreach ($_POST['workExp'] as $list){
+                            $data = "";
+                            $data['resume_id'] = $resume_id;
+                            $data['uid'] = $this->uid;
+                            $data['eid'] = $resume_eid;
+                            $data['name'] = $list['name'];
+                            $data['title'] = $list['title'];
+                            $data['sdate'] = strtotime($list['sdate']);
+                            $data['edate'] = strtotime($list['edate']);
+                            $data['specialty'] = $list['specialty'];
+                            $this->obj->insert_into("resume_edu",$data);
+                        }
+                    }
+
+                    if($_POST['proExp']){
+                        foreach ($_POST['proExp'] as $list){
+                            $data = "";
+                            $data['resume_id'] = $resume_id;
+                            $data['uid'] = $this->uid;
+                            $data['eid'] = $resume_eid;
+                            $data['name'] = $list['proName'];
+                            $data['title'] = $list['title'];
+                            $data['sdate'] = strtotime($list['startDateStr']);
+                            $data['edate'] = strtotime($list['endDateStr']);
+                            $data['content'] = $list['content'];
+                            $this->obj->insert_into("resume_project",$data);
+                        }
+
+                    }
                 }
-
             }
 
-            if($_POST['edu']){
-                $data = "";
-                $data['uid'] = $resume_id;
-                $data['name'] = $_POST['edu']['name'];
-                $data['title'] = $_POST['edu']['title'];
-                $data['sdate'] = $_POST['edu']['sdate'];
-                $data['edate'] = $_POST['edu']['edate'];
-                $data['specialty'] = $_POST['edu']['specialty'];
-                $this->obj->insert_into("resume_edu",$data);
-            }
 
-            if($_POST['proExp']){
-
-                foreach ($_POST['proExp'] as $list){
-                    $data = "";
-                    $data['uid'] = $resume_id;
-                    $data['name'] = $list['proName'];
-                    $data['title'] = $list['title'];
-                    $data['sdate'] = $list['startDateStr'];
-                    $data['edate'] = $list['endDateStr'];
-                    $data['content'] = $list['content'];
-                    $this->obj->insert_into("resume_project",$data);
-                }
-
-            }
             $this->success_msg("添加成功");
         }else{
             $this->error_msg("添加失败");

@@ -1,7 +1,7 @@
 <?php
-class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
+class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 	public $required_attributes = array('item');
-	public $optional_attributes = array('name', 'key', 'post_len', 'limit', 'salary', 'minsalary', 'maxsalary', 'idcard', 'edu', 'order', 'work', 'exp', 'sex','birthday', 'keyword', 'hy', 'provinceid', 'report', 'cityid', 'three_cityid', 'adtime', 'jobids', 'pic', 'typeids', 'type', 'job1_son', 'job_post', 'uptime', 'ispage', 'rec_resume','where_uid', 'height_status', 'rec', 't_len' ,'top','job_classid','islt','job1','isshow','cityin','jobin','where','topdate','noid','tag');
+	public $optional_attributes = array('name', 'key', 'post_len', 'limit', 'salary','uid', 'minsalary', 'maxsalary', 'idcard', 'edu', 'order', 'work', 'exp', 'sex','birthday', 'keyword', 'hy', 'provinceid', 'report', 'cityid', 'three_cityid', 'adtime', 'jobids', 'pic', 'typeids', 'type', 'job1_son', 'job_post', 'uptime', 'ispage', 'rec_resume','where_uid', 'height_status', 'rec', 't_len' ,'top','job_classid','islt','job1','isshow','cityin','jobin','where','topdate','noid','tag');
 	public $shorttag_order = array('from', 'item', 'key', 'name');
 	public function compile($args, $compiler, $parameter){
 
@@ -15,8 +15,9 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 		if (!strncmp("\$_smarty_tpl->tpl_vars[$item]", $from, strlen($item) + 24)) {
 			$compiler->trigger_template_error("item variable {$item} may not be the same variable as at 'from'", $compiler->lex->taglineno);
 		}
+//        $content = ArrayToString($_attr,true);
+//	    var_dump($content);exit();
 
-	
 		$OutputStr=''.$name.'=array();global $db,$db_config,$config;
 		if(is_array($_GET)){
 			foreach($_GET as $key=>$value){
@@ -61,33 +62,17 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 			$where .=" AND `uid` in (".$paramer[\'where_uid\'].")";
 		}
 		
-		if($_COOKIE[\'uid\']&&$_COOKIE[\'usertype\']=="2"){
-			$blacklist=$db->select_all("blacklist","`p_uid`=\'".$_COOKIE[\'uid\']."\'","c_uid");
-			if(is_array($blacklist)&&$blacklist){
-				foreach($blacklist as $v){
-					$buid[]=$v[\'c_uid\'];
-				}
-			$where .=" AND `uid` NOT IN (".@implode(",",$buid).")";
-			}
+		
+		
+		
+		if($paramer[uid]){
+		    $where .=" AND `uid`=\'".$paramer[uid]."\'";
 		}
 		
-		if($paramer[topdate]){
-			$where .=" AND `topdate`>\'".time()."\'";
-		}
 		
-		if($paramer[noid]==1 && !empty($noids)){
-			$where.=" AND `id` NOT IN (".@implode(\',\',$noids).")";
-		}
 		
-		if($paramer[idcard]){
-			$where .=" AND `idcard_status`=\'1\'";
-		}
 	
-		if($paramer[height_status]){
-			$where .=" AND height_status=".$paramer[height_status];
-		}else{
-			$where .=" AND height_status<>\'2\'";
-		}
+		
 		
 		if($paramer[rec]){
 			$where .=" AND `rec`=1";
@@ -97,26 +82,9 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 			$where .=" AND `rec_resume`=1";
 		}
 		
-		if($paramer[work]){
-			$show=$db->select_all("resume_show","1 group by eid","`eid`");
-			if(is_array($show)){
-				foreach($show as $v){
-					$eid[]=$v[\'eid\'];
-				}
-			}
-			$where .=" AND id in (".@implode(",",$eid).")";
-		}
 		
-		if($paramer[tag]){
-		    $tagname=$userclass_name[$paramer[tag]];
-			$tag=$db->select_all("resume","`def_job`>0 and `r_status`<>2 and `status`=1 and FIND_IN_SET(\'".$tagname."\',`tag`)","`def_job`");
-			if(is_array($tag)){
-				foreach($tag as $v){
-					$tagid[]=$v[\'def_job\'];
-				}
-			}
-			$where .=" AND id in (".@implode(",",$tagid).")";
-		}
+		
+		
 		
 		if($paramer[cid]){
 			$where .= " AND (cityid=$paramer[cid] or three_cityid=$paramer[cid])";
@@ -232,17 +200,7 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 			$where .= " AND(provinceid IN ($paramer[cityin]) OR cityid IN ($paramer[cityin]) OR three_cityid IN ($paramer[cityin]))";
 		}
 		
-		if($paramer[exp]){
-			$where .=" AND exp=$paramer[exp]";
-		}else{
-			$where .=" AND exp>0";
-		}
-	
-		if($paramer[edu]){
-			$where .=" AND edu=$paramer[edu]";
-		}else{
-			$where .=" AND edu>0";
-		}
+				
 	
 		if($paramer[sex]){
 			$where .=" AND sex=$paramer[sex]";
@@ -252,42 +210,18 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 			$where .=" AND report=$paramer[report]";
 		}
 		
+		if($paramer[uid]){
+		    $where .=" AND uid=$paramer[uid]";
+		}
 		if($paramer[salary]){
 			$where .=" AND salary=$paramer[salary]";
 		}
-		if($paramer[minsalary]&&$paramer[maxsalary]){
-			$where.= " AND ((`minsalary`<=".intval($paramer[minsalary])." and `maxsalary`>=".intval($paramer[minsalary]).") 
-						or (`minsalary`<=".intval($paramer[maxsalary])." and `maxsalary`>=".intval($paramer[maxsalary])."))";
-			/*$where.= " and case when minsalary>0 then `minsalary`>= ".intval($paramer[minsalary])." end and case when maxsalary>0 then `maxsalary`<= ".intval($paramer[maxsalary])." else minsalary<".intval($paramer[maxsalary])." and maxsalary =0 end ";*/
-		}elseif($paramer[minsalary]&&!$paramer[maxsalary]){
-			$where.= " AND ((`minsalary`<=".intval($paramer[minsalary])." and `maxsalary`>=".intval($paramer[minsalary]).") 
-						or (`minsalary`>=".intval($paramer[minsalary])." and `maxsalary`>=".intval($paramer[minsalary]).")
-						or (`minsalary`!=0 and  `maxsalary`=0))";
-			/*$where.= " AND `minsalary`>=".intval($paramer[minsalary])." and minsalary>0";*/
-		}elseif(!$paramer[minsalary]&&$paramer[maxsalary]){
-			$where.= " AND ((`minsalary`<=".intval($paramer[maxsalary])." and `maxsalary`>=".intval($paramer[maxsalary]).")
-						or (`minsalary`<=".intval($paramer[maxsalary])." and `maxsalary`<=".intval($paramer[maxsalary]).")  
-						or (`minsalary`<=".intval($paramer[maxsalary])." and maxsalary=0) 
-						or (`minsalary`=0 and  `maxsalary`!=0)
-						)";
-			/*$where.= " AND `maxsalary`<=".intval($paramer[maxsalary])." and maxsalary>0";*/
-		}
 		
-	
-		if($paramer[type]){
-			$where .= " AND type=$paramer[type]";
-		}
 		
-		if($paramer[uptime]){
-			if($paramer[uptime]==1){
-				$beginToday=mktime(0,0,0,date(\'m\'),date(\'d\'),date(\'Y\'));
-    			$where.=" AND lastupdate>$beginToday";
-    		}else{
-    			$time=time();
-				$uptime = $time-($paramer[uptime]*86400);
-				$where.=" AND lastupdate>$uptime";
-    		}
-		}
+
+		
+		
+		
 		
 		if($paramer[adtime]){
 			$time=time();
@@ -296,7 +230,7 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 		}
 		
         
-		
+
 		if($paramer[order] && $paramer[order]!="lastdate"){
 			if($paramer[order]==\'ant_num\'){
 				$order = " ORDER BY `ant_num`";
@@ -329,29 +263,19 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 			}
 		}
 		$where.=$order.$sort;
+
 		'.$name.'=$db->select_all("resume_expect",$where.$limit,"*,uname as username");
+
         include(CONFIG_PATH."db.data.php");		
 		if('.$name.' && is_array('.$name.')){
 			
-			
-			if($paramer[\'top\']){
-				$uids=$m_name=array();
-				foreach('.$name.' as $k=>$v){
-					$uids[]=$v[uid];
-				}
-
-				$member=$db->select_all($db_config[def]."member","`uid` in(".@implode(\',\',$uids).")","uid,username");
-				foreach($member as $val){
-					$m_name[$val[uid]]=$val[\'username\'];
-				}
-			}
 			foreach('.$name.' as $key=>$value){
 				$uid[] = $value[\'uid\'];
 				$eid[] = $value[\'id\'];
 			}
 			$eids = @implode(\',\',$eid);
 			$uids = @implode(\',\',$uid);
-            $resume=$db->select_all("resume","`uid` in(".$uids.")","uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday");
+            $resume=$db->select_all("resume","`id` in(".$value[resume_id].")","id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday");
 			foreach('.$name.' as $k=>$v){
 			    foreach($resume as $val){
 			        if($v[\'uid\']==$val[\'uid\']){
@@ -377,6 +301,7 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
                             '.$name.'[$k][\'tag\']=explode(\',\',$val[\'tag\']);
 	                    }
                         '.$name.'[$k][\'nametype\']=$val[nametype];
+                        '.$name.'[$k][\'id\']=$val[id];
                         //名称显示处理
 						if($config[\'user_name\']==1 || !$config[\'user_name\']){
 						if($val[\'nametype\']==3){
@@ -485,27 +410,27 @@ class Smarty_Internal_Compile_Userlist extends Smarty_Internal_CompileBase{
 	
 		global $DiyTagOutputStr;
 		$DiyTagOutputStr[]=$OutputStr;
-		return SmartyOutputStr($this,$compiler,$_attr,'userlist',$name,'',$name);
+		return SmartyOutputStr($this,$compiler,$_attr,'resumelist',$name,'',$name);
 	}
 }
-class Smarty_Internal_Compile_Userlistelse extends Smarty_Internal_CompileBase{
+class Smarty_Internal_Compile_Resumelistelse extends Smarty_Internal_CompileBase{
 	public function compile($args, $compiler, $parameter){
 		$_attr = $this->getAttributes($compiler, $args);
 
-		list($openTag, $nocache, $item, $key) = $this->closeTag($compiler, array('userlist'));
-		$this->openTag($compiler, 'userlistelse', array('userlistelse', $nocache, $item, $key));
+		list($openTag, $nocache, $item, $key) = $this->closeTag($compiler, array('resumelist'));
+		$this->openTag($compiler, 'resumelistelse', array('resumelistelse', $nocache, $item, $key));
 
 		return "<?php }\nif (!\$_smarty_tpl->tpl_vars[$item]->_loop) {\n?>";
 	}
 }
-class Smarty_Internal_Compile_Userlistclose extends Smarty_Internal_CompileBase{
+class Smarty_Internal_Compile_Resumelistclose extends Smarty_Internal_CompileBase{
 	public function compile($args, $compiler, $parameter){
 		$_attr = $this->getAttributes($compiler, $args);
 		if ($compiler->nocache) {
 			$compiler->tag_nocache = true;
 		}
 
-		list($openTag, $compiler->nocache, $item, $key) = $this->closeTag($compiler, array('userlist', 'userlistelse'));
+		list($openTag, $compiler->nocache, $item, $key) = $this->closeTag($compiler, array('resumelist', 'resumelistelse'));
 
 		return "<?php } ?>";
 	}

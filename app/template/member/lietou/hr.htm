@@ -123,282 +123,103 @@
                       {yun:}if $smarty.get.three_cityid{/yun} <a href="{yun:}listurl m=resume untype='three_cityid'{/yun}" class="Search_jobs_c_a disc_fac">{yun:}$city_name[$smarty.get.three_cityid]{/yun}</a> {yun:}/if{/yun}
                       {yun:}/if{/yun}
 
-                      {yun:}if $industry_name[$smarty.get.hy]{/yun} <a href="{yun:}listurl m=resume untype='hy'{/yun}" class="Search_jobs_c_a disc_fac">行业：{yun:}$industry_name[$smarty.get.hy]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.minsalary && $smarty.get.maxsalary{/yun}
-                      <a href="{yun:}listurl m=resume untype='salary'{/yun}" class="Search_jobs_c_a disc_fac">薪资：{yun:}$smarty.get.minsalary{/yun}-{yun:}$smarty.get.maxsalary{/yun}</a>
-                      {yun:}elseif $smarty.get.minsalary && !$smarty.get.maxsalary{/yun}
-                      <a href="{yun:}listurl m=resume untype='salary'{/yun}" class="Search_jobs_c_a disc_fac">薪资：{yun:}$smarty.get.minsalary{/yun}及以上</a>
-                      {yun:}elseif !$smarty.get.minsalary && $smarty.get.maxsalary{/yun}
-                      <a href="{yun:}listurl m=resume untype='salary'{/yun}" class="Search_jobs_c_a disc_fac">薪资：{yun:}$smarty.get.maxsalary{/yun}及以下</a>
-                      {yun:}/if{/yun}
-                      {yun:}if $smarty.get.edu{/yun} <a href="{yun:}listurl m=resume untype='edu'{/yun}" class="Search_jobs_c_a disc_fac">学历：{yun:}$userclass_name[$smarty.get.edu]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.exp{/yun} <a href="{yun:}listurl m=resume untype='exp'{/yun}" class="Search_jobs_c_a disc_fac">工作经验：{yun:}$userclass_name[$smarty.get.exp]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.tag{/yun} <a href="{yun:}listurl m=resume untype='tag'{/yun}" class="Search_jobs_c_a disc_fac">个人标签：{yun:}$userclass_name[$smarty.get.tag]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.sex{/yun} <a href="{yun:}listurl m=resume untype='sex'{/yun}" class="Search_jobs_c_a disc_fac">性别：{yun:}$arr_data1{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.type{/yun} <a href="{yun:}listurl m=resume untype='type'{/yun}" class="Search_jobs_c_a disc_fac">工作类型：{yun:}$userclass_name[$smarty.get.type]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.report{/yun} <a href="{yun:}listurl m=resume untype='report'{/yun}" class="Search_jobs_c_a disc_fac">到岗时间：{yun:}$userclass_name[$smarty.get.report]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.adtime{/yun} <a href="{yun:}listurl m=resume untype='adtime'{/yun}" class="Search_jobs_c_a disc_fac">发布时间：{yun:}$adtime[$smarty.get.adtime]{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.uptime{/yun} <a href="{yun:}listurl m=resume untype='uptime'{/yun}" class="Search_jobs_c_a disc_fac">更新时间：{yun:}$uptime[$smarty.get.uptime]{/yun}</a> {yun:}/if{/yun}
+                                    </div>
+                                    <div class="">
+                                        <span class="hr_s_t_p">{yun:}$v.exp{/yun}经验 <span style="font-size:12px;color:#999; padding:0px 5px;">|</span> {yun:}$v.edu{/yun}学历</span>
+                                        <span  class="hr_s_t">申请的职位：<a {yun:}if $v.type=='1'{/yun}href="{yun:}url m=job c=comapply id='`$v.job_id`'{/yun}"{yun:}elseif $v.type=='2'{/yun}href="{yun:}url m=lietou c=jobcomshow id='`$v.job_id`'{/yun}"{yun:}/if{/yun} target="_blank" class="uesr_name_a">{yun:}$v.job_name{/yun}</a>
+           </span>
+                                        <span class="hr_s_t"> 申请的时间： {yun:}$v.datetime|date_format:'%Y-%m-%d'{/yun}   </span>
+                                    </div>
+                                    <div class="job_hr_resume_user_yx">
+                                        意向职位：<span class="" style="color:#f60; font-weight:bold">{yun:}$v.jobname{/yun}</span>
+                                    </div>
+                                </div>
 
-                      {yun:}if $smarty.get.keyword{/yun} <a href="{yun:}listurl m=resume untype='keyword'{/yun}" class="Search_jobs_c_a disc_fac">{yun:}$smarty.get.keyword{/yun}</a> {yun:}/if{/yun}
-                      {yun:}if $smarty.get.idcard{/yun}<a href="{yun:}listurl m=resume untype='idcard'{/yun}" class="Search_jobs_c_a disc_fac">有身份验证</a>{yun:}/if{/yun}
-                      {yun:}if $smarty.get.work{/yun}<a href="{yun:}listurl m=resume untype='work'{/yun}" class="Search_jobs_c_a disc_fac">有作品</a>{yun:}/if{/yun}
-                      &nbsp; </div>
+                                <div class="clear"></div>
+                                <div class="job_hr_list_l">
 
-                  {yun:}/if{/yun}
+                                    <div class="com_mem_hr_list_b_b"> <span class="com_mem_hr_list_bzt ">标记状态：</span>
+                                        {yun:}if $v.is_browse!=4&&$v.userid_msg==1&&$v.is_browse!='5'{/yun}<span class="browsebj com_mem_hr_list_bj com_mem_hr_list_bj_cur" name='{yun:}$v.id{/yun}' browse='5'> 已邀请面试 </span>
+                                        {yun:}if $v.is_browse!=4{/yun}<span class="browsebj com_mem_hr_list_bj {yun:}if $v.is_browse=='5'{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='5'> 无法联系 </span> {yun:}/if{/yun}
+                                        {yun:}else{/yun}
+                                        {yun:}if $v.is_browse<2{/yun}
 
-                  <div class="left_job_all fl">
-                      <div class="job_left_sidebar" style="width: 1100px;"> {yun:}if $pagenum<2{/yun}
-                          {yun:}userlist limit=5 topdate=1 minsalary='auto.minsalary' maxsalary='auto.maxsalary' idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' post_len=14 item=user2 name=userlist2{/yun}
-                          {yun:}if $smarty.get.pic{/yun}
-                          <div class="resume_list" >
-                              <dl class="resume_list_dl">
-                                  <dt><a href="{yun:}url m=resume c=show id=$user2.id{/yun}" target="_blank"><img src="{yun:}$user2.photo{/yun}" width="80" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_member_icon{/yun}',2);"/><i class="user_photo_bg"></i></a></dt>
-                                  <dd>
-                                      <div class="resume_list_p2_l fl">
-                                          <div class="resume_list_p1"><a href="{yun:}url m=resume c=show id=$user2.id{/yun}" class="resume_list_name yun_text_color" target="_blank">{yun:}if in_array($user2.id,$eid){/yun}{yun:}$user2.uname{/yun}{yun:}else{/yun}{yun:}$user2.username_n{/yun}{yun:}/if{/yun}</a> </div>
+                                        <span class="browsebj com_mem_hr_list_bj  {yun:}if $v.is_browse=='1'{/yun}com_mem_hr_list_bj_cur com_mem_hr_list_red{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='1'> 未查看<i class="com_mem_hr_no_icon"></i> <em class="job_hr_new_resume"></em></span>
+                                        {yun:}/if{/yun}
 
-                                          <div class="company_det">
-                                              <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$arr_data['sex'][$user2.sex]{/yun}</em></span><span class="search_job_list_box_line">|</span> <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user2.age==0{/yun}保密{yun:}else{/yun}{yun:}$user2.age{/yun}岁{yun:}/if{/yun}</em></span><span class="search_job_list_box_line">|</span>
-                                              <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user2.exp_n{/yun}经验</em></span><span class="search_job_list_box_line">|</span> <span class="search_job_list_box_s"><em class="com_search_job_em"> {yun:}$user2.edu_n{/yun}学历</em></span></div>
-                                          {yun:}if $user2.tag{/yun}
-                                          <div class="job_welfare_tag">
-                                              {yun:}foreach from=$user2.tag key=key item=v{/yun}
-                                              {yun:}if $key<5{/yun}
-                                              <span class="job_welfare_tag_s">
-                <i class="job_welfare_tag_s_icon"></i>
-				{yun:}$v{/yun}
-				</span>
-                                              {yun:}/if{/yun}
-                                              {yun:}/foreach{/yun}
-                                          </div>
-                                          {yun:}else{/yun}
-                                          <div class="job_describe_p">{yun:}$user2.user_jobstatus_n{/yun}  </div>
-                                          {yun:}/if{/yun}
-                                      </div>
-                                      <div class="resume_list_p2_r">
-                                          {yun:}if $user2.expectjob{/yun}
-                                          <div class="tx_yxjob">意向职位：
-                                              {yun:}foreach from=$user2.expectjob item=v key=key{/yun}
-                                              {yun:}if $key<5{/yun}
-                                              <span class="resume_job_tag"><i class="resume_job_tag_icon"></i>{yun:}$v{/yun}</span>
-                                              {yun:}/if{/yun}
-                                              {yun:}/foreach{/yun}
-                                          </div>
-                                          {yun:}/if{/yun}
-                                          <div class="">意向城市：{yun:}$user2.job_city_one{/yun}-{yun:}$user2.job_city_two{/yun}</div>
-                                          <div class="resume_list_p2">期望薪资：<span class="resume_list_p2_xz">{yun:}$user2.salary_n{/yun}</span></div>
+                                        {yun:}if $v.is_browse<3{/yun} <span class="browsebj com_mem_hr_list_bj {yun:}if $v.is_browse=='2'{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='2'> 已查看</span>{yun:}/if{/yun}
 
-                                      </div>
-                                  </dd>
-                                  <span class="resume_list_jlzd" ><span style="color:red;">置顶</span></span>
-                              </dl>
-                          </div>
-                          {yun:}else{/yun}
-                          <div class="search_user_list {yun:}if $key%2!='0'{/yun}{yun:}/if{/yun}">
-                              <div class="user_photo_left"><a href="{yun:}url m=resume c=show id=$user2.id{/yun}" target="_blank"><img src="{yun:}$user2.photo{/yun}" width="80" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_member_icon{/yun}',2);"/><i class="user_photo_bg"></i></a></div>
-                              <div class="usersearch_job_left_siaber"> <a href="{yun:}url m=resume c=show id=$user2.id{/yun}" target="_blank" class="fl search_job_jobs_name yun_text_color">  {yun:}if in_array($user2.id,$eid){/yun}{yun:}$user2.uname{/yun}{yun:}else{/yun}{yun:}$user2.username_n{/yun}{yun:}/if{/yun}</a>
+                                        {yun:}if $v.is_browse<4{/yun}<span class="browsebj com_mem_hr_list_bj {yun:}if $v.is_browse=='3'{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='3'> 等待通知 </span> {yun:}/if{/yun}
 
-                                  {yun:}if $user2.idcard_status=='1'{/yun}<img src="{yun:}$style{/yun}/images/sf.png" title="身份已认证"  class="user_rz_img png fl"/>{yun:}/if{/yun}
-                                  {yun:}if $user2.ispic{/yun}<img src="{yun:}$style{/yun}/images/profile.png" title="有形象照" class="user_rz_img png fl"/>{yun:}/if{/yun}
+                                        {yun:}if $v.is_browse<5{/yun}<span class="browsebj com_mem_hr_list_bj {yun:}if $v.is_browse=='4'{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='4'> 拒绝面试</span>{yun:}/if{/yun}
 
-                                  {yun:}if in_array($user2.id,$lookresume){/yun}<span class="co_fav"><i></i><em>已浏览</em></span>{yun:}/if{/yun}
-                                  {yun:}if in_array($user2.id,$talentpool){/yun}<span class="co_fav"><i></i><em>已收藏</em></span>{yun:}/if{/yun}
-                                  {yun:}if in_array($user2.uid,$useridmsg){/yun}<span class="co_fav"><i></i><em>已邀请</em></span>{yun:}/if{/yun}
+                                        {yun:}if $v.is_browse!=4{/yun}<span class="browsebj com_mem_hr_list_bj {yun:}if $v.is_browse=='5'{/yun}com_mem_hr_list_bj_cur{yun:}/if{/yun}" name='{yun:}$v.id{/yun}' browse='5'> 无法联系 </span> {yun:}/if{/yun}{yun:}/if{/yun}
+                                    </div>
 
-                                  {yun:}if $job_list.rec_time>time(){/yun}<img width="15" height="15" src="{yun:}$style{/yun}/images/tui.png" title="站长推荐"/>{yun:}/if{/yun}
-                                  <div class="company_det">
-                                      <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$arr_data['sex'][$user2.sex]{/yun}</em> </span><span class="search_job_list_box_line">|</span>
-                                      <span class="search_job_list_box_s"><em class="com_search_job_em"> {yun:}if $user2.age==0{/yun}保密{yun:}else{/yun}{yun:}$user2.age{/yun}岁{yun:}/if{/yun}</em> </span><span class="search_job_list_box_line">|</span><span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user2.exp_n{/yun}经验</em> </span><span class="search_job_list_box_line">|</span><span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user2.edu_n{/yun}学历</em></span>
-                                  </div>
-                                  {yun:}if $user2.tag{/yun}
-                                  <div class="company_bq">
-                                      <div class="job_welfare_tag" >
+                                    <div class="job_hr_list_r">
 
-                                          {yun:}foreach from=$user2.tag key=key item=v{/yun}
-                                          {yun:}if $key<5{/yun}
-                                          <span class="job_welfare_tag_s"><i class="job_welfare_tag_s_icon"></i>
-			{yun:}$v{/yun}
-			</span>
-                                          {yun:}/if{/yun}
-                                          {yun:}/foreach{/yun}
-                                      </div>
-                                  </div>
-                                  {yun:}else{/yun}
-                                  <div class="job_describe_p">{yun:}$user2.user_jobstatus_n{/yun}  </div>
-                                  {yun:}/if{/yun}
-                              </div>
-                              <div class="user_det_c_name">
-                                  <span class="search_job_list_box_user">意向城市：<em class="com_search_job_em">{yun:}$user2.job_city_one{/yun}-{yun:}$user2.job_city_two{/yun} </em></span>
-                                  <span class="search_job_list_box_user search_job_list_box_userpd">期望薪资：<em class="com_search_job_em com_search_job_em_pay">{yun:}$user2.salary_n{/yun}</em> </span>
+                                        <span class="job_hr_job_cz_a"> <a href="javascript:void(0)" onclick="layer_del('确定要删除该条职位申请吗？', 'index.php?c=hr&act=hrset&delid={yun:}$v.id{/yun}'); " class="uesr_name_a">删除</a> </span>
+                                        {yun:}if $v.is_browse!=4{/yun}
+                                        {yun:}if $v.userid_msg==1{/yun}
+                                        {yun:}if $v.is_browse==5{/yun}
+                                        <i class="job_hr_job_cz_line">|</i><span class="job_hr_job_cz_a">无法联系</span>
+                                        {yun:}else{/yun}
+                                        <i class="job_hr_job_cz_line">|</i><span class="job_hr_job_cz_a">已邀请面试</span>
+                                        {yun:}/if{/yun}
+                                        {yun:}else{/yun}
+                                        <span class="job_hr_job_cz_ms"> <a href="javascript:void(0);" uid="{yun:}$v.uid{/yun}" username="{yun:}$v.name{/yun}" jobid="{yun:}$v.job_id{/yun}"   class="sq_resume uesr_name_a" jobtype='{yun:}$v.type{/yun}'>邀请面试</a></span>
+                                        <i class="job_hr_job_cz_line">|</i> <span class="job_hr_job_cz_a"><a href="javascript:void(0)" name='{yun:}$v.id{/yun}' browse='4' class="browsebj uesr_name_a">拒绝面试</a> </span>
+                                        {yun:}/if{/yun}
+                                        {yun:}else{/yun}
+                                        <i class="job_hr_job_cz_line">|</i><span class="job_hr_job_cz_a">已拒绝</span>
+                                        {yun:}/if{/yun}
+                                    </div>   </div>
+                            </div>
+                            {yun:}/foreach{/yun}
+                            <div class="com_Release_job_bot" style="margin-top:10px;"> <span class="com_Release_job_qx">
+              <input id='checkAll'  type="checkbox" onclick='m_checkAll(this.form)' class="com_Release_job_qx_check">
+              全选</span>
+                                <INPUT class="c_btn_02" type="button" name="subdel" value="批量删除" onclick="return really('delid[]');">
+                                <INPUT class='c_btn_02' type="button" name="subdel" value="批量阅读" onclick="return really_read('delid[]');" style="margin-left:10px;">
+                            </div>
+                            {yun:}else{/yun}
+                            <div class="msg_no">
+                                {yun:}if $smarty.get.keyword!="" {/yun}
+                                <p>没有搜索到相关简历记录！</p>
+                                {yun:}else{/yun}
+                                <p> 亲爱的用户，目前您还没有收到申请贵公司职位的人才简历！</p>
+                                <a href="{yun:}url m=resume{/yun}" class="com_msg_no_bth com_submit">我要主动找人才</a>
+                                {yun:}/if{/yun} </div>
+                            {yun:}/if{/yun}
+                            <div class="diggg mt10 fltR">{yun:}$pagenav{/yun}</div>
+                        </form>
+                        <div  class="clear"></div>
+                        {yun:}if $rows{/yun}
 
-                                  {yun:}if $user2.expectjob{/yun}
-                                  <div class="resume_yx_job"><span class="resume_yx_job_name">意向职位：</span>
-                                      {yun:}foreach from=$user2.expectjob item=v key=key{/yun}
-                                      {yun:}if $key<5{/yun}
-                                      <span class="resume_job_tag"><i class="resume_job_tag_icon"></i>{yun:}$v{/yun}</span>
-                                      {yun:}/if{/yun}
-                                      {yun:}/foreach{/yun}
-                                  </div>
-                                  {yun:}/if{/yun}
-                              </div>
-                              <div class="yun_user_operation_l"> <span class="resume_list_jobzd" ><span style="color:red;">置顶</span></span> </div>
-                              <div class="yun_user_operation">
-                                  <div class="user_a_search_time"> <a href="{yun:}url m=resume c=show id=$user2.id{/yun}" target="_blank" class="yun_user_lok_bth ">查看</a> </div>
-                              </div>
-                          </div>
-                          {yun:}/if{/yun}
-                          {yun:}/userlist{/yun}
-                          {yun:}/if{/yun}
-                          {yun:}userlist limit=20 minsalary='auto.minsalary' maxsalary='auto.maxsalary' noid=1 idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' post_len=14 ispage=1 item=user key=key name=userlist1{/yun}
-
-                          {yun:}if $smarty.get.pic{/yun}
-                          <div class="resume_list" >
-                              <dl class="resume_list_dl">
-                                  <dt><a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank"><img src="{yun:}$user.photo{/yun}" width="80" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_member_icon{/yun}',2);"/><i class="user_photo_bg"></i></a></dt>
-                                  <dd>
-                                      <div class="resume_list_p2_l fl">
-                                          <div class="resume_list_p1"><a href="{yun:}url m=resume c=show id=$user.id{/yun}" class="resume_list_name yun_text_color" target="_blank">{yun:}if in_array($user.id,$eid){/yun}{yun:}$user.uname{/yun}{yun:}else{/yun}{yun:}$user.username_n{/yun}{yun:}/if{/yun}</a></div>
-                                          <div class="company_det">
-                                              <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user.sex==152{/yun}女{yun:}elseif $user.sex==153{/yun}男{yun:}else{/yun}{yun:}$arr_data['sex'][$user.sex]{/yun}{yun:}/if{/yun}</em> </span><span class="search_job_list_box_line">|</span>
-                                              <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user.age==0{/yun}保密{yun:}else{/yun}{yun:}$user.age{/yun}岁{yun:}/if{/yun}</em> </span><span class="search_job_list_box_line">|</span>
-                                              <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user.exp_n{/yun}经验</em> </span><span class="search_job_list_box_line">|</span><span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user.edu_n{/yun}学历</em></span></div>
-                                          {yun:}if $user.tag{/yun}
-                                          <div class="company_bq">
-                                              <div class="job_welfare_tag" >
-
-                                                  {yun:}foreach from=$user.tag key=key item=v{/yun}
-                                                  {yun:}if $key<5{/yun}
-                                                  <span class="job_welfare_tag_s"><i class="job_welfare_tag_s_icon"></i>
-			{yun:}$v{/yun}
-			</span>
-                                                  {yun:}/if{/yun}
-                                                  {yun:}/foreach{/yun}
-                                              </div></div>
-                                          {yun:}else{/yun}
-                                          <div class="job_describe_p">{yun:}$user.user_jobstatus_n{/yun}  </div>
-                                          {yun:}/if{/yun}
-                                      </div>
-                                      <div class="resume_list_p2_r">
-                                          {yun:}if $user.expectjob{/yun}
-                                          <div class="tx_yxjob">意向职位：
-                                              {yun:}foreach from=$user.expectjob item=v key=key{/yun}
-                                              {yun:}if $key<5{/yun}
-                                              <span class="resume_job_tag"><i class="resume_job_tag_icon"></i>{yun:}$v{/yun}</span>
-                                              {yun:}/if{/yun}
-                                              {yun:}/foreach{/yun}
-                                          </div>
-                                          {yun:}/if{/yun}
-                                          <div class="tx_yxcity">意向城市：{yun:}$user.job_city_one{/yun}-{yun:}$user.job_city_two{/yun}</div>
-                                          <div class="resume_list_p2">期望薪资：<span class="resume_list_p2_xz">{yun:}$user.salary_n{/yun}</span></div>
-
-                                      </div>
-                                  </dd>
-                                  <span class="resume_list_data">
-        {yun:}if $user.redtime==1 || $user.time=='昨天'{/yun}
-        	<span style="color:red;">{yun:}$user.time{/yun}</span>
-        {yun:}else{/yun}
-        	{yun:}$user.time{/yun}
-        {yun:}/if{/yun}
-        </span>
-                              </dl>
-                          </div>
-                          {yun:}else{/yun}
-                          <div class="search_user_list {yun:}if $key%2!='0'{/yun}{yun:}/if{/yun}" >
-                              <div class="user_photo_left"><a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank"><img src="{yun:}$user.photo{/yun}" width="80" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_member_icon{/yun}',2);"/><i class="user_photo_bg"></i></a></div>
-                              <div class="usersearch_job_left_siaber"> <a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank" class="fl search_job_jobs_name yun_text_color">{yun:}if in_array($user.id,$eid){/yun}{yun:}$user.uname{/yun}{yun:}else{/yun}{yun:}$user.username_n{/yun}{yun:}/if{/yun}</a>
-                                  {yun:}if $user.idcard_status=='1'{/yun}<img src="{yun:}$style{/yun}/images/sf.png" title="身份已认证"  class="user_rz_img png fl"/>{yun:}/if{/yun}
-                                  {yun:}if $user.ispic{/yun}<img src="{yun:}$style{/yun}/images/profile.png" title="有形象照" class="user_rz_img png fl"/>{yun:}/if{/yun}
-                                  {yun:}if in_array($user.id,$lookresume){/yun}<span class="co_fav"><i></i><em>已浏览</em></span>{yun:}/if{/yun}
-                                  {yun:}if in_array($user.id,$talentpool){/yun}<span class="co_fav"><i></i><em>已收藏</em></span>{yun:}/if{/yun}
-                                  {yun:}if in_array($user.uid,$useridmsg){/yun}<span class="co_fav"><i></i><em>已邀请</em></span>{yun:}/if{/yun}
-                                  {yun:}if $job_list.rec_time>time(){/yun}<img width="15" height="15" src="{yun:}$style{/yun}/images/tui.png" title="站长推荐"/>{yun:}/if{/yun}
-
-                                  <div class="company_det">
-                                      <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user.sex==152{/yun}女{yun:}elseif $user.sex==153{/yun}男{yun:}else{/yun}{yun:}$arr_data['sex'][$user.sex]{/yun}{yun:}/if{/yun}</em></span><span class="search_job_list_box_line">|</span>
-                                      <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user.age==0{/yun}保密{yun:}else{/yun}{yun:}$user.age{/yun}岁{yun:}/if{/yun}</em></span><span class="search_job_list_box_line">|</span> <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user.exp_n{/yun}经验</em> </span><span class="search_job_list_box_line">|</span><span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}$user.edu_n{/yun}学历</em></span>
-                                  </div>
-                                  {yun:}if $user.tag{/yun}
-                                  <div class="company_bq">
-                                      <div class="job_welfare_tag" >
-
-                                          {yun:}foreach from=$user.tag key=key item=v{/yun}
-                                          {yun:}if $key<5{/yun}
-                                          <span class="job_welfare_tag_s"><i class="job_welfare_tag_s_icon"></i>
-			{yun:}$v{/yun}
-			</span>
-                                          {yun:}/if{/yun}
-                                          {yun:}/foreach{/yun}
-                                      </div></div>
-                                  {yun:}else{/yun}
-                                  <div class="job_describe_p">{yun:}$user.user_jobstatus_n{/yun}  </div>
-                                  {yun:}/if{/yun}
-                              </div>
-                              <div class="user_det_c_name" style="width: 300px;">
-
-                                  <span class="search_job_list_box_user">意向城市：<em class="com_search_job_em">{yun:}$user.job_city_one{/yun}-{yun:}$user.job_city_two{/yun} </em></span>
-                                  <span class="search_job_list_box_user  search_job_list_box_userpd">期望薪资：<em class="com_search_job_em com_search_job_em_pay">{yun:}$user.salary_n{/yun}</em> </span>
-                                  {yun:}if $user.expectjob{/yun}
-                                  <div class="resume_yx_job">
-                                      <span class="resume_yx_job_name">意向职位：</span>
-                                      {yun:}foreach from=$user.expectjob item=v key=key{/yun}
-                                      {yun:}if $key<5{/yun}
-                                      <span class="resume_job_tag"><i class="resume_job_tag_icon"></i>{yun:}$v{/yun}</span>
-                                      {yun:}/if{/yun}
-                                      {yun:}/foreach{/yun}
-                                  </div>
-                                  {yun:}/if{/yun}
-                              </div>
-                              <div class="yun_user_operation_l">
-      <span class="search_job_data" >
-      {yun:}if $user.redtime==1 || $user.time=='昨天'{/yun}
-        	<span style="color:red;">{yun:}$user.time{/yun}</span>
-        {yun:}else{/yun}
-        	{yun:}$user.time{/yun}
-        {yun:}/if{/yun}</span> </div>
-                              <div class="yun_user_operation">
-                                  <div class="user_a_search_time"> <a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank" class="yun_user_lok_bth ">查看</a> </div>
-                              </div>
-                          </div>
-                          {yun:}/if{/yun}
-                          {yun:}/userlist{/yun}
-                          <div class="clear"></div>
-                          {yun:}if $total!=0 || is_array($user2){/yun}
-                          <div class="search_pages">
-                              <div class="pages">{yun:}$pagenav{/yun}</div>
-                          </div>
-                          {yun:}else{/yun}
-                          <div class="seachno">
-                              <div class="seachno_left"><img src="{yun:}$style{/yun}/images/search-no.gif" width="144" height="102"/></div>
-                              <div class="listno-content"> <strong>很抱歉，没有找到满足条件的人才</strong><br>
-                                  <span> 建议您：<br>
-        1、适当减少已选择的条件<br>
-        2、适当删减或更改搜索关键字<br>
-        </span> <span> 热门关键字：<br>
-        {yun:}key limit=10 recom=1 type=5 item=klist{/yun}<a href="{yun:}listurl m=resume type=keyword v=$klist.key_title{/yun}" title="{yun:}$klist.key_title{/yun}">{yun:}$klist.key_name{/yun}</a> {yun:}/key{/yun}</span> </div>
-                          </div>
-                          {yun:}/if{/yun} </div>
-                  </div>
-              </form>
-              <div class="clear"></div>
-          </div>
-
-
+                        {yun:}/if{/yun}
+                        <div  class="clear"></div>
+                        <div class="wxts_box wxts_box_mt30">
+                            <div class="wxts">温馨提示：</div>
+                            1. 共有（<span class="f60">{yun:}if $jobnum{/yun}{yun:}$jobnum{/yun}{yun:}else{/yun}0{yun:}/if{/yun}</span>）份简历申请贵公司发布的职位 <br>
+                            2.对于求职者来说即使是被拒绝，也胜过毫无音讯的等待。<br>
+                            3.请邀约或者设置为不合适给求职者投递的简历，做一个回馈<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </div>
 <script>
-$(document).ready(function(){
-	$(".browsebj").click(function(){
-		var browse=$(this).attr('browse');
-		var id=$(this).attr('name');
-		$.post("index.php?c=hr&act=hrset",{id:id,browse:browse},function(data){
-			location.reload();
-		});
-	});
-});
+    $(document).ready(function(){
+        $(".browsebj").click(function(){
+            var browse=$(this).attr('browse');
+            var id=$(this).attr('name');
+            $.post("index.php?c=hr&act=hrset",{id:id,browse:browse},function(data){
+                location.reload();
+            });
+        });
+    });
 </script>
-<script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
-{yun:}include file="$ltstyle/yqms.htm"{/yun}
-{yun:}include file="$ltstyle/footer.htm"{/yun}
+{yun:}include file="$comstyle/yqms.htm"{/yun}
+{yun:}include file="$comstyle/footer.htm"{/yun}

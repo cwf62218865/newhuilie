@@ -177,6 +177,7 @@ class mysql {
 	function select_all($tablename, $where = 1, $select = "*") {
 		$row_return=array();
 		$SQL = "SELECT $select FROM `" . $this->def . $tablename . "` WHERE $where";
+
 		$query=$this->query($SQL);
         while($row=$this->fetch_array($query)){$row_return[]=$row;}
         return $row_return;

@@ -84,10 +84,10 @@
         {yun:}/if{/yun}
         <div class="left_job_all fl">
             <div class="job_left_sidebar" style="width: 1100px;">
-                {yun:}foreach from=$resume.rows item=user{/yun}
+                {yun:}resumelist limit=5 topdate=1 item=user name=resumelist2 {/yun}
                 <div class="search_user_list {yun:}if $key%2!='0'{/yun}{yun:}/if{/yun}" >
                     <div class="user_photo_left"><a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank"><img src="{yun:}$user.photo{/yun}" width="80" height="100" onerror="showImgDelay(this,'{yun:}$config.sy_weburl{/yun}/{yun:}$config.sy_member_icon{/yun}',2);"/><i class="user_photo_bg"></i></a></div>
-                    <div class="usersearch_job_left_siaber"> <a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank" class="fl search_job_jobs_name yun_text_color">{yun:}$user.name{/yun}</a>
+                    <div class="usersearch_job_left_siaber"> <a href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank" class="fl search_job_jobs_name yun_text_color">{yun:}$user.username_n{/yun}</a>
 
                         <div class="company_det">
                             <span class="search_job_list_box_s"><em class="com_search_job_em">{yun:}if $user.sex==152{/yun}Å®{yun:}elseif $user.sex==153{/yun}ÄĞ{yun:}else{/yun}{yun:}$arr_data['sex'][$user.sex]{/yun}{yun:}/if{/yun}</em></span><span class="search_job_list_box_line">|</span>
@@ -132,11 +132,11 @@
         	{yun:}$user.time{/yun}
         {yun:}/if{/yun}</span> </div>
                     <div class="yun_user_operation">
-                        <div class="user_a_search_time"> <span class="yun_user_lok_bth " data-id="{yun:}$user.id{/yun}">ÍÆ¼ö</span> </div>
+                        <div class="user_a_search_time"> <span class="yun_user_lok_bth " data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}">ÍÆ¼ö</span> </div>
                     </div>
                 </div>
 
-                {yun:}/foreach{/yun}
+                {yun:}/resumelist{/yun}
                 <div class="clear"></div>
                 {yun:}if $total!=0 || is_array($user2){/yun}
                 <div class="search_pages">
