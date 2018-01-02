@@ -71,7 +71,7 @@
 		</div>
 		<div class="hp_zp fl">
      {yun:}if $config.sy_wx_qcode{/yun}
-     <div class="hp_z_w">
+     <div class="hp_z_w hoverico">
            <i class="hp_z_w_icon"></i>
            <a href="javascript:void(0);"><span class="hp_z_w_sp">Œ¢–≈’–∆∏</span></a>
            <div class="hp_z_w_er" id="hp_weixin">
@@ -83,7 +83,7 @@
      </div>
      {yun:}/if{/yun}
      {yun:}if $config.sy_wap_qcode{/yun}
-     <div class="hp_z_s">
+     <div class="hp_z_s hoverico">
            <i class="hp_z_s_icon dn"></i>
            <a href="javascript:void(0);"><span class="hp_z_w_sp"> ÷ª˙’–∆∏</span></a>
            <div class="hp_z_s_er dn" id="hp_phone">
@@ -410,6 +410,16 @@ $(document).ready(function() {
 		$('.tip_bottom_left').html(data)
 	});
 });
+
+
+$(".hp_z_w").mouseover(function () {
+    $(".hoverico a").css("background-color","#bdc8d4");
+    $(this).find("a").css("background-color","#019d0b");
+})
+$(".hp_z_s").mouseover(function () {
+    $(".hoverico a").css("background-color","#bdc8d4");
+    $(this).find("a").css("background-color","#de5454");
+})
 
 
 </script> 

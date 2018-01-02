@@ -441,6 +441,12 @@
 .w58b{
     width: 58px;background: #ff6a6a;
 }
+.guanzhu{
+    background: #ff6a6a;
+}
+.yiguanzhu{
+    background: #bbbbbb;
+}
 .num_tj{
     min-width: 35px;
     padding-left: 3px;
@@ -492,7 +498,6 @@
 }
 .num_style{
     display: inline-block;
-    background: #4b5873;
     height: 20px;
     line-height: 20px;
     border-radius: 10px;
@@ -500,11 +505,17 @@
     padding-left: 7px;
     padding-right: 7px;
     margin-left: 8px;
-    font-size: 12px;
+    font-size: 14px;
+    color: #ff6a6a;
 }
 .sxtitle{
     float: left;
 }
 .mtop0{
     margin-top: 0px;
+}
+.ico_btn{
+   display: inline-block;
+    width: 33px;
+    cursor: pointer;
 }

@@ -33,7 +33,7 @@ class resume_controller extends lietou{
         $this->subject_cache();
         $resume = $this->obj->get_page();
         $this->yunset("js_def",5);
-        $this->lt_tpl('hr');
+        $this->lt_tpl('resumelist');
     }
 
     function input_action(){
@@ -42,7 +42,7 @@ class resume_controller extends lietou{
         $this->lt_tpl('input_resume');
     }
 
-    function recently_action(){
+    function resumefav_action(){
         $this->industry_cache();
         $this->subject_cache();
         $where="`com_id`='".$this->uid."'";
@@ -152,7 +152,7 @@ class resume_controller extends lietou{
         $this->company_satic();
         $this->yunset("js_def",5);
         $this->yunset("jobnum",$jobnum);
-        $this->lt_tpl('hr');
+        $this->lt_tpl('resumefav');
     }
 
     function recommend_action(){
@@ -265,7 +265,7 @@ class resume_controller extends lietou{
         $this->company_satic();
         $this->yunset("js_def",5);
         $this->yunset("jobnum",$jobnum);
-        $this->lt_tpl('hr');
+        $this->lt_tpl('recommendresume');
     }
 
     function myself_action(){
@@ -378,7 +378,7 @@ class resume_controller extends lietou{
         $this->company_satic();
         $this->yunset("js_def",5);
         $this->yunset("jobnum",$jobnum);
-        $this->lt_tpl('hr');
+        $this->lt_tpl('myresume');
     }
 
 
