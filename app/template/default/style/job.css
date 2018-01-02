@@ -16,7 +16,7 @@
 .Search_jobs_hy_box_list li a{ display:block;height:25px; line-height:25px; padding-left:5px;color:#94918c}
 .Search_jobs_hy_box_list li a:hover{ background:#f1f5f8;color:#e25f07; font-weight:bold; text-decoration:none;}
 .Search_jobs_form_list{width:100%; float:left; padding-bottom:10px; font-size:14px;}
-.yun_job_search{width:1000px; float:left;padding:20px 50px 10px 50px }
+.yun_job_search{width:1000px; float:left;padding:40px 50px 10px 50px }
 .Search_jobs_sub{width:1000px; float:left; }
 .Search_jobs_sub_nore{ height:auto; overflow:auto;}
 .Search_jobs_sub_a{height:25px; line-height:25px; float:left; padding:0px 8px;margin-top:3px; white-space:nowrap;color:#726e6e; margin-right:3px}
@@ -26,6 +26,10 @@
 .Search_jobs_sub_cur{ color:#fff;background:#3689b3; }
 .Search_jobs_text{width:890px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:1px solid #dddddd;border-right:none; float:left;}
 .Search_jobs_submit{width:110px;height:44px;  line-height:44px;border:none; cursor:pointer;color:#fff; font-size:16px;float:left;}
+.searchjob_txt{  width: 780px;}
+.job_searchzz{
+    padding-left: 30px;
+}
 .Search_jobs_sub_text_bc{ margin-top:8px; margin-left:10px;}
 .Search_jobs_search_box{ display:inline-block; float:left; padding-left:10px; line-height:28px; text-decoration:underline}
 .Search_jobs_xz{width:780px; float:left}
@@ -425,6 +429,11 @@
     font-size: 12px;
     cursor: pointer;
 }
+.btn_hxr:nth-child(1):hover{
+    background: #5f75a3;
+    color: #fff;
+    text-decoration: none;
+}
 .w70b{
     width: 70px;
     background: #6a8cd2;
@@ -440,6 +449,9 @@
     float: left;text-align: center;
     position: relative;cursor: pointer;
 }
+.num_tj img{
+    margin-top: 2px;
+}
 .num_tj:first-child{
     padding-left: 0;
 }
@@ -448,12 +460,13 @@
 }
 .color_999{
     color: #999999;
+    font-size: 12px;
 }
-.w42{
-    width: 42px;
+.w36{
+    width: 36px;
 }
-.w48{
-    width: 48px;
+.w41{
+    width: 41px;
 }
 .jieshiico{
     width: 80px;
@@ -462,8 +475,7 @@
     display: none;
     height: 22px;
     line-height: 22px;
-    padding-left: 10px;
-    padding-right: 10px;
+    text-align: center;
     background: #555566;
     color: #fff;
     font-size: 12px;
@@ -489,4 +501,10 @@
     padding-right: 7px;
     margin-left: 8px;
     font-size: 12px;
+}
+.sxtitle{
+    float: left;
+}
+.mtop0{
+    margin-top: 0px;
 }

@@ -15,6 +15,7 @@ class job_controller extends lietou{
 
 		$this->public_action();
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->com_cache();
 
         $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');
@@ -82,14 +83,84 @@ class job_controller extends lietou{
 //		}
 	}
 
+
+	//服务中的职位
+        function serving_job_action(){
+
+            $this->industry_cache();
+
+            $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
+
+            $urlarr=array("c"=>"favorite","page"=>"{{page}}");
+            $StateNameList=array('0'=>'等待审核','1'=>'招聘中','2'=>'已结束','3'=>'未通过');
+            $StatusNameList = array('1' => '已下架', '2' => '招聘中');//下个版本考虑合并 company_job 的state、status两个字段
+
+            $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');
+            $this->yunset("uptime",$uptime);
+
+            $pageurl=Url('member',$urlarr);
+            $rows=$this->get_page("fav_job","`uid`='".$this->uid."' order by id desc",$pageurl,"20");
+
+            if($rows&&is_array($rows)){
+                include PLUS_PATH."/lt.cache.php";
+                include PLUS_PATH."/com.cache.php";
+                foreach($rows as $val){
+                    if($val['type']==1){
+                        $com_jobid[]=$val['job_id'];
+                    }else{
+                        $lt_jobid[]=$val['job_id'];
+                    }
+                }
+                $lt_job=$this->obj->DB_select_all("lt_job","`id` in(".pylode(',',$lt_jobid).")","`id`,`minsalary`,`maxsalary`,`provinceid`,`cityid`,`status`");
+                $company_job=$this->obj->DB_select_all("company_job","`id` in(".pylode(',',$com_jobid).")","`id`,`minsalary`,`maxsalary`,`provinceid`,`cityid`,`state`,`status`");
+                foreach($rows as $key=>$val){
+
+                    $rows[$key]['statename']='已关闭';
+                    foreach($company_job as $v){
+                        if($val['job_id']==$v['id']){
+                            $rows[$key]['minsalary']=$v['minsalary'];
+                            $rows[$key]['maxsalary']=$v['maxsalary'];
+                            $rows[$key]['provinceid']=$v['provinceid'];
+                            $rows[$key]['cityid']=$v['cityid'];
+                            $rows[$key]['statename']=$StateNameList[$v['state']];
+                            if($v['status'] == 1){
+                                $rows[$key]['statename']= '已下架';
+                            }
+
+                        }
+                    }
+                    foreach($lt_job as $v){
+                        if($val['job_id']==$v['id']){
+                            $rows[$key]['minsalary']=$v['minsalary'];
+                            $rows[$key]['maxsalary']=$v['maxsalary'];
+                            $rows[$key]['provinceid']=$v['provinceid'];
+                            $rows[$key]['cityid']=$v['cityid'];
+                            $rows[$key]['statename']=$StateNameList[$v['status']];
+                        }
+                    }
+                }
+            }
+
+
+            $num=$this->obj->DB_select_num("fav_job","`uid`='".$this->uid."'");
+            $this->obj->DB_update_all("member_statis","fav_jobnum='".$num."'","`uid`='".$this->uid."'");
+            $this->yunset("rows",$rows);
+            $this->yunset("js_def",3);
+            $this->lt_tpl('serving_job');
+        }
+
     //收藏职位
     function fav_job_action(){
 
         $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
+        $this->industry_cache();
 
         $urlarr=array("c"=>"favorite","page"=>"{{page}}");
         $StateNameList=array('0'=>'等待审核','1'=>'招聘中','2'=>'已结束','3'=>'未通过');
         $StatusNameList = array('1' => '已下架', '2' => '招聘中');//下个版本考虑合并 company_job 的state、status两个字段
+
+        $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');
+        $this->yunset("uptime",$uptime);
 
         $pageurl=Url('member',$urlarr);
         $rows=$this->get_page("fav_job","`uid`='".$this->uid."' order by id desc",$pageurl,"20");

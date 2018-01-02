@@ -115,10 +115,15 @@
 .job_namer{
     color: #4b6e88;
     font-size: 14px;
+    max-width: 175px;
 }
 .job_status,.com_namer{
     color: #999999;
     font-size: 12px;
+    vertical-align: super;
+}
+.com_namer{
+    max-width: 228px;
 }
 .tj_time{
     color: #999999;
@@ -211,4 +216,10 @@
 }
 .line_heigh23{
     line-height: 23px;
+}
+.nowrap{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
 }
