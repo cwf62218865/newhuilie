@@ -15,11 +15,11 @@ body {
 
 
 
-/*Ç¿ÖÆ²»»»ºÅ*/
+/*Ç¿ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .bhh{
 	white-space:nowrap;
 }
-/*³¬³öÏÔÊ¾Ê¡ÂÔºÅ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê¡ï¿½Ôºï¿½*/
 .slh{
 	display:block;
 	white-space:nowrap;
@@ -589,7 +589,7 @@ a.selectlabel{ color:#fff;}
 .searchterms_box2 .layout2{ margin:15px 0;}
 .searchterms_box2 .layout2 .secondmenu{ width:800px;}
 .searchterms_box2 .layout2 .secondmenu a {float:left;overflow:hidden;background:#fff;padding:0 5px;white-space:nowrap;border:1px solid #FFF;}
-.searchterms_box2 .layout2 .secondmenu .act{ background:#5CB85C; color:#fff;}
+.searchterms_box2 .layout2 .secondmenu .act{ background:#4b6e88; color:#fff;}
 
 .searchterms_box2 .jCallingSelectorItem li{width:160px; font-size:14px;}
 
@@ -660,13 +660,13 @@ a.tale-gz{ color:#777777;}
 .tale-gz:hover{ color:#FFB855;}
 .change-act{background:#DFF0D8;}
 
-/*Ô¤ÀÀ¼òÀúvs±¨¸æ*/
+/*Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vsï¿½ï¿½ï¿½ï¿½*/
 .view-report{ padding:20px;}
 .view-report table th{ width:80px;padding:10px 5px;}
 .view-report table td{padding:10px 5px;}
 .viewbt{ font-size:16px;}
 
-/*Á÷³ÌÖÐÐÄ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 ul,li{ list-style:none;}
 .lczx .list-inline li{}
 .lczx .list-inline li a{ padding:3px 5px; text-decoration:none;}
@@ -715,7 +715,7 @@ ul,li{ list-style:none;}
 .view-info h4{ border-bottom:1px solid #ddd; padding:8px 0; font-size:16px;}
 .view-info .dl-8 dt{ font-weight:normal; color:#999;}
 
-/*¹µÍ¨½»Á÷*/
+/*ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½*/
 .chat .time{ color:#999; white-space:nowrap; word-break:break-all;}
 .chat h5{margin-bottom: 0;}
 .chat-p-right h5{ text-align: right;}
