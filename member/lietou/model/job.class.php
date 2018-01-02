@@ -15,6 +15,7 @@ class job_controller extends lietou{
 
 		$this->public_action();
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->com_cache();
 
         $uptime=array('1'=>'今天','3'=>'最近3天','7'=>'最近7天','30'=>'最近一个月','90'=>'最近三个月');

@@ -27,9 +27,9 @@
         <input type="hidden" name="{yun:}$key{/yun}" value="{yun:}$v{/yun}" />
         {yun:}/foreach{/yun}
 		<div class="Search_jobs_form_list" >
-          <div class="yun_job_search">
+          <div class="yun_job_search job_searchzz">
           <div class="Search_jobs_sub">
-            <input type="text" name="keyword" value="{yun:}if $smarty.get.keyword{/yun}{yun:}$smarty.get.keyword{/yun}{yun:}else{/yun}请输入职位名称的关键字{yun:}/if{/yun}" onclick="if(this.value=='请输入职位名称的关键字'){this.value=''}" onblur="if(this.value==''){this.value='请输入职位名称的关键字'}" class="Search_jobs_text "/>
+            <input type="text" name="keyword" value="{yun:}if $smarty.get.keyword{/yun}{yun:}$smarty.get.keyword{/yun}{yun:}else{/yun}请输入职位名称的关键字{yun:}/if{/yun}" onclick="if(this.value=='请输入职位名称的关键字'){this.value=''}" onblur="if(this.value==''){this.value='请输入职位名称的关键字'}" class="Search_jobs_text searchjob_txt"/>
             <input type="submit" value="搜索" class="Search_jobs_submit yun_bg_color"/>
             <div class="Search_jobs_sub_text_bc">
 			{yun:}if $uid&&$usertype=='1'{/yun}

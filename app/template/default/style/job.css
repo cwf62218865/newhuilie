@@ -26,6 +26,10 @@
 .Search_jobs_sub_cur{ color:#fff;background:#3689b3; }
 .Search_jobs_text{width:890px;height:40px; line-height:40px;color:#847d7d; font-size:14px;  text-indent:10px;border:1px solid #dddddd;border-right:none; float:left;}
 .Search_jobs_submit{width:110px;height:44px;  line-height:44px;border:none; cursor:pointer;color:#fff; font-size:16px;float:left;}
+.searchjob_txt{  width: 780px;}
+.job_searchzz{
+    padding-left: 30px;
+}
 .Search_jobs_sub_text_bc{ margin-top:8px; margin-left:10px;}
 .Search_jobs_search_box{ display:inline-block; float:left; padding-left:10px; line-height:28px; text-decoration:underline}
 .Search_jobs_xz{width:780px; float:left}
@@ -425,6 +429,11 @@
     font-size: 12px;
     cursor: pointer;
 }
+.btn_hxr:nth-child(1):hover{
+    background: #5f75a3;
+    color: #fff;
+    text-decoration: none;
+}
 .w70b{
     width: 70px;
     background: #6a8cd2;
@@ -492,4 +501,10 @@
     padding-right: 7px;
     margin-left: 8px;
     font-size: 12px;
+}
+.sxtitle{
+    float: left;
+}
+.mtop0{
+    margin-top: 0px;
 }
