@@ -238,7 +238,10 @@ class lietou extends common{
 		}
 		return $rows;
 	}
-	
+
+
+
+
 	function job(){
 		if($_GET['r_uid']){
 			if($_GET['r_reason']==""){
@@ -569,6 +572,95 @@ class lietou extends common{
         }
         $rows=$this->obj->DB_select_all("pt_resume",$where.' limit '.$ststrsql.','.$limit,$field);
         return array('total'=>$num,'pagenav'=>$pagenav,$rowsname=>$rows);
+    }
+
+
+    /*
+     * 推荐信息分页列表 目前只针对猎头部分
+     */
+    function recommend_page($where='',$pageurl='',$limit=10,$field='*',$rowsname='rows'){
+        $rows=array();
+        $page=$_GET['page']<1?1:$_GET['page'];
+
+        $ststrsql=($page-1)*$limit;
+        $num=$this->obj->DB_select_num("userid_job",$where);
+        if($num>$limit){
+            $pages=ceil($num/$limit);
+            $pagenav=Page($page,$num,$limit,$pageurl,$notpl=false,null);
+        }
+        $rows=$this->obj->DB_select_all("userid_job",$where.' limit '.$ststrsql.','.$limit,$field);
+        $arr_row = "";
+        foreach ($rows as $list){
+            $list['resume_name'] = $this->obj->DB_select_once("pt_resume","id=".$list['resume_id'],"name");
+            $list['resume_name'] = $list['resume_name']['name'];
+            $list['recommend_count'] = $this->obj->DB_select_num("userid_job","uid=".$this->uid." and job_id=".$list['job_id']);
+            $list['resume_count'] = $this->obj->DB_select_num("down_resume","uid=".$this->uid." and job_id=".$list['job_id']);
+            $arr_row[] = $list;
+        }
+
+        return array('total'=>$num,'pagenav'=>$pagenav,$rowsname=>$arr_row);
+    }
+
+
+    function error_msg($content){
+        echo $content;exit();
+    }
+
+    function success_msg($content){
+        echo $content;exit();
+    }
+
+    /*
+     * 根据职位id获取相关信息
+     */
+    function job_more($job_id){
+        $job = $this->obj->DB_select_once("company_job"," id=".$job_id,"uid,name,com_name");
+        return $job;
+
+    }
+
+
+    function _format_date($time){
+        $t=time()-$time;
+        $f=array(
+            '31536000'=>'年',
+            '2592000'=>'个月',
+            '604800'=>'星期',
+            '86400'=>'天',
+            '3600'=>'小时',
+            '60'=>'分钟',
+            '1'=>'秒'
+        );
+        foreach ($f as $k=>$v)    {
+            if (0 !=$c=floor($t/(int)$k)) {
+                return $c.$v.'前';
+            }
+        }
+    }
+
+
+    /*
+     * 猎头排行
+     * datekind 时间类型 month表示月，week表示周，day表示日
+     */
+    function lietou_rank($datekind="month"){
+        if($datekind=="month"){
+            $begintime=mktime(0,0,0,date('m'),1,date('Y'));
+            $endtime=mktime(23,59,59,date('m'),date('t'),date('Y'));
+        }elseif ($datekind=="week"){
+            $begintime=mktime(0,0,0,date('m'),date('d')-date('w')+1-7,date('Y'));
+            $endtime=mktime(23,59,59,date('m'),date('d')-date('w')+7-7,date('Y'));
+        }elseif ($datekind=="day"){
+            $begintime=mktime(0,0,0,date('m'),date('d'),date('Y'));
+            $endtime=mktime(0,0,0,date('m'),date('d')+1,date('Y'))-1;
+        }
+
+        $where = " datetime>".$begintime." and datetime<".$endtime." and identity=3  group by uid having recommend_result=1";
+        $this->obj->DB_select_all("userid_job",$where);
+        $lietou  = $this->obj->DB_select_all("lietou","1 order by download_num desc limit 0,10");
+        foreach ($lietou as $list){
+
+        }
     }
 }
 ?>

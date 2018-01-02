@@ -76,6 +76,7 @@ class jobadd_controller extends company{
 		$this->com_tpl('jobadd');
 	}
 	function edit_action(){
+
 		include(CONFIG_PATH."db.data.php");
 		$this->yunset("arr_data",$arr_data);
 		$statics = $this->company_satic();

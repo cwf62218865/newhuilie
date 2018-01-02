@@ -109,7 +109,7 @@
     background: #fff;
 }
 .job_news_list_span{
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
 }
 .job_namer{
@@ -203,6 +203,12 @@
 .line_heigh35{
     line-height: 35px;
 }
+.line_heigh45{
+    line-height: 45px;
+}
 .line_heigh18{
     line-height: 18px;
+}
+.line_heigh23{
+    line-height: 23px;
 }

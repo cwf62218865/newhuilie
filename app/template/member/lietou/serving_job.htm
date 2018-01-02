@@ -33,10 +33,10 @@
                 </div>
                 <div class="Search_jobs_more_chlose">
           <span class="Search_jobs_more_chlose_s">工作地点</span><i class=""></i>
-                    <div class="Search_jobs_more_chlose_list none">
+                    <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul>
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comprovince','{yun:}$city_name[$v]{/yun}','comcitys','city');">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a href="javascript:;" onclick="select_city('{yun:}$v{/yun}','comprovince','{yun:}$city_name[$v]{/yun}','comcitys','city');">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -107,9 +107,9 @@
             <div class="job_left_sidebar" style="width: 1000px;margin-left: 50px;">
                 <div class="job_news_list" style="background: #f1f8ff">
                     <span class="job_news_list_span job_w245" style="text-align:left;padding-left: 10px;">职位</span>
-                    <span class="job_news_list_span job_w130">工作地点</span>
-                    <span class="job_news_list_span job_w110">年薪</span>
-                    <span class="job_news_list_span job_w110">更新时间</span>
+                    <span class="job_news_list_span job_w130">推荐时间</span>
+                    <span class="job_news_list_span job_w161">年薪/工作地点</span>
+                    <span class="job_news_list_span job_w60">推荐进度:</span>
                     <span class="job_news_list_span job_w260">
                         <label class="num_tj">
                             <img src="{yun:}$lt_style{/yun}/images/icol0.png">
@@ -247,21 +247,22 @@
                         <a class="com_namer" href="{yun:}$job_list.com_url{/yun}" target="_blank">{yun:}$job_list.com_n{/yun}</a>
                 </span>
                     <span class="job_news_list_span job_w130">
-                    <label class="tj_time">{yun:}$job_list.job_city_one{/yun}-{yun:}$job_list.job_city_two{/yun}</label>
+                    <label class="tj_time">2017-12-24</label>
                 </span>
                     <span class="job_news_list_span job_w110 line_heigh23">
                         <label class="salery_s" href="#">{yun:}if $job_list.job_salary!='面议'{/yun}￥{yun:}/if{/yun}{yun:}$job_list.job_salary{/yun}</label><br>
-                        <label class="com_namer" href="#">年薪制</label>
+                        <label class="com_namer" href="#">{yun:}$job_list.job_city_one{/yun}-{yun:}$job_list.job_city_two{/yun}</label>
                     </span>
-                    <span class="job_news_list_span job_w110">
-                        <label class="tj_nums" href="#">今天</label>
+                    <span class="job_news_list_span job_w60 line_heigh23">
+                        <label class="tj_nums" href="#">总体进度</label><br>
+                        <label class="tj_nums" href="#">我的进度</label>
                     </span>
                     <span class="job_news_list_span job_w260 line_heigh23">
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">猎头</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">候选人</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">HR查看</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">HR下载</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_999">HR拒绝</span></label>
+                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
+                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
+                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
+                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
+                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
                     </span>
                     <span class="job_news_list_span job_w135">
                         <a href="{yun:}url m=job c=search c=comapply id='`$zd_list.id`'{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>

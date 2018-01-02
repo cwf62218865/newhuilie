@@ -8,7 +8,7 @@
 *
 * 软件声明：未经授权前提下，不得用于商业运营、二次开发以及任何形式的再次发布。
 */
-class hr_controller extends company{
+class lietou_controller extends company{
 	function index_action(){
 		$where="`com_id`='".$this->uid."'";
 		if(intval($_GET['resumetype'])){
@@ -46,11 +46,11 @@ class hr_controller extends company{
 			$urlarr['state']=$_GET['state'];
 		}
 		$this->public_action();
-		$urlarr['c']="hr";
+		$urlarr['c']="lietou";
 		$urlarr['page']="{{page}}";
 		$pageurl=Url('member',$urlarr);
-		$rows=$this->get_page("userid_job",$where." and identity=1 ORDER BY is_browse asc,datetime desc",$pageurl,"10");
-		
+		$rows=$this->get_page("userid_job",$where." and identity=3 ORDER BY is_browse asc,datetime desc",$pageurl,"10");
+
 		$jobs2=$this->obj->DB_select_all('company_job','`uid`='.$this->uid,"`id`,`name`");
 		foreach ($jobs2 as $key=>$val){
 			$jobs2[$key]['type']=1;
@@ -63,8 +63,9 @@ class hr_controller extends company{
 				$uid[]=$val['uid'];
 			}
 			if(empty($resume)){
-				$resume=$this->obj->DB_select_all("resume","`r_status`<>'2'  and `uid` in (".pylode(",",$uid).")","`name`,`edu`,`uid`,`exp`");
+				$resume=$this->obj->DB_select_all("pt_resume"," `id` in (".pylode(",",$uid).")");
 			}
+
 			$expect=$this->obj->DB_select_all("resume_expect","`id` in (".pylode(",",$eid).")","`id`,`job_classid`,`salary`,`height_status`");
 			$userid_msg=$this->obj->DB_select_all("userid_msg","`fid`='".$this->uid."' and `uid` in (".pylode(",",$uid).")","uid,jobid");
 			if(is_array($resume)){
@@ -101,7 +102,7 @@ class hr_controller extends company{
 					}
 				}
 			}
-			$jobnum=$this->obj->DB_select_num("userid_job","identity=1 and `com_id`='".$this->uid."'");
+			$jobnum=$this->obj->DB_select_num("userid_job","identity=3 and `com_id`='".$this->uid."'");
 		}
 		if($JobList&&is_array($JobList)&&$jobid['0']){
 			foreach($JobList as $val){
@@ -117,11 +118,11 @@ class hr_controller extends company{
 		$this->company_satic();
 		$this->yunset("js_def",5);
 		$this->yunset("jobnum",$jobnum);
-		$this->com_tpl('hr');
+		$this->com_tpl('lietou');
 	} 
 	function hrset_action(){
 		if($_POST['ajax']==1 && $_POST['ids']){
-			$rows=$this->obj->DB_select_all("userid_job"," identity=1 and `id` in (".pylode(",",$_POST['ids']).") and `com_id`='".$this->uid."'","`job_id`,`type`");
+			$rows=$this->obj->DB_select_all("userid_job"," identity=3 and `id` in (".pylode(",",$_POST['ids']).") and `com_id`='".$this->uid."'","`job_id`,`type`");
 			$jobid=array();
 			if($rows&&is_array($rows)){
 				foreach($rows as $val){
@@ -133,13 +134,13 @@ class hr_controller extends company{
 				}
 				$this->obj->DB_update_all("company_job","`operatime`='".time()."'","`id` in (".pylode(",",$jobid).") and `uid`='".$this->uid."'");
 			}
-			$userid=$this->obj->DB_select_all("userid_job","identity=1 and `com_id`='".$this->uid."' and `is_browse`<>'1'","`id`");
+			$userid=$this->obj->DB_select_all("userid_job","identity=3 and `com_id`='".$this->uid."' and `is_browse`<>'1'","`id`");
 			if($userid&&is_array($userid)){
 				foreach($userid as $v){
 					$userids[]=$v['id'];
 				}
 			}
-			$this->obj->DB_update_all("userid_job","`is_browse`='2'","`id` in (".pylode(",",$_POST['ids']).") and `id` not in (".pylode(",",$userids).") and `com_id`='".$this->uid."' and identity=1");
+			$this->obj->DB_update_all("userid_job","`is_browse`='2'","`id` in (".pylode(",",$_POST['ids']).") and `id` not in (".pylode(",",$userids).") and `com_id`='".$this->uid."' and identity=3");
 			$this->obj->member_log("批量阅读申请职位的人才");
 			$this->layer_msg('操作成功！',9,0,"index.php?c=hr");
 		}else if($_POST['delid']||$_GET['delid']){
@@ -150,7 +151,7 @@ class hr_controller extends company{
 				$id=(int)$_GET['delid'];
 				$layer_type='0';
 			}
-			$sq_num = $this->obj->DB_select_all("userid_job","identity=1 and `id` in (".$id.") and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
+			$sq_num = $this->obj->DB_select_all("userid_job","identity=3 and `id` in (".$id.") and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
 			if(is_array($sq_num)){
 				$jobid=array();
 				$uid=array();
@@ -169,7 +170,7 @@ class hr_controller extends company{
 			$this->obj->DB_update_all("company_statis","`sq_job`=`sq_job`-$num","`uid`='".$this->uid."'");
 			
 				
-			$nid=$this->obj->DB_delete_all("userid_job","identity=1 and `id` in (".$id.") and `com_id`='".$this->uid."'"," ");
+			$nid=$this->obj->DB_delete_all("userid_job","identity=3 and `id` in (".$id.") and `com_id`='".$this->uid."'"," ");
 			if($nid){
 				$this->obj->member_log("删除申请职位的人才",6,3);
 				$this->layer_msg('删除成功！',9,$layer_type,"index.php?c=hr");
@@ -179,13 +180,13 @@ class hr_controller extends company{
 		}else if($_POST['browse']){
 			$browse=(int)$_POST['browse'];
 			$id=(int)$_POST['id'];
-			$row = $this->obj->DB_select_once("userid_job","identity=1 and `id`='".$id."' and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
+			$row = $this->obj->DB_select_once("userid_job","identity=3 and `id`='".$id."' and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
 			if($row['type']==1){
 				$this->obj->DB_update_all("company_job","`operatime`='".time()."'","`id`='".$row['job_id']."' and `uid`='".$this->uid."'");
 			}
-			$this->obj->DB_update_all("userid_job","identity=1 and `is_browse`='".$browse."'","`id`='".$id."' and `com_id`='".$this->uid."'");
+			$this->obj->DB_update_all("userid_job","identity=3 and `is_browse`='".$browse."'","`id`='".$id."' and `com_id`='".$this->uid."'");
 			if($browse==4){ 
-				$resumeuid=$this->obj->DB_select_once("userid_job","identity=1 and `id`='".$id."'",'eid,job_id');
+				$resumeuid=$this->obj->DB_select_once("userid_job","identity=3 and `id`='".$id."'",'eid,job_id');
 				$resumeexp=$this->obj->DB_select_once("resume_expect","`id`='".$resumeuid['eid']."' and `r_status`<>'2' and `status`='1'",'uid,uname');
 				$uid=$this->obj->DB_select_once("resume","`uid`='".$resumeexp['uid']."'","telphone,email");
 				if($row['type']==1){

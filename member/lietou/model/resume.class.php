@@ -383,29 +383,92 @@ class resume_controller extends lietou{
 
 
     function add_action(){
-        $data['name'] = $_POST['name']?$_POST['name']:die("请输入姓名");
-        $data['sex'] = $_POST['sex']?$_POST['sex']:die("请选择性别");
-        $data['mobile'] = $_POST['mobile']?$_POST['mobile']:die("请输入手机号");
+
+        $data['name'] = $_POST['name']?$_POST['name']:$this->error_msg("请输入姓名");
+        $data['sex'] = $_POST['sex']?$_POST['sex']:$this->error_msg("请选择性别");
         $data['email'] = $_POST['email'];
-        $data['birthday'] = $_POST['birthday'];
-        $data['current'] = $_POST['jobState'];
-        $data['degree'] = $_POST['degree'];
-        $data['intention_jobs'] = $_POST['intent']['hopeCallings'];
-        $data['intention_city'] = $_POST['intent']['hopeCitys'];
-        $data['wage_hope'] = $_POST['intent']['curMoney'];
-        $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
-        $data['wage_current'] = $_POST['intent']['hopeMoney'];
-        $data['additions'] = $_POST['extra']['extraInfo'];
-        $data['introduce'] = $_POST['extra']['selfEvaluation'];
-        $data['hunterId'] = $_POST['hunterId'];
+        $data['birthday'] = $_POST['birthDayStr'];
+        $data['living'] =  $_POST['cityId'];
+        $data['edu'] = $_POST['edu'];
+        $data['def_job'] = $_POST['def_job'];
+        $data['telphone'] = $_POST['mobile']?$_POST['mobile']:die("请输入手机号");
+        $data['uid'] = $this->uid;
+        $resume_id = $this->obj->insert_into("resume",$data);
+
+        if($resume_id){
+            if($_POST['intent']){
+                $data = "";
+                $data['uid'] = $resume_id;
+                $data['job_classid']= $_POST['intent']['hopeCallings'];
+                $data['intention_city'] = $_POST['intent']['hopeCitys'];
+                $data['wage_hope'] = $_POST['intent']['curMoney'];
+                $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
+                $data['wage_current'] = $_POST['intent']['hopeMoney'];
+                $this->obj->insert_into("resume_expect",$data);
+            }
+
+            if($_POST['workExp']){
+
+                foreach ($_POST['workExp'] as $list){
+                    $data = "";
+                    $data['uid'] = $resume_id;
+                    $data['name'] = $list['companyName'];
+                    $data['title'] = $list['posName'];
+                    $data['sdate'] = $list['startDateStr'];
+                    $data['edate'] = $list['endDateStr'];
+                    $data['content'] = $list['workDes'];
+                    $this->obj->insert_into("resume_work",$data);
+                }
+
+            }
+
+            if($_POST['edu']){
+                $data = "";
+                $data['uid'] = $resume_id;
+                $data['name'] = $_POST['edu']['name'];
+                $data['title'] = $_POST['edu']['title'];
+                $data['sdate'] = $_POST['edu']['sdate'];
+                $data['edate'] = $_POST['edu']['edate'];
+                $data['specialty'] = $_POST['edu']['specialty'];
+                $this->obj->insert_into("resume_edu",$data);
+            }
+
+            if($_POST['proExp']){
+
+                foreach ($_POST['proExp'] as $list){
+                    $data = "";
+                    $data['uid'] = $resume_id;
+                    $data['name'] = $list['proName'];
+                    $data['title'] = $list['title'];
+                    $data['sdate'] = $list['startDateStr'];
+                    $data['edate'] = $list['endDateStr'];
+                    $data['content'] = $list['content'];
+                    $this->obj->insert_into("resume_project",$data);
+                }
+
+            }
+            $this->success_msg("添加成功");
+        }else{
+            $this->error_msg("添加失败");
+        }
+//        $data['current'] = $_POST['jobState'];
+//        $data['degree'] = $_POST['degree'];
+//        $data['intention_jobs'] = $_POST['intent']['hopeCallings'];
+//        $data['intention_city'] = $_POST['intent']['hopeCitys'];
+//        $data['wage_hope'] = $_POST['intent']['curMoney'];
+//        $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
+//        $data['wage_current'] = $_POST['intent']['hopeMoney'];
+//        $data['additions'] = $_POST['extra']['extraInfo'];
+//        $data['introduce'] = $_POST['extra']['selfEvaluation'];
+//        $data['uid'] = $_POST['hunterId'];
 //        var_dump($data);exit();
 //        $data['proExp'] = $_POST['proExp'];
 //        $data['workExp'] = $_POST['workExp'];
 //        $data['proExp'] = $_POST['proExp'];
-        $r = $this->obj->insert_into("pt_resume",$data);
-        if($r){
-            echo 1;exit();
-        }
-        var_dump($data);exit();
+//        $r = $this->obj->insert_into("pt_resume",$data);
+//        if($r){
+//            echo 1;exit();
+//        }
+//        var_dump($data);exit();
     }
 }

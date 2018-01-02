@@ -203,8 +203,8 @@ function jobshuaxin(id){
     <div class="com_m_index_resume" style="margin-top: 0;">
         <div class="com_m_index_h1">
             <a class="com_m_index_h1_s hovers" href="/member/index.php?c=index">推荐分析</a>
-            <a class="com_m_index_h1_s hovers bg_current" href="/member/index.php?c=index&kind=recent">近期推荐的候选人</a>
-            <a class="com_m_index_h1_s hovers" href="/member/index.php?c=index&kind=newjobs">最新职位</a>
+            <a class="com_m_index_h1_s hovers bg_current" href="/member/index.php?c=index&act=recent">近期推荐的候选人</a>
+            <a class="com_m_index_h1_s hovers" href="/member/index.php?c=index&act=newjobs">最新职位</a>
             <a href="index.php?c=attention_me" class="com_m_index_h1_s_a" target="_blank" style="display: none;">查看关注我公司的人才>></a>
         </div>
         <div class="tj_content">
@@ -241,10 +241,10 @@ function jobshuaxin(id){
             <input type="submit" value="搜索" class="tongji_info_text_sub"/>
             <div class="tongj_box">
                 <div class="tongj_list"><div class="tongj_list_name">日期</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">30</span>天</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 服务企业数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">12</span>家</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 推荐职位数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>个</div></div>
-                <div class="tongj_list"><div class="tongj_list_name"> 推荐简历数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">10</span>份</div></div>
-                <div class="tongj_list tongj_list_last"><div class="tongj_list_name"> 简历下载率</div><div class="tongj_list_b"><span class="tongj_list_b_n">30%</span></div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 服务企业数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_com_count{/yun}</span>家</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐职位数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_job_count{/yun}</span>个</div></div>
+                <div class="tongj_list"><div class="tongj_list_name"> 推荐简历数</div><div class="tongj_list_b">总计<span class="tongj_list_b_n">{yun:}$service_resume_count{/yun}</span>份</div></div>
+                <div class="tongj_list tongj_list_last"><div class="tongj_list_name"> 简历下载率</div><div class="tongj_list_b"><span class="tongj_list_b_n">{yun:}$down_resume_odds{/yun}</span></div></div>
             </div>
 
             <div class="job_news_list">
@@ -252,78 +252,21 @@ function jobshuaxin(id){
                 <span class="job_news_list_span job_w370">职位</span>
                 <span class="job_news_list_span job_w150">最新动态</span>
             </div>
+            {yun:}foreach from=$recommend.rows item=list{/yun}
             <div class="job_news_list line_heigh35">
                 <span class="job_news_list_span job_w190  line_heigh18">
-                        <a class="job_namer" href="#">杨洋</a><br>
-                        <label class="com_namer" href="#">昨天推荐</label>
+                        <a class="job_namer" href="#">{yun:}$list.resume_name{/yun}</a><br>
+                        <label class="com_namer" href="#">{yun:}$list.datetime{/yun}</label>
                 </span>
                 <span class="job_news_list_span job_w370  line_heigh18">
-                    <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
+                    <a class="job_namer" href="#">{yun:}$list.job_name{/yun}</a><label class="job_status">（已停招）</label><br>
+                        <a class="com_namer" href="#">{yun:}$list.com_name{/yun}</a>
                 </span>
                 <span class="job_news_list_span job_w150">
                     <label class="tj_nums" href="#">新推荐</label></span>
             </div>
-            <div class="job_news_list line_heigh35">
-                <span class="job_news_list_span job_w190  line_heigh18">
-                        <a class="job_namer" href="#">杨洋</a><br>
-                        <label class="com_namer" href="#">昨天推荐</label>
-                </span>
-                <span class="job_news_list_span job_w370 line_heigh18">
-                    <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">新推荐</label></span>
-            </div>
-            <div class="job_news_list line_heigh35">
-                <span class="job_news_list_span job_w190  line_heigh18">
-                        <a class="job_namer" href="#">杨洋</a><br>
-                        <label class="com_namer" href="#">昨天推荐</label>
-                </span>
-                <span class="job_news_list_span job_w370  line_heigh18">
-                    <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">新推荐</label></span>
-            </div>
-            <div class="job_news_list line_heigh35">
-                <span class="job_news_list_span job_w190  line_heigh18">
-                        <a class="job_namer" href="#">杨洋</a><br>
-                        <label class="com_namer" href="#">昨天推荐</label>
-                </span>
-                <span class="job_news_list_span job_w370  line_heigh18">
-                    <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">新推荐</label></span>
-            </div>
-            <div class="job_news_list line_heigh35">
-                <span class="job_news_list_span job_w190  line_heigh18">
-                        <a class="job_namer" href="#">杨洋</a><br>
-                        <label class="com_namer" href="#">昨天推荐</label>
-                </span>
-                <span class="job_news_list_span job_w370  line_heigh18">
-                    <a class="job_namer" href="#">新能源技术中心-电池管理系统主管工程师</a><label class="job_status">（已停招）</label><br>
-                        <a class="com_namer" href="#">重庆达凤玉科技有限责任公司</a>
-                </span>
-                <span class="job_news_list_span job_w150">
-                    <label class="tj_nums" href="#">新推荐</label></span>
-            </div>
-            <div class="pages_btns">
-                <span class="page_butt">上一页</span>
-                <span class="page_butt">1</span>
-                <span class="page_butt">2</span>
-                <span class="page_butt">3</span>
-                <span class="page_butt">4</span>
-                <span class="page_butt">5</span>
-                <span class="page_butt">6</span>
-                <span class="page_butt">…</span>
-                <span class="page_butt">15</span>
-                <span class="page_butt">下一页</span>
-            </div>
+            {yun:}/foreach{/yun}
+            <div class="pages pages_btns"> {yun:}$recommend.pagenav{/yun}</div>
         </div>
 
 

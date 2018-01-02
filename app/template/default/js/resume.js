@@ -17,6 +17,7 @@ $(document).ready(function(){
 })
 //简历详情页查看联系方式、下载简历
 function for_link(eid,url,todown){
+
 	var i=layer.load('执行中，请稍候...',0);
 	$.post(url,{eid:eid},function(data){
 		layer.closeAll();
