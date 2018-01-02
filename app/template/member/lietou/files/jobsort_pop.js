@@ -1,23 +1,23 @@
 function refreshPosSelectState(inputId){
-	var jobIds = $("#"+inputId).val();
-	var txt="";
-
-	//清理
-	$("#selectItems").children().remove();
-	$("div.selectdiv").find("a").removeClass("act");
-	//没有选择职位
-	if(jobIds&&jobIds!=""){
-		var jobs = jobIds.split(",");
-		$.each(jobs,function(i,v){
-			txt += ((i==0?"":",")+ $("a[jobId='"+v+"']").text());
-			$("a[jobId='"+v+"']").addClass("act");
-			if($("a[jobId='"+v+"']").text() && $("a[jobId='"+v+"']").text()!=""){
-				$("#selectItems").append('<li jobsId="'+v+'"><a href="#" class="label alert label-success selectlabel" '
-					+'role="alert"><span class="innertext">'+$("a[jobId='"+v+"']").text()+'&nbsp;</span>'
-					+'<span class="glyphicon glyphicon-remove"></span></a></li>');
-			}
-		});
-	}
+	//var jobIds = $("#"+inputId).val();
+	//var txt="";
+    //
+	////清理
+	//$("#selectItems").children().remove();
+	//$("div.selectdiv").find("a").removeClass("act");
+	////没有选择职位
+	//if(jobIds&&jobIds!=""){
+	//	var jobs = jobIds.split(",");
+	//	$.each(jobs,function(i,v){
+	//		txt += ((i==0?"":",")+ $("a[jobId='"+v+"']").text());
+	//		$("a[jobId='"+v+"']").addClass("act");
+	//		if($("a[jobId='"+v+"']").text() && $("a[jobId='"+v+"']").text()!=""){
+	//			$("#selectItems").append('<li jobsId="'+v+'"><a href="#" class="label alert label-success selectlabel" '
+	//				+'role="alert"><span class="innertext">'+$("a[jobId='"+v+"']").text()+'&nbsp;</span>'
+	//				+'<span class="glyphicon glyphicon-remove"></span></a></li>');
+	//		}
+	//	});
+	//}
 		
 	
 }
@@ -63,8 +63,8 @@ function queryJob(jobId,obj){
 		//未选择状态,判断是否超过上限
 		var cursize = $("#selectItems").find("li").size();
 		
-		if(cursize>=3){
-			alert("期望职位最多选择三项！");return false;
+		if(cursize>=5){
+			alert("期望职位最多选择五个项！");return false;
 		}else{
 			$("#selectItems").append('<li jobsid="'+jobIdstr+'"><a href="#" class="label alert label-success selectlabel" role="alert"><span class="innertext">'+$("a[jobId='"+jobIdstr+"']").text()+'&nbsp;</span><span aria-hidden="true">&times;</span></a></li>');
 			$("a[jobId='"+jobIdstr+"']").addClass("act");
@@ -84,6 +84,7 @@ $(function(){
 	
 	$(document).on("click","a.selectlabel",function(){				
 		var jobMark = $(this).parent().attr("jobsid");
+		$(this).parent().remove();
 		$("div.selectdiv").find("a[jobId="+jobMark+"]").trigger("click");
 	});
 	

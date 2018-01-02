@@ -2085,3 +2085,6 @@ overflow-x: hidden;z-index:99999;width:235px;}
     margin-left: 10px;
     cursor: pointer;
 }
+#infoboxadd .text_seclet_w150{
+    width: 158px;background:#fff url(../images/com_select.jpg) no-repeat 130px center;
+}
