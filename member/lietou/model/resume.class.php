@@ -383,14 +383,15 @@ class resume_controller extends lietou{
 
 
     function add_action(){
-        $data['name'] = $_POST['name']?$_POST['name']:die("请输入姓名");
-        $data['sex'] = $_POST['sex']?$_POST['sex']:die("请选择性别");
+
+        $data['name'] = $_POST['name']?$_POST['name']:$this->error_msg("请输入姓名");
+        $data['sex'] = $_POST['sex']?$_POST['sex']:$this->error_msg("请选择性别");
         $data['email'] = $_POST['email'];
-        $data['birthday'] = $_POST['birthday'];
-        $data['living'] = $_POST['living'];
+        $data['birthday'] = $_POST['birthDayStr'];
+        $data['living'] =  $_POST['cityId'];
         $data['edu'] = $_POST['edu'];
         $data['def_job'] = $_POST['def_job'];
-        $data['telphone'] = $_POST['telphone']?$_POST['telphone']:die("请输入手机号");
+        $data['telphone'] = $_POST['mobile']?$_POST['mobile']:die("请输入手机号");
         $data['uid'] = $this->uid;
         $resume_id = $this->obj->insert_into("resume",$data);
 
@@ -398,7 +399,7 @@ class resume_controller extends lietou{
             if($_POST['intent']){
                 $data = "";
                 $data['uid'] = $resume_id;
-                $data['job_classid'] = $_POST['intent']['hopeCallings'];
+                $data['job_classid']= $_POST['intent']['hopeCallings'];
                 $data['intention_city'] = $_POST['intent']['hopeCitys'];
                 $data['wage_hope'] = $_POST['intent']['curMoney'];
                 $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
@@ -406,15 +407,19 @@ class resume_controller extends lietou{
                 $this->obj->insert_into("resume_expect",$data);
             }
 
-            if($_POST['work']){
-                $data = "";
-                $data['uid'] = $resume_id;
-                $data['name'] = $_POST['work']['name'];
-                $data['title'] = $_POST['work']['title'];
-                $data['sdate'] = $_POST['work']['sdate'];
-                $data['edate'] = $_POST['work']['edate'];
-                $data['content'] = $_POST['work']['content'];
-                $this->obj->insert_into("resume_work",$data);
+            if($_POST['workExp']){
+
+                foreach ($_POST['workExp'] as $list){
+                    $data = "";
+                    $data['uid'] = $resume_id;
+                    $data['name'] = $list['companyName'];
+                    $data['title'] = $list['posName'];
+                    $data['sdate'] = $list['startDateStr'];
+                    $data['edate'] = $list['endDateStr'];
+                    $data['content'] = $list['workDes'];
+                    $this->obj->insert_into("resume_work",$data);
+                }
+
             }
 
             if($_POST['edu']){
@@ -428,15 +433,19 @@ class resume_controller extends lietou{
                 $this->obj->insert_into("resume_edu",$data);
             }
 
-            if($_POST['project']){
-                $data = "";
-                $data['uid'] = $resume_id;
-                $data['name'] = $_POST['project']['name'];
-                $data['title'] = $_POST['project']['title'];
-                $data['sdate'] = $_POST['project']['sdate'];
-                $data['edate'] = $_POST['project']['edate'];
-                $data['content'] = $_POST['project']['content'];
-                $this->obj->insert_into("resume_project",$data);
+            if($_POST['proExp']){
+
+                foreach ($_POST['proExp'] as $list){
+                    $data = "";
+                    $data['uid'] = $resume_id;
+                    $data['name'] = $list['proName'];
+                    $data['title'] = $list['title'];
+                    $data['sdate'] = $list['startDateStr'];
+                    $data['edate'] = $list['endDateStr'];
+                    $data['content'] = $list['content'];
+                    $this->obj->insert_into("resume_project",$data);
+                }
+
             }
             $this->success_msg("添加成功");
         }else{

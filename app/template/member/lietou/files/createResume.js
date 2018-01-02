@@ -118,7 +118,6 @@ $(function(){
 			
 	});
 	$("#saveLtCandBtn").click(function(){
-		
 		var flag = false;
 		var ff = valideResumeForm();
 		if(!ff){
@@ -137,7 +136,7 @@ $(function(){
 		cand.name=$("#resName").val();
 		cand.engName=$("#engName").val();
 		cand.sex=$("input[name=sex]:checked").val();
-		cand.cityId=$("#cityId").val();
+		cand.cityId=$("#cityName").val();
 		cand.birthDayStr=$("#birthDay").val();
 		cand.mobile=$("#mobile").val();
 		cand.email=$("#email").val();
@@ -283,7 +282,8 @@ $(function(){
 		ext.extraInfo=$("#extraInfo").val();
 		ext.attachmentsPaths=$("#attachmentsPaths").val();
 		ext.fileNames=$("#fileNames").val();
-		
+
+
 		cand.extra=ext;
 		cand.hunterId = $("#hunterId").val();
 		cand.synType = $("input[name=synType]:checked").val();
@@ -400,7 +400,7 @@ function valideResumeForm(){
 	var hopeMoney = $("#posName").val();
 	
 	msg="";
-	var cityId = $("#cityId").val();
+	var cityId = $("#cityName").val();
 	if(name==""){
 		msg="«ÎÃÓ–¥–’√˚£°";
 		tip.text(msg);

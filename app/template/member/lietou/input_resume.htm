@@ -1799,7 +1799,7 @@
 	var hopeIndustry=hi;//期望行业数据
 	var hopeIndustrybox="";//期望行业
 	for(var i =0 ; i< hopeIndustry.length ; i++){
-		hopeIndustrybox+="<option value='"+i+"'>"+hn[hopeIndustry[i]]+"</option>";
+		hopeIndustrybox+="<option value='"+hopeIndustry[i]+"'>"+hn[hopeIndustry[i]]+"</option>";
 	}
 	$("#hopeIndustry").append(hopeIndustrybox);
 
@@ -1840,14 +1840,14 @@
 			var actlength=checkjbsid.length;
 			for(var j = 0 ;j < checkjbsid.length ; j++){
 				if(checkjbsid[j]==jt[jtd][i]){
-					job3+='<li ><a href="javascript:void(0)" jobid="nrjob'+jt[jtd][i]+'" class="act" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
+					job3+='<li ><a href="javascript:void(0)" jobid="'+jt[jtd][i]+'" class="act" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
 
 				}else{
 					actlength-=1;
 				}
 			}
 			if(actlength==0){
-				job3+='<li ><a href="javascript:void(0)" jobid="nrjob'+jt[jtd][i]+'" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
+				job3+='<li ><a href="javascript:void(0)" jobid="'+jt[jtd][i]+'" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
 			}
 //			job3+='<li ><a href="javascript:void(0)" jobid="nrjob'+jt[jtd][i]+'" onclick="queryJob('+jt[jtd][i]+',this)">'+jn[jt[jtd][i]]+'</a></li>'
 		}
