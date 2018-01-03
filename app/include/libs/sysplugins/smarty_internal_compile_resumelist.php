@@ -229,6 +229,7 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 			$where.=" AND status_time>$adtime";
 		}
 		
+		$where .=" and resume_id<>0";
         
 
 		if($paramer[order] && $paramer[order]!="lastdate"){
@@ -254,6 +255,7 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 		if($paramer[where]){
 			$where = $paramer[where];
 		}
+		
 		if($paramer[ispage]){
 			if($paramer["height_status"]){
 				$limit = PageNav($paramer,$_GET,"resume_expect",$where,$Purl,"",$paramer[islt]?$paramer[islt]:"3",$_smarty_tpl);
@@ -275,7 +277,7 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 			}
 			$eids = @implode(\',\',$eid);
 			$uids = @implode(\',\',$uid);
-            $resume=$db->select_all("resume","`id` in(".$value[resume_id].")","id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday");
+            $resume=$db->select_all("resume","`id` in(".$value[resume_id].")","id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday,telphone");
 			foreach('.$name.' as $k=>$v){
 			    foreach($resume as $val){
 			        if($v[\'uid\']==$val[\'uid\']){
@@ -331,7 +333,7 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 				if($paramer[topdate]){
 					$noids[] = $v[id];
 				}
-				
+				'.$name.'[$k][\'telphone\']=$val[\'telphone\'];
 				$time=$v[\'lastupdate\'];
 				
 				$beginToday=mktime(0,0,0,date(\'m\'),date(\'d\'),date(\'Y\'));
