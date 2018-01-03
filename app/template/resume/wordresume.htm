@@ -11,14 +11,14 @@ Print
 <title>简历</title>
 </head><body style="background:#dfdfdf;width:720px; margin:0 auto">
 <style>
-table{border-collapse:collapse; background:#ffffff; margin:0 auto; font-family:微软雅黑; font-size:12px;}
-table td{ white-space:normal;word-break:break-all;  font-size:12px;}
+table{border-collapse:collapse; background:#ffffff; margin:0 auto; font-family:微软雅黑; font-size:14px;}
+table td{ white-space:normal;word-break:break-all;  font-size:14px;}
 table tr{ background:#ffffff}
-.resume_table_blod{ font-weight:bold; font-size:12px; background:#ededed}
+.resume_table_blod{ font-weight:bold; font-size:14px; background:#ededed}
 .image_gall{ margin-right:10px;}
 .resume_table_td_p{ line-height:25px;}
 </style>
-<table width="600" border="0" cellspacing="0" cellpadding="0" class="resume_tmpl4" bgcolor="#fff" style="font-size:12px; margin:0 auto;">
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="resume_tmpl4" bgcolor="#fff" style="font-size:14px; margin:0 auto;">
 <tbody>
 <tr>
   <td>
@@ -53,48 +53,18 @@ table tr{ background:#ffffff}
       <table width="600" border="0" cellspacing="0" cellpadding="5"  class="resume_table_bg resume_table_bg_nt" >
           <tbody>
           <tr>
-              <td width="600" height="38" align="left" ><b style="font-size:16px;">联系方式</b></td>
+              <td width="600"  colspan="3"  height="38" align="left" ><b style="font-size:16px;">联系方式</b></td>
           </tr>
           <tr>
-              <td   width="600" class="resume_table_td_p">
-
-                  {yun:}if $Info.telphone{/yun}
-                  <div class="one_vita_Intention one_vita_Intention_w420"><i class="one_vita_Intention_i one_vita_red"></i>手机：{yun:}$Info.telphone{/yun}</div>
-                  {yun:}/if{/yun}
-
-                  {yun:}if $Info.telhome{/yun}
-                  <div class="one_vita_Intention"><i class="one_vita_Intention_i one_vita_red"></i>座机：{yun:}$Info.telhome{/yun} </div>
-                  {yun:}/if{/yun}
-
-                  {yun:}if $Info.email{/yun}
-                  <div class="one_vita_Intention one_vita_Intention_w420"><i class="one_vita_Intention_i one_vita_red"></i>电子邮箱：{yun:}$Info.email{/yun} </div>
-                  {yun:}/if{/yun}
-
-                  {yun:}if $Info.wxewm{/yun}
-                  <div class="one_vita_Intention"><i class="one_vita_Intention_i one_vita_red"></i>个人二维码：
-                      <img src="{yun:}$config.sy_weburl{/yun}/{yun:}$Info.wxewm{/yun}"  width="58" height="38" />
-                  </div>
-                  {yun:}/if{/yun}
-
-                  {yun:}if $Info.homepage{/yun}
-                  <div class="one_vita_Intention"><i class="one_vita_Intention_i one_vita_red"></i>个人主页：{yun:}$Info.homepage{/yun}</div>
-                  {yun:}/if{/yun}
-                  {yun:}if $Info.qq{/yun}
-                  <div class="one_vita_Intention"><i class="one_vita_Intention_i one_vita_red"></i>联系Q Q：{yun:}$Info.qq{/yun}</div>
-                  {yun:}/if{/yun}
-                  {yun:}if $Info.address{/yun}
-                  <div class="one_vita_Intention one_vita_Intention_w420"><i class="one_vita_Intention_i one_vita_red"></i>详细地址：{yun:}$Info.address{/yun}</div>
-                  {yun:}/if{/yun}
-
-
-                  {yun:}if $Info.idcard{/yun}
-                  <div class="one_vita_Intention one_vita_Intention_w420"><i class="one_vita_Intention_i one_vita_red"></i><span>身份证号</span>
-                      <span class="one_vita_Identity"> {yun:}$Info.idcard{/yun}
-                     </span> </div>
-                  {yun:}/if{/yun}
-                  </div>
+              <td width="250" height="38"  align="left">手机：{yun:}$Info.telphone{/yun}</td>
+              <td width="250" height="38"  align="left">电子邮箱：{yun:}$Info.email{/yun} </td>
+              <td width="100" height="38"  align="left">
+                  <!--{yun:}if $Info.wxewm{/yun}个人二维码：-->
+                  <!--<img src="{yun:}$config.sy_weburl{/yun}/{yun:}$Info.wxewm{/yun}"  width="58" height="38" />-->
+                  <!--{yun:}/if{/yun}-->
               </td>
           </tr>
+
           </tbody>
       </table>
       {yun:}if $Info.basic_info=='1'{/yun}
@@ -132,6 +102,7 @@ table tr{ background:#ffffff}
               </tr>
             </tbody>
           </table>
+
           {yun:}if is_array($Info.user_work) && !empty($Info.user_work){/yun} 
           <!--工作经历-->
           
@@ -150,7 +121,7 @@ table tr{ background:#ffffff}
                           </span>
                       </div>
                       {yun:}if $one.content{/yun}<div class="yun_resume_exp_p">描述：{yun:}$one.content{/yun}</div>{yun:}/if{/yun}
-                    </div>
+                    </div><br/>
                     {yun:}/foreach{/yun}
                 </div>
                 </td>
@@ -172,7 +143,7 @@ table tr{ background:#ffffff}
                     <div class="yun_resume_exp_list ">
                       <div class="yun_resume_exp_timt">{yun:}$one.sdate|date_format:"%Y.%m"{/yun} - {yun:}$one.edate|date_format:"%Y.%m"{/yun}&nbsp;&nbsp;<b>{yun:}$one.name{/yun}</b>&nbsp;&nbsp;<span class="yun_resume_exp_name_job"><b>{yun:}$one.title{/yun}</b></span></div>
                       <div class="yun_resume_exp_p"> {yun:}$one.content{/yun} </div>
-                    </div>
+                    </div><br/>
                     {yun:}/foreach{/yun} </div>
                 </td>
               </tr>
@@ -192,7 +163,7 @@ table tr{ background:#ffffff}
               <td  width="600"  class="resume_table_td_p"><div class=""> {yun:}foreach item=one from=$Info.user_edu{/yun}
                   <div class="yun_resume_exp_list ">
                       <div class="yun_resume_exp_timt">{yun:}$one.sdate|date_format:"%Y.%m"{/yun}-{yun:}$one.edate|date_format:"%Y.%m"{/yun}&nbsp;&nbsp;<b>{yun:}$one.name{/yun}</b>&nbsp;&nbsp;<span class="yun_resume_exp_name_job"><b>{yun:}$one.specialty{/yun}</b></span>&nbsp;&nbsp;{yun:}$one.education_n{/yun}学历</div>
-                  </div>
+                  </div><br/>
                   {yun:}/foreach{/yun} </div>
               </td>
           </tr>
@@ -212,7 +183,7 @@ table tr{ background:#ffffff}
                   <div class="yun_resume_exp_list  ">
                       <div class="yun_resume_exp_timt">{yun:}$one.sdate|date_format:"%Y.%m"{/yun} - {yun:}$one.edate|date_format:"%Y.%m"{/yun}&nbsp;&nbsp;<b>{yun:}$one.name{/yun}</b>&nbsp;&nbsp;<span class="yun_resume_exp_name_job"><b>{yun:}$one.title{/yun}</b></span></div>
                       <div class="yun_resume_exp_p"> 描述：{yun:}$one.content{/yun} </div>
-                  </div>
+                  </div><br/>
                   {yun:}/foreach{/yun} </div></td>
           </tr>
           </tbody>
@@ -285,7 +256,7 @@ table tr{ background:#ffffff}
               <tr>
                 <td   width="600"  class="resume_table_td_p"><div class="resume_skill resume_skill_table">
                     <div class=""><i class="resume_skill_icon"></i>
-                      <div class="yun_resume_exp_p">{yun:}$Info.description{/yun}</div>
+                      <div class="yun_resume_exp_p">{yun:}$Info.description{/yun}</div><br/>
                     </div>
                   </div>
                   
