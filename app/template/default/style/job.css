@@ -6,7 +6,7 @@
 .fltL{ float:left}
 .fltR{ float:right}
 .current_Location span.org{color:#ec6403}
-.Search_jobs_box{width:1198px;border:1px solid #eee; background:#fff; float:left; position:relative; z-index:1; border-bottom:1px solid #eaeaea;}
+.Search_jobs_box{width:1198px; background:#fff; float:left; position:relative; z-index:1;}
 .Search_jobs_form{width:100%; float:left}
 .Search_jobs_name{ display:inline-block;width:70px; padding-right:10px;height:30px; line-height:30px; text-align:right;color:#555; float:left; font-weight:bold; font-size:14px;}
 .Search_jobs_bth{width:212px;height:30px; line-height:30px; text-indent:10px; cursor:pointer; background:url(../images/job_text.jpg) no-repeat;border:none; text-align:left;color:#808080; float:left }
@@ -518,4 +518,30 @@
    display: inline-block;
     width: 33px;
     cursor: pointer;
+    position: relative;
+}
+.ico_btn:hover .jieshiico{
+    display: block;
+}
+.ico_btn .jieshiico{
+    top: 22px;
+}
+.rk_resume{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    float: right;
+    background: #ff6a6a;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+.rk_zizi{
+    cursor: pointer;
+}
+.rk_resume:hover .rk_zizi,
+.rk_zizi:hover{
+    color: #ffffff;
 }

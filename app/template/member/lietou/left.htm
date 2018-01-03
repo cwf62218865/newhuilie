@@ -5,7 +5,7 @@
   <ul class="right_nav_ul">
   {yun:}if $config.com_search==1{/yun}
       <li {yun:}if $smarty.get.act=="index" || $smarty.get.act==""{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=index" class="f60">平台简历库<span class="num_style">2</span></a></span></li>{yun:}/if{/yun}
-      <li {yun:}if $smarty.get.act=="recently"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=resumefav" title="我的简历">收藏的简历<span class="num_style">2</span></a></span> </li>
+      <li {yun:}if $smarty.get.act=="resumefav"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style01"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=resumefav" title="我的简历">收藏的简历<span class="num_style">2</span></a></span> </li>
       <li {yun:}if $smarty.get.act=="recommend"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=recommend">已推荐的简历<span class="num_style">2</span></a></span> </li>
       <li {yun:}if $smarty.get.act=="myself"{/yun} class="style01 left_nav_hover"{yun:}else{/yun}class="style06"{yun:}/if{/yun}><span><a href="index.php?c=resume&act=myself">我入库的简历<span class="num_style">2</span></a></span> </li>
 

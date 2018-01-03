@@ -30,6 +30,7 @@ class resume_controller extends lietou{
 
     function index_action(){
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
         $resume = $this->obj->get_page();
         $this->yunset("js_def",5);
@@ -44,6 +45,7 @@ class resume_controller extends lietou{
 
     function resumefav_action(){
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
         $where="`com_id`='".$this->uid."'";
         if(intval($_GET['resumetype'])){
@@ -157,6 +159,7 @@ class resume_controller extends lietou{
 
     function recommend_action(){
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
         $where="`com_id`='".$this->uid."'";
         if(intval($_GET['resumetype'])){
@@ -270,6 +273,7 @@ class resume_controller extends lietou{
 
     function myself_action(){
         $this->industry_cache();
+        $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
         $where="`com_id`='".$this->uid."'";
         if(intval($_GET['resumetype'])){
