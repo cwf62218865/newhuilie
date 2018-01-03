@@ -279,6 +279,12 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 			$uids = @implode(\',\',$uid);
             $resume=$db->select_all("resume","`id` in(".$value[resume_id].")","id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday,telphone");
 			foreach('.$name.' as $k=>$v){
+			    $recommend=$db->DB_select_once("userid_job","eid=".$v[\'id\']." order by datetime desc","datetime");
+			    '.$name.'[$k][\'lietou_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 group by uid");
+			    '.$name.'[$k][\'job_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 group by job_id");
+			    '.$name.'[$k][\'download_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 and is_browse=6");
+
+			    '.$name.'[$k][\'datetime\']=_format_date($recommend[\'datetime\']);
 			    foreach($resume as $val){
 			        if($v[\'uid\']==$val[\'uid\']){
 			    		'.$name.'[$k][\'edu_n\']=$userclass_name[$val[\'edu\']];
