@@ -117,6 +117,12 @@
     font-size: 14px;
     max-width: 175px;
 }
+.job_namer font{
+    color: #4b6e88;
+}
+.job_namer:hover font{
+    color: #ff6600;
+}
 .job_status,.com_namer{
     color: #999999;
     font-size: 12px;

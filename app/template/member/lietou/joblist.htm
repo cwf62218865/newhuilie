@@ -42,7 +42,7 @@
                     <div class="Search_jobs_more_chlose_hylist none">
                         <ul class="select_hyitem">
                             {yun:}foreach from=$industry_index item=v key=key{/yun}
-                            <li><a  href="javascript:location=location+'&hy={yun:}$v{/yun}';">{yun:}$industry_name[$v]{/yun}</a> </li>
+                            <li><a class="Search_jobs_cxz" href="javascript:location=location+'&hy={yun:}$v{/yun}';">{yun:}$industry_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul class="select_cityitem">
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li style="width: inherit;"><a href="javascript:location=location+'&city={yun:}$v{/yun}'">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a class="Search_jobs_cxz" href="javascript:location=location+'&city={yun:}$v{/yun}'">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -61,11 +61,11 @@
                 <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
                         <ul class="select_hyitem">
-                            <li> <a href="javascript:location=location+'&salary={yun:}1{/yun}'">10万以内</a></li>
-                            <li> <a href="javascript:location=location+'&salary={yun:}2{/yun}'">10-20万</a></li>
-                            <li> <a href="javascript:location=location+'&salary={yun:}3{/yun}'">20-30万以内</a></li>
-                            <li> <a href="javascript:location=location+'&salary={yun:}4{/yun}'">30-50万以内</a></li>
-                            <li> <a href="javascript:location=location+'&salary={yun:}5{/yun}'">50万以上</a></li>
+                            <li> <a class="Search_jobs_cxz width110"  href="javascript:location=location+'&salary={yun:}1{/yun}'">10万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}2{/yun}'">10-20万</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}3{/yun}'">20-30万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}4{/yun}'">30-50万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}5{/yun}'">50万以上</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <div class="Search_jobs_more_chlose_list none">
                         <ul class="select_hyitem">
                             {yun:}foreach from=$uptime item=v key=key{/yun}<li>
-                            <a href="javascript:location=location+'&uptime={yun:}$key{/yun}'">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
+                            <a class="Search_jobs_cxz width110" href="javascript:location=location+'&uptime={yun:}$key{/yun}'">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
                         </ul>
                     </div>
                 </div>

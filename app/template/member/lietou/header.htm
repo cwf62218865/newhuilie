@@ -239,11 +239,14 @@ var integral_pricename='{yun:}$config.integral_pricename{/yun}';
 window.onscroll=function(){
     var topScroll =document.body.scrollTop;//滚动的距离,距离顶部的距离
     var bignav  = $(".header");//获取到导航栏id
+    var top_nav = $(".top_nav_list");
     if(topScroll >= 10){
-        bignav.css({"position":"fixed","top":"0","z-index":"9999"})
+        bignav.css({"position":"fixed","top":"0","z-index":"9999"});
+        top_nav.css({"position":"fixed","top":"74px","z-index":"9999"})
 
     }else{//当滚动距离小于250的时候执行下面的内容，也就是让导航栏恢复原状
         bignav.css("position","inherit");
+        top_nav.css({"position":"inherit","top":"inherit"});
     }
 }
     </script>

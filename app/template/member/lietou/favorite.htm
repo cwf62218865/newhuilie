@@ -26,7 +26,7 @@
                     <div class="Search_jobs_more_chlose_hylist none">
                         <ul>
                             {yun:}foreach from=$industry_index item=v key=key{/yun}
-                            <li><a href="javascript:;">{yun:}$industry_name[$v]{/yun}</a> </li>
+                            <li><a href="javascript:;"  class="Search_jobs_cxz">{yun:}$industry_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
                     <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul>
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li style="width: inherit;"><a href="javascript:;">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a href="javascript:;"  class="Search_jobs_cxz">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -45,11 +45,11 @@
                 <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
                         <ul>
-                            <li> <a href="javascript:;">10万以内</a></li>
-                            <li> <a href="javascript:;">10-20万</a></li>
-                            <li> <a href="javascript:;">20-30万以内</a></li>
-                            <li> <a href="javascript:;">30-50万以内</a></li>
-                            <li> <a href="javascript:;">50万以上</a></li>
+                            <li> <a href="javascript:;" class="Search_jobs_cxz width110">10万以内</a></li>
+                            <li> <a href="javascript:;" class="Search_jobs_cxz width110">10-20万</a></li>
+                            <li> <a href="javascript:;" class="Search_jobs_cxz width110">20-30万以内</a></li>
+                            <li> <a href="javascript:;" class="Search_jobs_cxz width110">30-50万以内</a></li>
+                            <li> <a href="javascript:;" class="Search_jobs_cxz width110">50万以上</a></li>
                         </ul>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     <div class="Search_jobs_more_chlose_list none">
                         <ul>
                             {yun:}foreach from=$uptime item=v key=key{/yun}<li>
-                            <a href="javascript:;">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
+                            <a href="javascript:;" class="Search_jobs_cxz width110">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
                         </ul>
                     </div>
                 </div>
