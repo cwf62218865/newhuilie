@@ -545,3 +545,101 @@
 .rk_zizi:hover{
     color: #ffffff;
 }
+.job_items{
+    width: 322px;
+    height: 242px;
+    border: 1px solid #eeeeee;
+    display: inline-block;
+    float: left;
+    margin-right: 14px;
+    margin-bottom: 20px;
+}
+
+.job_items:nth-child(3n){
+    margin-right: 0px;
+}
+.items_content{
+    width: 290px;
+    margin-left: 16px;
+    margin-top: 22px;
+}
+.hang_content{
+    width: 290px;
+    margin-left: 16px;
+    margin-top: 12px;
+}
+.zhiweiss{
+    color: #4b6e88;
+    font-size: 16px;
+    max-width: 215px;
+    display: inline-block;
+}
+.righr{
+    float: right;
+    font-size: 16px;
+    color: #ff6600;
+}
+.gongsi{
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    color: #666666;
+}
+.matop222{
+    margin-top: 30px;
+}
+.linkss{
+    display: inline-block;
+    width: 125px;
+    height: 50px;
+    border-right: 1px solid #eeeeee;
+    padding-left: 10px;
+    line-height: 24px;
+}
+.linksser{
+    display: inline-block;
+    width: 125px;
+    height: 50px;
+    padding-left: 20px;
+}
+.ggtjsj{
+   font-size: 12px;
+    color: #666666;line-height: 24px;
+}
+.bodertop{
+   border-top: 1px dashed #eeeeee;
+    margin-top: 30px;
+    padding-top: 16px;
+}
+.tj_status{
+    display: inline-block;
+    width: 78px;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    color: #ffffff;
+    font-size: 12px;
+    background: #6a8cd2;
+    border-radius: 3px;
+}
+.newtj{
+    background: #6a8cd2;
+}
+.successtj{
+    background: #6a8cd2;
+}
+.successtj{
+    background: #ff6a6a;
+}
+ .falsetj{
+     background: #bbbbbb;
+ }
+.ck_status{
+    float: right;
+    font-size: 14px;
+    color: #999999;
+}
+.pinglun{
+    color: #4b6e88;
+    cursor: pointer;
+}

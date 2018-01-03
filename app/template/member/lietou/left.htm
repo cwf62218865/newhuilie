@@ -1,4 +1,4 @@
-{yun:}if $js_def==5 || $js_def==3{/yun}
+{yun:}if $js_def==5 || $js_def==3 || $js_def==2{/yun}
 <div class="top_box">
 
   {yun:}if $js_def==5{/yun}
@@ -20,6 +20,15 @@
      <li {yun:}if $smarty.get.act=="jobadd"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=jobadd" title="发布新职位">发布新职位</a></span></li>
   </ul>
   {yun:}/if{/yun}
+
+    {yun:}if $js_def==2{/yun}
+    <ul class="right_nav_ul">
+        <li {yun:}if $smarty.get.act==null{/yun} class="style01 left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=progress&w=1" title="全部">全部<span class="num_style">58</span></a></span></li>
+        <li {yun:}if $smarty.get.act=="progress_ing"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=progress&act=progress_ing" title="推荐中">推荐中<span class="num_style">2</span></a></span></li>
+        <li {yun:}if $smarty.get.act=="progress_suc"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=progress&act=progress_suc" title="推荐成功">推荐成功<span class="num_style">12</span></a></span></li>
+        <li {yun:}if $smarty.get.act=="progress_fal"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=progress&act=progress_fal" title="推荐失败">推荐失败<span class="num_style">12</span></a></span></li>
+    </ul>
+    {yun:}/if{/yun}
 </div>
 
 {yun:}else{/yun}
