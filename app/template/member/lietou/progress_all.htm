@@ -5,6 +5,7 @@
 <div class="w1000">
   <div class="admin_mainbody">
       <link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
+      <link rel="stylesheet" href="{yun:}$style{/yun}/style/pinfen.css" type="text/css"/>
     <link href="{yun:}$com_style{/yun}/images/index_style.css" type=text/css rel=stylesheet>
     <div class=down_box>
       <div class=admincont_box>
@@ -79,9 +80,6 @@
                           <!--</div>-->
                       </div>
                   </div>
-
-
-
                   <div class="left_job_all fl">
                       <div class="job_left_sidebar" style="width: 1000px;margin-left: 50px;">
                           {yun:}foreach from=$rows item=list{/yun}
@@ -140,7 +138,47 @@
               <div class="clear"></div>
           </div>
 
-
+          <div  class="infoboxp22"  id="HRpinglun" style="display:none; ">
+              <div>
+                  <form action="" method="post" id="formstatus" target="supportiframe">
+                      <input name="r_uid" value="0" type="hidden">
+                      <input name="eid" value="0" type="hidden">
+                      <input name="pingfen" class="pingfen" value="0" type="hidden">
+                      <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                          <svg class="icon" aria-hidden="true">
+                              <use xlink:href="#icon-shan"></use>
+                          </svg>
+                      </button>
+                      <div class="com_pf">HR评分：
+                          <label class="iconsxx">
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                              <svg class="icon" aria-hidden="true">
+                                  <use xlink:href="#icon-pingfenbanfen"></use>
+                              </svg>
+                          </label>
+                          <label class="fenshu"><label class="number">5</label>分</label>
+                      </div>
+                      <div class="pjnr">评价内容：</div>
+                      <div class="jb_infobox" style="width: 100%;">
+                          1111
+                      </div>
+                      <div class="jb_infobox" style="width: 100%;">
+                          <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
     </div>
   </div>
 </div>
@@ -155,6 +193,19 @@ $(document).ready(function(){
 		});
 	});
 });
+
+function chakanpinglun(){
+//    $("input[name=id]").val(id);
+//    $("#remark").val(remark);
+    $.layer({
+        type : 1,
+        title :'查看HR评论',
+        closeBtn : [0 , true],
+        border : [10 , 0.3 , '#000', true],
+        area : ['500px','360px'],
+        page : {dom :"#HRpinglun"}
+    });
+}
 </script>
 <script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
 {yun:}include file="$ltstyle/yqms.htm"{/yun}
