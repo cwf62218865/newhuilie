@@ -2,6 +2,7 @@
 <div class="top_nav_list">
     {yun:}include file="$ltstyle/left.htm"{/yun}
 </div>
+
 <div class="w1000">
   <div class="admin_mainbody">
       <link rel="stylesheet" href="{yun:}$style{/yun}/style/job.css" type="text/css"/>
@@ -227,13 +228,19 @@
               <div class="clear"></div>
           </div>
 
+          <style>
+              .iconsxx .icon{
+                  cursor: inherit;
+              }
+          </style>
+
           <div  class="infoboxp22"  id="HRpinglun" style="display:none; ">
               <div>
                   <form action="" method="post" id="formstatus" target="supportiframe">
                       <input name="r_uid" value="0" type="hidden">
                       <input name="eid" value="0" type="hidden">
                       <input name="pingfen" class="pingfen" value="0" type="hidden">
-                      <button type="button" id='zxxCancelBtn' class="close cancel_btn" style="display: block;">
+                      <button type="button" id='' class="close cancel_btn" style="display: block;">
                           <svg class="icon" aria-hidden="true">
                               <use xlink:href="#icon-shan"></use>
                           </svg>
@@ -259,11 +266,11 @@
                           <label class="fenshu"><label class="number">5</label>分</label>
                       </div>
                       <div class="pjnr">评价内容：</div>
-                      <div class="jb_infobox" style="width: 100%;">
-                          1111
+                      <div class="jb_infobox chakanpl">
+                          你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好
                       </div>
-                      <div class="jb_infobox" style="width: 100%;">
-                          <button type="submit"   name='submit' value='1' class="submit_btn">提交评价</button>
+                      <div class="jb_infobox" style="width: 100%;text-align: center;">
+                          <label  class="knowbtn" id="zxxCancelBtn">我知道了</label>
                       </div>
                   </form>
               </div>
@@ -274,6 +281,12 @@
 </div>
 <script>
 $(document).ready(function(){
+
+
+
+    $('#zxxCancelBtn,.cancel_btn').click(function(){
+        layer.closeAll();
+    });
 	$(".browsebj").click(function(){
 		var browse=$(this).attr('browse');
 		var id=$(this).attr('name');
@@ -291,9 +304,16 @@ function chakanpinglun(){
         title :'查看HR评论',
         closeBtn : [0 , true],
         border : [10 , 0.3 , '#000', true],
-        area : ['500px','360px'],
+        area : ['500px','300px'],
         page : {dom :"#HRpinglun"}
     });
+    //获取评分效果
+    var pingfen=parseInt($(".number").html());
+    var lis = $(".iconsxx .icon");
+    for(var i=0;i<lis.length;i++){
+        lis.eq(i).find("use").attr("xlink:href",i < pingfen ? "#icon-pingfen" : "#icon-pingfenbanfen");
+    }
+
 }
 </script>
 <script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>
