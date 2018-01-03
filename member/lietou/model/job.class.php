@@ -27,6 +27,20 @@ class job_controller extends lietou{
 		$pageurl=Url('member',$urlarr);
 //		$rows=$this->get_page("company_job",$where,$pageurl,'10');
 
+
+
+        if($_GET['hy']){
+            $where .= " and hy=".intval($_GET['hy']);
+        }elseif ($_GET['city']){
+            $where .= " and provinceid=".intval($_GET['city']);
+        }elseif ($_GET['salary']){
+
+        }elseif ($_GET['uptime']){
+
+        }elseif ($_GET['keyword']){
+            $where .= " and (name like '%".$_GET['keyword']."%' or com_name like '%".$_GET['keyword']."%')";
+        }
+
         $page=$_GET['page']<1?1:$_GET['page'];
         $ststrsql=($page-1)*10;
         $num=$this->obj->DB_select_num("company_job",$where);
@@ -36,7 +50,6 @@ class job_controller extends lietou{
             $pagenav=Page($page,$num,10,$pageurl,$notpl=false,$this->tpl,"pagenav");
             $this->yunset("pages",$pages);
         }
-
         $rows=$this->obj->DB_select_all(company_job,"$where limit $ststrsql,10");
         $jobs = $this->jobs_parse($rows);
 
