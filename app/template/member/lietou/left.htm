@@ -14,7 +14,7 @@
 
   {yun:}if $js_def==3{/yun}
      <ul class="right_nav_ul">
-     <li {yun:}if $smarty.get.act==null{/yun} class="style01 left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位">职位搜索<span class="num_style">2</span></a></span></li>
+     <li {yun:}if $smarty.get.act==null{/yun} class="style01 left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&w=1" title="发布中的职位">职位搜索<span class="num_style">{yun:}$total{/yun}</span></a></span></li>
      <li {yun:}if $smarty.get.act=="serving_job"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&act=serving_job" title="收藏的职位">推荐中的职位<span class="num_style">2</span></a></span></li>
      <li {yun:}if $smarty.get.act=="fav_job"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=job&act=fav_job" title="收藏的职位">关注的职位<span class="num_style">12</span></a></span></li>
      <li {yun:}if $smarty.get.act=="jobadd"{/yun} class="left_nav_hover"{yun:}/if{/yun}><span><a href="index.php?c=jobadd" title="发布新职位">发布新职位</a></span></li>

@@ -696,6 +696,8 @@ class common{
 		include(PLUS_PATH."industry.cache.php");
 		$this->yunset("industry_index",$industry_index);
 		$this->yunset("industry_name",$industry_name);
+		$this->yunset("salary_name",$salary_name);
+
 	}
 
 	

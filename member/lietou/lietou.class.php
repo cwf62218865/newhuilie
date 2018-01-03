@@ -534,16 +534,26 @@ class lietou extends common{
             $list['pr_n'] = $cache_array['comclass_name'][$list[pr]];
             $list['mun_n'] = $cache_array['comclass_name'][$list[mun]];
             if($list[minsalary]&&$list[maxsalary]){
-                $list[job_salary] =$list[minsalary]."-".$list[maxsalary];
+                $list[job_salary] =intval($list[minsalary]*12/10000)."万-".intval($list[maxsalary]*12/10000)."万";
             }elseif($list[minsalary]){
-                $list[job_salary] =$list[minsalary]."以上";
+                $list[job_salary] =intval($list[minsalary]*12/10000)."万以上";
             }else{
                 $list[job_salary] ="面议";
             }
+            $list['lastupdate'] = $this->_format_date($list['lastupdate']);
             $list['job_city_one'] = $city_name[$list[provinceid]];
             $list['job_city_two'] = $city_name[$list[cityid]];
             $list['job_url'] = Url("job",array("c"=>"comapply","id"=>$list[id]),"1");
             $list['com_url'] = Url("company",array("c"=>"show","id"=>$list[uid]));
+
+            $list['lietou_num'] = $this->obj->DB_select_num("userid_job","identity=3 and job_id=".$list['id']." group by uid");
+            $list['resume_num'] = $this->obj->DB_select_num("userid_job","identity=3 and job_id=".$list['id']." group by resume_id");
+            $list['view_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=2 and job_id=".$list['id']);
+            $list['download_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=6 and job_id=".$list['id']);
+            $list['refuse_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=4 and job_id=".$list['id']);
+
+            $list['fav_job'] = $this->obj->DB_select_num("fav_job","uid=".$this->uid." and job_id=".$list['id'],"id");
+
 //            str_replace($paramer[keyword],"<font color=#FF6600 >".$paramer[keyword]."</font>",$city_name[$value[provinceid]])
             $arr_rows[] = $list;
         }
