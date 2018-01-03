@@ -29,6 +29,9 @@ class resume_controller extends lietou{
 //    }
 
     function index_action(){
+//        $paramer['c'] = "resume";
+//        echo Url("member",$paramer);exit();
+       
         $this->industry_cache();
         $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
