@@ -83,130 +83,41 @@
                   </div>
                   <div class="left_job_all fl">
                       <div class="job_left_sidebar" style="width: 1000px;margin-left: 50px;">
+                          {yun:}foreach from=$rows item=list{/yun}
                           <div class="job_items">
                               <div class="items_content">
-                                  <label class="zhiweiss nowrap">web前端工程师</label>
-                                  <label class="righr">{yun:}$user.salary_n{/yun}</label>
+                                  <label class="zhiweiss nowrap">{yun:}$list.job_name{/yun}</label>
+                                  <label class="righr">{yun:}$list.salary_n{/yun}</label>
                               </div>
                               <div class="hang_content">
-                                  <label class="gongsi nowrap">重庆能源科技有限公司</label>
+                                  <label class="gongsi nowrap">{yun:}$list.com_name{/yun}</label>
                               </div>
                               <div class="hang_content matop222">
                                   <label class="linkss">
-                                    <a class="job_namer nowrap"  href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank">{yun:}if in_array($user.id,$eid){/yun}{yun:}$user.uname{/yun}{yun:}else{/yun}{yun:}$user.username_n{/yun}{yun:}/if{/yun}</a><label class="job_status">（先生）</label><br>
-                                    <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">13767678989</span>
+                                    <a class="job_namer nowrap"  href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank">{yun:}$list.uname{/yun}</a><label class="job_status">（先生）</label><br>
+                                    <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">{yun:}$list.telphone{/yun}</span>
                                   </label>
                                   <label class="linksser"><label class="ggtjsj">推荐时间：</label><br>
-                                      <label class="ggtjsj">{yun:}if $user.redtime==1 || $user.time=='昨天'{/yun}
-                                          <span style="color:red;">{yun:}$user.time{/yun}</span>
-                                          {yun:}else{/yun}
-                                          {yun:}$user.time{/yun}
-                                          {yun:}/if{/yun}  12:34:50</label>
+                                      <label class="ggtjsj">
+                                          {yun:}date('Y-m-d H:i',$list.datetime){/yun}
+                                      </label>
                                   </label>
                               </div>
                               <div class="hang_content bodertop">
+                                  {yun:}if $list.is_browse==1 || $list.is_browse==2{/yun}
                                   <label class="tj_status">新推荐</label>
                                   <label class="ck_status yichakan">HR已查看</label>
-                              </div>
-                          </div>
-                          <div class="job_items">
-                              <div class="items_content">
-                                  <label class="zhiweiss nowrap">web前端工程师</label>
-                                  <label class="righr">12-23万</label>
-                              </div>
-                              <div class="hang_content">
-                                  <label class="gongsi nowrap">重庆能源科技有限公司</label>
-                              </div>
-                              <div class="hang_content matop222">
-                                  <label class="linkss">
-                                      <a class="job_namer nowrap" href="#" target="_blank">张静</a><label class="job_status">（先生）</label><br>
-                                      <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">13767678989</span>
-                                  </label>
-                                  <label class="linksser"><label class="ggtjsj">推荐时间：</label><br>
-                                      <label class="ggtjsj">2018-12-22  12:34:50</label>
-                                  </label>
-                              </div>
-                              <div class="hang_content bodertop">
+                                  {yun:}elseif $list.is_browse==4{/yun}
                                   <label class="tj_status falsetj">推荐失败</label>
                                   <label class="ck_status yichakan">HR已查看</label>
-                              </div>
-                          </div>
-                          <div class="job_items">
-                              <div class="items_content">
-                                  <label class="zhiweiss nowrap">web前端工程师</label>
-                                  <label class="righr">12-23万</label>
-                              </div>
-                              <div class="hang_content">
-                                  <label class="gongsi nowrap">重庆能源科技有限公司</label>
-                              </div>
-                              <div class="hang_content matop222">
-                                  <label class="linkss">
-                                      <a class="job_namer nowrap" href="#" target="_blank">张静</a><label class="job_status">（先生）</label><br>
-                                      <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">13767678989</span>
-                                  </label>
-                                  <label class="linksser"><label class="ggtjsj">推荐时间：</label><br>
-                                      <label class="ggtjsj">2018-12-22  12:34:50</label>
-                                  </label>
-                              </div>
-                              <div class="hang_content bodertop">
-                                  <label class="tj_status newtj">新推荐</label>
+                                  {yun:}elseif $list.is_browse==6{/yun}
+                                  <label class="tj_status falsetj">推荐成功</label>
                                   <label class="ck_status yichakan">HR已查看</label>
+                                  {yun:}/if{/yun}
                               </div>
                           </div>
-                          <div class="job_items">
-                              <div class="items_content">
-                                  <label class="zhiweiss nowrap">web前端工程师</label>
-                                  <label class="righr">12-23万</label>
-                              </div>
-                              <div class="hang_content">
-                                  <label class="gongsi nowrap">重庆能源科技有限公司</label>
-                              </div>
-                              <div class="hang_content matop222">
-                                  <label class="linkss">
-                                      <a class="job_namer nowrap" href="#" target="_blank">张静</a><label class="job_status">（先生）</label><br>
-                                      <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">13767678989</span>
-                                  </label>
-                                  <label class="linksser"><label class="ggtjsj">推荐时间：</label><br>
-                                      <label class="ggtjsj">2018-12-22  12:34:50</label>
-                                  </label>
-                              </div>
-                              <div class="hang_content bodertop">
-                                  <label class="tj_status successtj">推荐成功</label>
-                                  <label class="ck_status pinglun"  onclick="chakanpinglun();">查看评论</label>
-                              </div>
-                          </div>
-                          {yun:}userlist limit=20 minsalary='auto.minsalary' maxsalary='auto.maxsalary' noid=1 idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' post_len=14 ispage=1 item=user key=key name=userlist1{/yun}
-
-                          <div class="job_items">
-                              <div class="items_content">
-                                  <label class="zhiweiss nowrap">web前端工程师</label>
-                                  <label class="righr">{yun:}$user.salary_n{/yun}</label>
-                              </div>
-                              <div class="hang_content">
-                                  <label class="gongsi nowrap">重庆能源科技有限公司</label>
-                              </div>
-                              <div class="hang_content matop222">
-                                  <label class="linkss">
-                                      <a class="job_namer nowrap"  href="{yun:}url m=resume c=show id=$user.id{/yun}" target="_blank">{yun:}if in_array($user.id,$eid){/yun}{yun:}$user.uname{/yun}{yun:}else{/yun}{yun:}$user.username_n{/yun}{yun:}/if{/yun}</a><label class="job_status">（先生）</label><br>
-                                      <span class="tel_num"><img src="http://localhost/app/template/member/lietou/images/sj_ico.png">13767678989</span>
-                                  </label>
-                                  <label class="linksser"><label class="ggtjsj">推荐时间：</label><br>
-                                      <label class="ggtjsj">{yun:}if $user.redtime==1 || $user.time=='昨天'{/yun}
-                                          <span style="color:red;">{yun:}$user.time{/yun}</span>
-                                          {yun:}else{/yun}
-                                          {yun:}$user.time{/yun}
-                                          {yun:}/if{/yun}  12:34:50</label>
-                                  </label>
-                              </div>
-                              <div class="hang_content bodertop">
-                                  <label class="tj_status">新推荐</label>
-                                  <label class="ck_status yichakan">HR已查看</label>
-                              </div>
-                          </div>
-
-                          {yun:}/userlist{/yun}
-                          <div class="clear"></div>
-                          {yun:}if $total!=0 || is_array($user2){/yun}
+                          {yun:}/foreach{/yun}
+                          {yun:}if $total!=0{/yun}
                           <div class="search_pages">
                               <div class="pages">{yun:}$pagenav{/yun}</div>
                           </div>

@@ -9,11 +9,6 @@
     <div class=down_box>
       <div class=admincont_box>
           <div class="Search_jobs_box" style="width: 1100px;">
-              <form method="get" id="form" action="{yun:}if !$config.sy_resumedir{/yun}index.php{yun:}else{/yun}{yun:}url m=resume{/yun}{yun:}/if{/yun}" onsubmit="return search_keyword(this,'请输入关键字');">
-                  {yun:}if !$config.sy_resumedir{/yun}
-                  <input type="hidden" name="m" value="resume" />
-                  {yun:}/if{/yun}
-                  <input type="hidden" name="c" value="search" />
                   {yun:}foreach from=$finder item=v key=key{/yun}
                   <input type="hidden" name="{yun:}$key{/yun}" value="{yun:}$v{/yun}" />
                   {yun:}/foreach{/yun}
@@ -193,7 +188,7 @@
                           {yun:}resumelist limit=5 topdate=1 minsalary='auto.minsalary' maxsalary='auto.maxsalary' idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' post_len=14 item=user name=resumelist2{/yun}
                           <div class="job_news_list line_heigh45" pid="{yun:}$job_list.id{/yun}">
                             <span class="job_news_list_span  job_w150 line_heigh23" style="text-align:left;padding-left: 10px;">
-                                    <a class="job_namer nowrap" href="{yun:}$job_list.job_url{/yun}" target="_blank">{yun:}$user.username_n{/yun}</a><label class="job_status">（{yun:}if $user.sex=='152'{/yun}女士{yun:}else{/yun}先生{yun:}/if{/yun}）</label><br>
+                                    <a class="job_namer nowrap" href="{yun:}$user.user_url{/yun}" target="_blank">{yun:}$user.username_n{/yun}</a><label class="job_status">（{yun:}if $user.sex=='152'{/yun}女士{yun:}else{/yun}先生{yun:}/if{/yun}）</label><br>
                                     <a class="tel_num"><img src="{yun:}$lt_style{/yun}/images/sj_ico.png">{yun:}$user.telphone{/yun}</a>
                             </span>
                               <span class="job_news_list_span job_w66">
@@ -246,7 +241,7 @@
                           </div>
                           {yun:}/if{/yun} </div>
                   </div>
-              </form>
+
               <div class="clear"></div>
           </div>
 
