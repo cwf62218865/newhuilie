@@ -120,7 +120,9 @@ class hr_controller extends lietou{
 		$this->lt_tpl('hr');
 	} 
 	function hrset_action(){
+
 		if($_POST['ajax']==1 && $_POST['ids']){
+
 			$rows=$this->obj->DB_select_all("userid_job","`id` in (".pylode(",",$_POST['ids']).") and `com_id`='".$this->uid."'","`job_id`,`type`");
 			$jobid=array();
 			if($rows&&is_array($rows)){
@@ -143,6 +145,7 @@ class hr_controller extends lietou{
 			$this->obj->member_log("批量阅读申请职位的人才");
 			$this->layer_msg('操作成功！',9,0,"index.php?c=hr");
 		}else if($_POST['delid']||$_GET['delid']){
+
 			if(is_array($_POST['delid'])){
 				$id=pylode(",",$_POST['delid']);
 				$layer_type='1';
@@ -178,6 +181,7 @@ class hr_controller extends lietou{
 			}
 		}else if($_POST['browse']){
 			$browse=(int)$_POST['browse'];
+			echo $browse;exit();
 			$id=(int)$_POST['id'];
 			$row = $this->obj->DB_select_once("userid_job","`id`='".$id."' and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
 			if($row['type']==1){

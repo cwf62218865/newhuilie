@@ -120,8 +120,9 @@ class hr_controller extends company{
 		$this->com_tpl('hr');
 	} 
 	function hrset_action(){
+
 		if($_POST['ajax']==1 && $_POST['ids']){
-			$rows=$this->obj->DB_select_all("userid_job"," identity=1 and `id` in (".pylode(",",$_POST['ids']).") and `com_id`='".$this->uid."'","`job_id`,`type`");
+			$rows=$this->obj->DB_select_all("userid_job","`id` in (".pylode(",",$_POST['ids']).") and `com_id`='".$this->uid."'","`job_id`,`type`");
 			$jobid=array();
 			if($rows&&is_array($rows)){
 				foreach($rows as $val){
@@ -133,7 +134,7 @@ class hr_controller extends company{
 				}
 				$this->obj->DB_update_all("company_job","`operatime`='".time()."'","`id` in (".pylode(",",$jobid).") and `uid`='".$this->uid."'");
 			}
-			$userid=$this->obj->DB_select_all("userid_job","identity=1 and `com_id`='".$this->uid."' and `is_browse`<>'1'","`id`");
+			$userid=$this->obj->DB_select_all("userid_job","`com_id`='".$this->uid."' and `is_browse`<>'1'","`id`");
 			if($userid&&is_array($userid)){
 				foreach($userid as $v){
 					$userids[]=$v['id'];
@@ -150,7 +151,7 @@ class hr_controller extends company{
 				$id=(int)$_GET['delid'];
 				$layer_type='0';
 			}
-			$sq_num = $this->obj->DB_select_all("userid_job","identity=1 and `id` in (".$id.") and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
+			$sq_num = $this->obj->DB_select_all("userid_job","`id` in (".$id.") and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
 			if(is_array($sq_num)){
 				$jobid=array();
 				$uid=array();
@@ -169,7 +170,7 @@ class hr_controller extends company{
 			$this->obj->DB_update_all("company_statis","`sq_job`=`sq_job`-$num","`uid`='".$this->uid."'");
 			
 				
-			$nid=$this->obj->DB_delete_all("userid_job","identity=1 and `id` in (".$id.") and `com_id`='".$this->uid."'"," ");
+			$nid=$this->obj->DB_delete_all("userid_job","`id` in (".$id.") and `com_id`='".$this->uid."'"," ");
 			if($nid){
 				$this->obj->member_log("删除申请职位的人才",6,3);
 				$this->layer_msg('删除成功！',9,$layer_type,"index.php?c=hr");
@@ -179,11 +180,11 @@ class hr_controller extends company{
 		}else if($_POST['browse']){
 			$browse=(int)$_POST['browse'];
 			$id=(int)$_POST['id'];
-			$row = $this->obj->DB_select_once("userid_job","identity=1 and `id`='".$id."' and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
+			$row = $this->obj->DB_select_once("userid_job","`id`='".$id."' and `com_id`='".$this->uid."'","`uid`,`job_id`,`type`");
 			if($row['type']==1){
 				$this->obj->DB_update_all("company_job","`operatime`='".time()."'","`id`='".$row['job_id']."' and `uid`='".$this->uid."'");
 			}
-			$this->obj->DB_update_all("userid_job","identity=1 and `is_browse`='".$browse."'","`id`='".$id."' and `com_id`='".$this->uid."'");
+			$this->obj->DB_update_all("userid_job"," `is_browse`='".$browse."'","`id`='".$id."' and `com_id`='".$this->uid."'");
 			if($browse==4){ 
 				$resumeuid=$this->obj->DB_select_once("userid_job","identity=1 and `id`='".$id."'",'eid,job_id');
 				$resumeexp=$this->obj->DB_select_once("resume_expect","`id`='".$resumeuid['eid']."' and `r_status`<>'2' and `status`='1'",'uid,uname');

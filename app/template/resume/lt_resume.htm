@@ -291,32 +291,7 @@
 	    </div>
     {yun:}/if{/yun}
     
-    {yun:}if $usertype==2{/yun}
-    	{yun:}if $usermsgnum{/yun}
-		    <div class="vita_Opera_cz_list">
-		        <i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_yq"></i>
-		      	<input class="vita_btn_1 yun_resume_cz_sub yun_resume_cz_sub_cor" type="button" onClick="layer.msg('您已经邀请过该简历！',2,9);" value="已邀请面试">
-		    </div>
-    	{yun:}else{/yun}
-			<div class="vita_Opera_cz_list">
-		    	<i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_yq"></i>
-		       	<input type="hidden" value="1" id="buypack">
-		     	<input class="vita_btn_1 sq_resume yun_resume_cz_sub" type="button" value="邀请面试 " name="submit" username="{yun:}$Info.name{/yun}" eid="" uid="{yun:}$Info.uid{/yun}">
-		    </div>
-    	{yun:}/if{/yun}
-    {yun:}else{/yun}
-    	{yun:}if $uid{/yun}
-		    <div class="vita_Opera_cz_list">
-		        <i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_yq"></i>
-		      	<input class="vita_btn_1 yun_resume_cz_sub" onClick="layer.msg('只有企业用户，才可以邀请！',2,8);" type="button" value="邀请面试 ">
-		    </div>
-    	{yun:}else{/yun}
-		    <div class="vita_Opera_cz_list">
-		    	<i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_yq"></i>
-		      	<input class="vita_btn_1 yun_resume_cz_sub" onClick="showlogin('2');" type="button" value="邀请面试 ">
-		    </div>
-    	{yun:}/if{/yun}
-	{yun:}/if{/yun}
+
 	
 	<div class="vita_Opera_cz_list">
 	<i class="vita_Opera_cz_list_icon vita_Opera_cz_list_icon_xz"></i>

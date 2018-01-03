@@ -355,6 +355,7 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 				'.$name.'[$k][\'job_city_one\']=$city_name[$v[\'provinceid\']];
 				'.$name.'[$k][\'job_city_two\']=$city_name[$v[\'cityid\']];
 				'.$name.'[$k][\'job_city_three\']=$city_name[$v[\'three_cityid\']];
+				'.$name.'[$k][\'eid\']=$v[\'id\'];
 				if($v[\'minsalary\']&&$v[\'maxsalary\']){
 					'.$name.'[$k]["salary_n"] = "гд".$v[\'minsalary\']."-".$v[\'maxsalary\'];    
                 }else if($v[\'minsalary\']){
