@@ -59,13 +59,13 @@
                 </div>
 
                 <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
-                    <div class="Search_jobs_more_chlose_list none">
+                    <div class="Search_jobs_more_chlose_list none" style="width: 400px;">
                         <ul class="select_hyitem">
-                            <li> <a class="Search_jobs_cxz width110"  href="javascript:location=location+'&salary={yun:}1{/yun}'">10万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}2{/yun}'">10-20万</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}3{/yun}'">20-30万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}4{/yun}'">30-50万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}5{/yun}'">50万以上</a></li>
+                            <li style="width: inherit;"> <a class="Search_jobs_cxz" href="javascript:location=location+'&salary={yun:}1{/yun}'">10万以内</a></li>
+                            <li style="width: inherit;"> <a class="Search_jobs_cxz" href="javascript:location=location+'&salary={yun:}2{/yun}'">10-20万</a></li>
+                            <li style="width: inherit;"> <a class="Search_jobs_cxz" href="javascript:location=location+'&salary={yun:}3{/yun}'">20-30万以内</a></li>
+                            <li style="width: inherit;"> <a class="Search_jobs_cxz" href="javascript:location=location+'&salary={yun:}4{/yun}'">30-50万以内</a></li>
+                            <li style="width: inherit;"> <a class="Search_jobs_cxz" href="javascript:location=location+'&salary={yun:}5{/yun}'">50万以上</a></li>
                         </ul>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                         <label class="num_tj"><span class="color_333">{yun:}$job_list.refuse_num{/yun}</span><br><span class="color_999">HR拒绝</span></label>
                     </span>
                     <span class="job_news_list_span job_w135">
-                        <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
+                        <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="btn_hxr w70b tuijan">推荐候选人</a>
                         {yun:}if $job_list.fav_job{/yun}
                         <label class="btn_hxr w58b yiguanzhu">取消关注</label>
                         {yun:}else{/yun}
@@ -260,7 +260,7 @@ $(document).ready(function(){
 
             if(data==1){
                 _this.html("取消关注");
-                layer.msg('关注成功', 2, 8);
+                layer.msg('关注成功', 2, 9);
                 _this.removeClass("guanzhu").addClass("yiguanzhu");
             }
         })

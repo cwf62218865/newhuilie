@@ -24,6 +24,8 @@ class recommend_controller extends lietou{
         $logo = $this->obj->DB_select_once("company"," uid=".$jobs['uid'],"logo");
         $jobs['logo'] = $logo['logo'];
 		$this->yunset("jobs",$jobs);
+		$this->industry_cache();
+		$this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
 		$this->yunset("js_def",3);
 		if(intval($_GET['w'])==1){
 			$this->lt_tpl('joblist');
