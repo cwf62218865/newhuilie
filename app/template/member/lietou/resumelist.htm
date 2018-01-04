@@ -185,10 +185,10 @@
 
 
 
-                          {yun:}resumelist limit=5 topdate=1 minsalary='auto.minsalary' maxsalary='auto.maxsalary' idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' post_len=14 item=user name=resumelist2{/yun}
+                          {yun:}resumelist limit=5 topdate=1 minsalary='auto.minsalary' maxsalary='auto.maxsalary' idcard='auto.idcard' edu='auto.edu' order='auto.order' work='auto.work' exp='auto.exp' tag='auto.tag' sex='auto.sex' keyword='auto.keyword' hy='auto.hy' provinceid='auto.provinceid' report='auto.report' cityid='auto.cityid' three_cityid='auto.three_cityid' adtime='auto.adtime' jobids='auto.jobids' pic='auto.pic' typeids='auto.typeids' type='auto.type' job1='auto.job1' job1_son='auto.job1_son' job_post='auto.job_post' uptime='auto.uptime' resume_kind=$kind post_len=14 item=user name=resumelist2{/yun}
                           <div class="job_news_list line_heigh45" pid="{yun:}$job_list.id{/yun}">
                             <span class="job_news_list_span  job_w150 line_heigh23" style="text-align:left;padding-left: 10px;">
-                                    <a class="job_namer nowrap" href="{yun:}$user.user_url{/yun}" target="_blank">{yun:}$user.username_n{/yun}</a><label class="job_status">（{yun:}if $user.sex=='152'{/yun}女士{yun:}else{/yun}先生{yun:}/if{/yun}）</label><br>
+                                    <a class="job_namer nowrap" href="{yun:}$user.user_url{/yun}" target="_blank">{yun:}$user.username{/yun}</a><label class="job_status">（{yun:}if $user.sex=='152'{/yun}女士{yun:}else{/yun}先生{yun:}/if{/yun}）</label><br>
                                     <a class="tel_num"><img src="{yun:}$lt_style{/yun}/images/sj_ico.png">{yun:}$user.telphone{/yun}</a>
                             </span>
                               <span class="job_news_list_span job_w66">
@@ -208,13 +208,23 @@
                                     <label class="tj_time" href="#">{yun:}$user.datetime{/yun}</label>
                                 </span>
                               <span class="job_news_list_span job_w174 line_heigh23">
-                                    <label class="num_tj"><span class="color_333">{yun:}$user.lietou_num{/yun}</span><br><span class="color_999">猎头</span></label>
-                                    <label class="num_tj"><span class="color_333">{yun:}$user.job_num{/yun}</span><br><span class="color_999">推荐职位</span></label>
+                                    <label class="num_tj">
+                                        <span class="color_333">
+                                            {yun:}if $user.lietou_num{/yun}{yun:}$user.lietou_num{/yun}{yun:}else{/yun}0{yun:}/if{/yun}
+                                        </span><br>
+                                        <span class="color_999">猎头</span>
+                                    </label>
+                                    <label class="num_tj">
+                                        <span class="color_333">
+                                            {yun:}if $user.job_num{/yun}{yun:}$user.job_num{/yun}{yun:}else{/yun}0{yun:}/if{/yun}
+                                        </span><br>
+                                        <span class="color_999">推荐职位</span>
+                                    </label>
                                     <label class="num_tj"><span class="color_333">{yun:}$user.download_num{/yun}</span><br><span class="color_999">HR下载</span></label>
                                 </span>
                               <span class="job_news_list_span job_w110">
-                                    <label class="ico_btn"><img src="{yun:}$lt_style{/yun}/images/xiazai.png"></label>
-                                    <label class="ico_btn"><img src="{yun:}$lt_style{/yun}/images/shoucang.png"></label>
+                                    <a class="ico_btn" href="{yun:}url m=ajax c=resume_word id=$user.eid{/yun}"><img src="{yun:}$lt_style{/yun}/images/xiazai.png"></a>
+                                    <label class="ico_btn shoucang" data-id="{yun:}$user.id{/yun}" data-eid="{yun:}$user.eid{/yun}"><img src="{yun:}$lt_style{/yun}/images/shoucang.png"></label>
                                     <label class="ico_btn"><img src="{yun:}$lt_style{/yun}/images/bianji.png"></label>
                                 </span>
                           </div>
@@ -259,6 +269,24 @@ $(document).ready(function(){
 			location.reload();
 		});
 	});
+
+	$("body").on("click",".shoucang",function () {
+	    var _this = $(this);
+        $.ajax({
+            type:"post",
+            url:"/member/index.php?c=resume&act=collect",
+            data:{
+                resume_id:$(this).attr("data-id"),
+                eid:$(this).attr("data-eid")
+            },
+            success:function (data) {
+                var data = JSON.parse(data);
+                if(data==1){
+                    _this.html("取消收藏");
+                }
+            }
+        })
+    })
 });
 </script>
 <script src="{yun:}$config.sy_weburl{/yun}/js/search.js" type="text/javascript"></script>

@@ -552,12 +552,25 @@ class lietou extends common{
             $list['download_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=6 and job_id=".$list['id']);
             $list['refuse_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=4 and job_id=".$list['id']);
 
+
+            $list['mylietou_num'] = $this->obj->DB_select_num("userid_job","identity=3 and job_id=".$list['id']." and uid=".$this->uid." group by uid");
+            $list['myresume_num'] = $this->obj->DB_select_num("userid_job","identity=3 and job_id=".$list['id']." and uid=".$this->uid." group by resume_id");
+            $list['myview_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=2 and job_id=".$list['id']." and uid=".$this->uid);
+            $list['mydownload_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=6 and job_id=".$list['id']." and uid=".$this->uid);
+            $list['myrefuse_num'] = $this->obj->DB_select_num("userid_job","identity=3 and is_browse=4 and job_id=".$list['id']." and uid=".$this->uid);
+
             $list['fav_job'] = $this->obj->DB_select_num("fav_job","uid=".$this->uid." and job_id=".$list['id'],"id");
 
 //            str_replace($paramer[keyword],"<font color=#FF6600 >".$paramer[keyword]."</font>",$city_name[$value[provinceid]])
             $arr_rows[] = $list;
         }
 
+        $total_num=$this->obj->DB_select_num("company_job");
+        $recommend_num=$this->obj->DB_select_num("userid_job","identity=3 and uid=".$this->uid);
+        $fav_num=$this->obj->DB_select_num("fav_job","uid=".$this->uid);
+        $this->yunset("total_num",$total_num);
+        $this->yunset("recommend_num",$recommend_num);
+        $this->yunset("fav_num",$fav_num);
         return $arr_rows;
     }
 

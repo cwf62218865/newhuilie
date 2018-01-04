@@ -23,17 +23,17 @@
                 <label class="sxtitle">筛选条件：</label>
                 {yun:}if $smarty.get.hy{/yun}
                 <label class="select_hy">
-                    <a class="Search_jobs_c_a disc_fac mtop0">行业：{yun:}$industry_name[$smarty.get.hy]{/yun}</a>
+                    <a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=job act=$smarty.get.act hy=''{/yun}">行业：{yun:}$industry_name[$smarty.get.hy]{/yun}</a>
                 </label>
                 {yun:}/if{/yun}
                 {yun:}if $smarty.get.city{/yun}
-                <label class="select_city"><a class="Search_jobs_c_a disc_fac mtop0">工作地点：{yun:}$city_name[$smarty.get.city]{/yun}</a></label>
+                <label class="select_city"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=job act=$smarty.get.act city=''{/yun}">工作地点：{yun:}$city_name[$smarty.get.city]{/yun}</a></label>
                 {yun:}/if{/yun}
                 {yun:}if $smarty.get.salary{/yun}
-                <label class="select_salery"><a class="Search_jobs_c_a disc_fac mtop0">年薪范围：{yun:}$salary_name[$smarty.get.salary]{/yun}</a></label>
+                <label class="select_salery"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=''{/yun}">年薪范围：{yun:}$salary_name[$smarty.get.salary]{/yun}</a></label>
                 {yun:}/if{/yun}
                 {yun:}if $smarty.get.uptime{/yun}
-                <label class="select_time"><a class="Search_jobs_c_a disc_fac mtop0">更新时间：{yun:}$uptime[$smarty.get.uptime]{/yun}</a></label>
+                <label class="select_time"><a class="Search_jobs_c_a disc_fac mtop0" href="{yun:}parse_url m=member c=job act=$smarty.get.act uptime=''{/yun}">更新时间：{yun:}$uptime[$smarty.get.uptime]{/yun}</a></label>
                 {yun:}/if{/yun}
             </div>
             <div class="Search_jobs_sub" style="margin-left: 50px;margin-top: 14px;">
@@ -42,7 +42,7 @@
                     <div class="Search_jobs_more_chlose_hylist none">
                         <ul class="select_hyitem">
                             {yun:}foreach from=$industry_index item=v key=key{/yun}
-                            <li><a class="Search_jobs_cxz" href="javascript:location=location+'&hy={yun:}$v{/yun}';">{yun:}$industry_name[$v]{/yun}</a> </li>
+                            <li><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=job act=$smarty.get.act hy=$v{/yun}">{yun:}$industry_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul class="select_cityitem">
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li style="width: inherit;"><a class="Search_jobs_cxz" href="javascript:location=location+'&city={yun:}$v{/yun}'">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=job act=$smarty.get.act city=$v{/yun}">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>
@@ -61,11 +61,11 @@
                 <div class="Search_jobs_more_chlose"><span class="Search_jobs_more_chlose_s">年薪范围</span><i class=""></i>
                     <div class="Search_jobs_more_chlose_list none">
                         <ul class="select_hyitem">
-                            <li> <a class="Search_jobs_cxz width110"  href="javascript:location=location+'&salary={yun:}1{/yun}'">10万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}2{/yun}'">10-20万</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}3{/yun}'">20-30万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}4{/yun}'">30-50万以内</a></li>
-                            <li> <a class="Search_jobs_cxz width110" href="javascript:location=location+'&salary={yun:}5{/yun}'">50万以上</a></li>
+                            <li> <a class="Search_jobs_cxz width110"  href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=1{/yun}">10万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=1{/yun}">10-20万</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=1{/yun}">20-30万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=1{/yun}">30-50万以内</a></li>
+                            <li> <a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=job act=$smarty.get.act salary=1{/yun}">50万以上</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <div class="Search_jobs_more_chlose_list none">
                         <ul class="select_hyitem">
                             {yun:}foreach from=$uptime item=v key=key{/yun}<li>
-                            <a class="Search_jobs_cxz width110" href="javascript:location=location+'&uptime={yun:}$key{/yun}'">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
+                            <a class="Search_jobs_cxz width110" href="{yun:}parse_url m=member c=job act=$smarty.get.act uptime=$v{/yun}">{yun:}$v{/yun}</a> </li>{yun:}/foreach{/yun}
                         </ul>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                     <span class="job_news_list_span job_w135">
                         <a href="index.php?c=recommend&id={yun:}$job_list.id{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
                         {yun:}if $job_list.fav_job{/yun}
-                        <label class="btn_hxr w58b yiguanzhu">取消关注</label>
+                        <label class="btn_hxr w58b yiguanzhu" data-id="{yun:}$job_list.id{/yun}">取消关注</label>
                         {yun:}else{/yun}
                         <label class="btn_hxr w58b guanzhu" data-id="{yun:}$job_list.id{/yun}">+关注</label>
                         {yun:}/if{/yun}
@@ -266,8 +266,15 @@ $(document).ready(function(){
     })
 
     $("body").on("click",".yiguanzhu",function () {
-        $(this).html("+关注");
-        $(this).removeClass("yiguanzhu").addClass("guanzhu");
+        var _this = $(this);
+        var job_id = $(this).attr("data-id");
+        $.post("/member/index.php?c=job&act=del_fav",{id:job_id},function(data){
+            if(data==1){
+                _this.html("+关注");
+                _this.removeClass("yiguanzhu").addClass("guanzhu");
+            }
+        })
+
     })
 
     $(".Search_jobs_submit").click(function () {

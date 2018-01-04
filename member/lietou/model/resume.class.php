@@ -31,7 +31,7 @@ class resume_controller extends lietou{
     function index_action(){
 //        $paramer['c'] = "resume";
 //        echo Url("member",$paramer);exit();
-       
+
         $this->industry_cache();
         $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
@@ -48,116 +48,13 @@ class resume_controller extends lietou{
 
     function resumefav_action(){
         $this->industry_cache();
+        $collect_ids = $this->obj->DB_select_all("");
         $this->yunset($this->MODEL('cache')->GetCache(array('city','com')));
         $this->subject_cache();
-        $where="`com_id`='".$this->uid."'";
-        if(intval($_GET['resumetype'])){
-            if(intval($_GET['resumetype'])==1){
-                $resumeexp=$this->obj->DB_select_all("resume_expect","`r_status`<>'2'  and `height_status`<>2","`id`");
-            }elseif(intval($_GET['resumetype'])==2){
-                $resumeexp=$this->obj->DB_select_all("resume_expect","`r_status`<>'2' and `height_status`=2","`id`");
-            }
-            if(is_array($resumeexp) && !empty($resumeexp)){
-                foreach($resumeexp as $v){
-                    $reid[]=$v['id'];
-                }
-            }
-            $where.=" and eid in (".pylode(',',$reid).")  ";
-            $urlarr['resumetype']=intval($_GET['resumetype']);
-        }
-        if(trim($_GET['keyword'])){
-            $resume=$this->obj->DB_select_all("resume","`r_status`<>'2' and `name` like '%".trim($_GET['keyword'])."%'","`name`,`edu`,`uid`,`exp`");
-            if(is_array($resume) && !empty($resume)){
-                foreach($resume as $v){
-                    $uid[]=$v['uid'];
-                }
-            }
-            $urlarr['keyword']=trim($_GET['keyword']);
-            $where.=" and uid in (".pylode(',',$uid).")  ";
-        }
-        if($_GET['jobid']){
-            $jobid=@explode('-', $_GET['jobid']);
-            if (!array_key_exists('1', $jobid)) $jobid['1'] = 1;
-            $where .=" and `job_id`=" . $jobid['0'] . " and `type`=" . $jobid['1'] . " ";
-            $urlarr['jobid']=$_GET['jobid'];
-        }
-        if($_GET['state']){
-            $where.=" and `is_browse`=".intval($_GET['state'])."  ";
-            $urlarr['state']=$_GET['state'];
-        }
-        $this->public_action();
-        $urlarr['c']="hr";
-        $urlarr['page']="{{page}}";
-        $pageurl=Url('member',$urlarr);
-        $rows=$this->get_page("userid_job",$where." ORDER BY is_browse asc,datetime desc",$pageurl,"10");
-
-        $jobs2=$this->obj->DB_select_all('company_job','`uid`='.$this->uid,"`id`,`name`");
-        foreach ($jobs2 as $key=>$val){
-            $jobs2[$key]['type']=1;
-        }
-        $JobList=$jobs2;
-        if(is_array($rows) && !empty($rows)){
-            $uid=$eid=array();
-            foreach($rows as $val){
-                $eid[]=$val['eid'];
-                $uid[]=$val['uid'];
-            }
-            if(empty($resume)){
-                $resume=$this->obj->DB_select_all("resume","`r_status`<>'2'  and `uid` in (".pylode(",",$uid).")","`name`,`edu`,`uid`,`exp`");
-            }
-            $expect=$this->obj->DB_select_all("resume_expect","`id` in (".pylode(",",$eid).")","`id`,`job_classid`,`salary`,`height_status`");
-            $userid_msg=$this->obj->DB_select_all("userid_msg","`fid`='".$this->uid."' and `uid` in (".pylode(",",$uid).")","uid,jobid");
-            if(is_array($resume)){
-                include(PLUS_PATH."user.cache.php");
-                include(PLUS_PATH."job.cache.php");
-                $expectinfo=array();
-                foreach($expect as $key=>$val){
-                    $jobids=@explode(',',$val['job_classid']);
-                    $jobname=array();
-                    foreach($jobids as $k=>$v){
-                        if($k<5){
-                            $jobname[]=$job_name[$v];
-                        }
-                    }
-                    $expectinfo[$val['id']]['jobname']=@implode('、',$jobname);
-                    $expectinfo[$val['id']]['salary']=$userclass_name[$val['salary']];
-                    $expectinfo[$val['id']]['height_status']=$val['height_status'];
-                }
-                foreach($rows as $k=>$v){
-                    $rows[$k]['jobname']=$expectinfo[$v['eid']]['jobname'];
-                    $rows[$k]['salary']=$expectinfo[$v['eid']]['salary'];
-                    $rows[$k]['height_status']=$expectinfo[$v['eid']]['height_status'];
-                    foreach($resume as $val){
-                        if($v['uid']==$val['uid']){
-                            $rows[$k]['name']=$val['name'];
-                            $rows[$k]['edu']=$userclass_name[$val['edu']];
-                            $rows[$k]['exp']=$userclass_name[$val['exp']];
-                        }
-                    }
-                    foreach($userid_msg as $val){
-                        if($v['uid']==$val['uid'] && $val['jobid']==$v['job_id']){
-                            $rows[$k]['userid_msg']=1;
-                        }
-                    }
-                }
-            }
-            $jobnum=$this->obj->DB_select_num("userid_job","`com_id`='".$this->uid."'");
-        }
-        if($JobList&&is_array($JobList)&&$jobid['0']){
-            foreach($JobList as $val){
-                if($jobid['0']==$val['id']){
-                    $current=$val;
-                }
-            }
-        }
-        $JobM=$this->MODEL("job");
-        $company_job=$JobM->GetComjobList(array("uid"=>$this->uid,"state"=>1,"`edate`>'".time()."' and `r_status`<>'2' and `status`<>'1'"),array("field"=>"`name`,`id`"));
-        $this->yunset("company_job",$company_job);
-        $this->yunset(array('current'=>$current,'rows'=>$rows,'JobList'=>$JobList,'StateList'=>array(array('id'=>1,'name'=>'未查看'),array('id'=>2,'name'=>'已查看'),array('id'=>3,'name'=>'等待通知'),array('id'=>4,'name'=>'条件不符'),array('id'=>5,'name'=>'无法联系'))));
-        $this->company_satic();
+        $resume = $this->obj->get_page();
         $this->yunset("js_def",5);
-        $this->yunset("jobnum",$jobnum);
-        $this->lt_tpl('resumefav');
+        $this->yunset("resume_kind","collect");
+        $this->lt_tpl('resumelist');
     }
 
     function recommend_action(){
@@ -392,13 +289,14 @@ class resume_controller extends lietou{
     function add_action(){
 
         $_POST = $this->array_iconv("utf-8","gbk",$_POST);
-//        var_dump($_POST);exit();
+
         $data['name'] = $_POST['name']?$_POST['name']:$this->error_msg("请输入姓名");
         $data['sex'] = $_POST['sex']?$_POST['sex']:$this->error_msg("请选择性别");
         $data['email'] = $_POST['email'];
         $data['birthday'] = $_POST['birthDayStr'];
         $data['living'] =  $_POST['cityId'];
         $data['edu'] = $_POST['degree'];
+        $data['exp'] = $_POST['workYear'];
         $data['telphone'] = $_POST['mobile']?$_POST['mobile']:$this->error_msg("请输入手机号");
         $data['uid'] = $this->uid;
         $resume_id = $this->obj->insert_into("resume",$data);       //id 作为后面附表的uid
@@ -412,9 +310,10 @@ class resume_controller extends lietou{
                 $data['job_classid']= $_POST['intent']['hopeCallings'];
                 $data['intention_city'] = $_POST['intent']['hopeCitys'];
                 $data['hy'] = $_POST['intent']['hopeIndustry'];
-                $data['wage_hope'] = $_POST['intent']['curMoney'];
+                $data['wage_current'] = $_POST['intent']['curMoney'];
                 $data['moneyMonthes'] = $_POST['intent']['moneyMonthes'];
-                $data['wage_current'] = $_POST['intent']['hopeMoney'];
+                $data['wage_hope'] = $_POST['intent']['hopeMoney'];
+                $data['minsalary'] = intval($_POST['intent']['hopeMoney']/12)*10000;
                 $data['jobstatus'] = $_POST['jobState'];
                 $data['lastupdate'] = time();
                 $data['ctime'] = time();
@@ -448,11 +347,11 @@ class resume_controller extends lietou{
                             $data['resume_id'] = $resume_id;
                             $data['uid'] = $this->uid;
                             $data['eid'] = $resume_eid;
-                            $data['name'] = $list['name'];
-                            $data['title'] = $list['title'];
+                            $data['name'] = $list['schoolName'];
+                            $data['degree'] = $list['degree'];
                             $data['sdate'] = strtotime($list['sdate']);
                             $data['edate'] = strtotime($list['edate']);
-                            $data['specialty'] = $list['specialty'];
+                            $data['specialty'] = $list['majorName'];
                             $this->obj->insert_into("resume_edu",$data);
                         }
                     }
@@ -475,7 +374,7 @@ class resume_controller extends lietou{
                 }
             }
 
-
+            echo 1;exit();
             $this->success_msg("添加成功");
         }else{
             $this->error_msg("添加失败");
@@ -499,5 +398,22 @@ class resume_controller extends lietou{
 //            echo 1;exit();
 //        }
 //        var_dump($data);exit();
+    }
+
+    function collect_action(){
+        $resume_id = $_POST['resume_id'];
+        $eid = $_POST['eid'];
+        $fav = $this->obj->DB_select_once("fav_resume","resume_id=".$resume_id." and eid=".$eid);
+        if($fav){
+            $this->error_msg("已收藏");
+        }else{
+            $data['resume_id'] = $resume_id;
+            $data['eid'] = $eid;
+            $data['uid'] = $this->uid;
+            $data['datetime'] = time();
+            $data['type'] = 3;
+            $this->obj->insert_into("fav_resume",$data);
+            echo 1;exit();
+        }
     }
 }

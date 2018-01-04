@@ -1,11 +1,12 @@
 <?php
 class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 	public $required_attributes = array('item');
-	public $optional_attributes = array('name', 'key', 'post_len', 'limit', 'salary','uid', 'minsalary', 'maxsalary', 'idcard', 'edu', 'order', 'work', 'exp', 'sex','birthday', 'keyword', 'hy', 'provinceid', 'report', 'cityid', 'three_cityid', 'adtime', 'jobids', 'pic', 'typeids', 'type', 'job1_son', 'job_post', 'uptime', 'ispage', 'rec_resume','where_uid', 'height_status', 'rec', 't_len' ,'top','job_classid','islt','job1','isshow','cityin','jobin','where','topdate','noid','tag');
+	public $optional_attributes = array('name', 'key', 'post_len', 'limit', 'salary','uid', 'minsalary', 'maxsalary', 'idcard', 'edu', 'order', 'work', 'exp', 'sex','birthday', 'keyword', 'hy', 'provinceid', 'report', 'cityid', 'three_cityid', 'adtime', 'jobids', 'pic', 'typeids', 'type', 'job1_son', 'job_post', 'uptime', 'ispage', 'rec_resume','where_uid', 'height_status', 'rec', 't_len' ,'top','job_classid','islt','job1','isshow','cityin','jobin','where','topdate','noid','tag','resume_kind');
 	public $shorttag_order = array('from', 'item', 'key', 'name');
 	public function compile($args, $compiler, $parameter){
 
 		$_attr = $this->getAttributes($compiler, $args);
+
 
 		$from = $_attr['from'];
 		$item = $_attr['item'];
@@ -58,11 +59,6 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 			}
 		}
 	
-		if($paramer[where_uid]){
-			$where .=" AND `uid` in (".$paramer[\'where_uid\'].")";
-		}
-		
-		
 		
 		
 		if($paramer[uid]){
@@ -70,30 +66,12 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 		}
 		
 		
-		
-	
-		
-		
-		if($paramer[rec]){
-			$where .=" AND `rec`=1";
-		}
-		
-		if($paramer[rec_resume]){
-			$where .=" AND `rec_resume`=1";
-		}
-		
-		
-		
-		
-		
 		if($paramer[cid]){
 			$where .= " AND (cityid=$paramer[cid] or three_cityid=$paramer[cid])";
 		}
 		
 		if($paramer[keyword]){
-
 			$jobid = array();
-
 			$where1[]="`uname` LIKE \'%$paramer[keyword]%\'";
 			foreach($job_name as $k=>$v){
 				if(strpos($v,$paramer[keyword])!==false){
@@ -266,76 +244,64 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 		}
 		$where.=$order.$sort;
 
-		'.$name.'=$db->select_all("resume_expect",$where.$limit,"*,uname as username");
 
+		'.$name.'=$db->select_all("resume_expect",$where.$limit,"*,uname as username");
         include(CONFIG_PATH."db.data.php");		
 		if('.$name.' && is_array('.$name.')){
-			
-			foreach('.$name.' as $key=>$value){
-				$uid[] = $value[\'uid\'];
-				$eid[] = $value[\'id\'];
-			}
-			$eids = @implode(\',\',$eid);
-			$uids = @implode(\',\',$uid);
-            $resume=$db->select_all("resume","`id` in(".$value[resume_id].")","id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday,telphone");
+			            
 			foreach('.$name.' as $k=>$v){
 			    $recommend=$db->DB_select_once("userid_job","eid=".$v[\'id\']." order by datetime desc","datetime");
 			    '.$name.'[$k][\'lietou_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 group by uid");
 			    '.$name.'[$k][\'job_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 group by job_id");
 			    '.$name.'[$k][\'download_num\']=$db->select_num("userid_job","eid=".$v[\'id\']." and identity=3 and is_browse=6");
 
-			    '.$name.'[$k][\'datetime\']=_format_date($recommend[\'datetime\']);
-			    foreach($resume as $val){
-			        if($v[\'uid\']==$val[\'uid\']){
-			    		'.$name.'[$k][\'edu_n\']=$userclass_name[$val[\'edu\']];
-				        '.$name.'[$k][\'exp_n\']=$userclass_name[$val[\'exp\']];
-			            if($val[\'birthday\']){
-							$year = date("Y",strtotime($val[\'birthday\']));
-							'.$name.'[$k][\'age\'] =date("Y")-$year;
-						}
-		                
-		                '.$name.'[$k][\'sex\'] =$val[\'sex\'];  
-		                '.$name.'[$k][\'phototype\']=$val[phototype];
-		                if($val[\'photo\'] && $val[\'phototype\']!=1&&(file_exists(str_replace($config[\'sy_weburl\'],APP_PATH,\'.\'.$val[\'photo\']))||file_exists(str_replace($config[\'sy_weburl\'],APP_PATH,$val[\'photo\'])))){
-            				'.$name.'[$k][\'photo\']=str_replace("./",$config[\'sy_weburl\']."/",$val[\'photo\']);
-            			}else{
-            				if($val[\'sex\']==1||$val[\'sex\']==153){
-            					'.$name.'[$k][\'photo\']=$config[\'sy_weburl\']."/".$config[\'sy_member_icon\'];
-            				}else{
-            					'.$name.'[$k][\'photo\']=$config[\'sy_weburl\']."/".$config[\'sy_member_iconv\'];
-            				}
-            			}
-						if($val[\'tag\']){
-                            '.$name.'[$k][\'tag\']=explode(\',\',$val[\'tag\']);
-	                    }
-                        '.$name.'[$k][\'nametype\']=$val[nametype];
-                        '.$name.'[$k][\'id\']=$val[id];
-                        //名称显示处理
-						if($config[\'user_name\']==1 || !$config[\'user_name\']){
-						if($val[\'nametype\']==3){
-						    if($val[\'sex\']==1){
-						        '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."先生";
-						    }else{
-						        '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."女士";
-						    }
-						}elseif($val[\'nametype\']==2){
-						    '.$name.'[$k][\'username_n\'] = "NO.".$v[\'id\'];
-						}else{
-							'.$name.'[$k][\'username_n\'] = $val[\'name\'];
-						}
-						}elseif($config[\'user_name\']==3){
-							if($val[\'sex\']==1){
-								'.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."先生";
-							}else{
-								'.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."女士";
-							}
-						}elseif($config[\'user_name\']==2){
-							'.$name.'[$k][\'username_n\'] = "NO.".$v[\'id\'];
-						}elseif($config[\'user_name\']==4){
-							'.$name.'[$k][\'username_n\'] = $val[\'name\'];
-						}
+                if($recommend[\'datetime\']){
+                    '.$name.'[$k][\'datetime\']=_format_date($recommend[\'datetime\']);
+                }else{
+                    '.$name.'[$k][\'datetime\']="暂无推荐";
+                }
+
+                
+                $resume=$db->DB_select_once("resume","`id`=".$v[\'resume_id\'],"id,uid,name,nametype,tag,sex,edu,exp,photo,phototype,birthday,telphone");
+                $val = $resume;
+                if($v[\'uid\']==$val[\'uid\']){
+                    '.$name.'[$k][\'edu_n\']=$userclass_name[$val[\'edu\']];
+                    '.$name.'[$k][\'exp_n\']=$userclass_name[$val[\'exp\']];
+                    if($val[\'birthday\']){
+                        $year = date("Y",strtotime($val[\'birthday\']));
+                        '.$name.'[$k][\'age\'] =date("Y")-$year;
+                    }
+                    '.$name.'[$k][\'sex\'] =$val[\'sex\'];  
+                   
+                    '.$name.'[$k][\'nametype\']=$val[nametype];
+                    '.$name.'[$k][\'id\']=$val[id];
+                    //名称显示处理
+                    if($config[\'user_name\']==1 || !$config[\'user_name\']){
+                    if($val[\'nametype\']==3){
+                        if($val[\'sex\']==1){
+                            '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."先生";
+                        }else{
+                            '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."女士";
+                        }
+                    }elseif($val[\'nametype\']==2){
+                        '.$name.'[$k][\'username_n\'] = "NO.".$v[\'id\'];
+                    }else{
+                        '.$name.'[$k][\'username_n\'] = $val[\'name\'];
+                    }
+                    }elseif($config[\'user_name\']==3){
+                        if($val[\'sex\']==1){
+                            '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."先生";
+                        }else{
+                            '.$name.'[$k][\'username_n\'] = mb_substr($val[\'name\'],0,1,\'gbk\')."女士";
+                        }
+                    }elseif($config[\'user_name\']==2){
+                        '.$name.'[$k][\'username_n\'] = "NO.".$v[\'id\'];
+                    }elseif($config[\'user_name\']==4){
+                        '.$name.'[$k][\'username_n\'] = $val[\'name\'];
                     }
                 }
+                
+
 				if($paramer[topdate]){
 					$noids[] = $v[id];
 				}
@@ -415,8 +381,9 @@ class Smarty_Internal_Compile_Resumelist extends Smarty_Internal_CompileBase{
 			if($paramer[\'keyword\']!=""&&!empty('.$name.')){
 				addkeywords(\'5\',$paramer[\'keyword\']);
 			}
+
 		}';
-	
+
 		global $DiyTagOutputStr;
 		$DiyTagOutputStr[]=$OutputStr;
 		return SmartyOutputStr($this,$compiler,$_attr,'resumelist',$name,'',$name);

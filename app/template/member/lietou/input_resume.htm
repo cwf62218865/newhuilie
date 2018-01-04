@@ -807,12 +807,22 @@
 								<tr>
 									<th class="optional">邮箱</th>
 									<td class="input-group-sm"> <input type="text" name="email" id="email" class="form-control adr" placeholder="请输入邮箱" /> </td>
+
 									<th class="optional">工作年限</th>
 									<td>
-										<div class="input-group input-group-sm adr">
-											<input type="text" class="form-control small" id="workYear" name="workYear" />
-											<span class="form-text"> 年 </span>
-										</div> </td>
+										<select class="form-control adr" name="workYear" id="workYear">
+											<option value="">请选择</option>
+											<option value="18">应届毕业生</option>
+											<option value="19">1年以上</option>
+											<option value="20">2年以上</option>
+											<option value="21">3年以上</option>
+											<option value="100">4年以上</option>
+											<option value="22">5年以上</option>
+											<option value="101">6年以上</option>
+											<option value="23">8年以上</option>
+											<option value="24">10年以上</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<th class="optional">出生日期</th>

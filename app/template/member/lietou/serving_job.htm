@@ -125,11 +125,11 @@
                         <label class="tj_nums" href="#">我的进度:</label>
                     </span>
                     <span class="job_news_list_span job_w260 line_heigh23">
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
-                        <label class="num_tj"><span class="color_333">12</span><br><span class="color_333">12</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.lietou_num{/yun}</span><br><span class="color_333">{yun:}$job_list.mylietou_num{/yun}</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.resume_num{/yun}</span><br><span class="color_333">{yun:}$job_list.myresume_num{/yun}</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.view_num{/yun}</span><br><span class="color_333">{yun:}$job_list.myview_num{/yun}</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.download_num{/yun}</span><br><span class="color_333">{yun:}$job_list.mydownload_num{/yun}</span></label>
+                        <label class="num_tj"><span class="color_333">{yun:}$job_list.refuse_num{/yun}</span><br><span class="color_333">{yun:}$job_list.myrefuse_num{/yun}</span></label>
                     </span>
                     <span class="job_news_list_span job_w135">
                         <a href="{yun:}url m=job c=search c=comapply id='`$zd_list.id`'{/yun}" target="_blank" class="btn_hxr w70b">推荐候选人</a>
@@ -222,7 +222,32 @@ $(document).ready(function(){
 		if(e.target.className != 'job_box_in'){
 			$(".job_tck_box_pot").hide();
 		}
-	}); 
+	});
+
+    $("body").on("click",".guanzhu",function () {
+        var _this = $(this);
+        var job_id = $(this).attr("data-id");
+        $.post("/index.php?m=ajax&c=favjobuser",{id:job_id},function(data){
+
+            if(data==1){
+                _this.html("取消关注");
+                _this.removeClass("guanzhu").addClass("yiguanzhu");
+            }
+        })
+
+    })
+
+    $("body").on("click",".yiguanzhu",function () {
+        var _this = $(this);
+        var job_id = $(this).attr("data-id");
+        $.post("/member/index.php?c=job&act=del_fav",{id:job_id},function(data){
+            if(data==1){
+                _this.html("+关注");
+                _this.removeClass("yiguanzhu").addClass("guanzhu");
+            }
+        })
+
+    })
 });
 </script> 
 <!--延期天数弹出框-->

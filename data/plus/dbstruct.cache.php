@@ -106,6 +106,9 @@ $phpyun_evaluate_log=array('id'=>'int(4)','uid'=>'int(4)','nuid'=>'varchar(36)',
 $phpyun_excel=array('id'=>'int(11)','name'=>'varchar(255)','count'=>'int(11)','time'=>'int(11)')
 ; 
 $phpyun_fav_job=array('id'=>'int(11)','uid'=>'int(11)','com_id'=>'int(11)','com_name'=>'varchar(150)','datetime'=>'int(10)','type'=>'int(11)','job_name'=>'varchar(150)','job_id'=>'int(11)')
+;
+
+$phpyun_fav_resume=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','com_name'=>'varchar(150)','datetime'=>'int(10)','type'=>'int(11)','job_name'=>'varchar(150)','resume_id'=>'int(11)')
 ; 
 $phpyun_finder=array('id'=>'int(11)','uid'=>'int(11)','usertype'=>'int(1)','name'=>'varchar(100)','para'=>'varchar(255)','addtime'=>'int(11)')
 ; 
@@ -191,7 +194,7 @@ $phpyun_resume_cert=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','nam
 ; 
 $phpyun_resume_doc=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','doc'=>'text')
 ; 
-$phpyun_resume_edu=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','name'=>'varchar(25)','sdate'=>'int(10)','edate'=>'int(10)','specialty'=>'varchar(50)','title'=>'varchar(50)','content'=>'text','education'=>'int(11)','resume_id'=>'int(11)')
+$phpyun_resume_edu=array('id'=>'int(11)','uid'=>'int(11)','eid'=>'int(11)','name'=>'varchar(25)','sdate'=>'int(10)','edate'=>'int(10)','specialty'=>'varchar(50)','title'=>'varchar(50)','content'=>'text','education'=>'int(11)','resume_id'=>'int(11)','degree'=>'int(11)')
 ; 
 $phpyun_resume_expect=array('id'=>'int(11)','uid'=>'int(11)','name'=>'varchar(25)','hy'=>'int(5)','job_classid'=>'varchar(100)','provinceid'=>'int(5)','cityid'=>'int(5)','three_cityid'=>'int(5)','salary'=>'int(3)','jobstatus'=>'int(11)','type'=>'int(3)','report'=>'int(3)','defaults'=>'int(1)','open'=>'int(1)','is_entrust'=>'int(1)','full'=>'int(3)','doc'=>'int(1)','hits'=>'int(6)','lastupdate'=>'int(10)','def_job'=>'int(11)','cloudtype'=>'int(2)','olduid'=>'int(11)','integrity'=>'int(11)','height_status'=>'int(11)','statusbody'=>'varchar(200)','status_time'=>'int(11)','rec'=>'int(11)','top'=>'int(11)','topdate'=>'int(11)','rec_resume'=>'int(11)','dom_sort'=>'varchar(255)','resume_diy'=>'text','source'=>'int(1)','tmpid'=>'int(5)','ctime'=>'int(11)','dnum'=>'int(11)','did'=>'int(11)','uname'=>'varchar(50)','idcard_status'=>'tinyint(1)','status'=>'tinyint(1)','r_status'=>'tinyint(4)','edu'=>'int(11)','exp'=>'int(11)','sex'=>'int(11)','photo'=>'varchar(100)','phototype'=>'int(11)','birthday'=>'varchar(15)','annex'=>'varchar(255)','annexname'=>'varchar(255)','minsalary'=>'int(11)','maxsalary'=>'varchar(11)','whour'=>'int(11)','avghour'=>'int(11)','wage_hope'=>'int(11)','moneyMonthes'=>'int(11)','wage_current'=>'int(11)','resume_id'=>'int(11)')
 ; 
