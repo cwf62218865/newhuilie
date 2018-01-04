@@ -52,7 +52,7 @@
                     <div class="Search_jobs_more_chlose_list none" style="width: 415px;">
                         <ul class="select_cityitem">
                             {yun:}foreach from=$city_index key=j item=v{/yun}
-                            <li style="width: inherit;"><a class="Search_jobs_cxz" href="{yun:}parse_url m=member c=job act=$smarty.get.act city=$v{/yun}">{yun:}$city_name[$v]{/yun}</a> </li>
+                            <li style="width: inherit;"><a class="Search_jobs_cxz" href="javascript:location=location+'&city={yun:}$v{/yun}'">{yun:}$city_name[$v]{/yun}</a> </li>
                             {yun:}/foreach{/yun}
                         </ul>
                     </div>

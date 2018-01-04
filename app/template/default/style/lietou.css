@@ -239,3 +239,23 @@
     white-space: nowrap;
     display: inline-block;
 }
+.chakanpl{
+    width: 470px;
+    height: 70px;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-top: 10px;
+}
+.knowbtn{
+    display: inline-block;
+    width: 71px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    background: #4a6e89;
+    color: #fff;
+}
